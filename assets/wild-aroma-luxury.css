@@ -308,23 +308,84 @@ h1, h2, h3, h4, h5, h6,
   color: var(--wa-gold) !important;
 }
 
-/* Card Styling Override */
+/* Product Click Animation & Card Hover Elevation (Bella Vita Style) */
 .card-wrapper,
 .card,
 .product-card-wrapper {
   background-color: var(--wa-card-bg) !important;
   border-radius: 8px !important;
   border: 1px solid var(--wa-border) !important;
-  transition: var(--wa-transition) !important;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .card-wrapper:hover,
 .card:hover,
 .product-card-wrapper:hover {
   border-color: var(--wa-gold) !important;
-  box-shadow: var(--wa-shadow-md) !important;
-  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2) !important;
+  transform: translateY(-5px) scale(1.01);
+}
+
+.card-wrapper:active,
+.card:active {
+  transform: scale(0.98);
+}
+
+/* Product Media & Gallery Thumbnails */
+.product__media-item {
+  border-radius: 8px !important;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.product__media-item:hover img {
+  transform: scale(1.05);
+}
+
+.thumbnail-list__item button,
+.thumbnail {
+  border-radius: 6px !important;
+  border: 1.5px solid var(--wa-border) !important;
+  transition: all 0.3s ease !important;
+}
+
+.thumbnail-list__item button[aria-current="true"],
+.thumbnail[aria-current="true"] {
+  border-color: var(--wa-gold) !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4) !important;
+}
+
+/* Accordion Description Suite (Bella Vita Style) */
+.product__accordion.accordion,
+.product-accordion-suite {
+  border-top: 1px solid var(--wa-border);
+  margin-top: 1.5rem;
+}
+
+.product__accordion.accordion details,
+.product-accordion-suite details {
+  border-bottom: 1px solid var(--wa-border);
+  transition: background-color 0.3s ease;
+}
+
+.product__accordion.accordion summary,
+.product-accordion-suite summary {
+  padding: 1.2rem 0;
+  font-family: var(--wa-font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--wa-obsidian);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product__accordion.accordion summary:hover,
+.product-accordion-suite summary:hover {
+  color: var(--wa-gold);
 }
 
 /* Sticky Mobile Bottom Buy Bar (Bella Vita Style) */
@@ -360,52 +421,6 @@ h1, h2, h3, h4, h5, h6,
 .sticky-buy-bar__btn:hover {
   background: var(--wa-gold) !important;
   color: var(--wa-obsidian) !important;
-}
-
-/* Scent Pyramid Component */
-.scent-pyramid-container {
-  background-color: var(--wa-cream-card) !important;
-  border: 1px solid var(--wa-border) !important;
-  border-radius: 8px !important;
-  padding: 1.8rem !important;
-  margin: 1.5rem 0 !important;
-}
-
-.scent-pyramid-title {
-  font-family: var(--wa-font-heading) !important;
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  color: var(--wa-obsidian) !important;
-  margin-bottom: 1.2rem !important;
-  text-align: center !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-}
-
-.scent-level-badge {
-  background-color: var(--wa-obsidian) !important;
-  color: var(--wa-gold) !important;
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  padding: 0.4rem 0.8rem !important;
-  border-radius: 4px !important;
-}
-
-/* Longevity Meter */
-.longevity-meter-box {
-  background: #FFFFFF !important;
-  border: 1px solid var(--wa-border) !important;
-  border-radius: 8px !important;
-  padding: 1.2rem !important;
-  margin: 1rem 0 !important;
-}
-
-.longevity-bar-fill {
-  height: 100% !important;
-  background: linear-gradient(90deg, var(--wa-gold) 0%, #F4E7BE 50%, var(--wa-gold) 100%) !important;
-  border-radius: 4px !important;
 }
 
 /* Cart Drawer */
