@@ -105,12 +105,15 @@
             {{ form | payment_button }}
           {%- endif -%}
 
-          <div class="prepaid-savings-pill" style="margin-top: 0.8rem; background: linear-gradient(135deg, #fffdf5 0%, #fff8e6 100%); border: 1.5px dashed #cca43b; border-radius: 6px; padding: 7px 12px; font-size: 1.25rem; font-weight: 600; color: #855d00; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span>🎁</span>
-              <span><strong>Prepaid Offer:</strong> Extra ₹100 OFF on Online Payment (UPI / Cards)</span>
+          <!-- Bella Vita Style BOGO & Exclusive Coupon Card -->
+          <div class="wa-bogo-coupon-card" style="margin-top: 1rem; background: #FAF8F5; border: 1.5px dashed #D4AF37; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 4px 12px rgba(18, 18, 18, 0.03);">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #D90429;">🎁 BUY 1 GET 1 FREE</span>
+              <span style="font-size: 0.95rem; font-weight: 600; color: #121212;">Add any 2 items to cart to apply offer</span>
             </div>
-            <span style="background: #cca43b; color: #1a1107; font-weight: 800; font-size: 1.05rem; padding: 2px 7px; border-radius: 4px; text-transform: uppercase;">Save ₹100</span>
+            <div style="background: #121212; color: #D4AF37; font-weight: 800; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #D4AF37; cursor: pointer;" onclick="navigator.clipboard.writeText('WILD100'); this.innerText='COPIED!'; setTimeout(() => this.innerText='WILD100', 2000);">
+              WILD100
+            </div>
           </div>
 
           <style>
@@ -144,10 +147,37 @@
       {%- endform -%}
     </product-form>
 
-    <div class="custom-pdp-trust-strip" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; padding: 1.2rem; background: #faf8f5; border: 1px solid rgba(204, 164, 59, 0.25); border-radius: 8px;">
-      <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; font-weight: 600; color: #121212;">
-        <span style="font-size: 1.5rem;">💵</span> 100% Cash on Delivery (COD) Available
+    <!-- Bella Vita Luxury Perfume Attribute Matrix -->
+    <div class="wa-pdp-attribute-matrix" style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
+        <span style="font-size: 1.4rem;">👑</span>
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">Concentrated Parfum</strong>
+          <span style="font-size: 0.75rem; color: #555555;">Pure Perfume Oil</span>
+        </div>
       </div>
+      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
+        <span style="font-size: 1.4rem;">🌿</span>
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">100% Alcohol-Free</strong>
+          <span style="font-size: 0.75rem; color: #555555;">Skin Safe & Pure</span>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
+        <span style="font-size: 1.4rem;">⏳</span>
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">12+ Hrs Longevity</strong>
+          <span style="font-size: 0.75rem; color: #555555;">Long-lasting Scent Trail</span>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
+        <span style="font-size: 1.4rem;">🚚</span>
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">Free Express COD</strong>
+          <span style="font-size: 0.75rem; color: #555555;">3-5 Days Delivery</span>
+        </div>
+      </div>
+    </div>
       <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; font-weight: 600; color: #121212;">
         <span style="font-size: 1.5rem;">🌿</span> 100% Pure & Alcohol-Free (Skin Safe)
       </div>
