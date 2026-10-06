@@ -135,22 +135,24 @@ h1, h2, h3, h4, h5, h6,
   color: var(--wa-obsidian) !important;
 }
 
-/* Primary Luxury Button (Bella Vita Style) */
+/* Primary Luxury Button (Bella Vita Style + Golden Shimmer) */
 .button,
 .btn-luxury,
 .product-form__submit,
 .cart__checkout-button {
-  background-color: var(--wa-obsidian) !important;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #121212 0%, #1A1A1A 100%) !important;
   color: #FFFFFF !important;
-  border: 1px solid var(--wa-obsidian) !important;
+  border: 1px solid var(--wa-gold) !important;
   border-radius: 4px !important;
   font-family: var(--wa-font-body) !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.12em !important;
   padding: 1.2rem 2.4rem !important;
   transition: var(--wa-transition) !important;
-  box-shadow: var(--wa-shadow-sm) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -158,15 +160,70 @@ h1, h2, h3, h4, h5, h6,
   gap: 0.8rem;
 }
 
+/* Golden Shimmer Animation Effect */
+.button::before,
+.btn-luxury::before,
+.product-form__submit::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.25) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.button:hover::before,
+.btn-luxury:hover::before,
+.product-form__submit:hover::before {
+  animation: goldShimmer 1.5s infinite;
+}
+
+@keyframes goldShimmer {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
+}
+
 .button:hover,
 .btn-luxury:hover,
 .product-form__submit:hover,
 .cart__checkout-button:hover {
-  background-color: var(--wa-gold) !important;
-  color: var(--wa-obsidian) !important;
-  border-color: var(--wa-gold) !important;
+  background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%) !important;
+  color: #121212 !important;
+  border-color: #D4AF37 !important;
   box-shadow: var(--wa-shadow-gold) !important;
   transform: translateY(-2px);
+}
+
+/* Button Loading State Animation Bar */
+.btn-loading {
+  position: relative !important;
+  pointer-events: none !important;
+  opacity: 0.9 !important;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #D4AF37, #F4E7BE, #D4AF37);
+  animation: loadingBarProgress 1.2s ease-in-out infinite;
+}
+
+@keyframes loadingBarProgress {
+  0% { width: 0%; left: 0; }
+  50% { width: 100%; left: 0; }
+  100% { width: 0%; left: 100%; }
 }
 
 /* Secondary Gold Button */
