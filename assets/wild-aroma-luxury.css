@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand Palette */
+  /* Brand Palette - Exact Bella Vita Luxury Replica */
   --wa-canvas: #FAF8F5;
   --wa-obsidian: #121212;
   --wa-obsidian-light: #1A1A1A;
@@ -14,7 +14,7 @@
   --wa-gold-dark: #A88420;
   --wa-crimson: #D90429;
   --wa-crimson-bg: #FFEBEB;
-  --wa-text-primary: #1C1C1C;
+  --wa-text-primary: #121212;
   --wa-text-secondary: #5A5A5A;
   --wa-border: #E8E2D8;
   --wa-card-bg: #FFFFFF;
@@ -35,10 +35,10 @@
 }
 
 /* Global Body Canvas Override */
-body {
+html, body, .gradient, main, #MainContent {
   background-color: var(--wa-canvas) !important;
-  color: var(--wa-text-primary);
-  font-family: var(--wa-font-body);
+  color: var(--wa-text-primary) !important;
+  font-family: var(--wa-font-body) !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -46,11 +46,12 @@ body {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6,
 .section-heading,
-.product__title {
+.product__title,
+.card__heading {
   font-family: var(--wa-font-heading) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
-  color: var(--wa-obsidian);
+  letter-spacing: 0.03em !important;
+  color: var(--wa-obsidian) !important;
 }
 
 .luxury-uppercase {
@@ -61,10 +62,84 @@ h1, h2, h3, h4, h5, h6,
   font-size: 0.85rem;
 }
 
+/* Color Scheme Overrides */
+.color-scheme-1, .color-scheme-1.gradient {
+  background-color: var(--wa-canvas) !important;
+  color: var(--wa-obsidian) !important;
+}
+
+.color-scheme-2, .color-scheme-2.gradient {
+  background-color: #FFFFFF !important;
+  color: var(--wa-obsidian) !important;
+}
+
+.color-scheme-3, .color-scheme-3.gradient, .footer {
+  background-color: var(--wa-obsidian) !important;
+  color: var(--wa-canvas) !important;
+}
+
+.color-scheme-3 h1, .color-scheme-3 h2, .color-scheme-3 h3, .footer h1, .footer h2, .footer h3, .footer .footer-block__heading {
+  color: var(--wa-gold) !important;
+}
+
+.color-scheme-4, .color-scheme-4.gradient {
+  background-color: var(--wa-cream-card) !important;
+  color: var(--wa-obsidian) !important;
+}
+
+/* Announcement Bar Custom Styling */
+.announcement-bar-section,
+.announcement-bar {
+  background-color: var(--wa-obsidian) !important;
+  color: #FFFFFF !important;
+  font-family: var(--wa-font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  border-bottom: 1px solid var(--wa-gold) !important;
+}
+
+.announcement-bar__message {
+  color: #FFFFFF !important;
+}
+
+.announcement-bar a {
+  color: var(--wa-gold) !important;
+  text-decoration: underline;
+}
+
+/* Header Luxury Elevation */
+.section-header,
+.header-wrapper,
+.header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid var(--wa-border) !important;
+  box-shadow: var(--wa-shadow-sm) !important;
+}
+
+.header__menu-item,
+.header__active-menu-item {
+  font-family: var(--wa-font-body) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-size: 0.85rem !important;
+  color: var(--wa-obsidian) !important;
+}
+
+.header__menu-item:hover,
+.header__menu-item:focus {
+  color: var(--wa-gold) !important;
+}
+
+.header__icon {
+  color: var(--wa-obsidian) !important;
+}
+
 /* Primary Luxury Button (Bella Vita Style) */
 .button,
 .btn-luxury,
-.product-form__submit {
+.product-form__submit,
+.cart__checkout-button {
   background-color: var(--wa-obsidian) !important;
   color: #FFFFFF !important;
   border: 1px solid var(--wa-obsidian) !important;
@@ -75,7 +150,7 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: 0.1em !important;
   padding: 1.2rem 2.4rem !important;
   transition: var(--wa-transition) !important;
-  box-shadow: var(--wa-shadow-sm);
+  box-shadow: var(--wa-shadow-sm) !important;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -85,7 +160,8 @@ h1, h2, h3, h4, h5, h6,
 
 .button:hover,
 .btn-luxury:hover,
-.product-form__submit:hover {
+.product-form__submit:hover,
+.cart__checkout-button:hover {
   background-color: var(--wa-gold) !important;
   color: var(--wa-obsidian) !important;
   border-color: var(--wa-gold) !important;
@@ -109,35 +185,55 @@ h1, h2, h3, h4, h5, h6,
   border-color: var(--wa-obsidian) !important;
 }
 
+/* Pricing Styling (Bella Vita Style) */
+.price-item--regular {
+  color: var(--wa-obsidian) !important;
+  font-weight: 700 !important;
+}
+
+.price-item--sale {
+  color: var(--wa-crimson) !important;
+  font-weight: 800 !important;
+}
+
+.price .price__badge-sale {
+  background-color: var(--wa-crimson) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  border-radius: 3px !important;
+  padding: 0.2rem 0.6rem !important;
+}
+
 /* Offer Badges & Ribbons */
+.badge,
 .wa-badge-offer {
-  background-color: var(--wa-crimson);
-  color: #FFFFFF;
-  font-family: var(--wa-font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 0.8rem;
-  border-radius: 3px;
+  background-color: var(--wa-crimson) !important;
+  color: #FFFFFF !important;
+  font-family: var(--wa-font-body) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.3rem 0.8rem !important;
+  border-radius: 3px !important;
   display: inline-block;
 }
 
 .wa-badge-gold {
-  background: linear-gradient(135deg, #D4AF37 0%, #F4E7BE 50%, #A88420 100%);
-  color: var(--wa-obsidian);
-  font-family: var(--wa-font-body);
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 0.8rem;
-  border-radius: 3px;
+  background: linear-gradient(135deg, #D4AF37 0%, #F4E7BE 50%, #A88420 100%) !important;
+  color: var(--wa-obsidian) !important;
+  font-family: var(--wa-font-body) !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.3rem 0.8rem !important;
+  border-radius: 3px !important;
   display: inline-block;
 }
 
 /* Star Rating Pill */
-.wa-rating-pill {
+.wa-rating-pill, .rating-star {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -150,14 +246,15 @@ h1, h2, h3, h4, h5, h6,
   color: var(--wa-obsidian);
 }
 
-.wa-rating-pill .star-icon {
-  color: var(--wa-gold);
-  font-size: 0.9rem;
+.wa-rating-pill .star-icon, .rating-star path {
+  fill: var(--wa-gold) !important;
+  color: var(--wa-gold) !important;
 }
 
 /* Card Styling Override */
 .card-wrapper,
-.card {
+.card,
+.product-card-wrapper {
   background-color: var(--wa-card-bg) !important;
   border-radius: 8px !important;
   border: 1px solid var(--wa-border) !important;
@@ -166,64 +263,32 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .card-wrapper:hover,
-.card:hover {
+.card:hover,
+.product-card-wrapper:hover {
   border-color: var(--wa-gold) !important;
   box-shadow: var(--wa-shadow-md) !important;
   transform: translateY(-4px);
 }
 
 /* Sticky Mobile Bottom Buy Bar (Bella Vita Style) */
+.mobile-sticky-buy-bar,
 .wa-sticky-buy-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background-color: #FFFFFF;
-  border-top: 2px solid var(--wa-gold);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
-  padding: 0.8rem 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  animation: slideUp 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999 !important;
+  background-color: #FFFFFF !important;
+  border-top: 2px solid var(--wa-gold) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12) !important;
+  padding: 0.8rem 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-.wa-sticky-buy-bar .price-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.wa-sticky-buy-bar .price-info .title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--wa-obsidian);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 140px;
-}
-
-.wa-sticky-buy-bar .price-info .price {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--wa-obsidian);
-}
-
-.wa-sticky-buy-bar .price-info .compare-price {
-  font-size: 0.8rem;
-  text-decoration: line-through;
-  color: var(--wa-text-secondary);
-  margin-left: 0.4rem;
-}
-
-.wa-sticky-buy-bar .btn-sticky-add {
+.sticky-buy-bar__btn {
   background: var(--wa-obsidian) !important;
   color: #FFFFFF !important;
   border: none !important;
@@ -233,137 +298,72 @@ h1, h2, h3, h4, h5, h6,
   padding: 0.8rem 1.5rem !important;
   border-radius: 4px !important;
   font-size: 0.9rem !important;
-  flex-grow: 1;
-  text-align: center;
-
 }
 
-.wa-sticky-buy-bar .btn-sticky-add:hover {
+.sticky-buy-bar__btn:hover {
   background: var(--wa-gold) !important;
   color: var(--wa-obsidian) !important;
 }
 
 /* Scent Pyramid Component */
 .scent-pyramid-container {
-  background-color: var(--wa-cream-card);
-  border: 1px solid var(--wa-border);
-  border-radius: 8px;
-  padding: 1.8rem;
-  margin: 1.5rem 0;
+  background-color: var(--wa-cream-card) !important;
+  border: 1px solid var(--wa-border) !important;
+  border-radius: 8px !important;
+  padding: 1.8rem !important;
+  margin: 1.5rem 0 !important;
 }
 
 .scent-pyramid-title {
-  font-family: var(--wa-font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--wa-obsidian);
-  margin-bottom: 1.2rem;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.scent-level {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 1rem 0;
-  border-bottom: 1px dashed var(--wa-border);
-}
-
-.scent-level:last-child {
-  border-bottom: none;
+  font-family: var(--wa-font-heading) !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: var(--wa-obsidian) !important;
+  margin-bottom: 1.2rem !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
 }
 
 .scent-level-badge {
-  background-color: var(--wa-obsidian);
-  color: var(--wa-gold);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  min-width: 100px;
-  text-align: center;
-}
-
-.scent-level-notes {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--wa-text-primary);
+  background-color: var(--wa-obsidian) !important;
+  color: var(--wa-gold) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.4rem 0.8rem !important;
+  border-radius: 4px !important;
 }
 
 /* Longevity Meter */
 .longevity-meter-box {
-  background: #FFFFFF;
-  border: 1px solid var(--wa-border);
-  border-radius: 8px;
-  padding: 1.2rem;
-  margin: 1rem 0;
-}
-
-.longevity-meter-header {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.6rem;
-}
-
-.longevity-bar-bg {
-  height: 8px;
-  background-color: #E8E2D8;
-  border-radius: 4px;
-  overflow: hidden;
+  background: #FFFFFF !important;
+  border: 1px solid var(--wa-border) !important;
+  border-radius: 8px !important;
+  padding: 1.2rem !important;
+  margin: 1rem 0 !important;
 }
 
 .longevity-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--wa-gold) 0%, #F4E7BE 50%, var(--wa-gold) 100%);
-  border-radius: 4px;
-  width: 90%;
-  animation: pulseGold 2s infinite ease-in-out;
+  height: 100% !important;
+  background: linear-gradient(90deg, var(--wa-gold) 0%, #F4E7BE 50%, var(--wa-gold) 100%) !important;
+  border-radius: 4px !important;
 }
 
-@keyframes pulseGold {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-/* Announcement Bar Custom Styling */
-.announcement-bar {
-  background-color: var(--wa-obsidian) !important;
-  color: #FFFFFF !important;
-  font-family: var(--wa-font-body) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.08em !important;
-  border-bottom: 1px solid var(--wa-gold);
-}
-
-.announcement-bar a {
-  color: var(--wa-gold) !important;
-  text-decoration: underline;
-}
-
-/* Header Luxury Elevation */
-.section-header {
-  background-color: #FFFFFF !important;
-  border-bottom: 1px solid var(--wa-border) !important;
-  box-shadow: var(--wa-shadow-sm);
-}
-
-.header__menu-item {
-  font-family: var(--wa-font-body) !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  font-size: 0.85rem !important;
+/* Cart Drawer */
+.cart-drawer,
+.drawer__inner {
+  background-color: var(--wa-canvas) !important;
   color: var(--wa-obsidian) !important;
 }
 
-.header__menu-item:hover {
-  color: var(--wa-gold) !important;
+.drawer__header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid var(--wa-border) !important;
+}
+
+.drawer__heading {
+  font-family: var(--wa-font-heading) !important;
+  color: var(--wa-obsidian) !important;
 }
