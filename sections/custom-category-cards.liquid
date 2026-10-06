@@ -1,0 +1,340 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Ivory-Cream and Gold Theme for Category Cards */
+  .custom-categories {
+    text-align: center;
+    background: #faf8f5 !important; /* Premium Ivory-Cream background */
+    color: #121212 !important;
+    position: relative;
+    border-top: 1px solid rgba(204, 164, 59, 0.15);
+    border-bottom: 1px solid rgba(204, 164, 59, 0.15);
+  }
+
+  .custom-categories__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .custom-categories__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: calc(50% - 1.25rem);
+    max-width: 220px;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-categories__card {
+      width: calc(25% - 1.88rem);
+    }
+  }
+
+  .custom-categories__image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(204, 164, 59, 0.15); /* Gold outline */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Shapes */
+  .custom-categories__image-wrapper--circle {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .custom-categories__image-wrapper--arch {
+    border-radius: 120px 120px 0 0;
+    aspect-ratio: 1 / 1.35;
+  }
+
+  /* Thin gold inner frame for arches */
+  .custom-categories__image-wrapper--arch::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(204, 164, 59, 0.15);
+    border-radius: 112px 112px 0 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .custom-categories__image-wrapper--square {
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .custom-categories__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .custom-categories__card:hover .custom-categories__image {
+    transform: scale(1.06);
+  }
+
+  .custom-categories__card:hover {
+    transform: translateY(-6px);
+  }
+
+  .custom-categories__card:hover .custom-categories__image-wrapper {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06), 0 0 15px rgba(204, 164, 59, 0.15);
+    border-color: #cca43b; /* Gold glow on hover */
+  }
+
+  .custom-categories__title {
+    margin: 1.8rem 0 0.6rem 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #121212 !important;
+  }
+
+  .custom-categories__subtitle {
+    margin: 0;
+    font-size: 1.25rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #cca43b !important; /* Gold subtitle accent */
+  }
+
+  .custom-categories__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.02);
+    transition: background 0.3s ease;
+    z-index: 1;
+  }
+
+  .custom-categories__card:hover .custom-categories__overlay {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .custom-categories__subtitle-text {
+    font-style: italic;
+    color: #cca43b !important;
+  }
+{%- endstyle -%}
+
+<div class="custom-categories section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin text-center" style="margin-bottom: 4.5rem; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
+        {%- if section.settings.subtitle != blank -%}
+          <p class="image-with-text__text image-with-text__text--caption custom-categories__subtitle-text" style="margin: 0 0 0.8rem 0; font-size: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase;">
+            {{ section.settings.subtitle | escape }}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}" style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; color: #121212; letter-spacing: 0.03em;">
+            {{ section.settings.title | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="custom-categories__grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link | default: '#' }}" class="custom-categories__card" {{ block.shopify_attributes }}>
+          <div class="custom-categories__image-wrapper custom-categories__image-wrapper--{{ section.settings.card_shape }}">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 440 }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="220"
+                height="220"
+                class="custom-categories__image"
+              >
+            {%- else -%}
+              {%- assign index_val = forloop.index -%}
+              {%- if index_val == 1 -%}
+                <img src="{{ 'note-oudh.png' | asset_url }}" alt="Royal Oudh Note" class="custom-categories__image" loading="lazy" width="220" height="280">
+              {%- elsif index_val == 2 -%}
+                <img src="{{ 'note-rose.png' | asset_url }}" alt="Classic Rose Note" class="custom-categories__image" loading="lazy" width="220" height="280">
+              {%- elsif index_val == 3 -%}
+                <img src="{{ 'note-khus.png' | asset_url }}" alt="Earthy Khus Note" class="custom-categories__image" loading="lazy" width="220" height="280">
+              {%- elsif index_val == 4 -%}
+                <img src="{{ 'note-musk.png' | asset_url }}" alt="Exotic Musk Note" class="custom-categories__image" loading="lazy" width="220" height="280">
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg custom-categories__image' }}
+              {%- endif -%}
+            {%- endif -%}
+            <div class="custom-categories__overlay"></div>
+          </div>
+          {%- if block.settings.title != blank -%}
+            <h3 class="custom-categories__title h5">{{ block.settings.title | escape }}</h3>
+          {%- endif -%}
+          {%- if block.settings.subtitle != blank -%}
+            <p class="custom-categories__subtitle">{{ block.settings.subtitle | escape }}</p>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Category Cards",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop By Fragrance Notes"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Find your signature scent profile"
+    },
+    {
+      "type": "select",
+      "id": "card_shape",
+      "label": "Card Shape",
+      "options": [
+        { "value": "circle", "label": "Circular" },
+        { "value": "arch", "label": "Arched (Luxury look)" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "arch"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Padding Bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fragrance Family"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle / Note",
+          "default": "Woody & Rich"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Category Cards",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Royal Oudh",
+            "subtitle": "Warm & Intense"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Classic Rose",
+            "subtitle": "Floral & Romantic"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Earthy Khus",
+            "subtitle": "Fresh & Calming"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Exotic Musk",
+            "subtitle": "Powdery & Sensual"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

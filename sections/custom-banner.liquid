@@ -1,0 +1,284 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .custom-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+  }
+
+  .custom-banner__link {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .custom-banner__media {
+    width: 100%;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  /* Desktop height settings */
+  {%- if section.settings.desktop_height == 'adapt' -%}
+    .custom-banner__media--desktop {
+      height: auto;
+      object-fit: contain;
+    }
+  {%- else -%}
+    .custom-banner__media--desktop {
+      height: {{ section.settings.desktop_height }};
+      object-fit: cover;
+      object-position: {{ section.settings.desktop_alignment }};
+    }
+  {%- endif -%}
+
+  /* Mobile height settings */
+  .custom-banner__media--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-banner__media--desktop {
+      display: none;
+    }
+    .custom-banner__media--mobile {
+      display: block;
+      {%- if section.settings.mobile_height == 'adapt' -%}
+        height: auto;
+        object-fit: contain;
+      {%- else -%}
+        height: {{ section.settings.mobile_height }};
+        object-fit: cover;
+        object-position: {{ section.settings.mobile_alignment }};
+      {%- endif -%}
+    }
+  }
+
+  /* Premium subtle zoom on hover */
+  .custom-banner:hover .custom-banner__media {
+    transform: scale(1.02);
+  }
+
+  .custom-banner__overlay-content {
+    position: absolute;
+    bottom: 3rem;
+    left: 5%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-banner__overlay-content {
+      bottom: 2rem;
+      left: 5%;
+      right: 5%;
+      align-items: center;
+      text-align: center;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-banner color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  {%- if section.settings.link != blank -%}
+    <a href="{{ section.settings.link }}" class="custom-banner__link">
+  {%- endif -%}
+
+    {%- if section.settings.image_desktop != blank and section.settings.image_desktop.width > 0 -%}
+      <img
+        src="{{ section.settings.image_desktop | image_url: width: 2400 }}"
+        alt="{{ section.settings.image_desktop.alt | escape }}"
+        loading="eager"
+        width="1920"
+        height="960"
+        class="custom-banner__media custom-banner__media--desktop"
+      >
+    {%- else -%}
+      <img
+        src="" style="display:none;"
+        alt="Wild Aroma Banner"
+        loading="eager"
+        width="1920"
+        height="960"
+        class="custom-banner__media custom-banner__media--desktop"
+      >
+    {%- endif -%}
+
+    {%- if section.settings.image_mobile != blank -%}
+      <img
+        src="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+        alt="{{ section.settings.image_mobile.alt | escape }}"
+        loading="eager"
+        width="750"
+        height="1000"
+        class="custom-banner__media custom-banner__media--mobile"
+      >
+    {%- else -%}
+      {% comment %} Fallback to desktop image on mobile {% endcomment %}
+      {%- if section.settings.image_desktop != blank and section.settings.image_desktop.width > 0 -%}
+        <img
+          src="{{ section.settings.image_desktop | image_url: width: 1200 }}"
+          alt="{{ section.settings.image_desktop.alt | escape }}"
+          loading="eager"
+          width="1200"
+          height="600"
+          class="custom-banner__media custom-banner__media--mobile"
+        >
+      {%- else -%}
+        <img
+          src="" style="display:none;"
+          alt="Wild Aroma Banner"
+          loading="eager"
+          width="1200"
+          height="600"
+          class="custom-banner__media custom-banner__media--mobile"
+        >
+      {%- endif -%}
+    {%- endif -%}
+
+  {%- if section.settings.link != blank -%}
+    </a>
+  {%- endif -%}
+
+  {%- if section.settings.button_label != blank and section.settings.link != blank -%}
+    <div class="custom-banner__overlay-content">
+      <a href="{{ section.settings.link }}" class="button button--primary" style="box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
+        {{ section.settings.button_label | escape }}
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Premium Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Banner Image",
+      "info": "Upload banner image for desktop view."
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop Banner Height",
+      "options": [
+        { "value": "adapt", "label": "Adapt to Image Aspect Ratio" },
+        { "value": "400px", "label": "400px (Short)" },
+        { "value": "500px", "label": "500px (Medium)" },
+        { "value": "600px", "label": "600px (Large)" },
+        { "value": "700px", "label": "700px (Extra Large)" },
+        { "value": "800px", "label": "800px (Full Screen)" }
+      ],
+      "default": "adapt"
+    },
+    {
+      "type": "select",
+      "id": "desktop_alignment",
+      "label": "Desktop Image Position",
+      "info": "Controls which part of the banner is visible when cropping.",
+      "options": [
+        { "value": "left center", "label": "Left Centered" },
+        { "value": "center center", "label": "Centered" },
+        { "value": "right center", "label": "Right Centered" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Banner Image (Optional)",
+      "info": "Upload a vertical/cropped banner image for mobile screens to avoid text cropping."
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile Banner Height",
+      "options": [
+        { "value": "adapt", "label": "Adapt to Image Aspect Ratio" },
+        { "value": "250px", "label": "250px (Short)" },
+        { "value": "300px", "label": "300px (Medium)" },
+        { "value": "350px", "label": "350px (Large)" },
+        { "value": "400px", "label": "400px (Tall)" },
+        { "value": "450px", "label": "450px (Extra Tall)" },
+        { "value": "500px", "label": "500px (Super Tall)" }
+      ],
+      "default": "350px"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Mobile Image Position",
+      "info": "Best set to 'Left Centered' to ensure text is visible on mobile.",
+      "options": [
+        { "value": "left center", "label": "Left Centered (Recommended)" },
+        { "value": "center center", "label": "Centered" },
+        { "value": "right center", "label": "Right Centered" }
+      ],
+      "default": "left center"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Banner Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Overlay Button Label (Optional)"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Padding Bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Premium Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,244 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "variant_picker_VXpTRR": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "buy_buttons_YKNBFb": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "show_cod_button": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_shipping": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Delivery",
+            "icon": "truck",
+            "content": "<p>We offer fast delivery across India. Orders are typically shipped within 24-48 hours and delivered in 3-7 business days. Free shipping is available on all prepaid orders.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_kannauj": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The Kannauj Heritage",
+            "icon": "leaf",
+            "content": "<p>Each drop of Wild Aroma attar is distilled using traditional copper pots (Degs) and clay receivers (Bhapkas) in Kannauj, the perfume capital of India. We source only the purest natural blossoms and ingredients.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "variant_picker_VXpTRR",
+        "price",
+        "buy_buttons_YKNBFb",
+        "description",
+        "collapsible_tab_shipping",
+        "collapsible_tab_kannauj"
+      ],
+      "settings": {
+        "enable_mobile_sticky_buy": true,
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-2",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "enable_exit_popup": true,
+        "exit_popup_discount_code": "WILD100",
+        "exit_popup_discount_amount": "â‚¹100"
+      }
+    },
+    "product_reviews_xCrieU": {
+      "type": "product-reviews",
+      "blocks": {
+        "review_JkHCbg": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "This Kasturi Attar has a soul. Its sillage is warm and projection is balanced. The packaging looks premium and fits a royal collection.",
+            "author": "Rohan Gupta",
+            "location": "Lucknow",
+            "verified_buyer": true
+          }
+        },
+        "review_tGc9Jk": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Pure concentrated oil without any sticky feeling. It lasts all day on clothes. Incredible craft from Kannauj.",
+            "author": "Anjali Sen",
+            "location": "Bangalore",
+            "verified_buyer": true
+          }
+        },
+        "review_PtCeLR": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Very close to traditional sandalwood base. Free from alcohol, so it does not irritate my skin. 5 stars on quality.",
+            "author": "Vikram Singh",
+            "location": "Jaipur",
+            "verified_buyer": true
+          }
+        }
+      },
+      "block_order": [
+        "review_JkHCbg",
+        "review_tGc9Jk",
+        "review_PtCeLR"
+      ],
+      "name": "Bespoke Product Reviews",
+      "settings": {
+        "title": "Patron Testimonials",
+        "heading_size": "h1",
+        "subtitle": "TRUST & APPRECIATION",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "product_application_guide_section": {
+      "type": "product-application-guide",
+      "settings": {
+        "title": "How To Apply Concentrated Attar",
+        "heading_size": "h1",
+        "subtitle": "LONGEVITY GUIDE",
+        "step_1_title": "Apply on Pulse Points",
+        "step_1_desc": "Apply the perfume oil directly to pulse points (wrists, inner elbows, neck, and behind ears). Body heat in these spots diffuses the scent naturally.",
+        "step_2_title": "Dab, Don't Rub",
+        "step_2_desc": "Gently dab the oil on your skin. Never rub wrists together, as rubbing friction breaks down the delicate top note molecules and reduces scent longevity.",
+        "step_3_title": "Moisturize First",
+        "step_3_desc": "Fragrance lasts significantly longer on moisturized skin. Apply an unscented moisturizer or lotion to pulse points before dabbing your attar.",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "custom_usp_grid_section": {
+      "type": "custom-usp-grid",
+      "blocks": {
+        "usp_1": {
+          "type": "usp",
+          "settings": {
+            "icon": "perfume",
+            "title": "100% Alcohol-Free",
+            "text": "Pure concentrated perfume oil that is gentle on your skin."
+          }
+        },
+        "usp_2": {
+          "type": "usp",
+          "settings": {
+            "icon": "stopwatch",
+            "title": "Long Lasting",
+            "text": "Carefully selected ingredients that keep you fragrant all day long."
+          }
+        },
+        "usp_3": {
+          "type": "usp",
+          "settings": {
+            "icon": "leaf",
+            "title": "Natural Craftsmanship",
+            "text": "Traditional steam distillation process (Deg-Bhapka) from Kannauj."
+          }
+        },
+        "usp_4": {
+          "type": "usp",
+          "settings": {
+            "icon": "heart",
+            "title": "Premium & Pure",
+            "text": "No animal testing, crafted with clean and authentic ingredients."
+          }
+        }
+      },
+      "block_order": [
+        "usp_1",
+        "usp_2",
+        "usp_3",
+        "usp_4"
+      ],
+      "settings": {
+        "title": "Pure & Authentic Fragrances",
+        "heading_size": "h1",
+        "subtitle": "The Wild Aroma Standard",
+        "columns_desktop": 4,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Other industry favorites",
+        "heading_size": "h2",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 44
+      }
+    },
+    "frequently_bought_together": {
+      "type": "frequently-bought-together",
+      "settings": {
+        "heading": "Frequently Bought Together",
+        "subheading": "Pair with a complementary scent for layered luxury and instant savings.",
+        "discount_percent": 15
+      }
+    }
+  },
+  "order": [
+    "main",
+    "frequently_bought_together",
+    "product_reviews_xCrieU",
+    "product_application_guide_section",
+    "custom_usp_grid_section",
+    "related-products"
+  ]
+}
+

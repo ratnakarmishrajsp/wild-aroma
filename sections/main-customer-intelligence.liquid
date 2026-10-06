@@ -1,0 +1,2060 @@
+{% comment %}
+  Wild Aroma Fragrances - Customer Intelligence & Lifecycle Portal
+  Internal Calling & Verification Team Dashboard
+  High-Aesthetic Executive Edition (Large Legible Typography & Mobile Optimized)
+  Zero-PIN Frictionless Private Link
+{% endcomment %}
+
+<!-- Prevent search engines from indexing internal operations tool -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Google Fonts: Plus Jakarta Sans for Ultra-Modern Executive UI -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Completely suppress theme header and footer globally on this section -->
+<style>
+  #shopify-section-sections--header-group,
+  #shopify-section-sections--footer-group,
+  #shopify-section-header,
+  #shopify-section-footer,
+  .header-wrapper,
+  .section-header,
+  sticky-header,
+  header-drawer,
+  .footer,
+  footer,
+  #shopify-section-announcement-bar,
+  .announcement-bar-section,
+  .announcement-bar,
+  .localization-form {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+</style>
+
+<div class="ci-portal-wrapper">
+  <div class="ci-container">
+    
+    <!-- Top Bar Navigation & Brand Badge -->
+    <header class="ci-top-header">
+      <div class="ci-brand-row">
+        <div class="ci-brand-pill">
+          <span class="ci-pulse-dot"></span>
+          <span>INTERNAL OPERATIONS SUITE</span>
+        </div>
+        <div class="ci-security-pill">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Private Access Portal</span>
+        </div>
+      </div>
+      
+      <h1 class="ci-hero-title">Customer Lifecycle &amp; Intelligence</h1>
+      <p class="ci-hero-desc">Real-time fraud scoring, Shiprocket delivery records, RTO risk assessment &amp; calling verification dossier</p>
+    </header>
+
+    <!-- Search Card (Mobile Optimized & Centered) -->
+    <div class="ci-search-panel">
+      <form id="CiSearchForm" onsubmit="handleCiSearch(event)">
+        <div class="ci-search-bar">
+          <div class="ci-search-input-wrap">
+            <svg class="ci-search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input
+              type="text"
+              id="CiSearchInput"
+              class="ci-search-input"
+              placeholder="Search by 10-digit mobile (e.g. 9565179040), Order # (e.g. 1977), or name..."
+              autocomplete="off"
+              inputmode="text"
+              autofocus
+            />
+            <button type="button" id="CiClearInputBtn" class="ci-clear-btn" onclick="clearSearchInput()" style="display: none;">✕</button>
+          </div>
+          <button type="submit" class="ci-search-btn">
+            <span>LOOKUP DOSSIER</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="ci-search-chips">
+          <span class="ci-chips-title">Quick Lookups:</span>
+          <button type="button" class="ci-chip" onclick="quickSearch('9565179040')">
+            <span class="ci-chip-tag vip">VIP</span>
+            <span>9565179040 (7 Delivered · 0 RTO)</span>
+          </button>
+          <button type="button" class="ci-chip" onclick="quickSearch('9035391141')">
+            <span class="ci-chip-tag verified">Verified</span>
+            <span>9035391141 (Mohammed)</span>
+          </button>
+          <button type="button" class="ci-chip" onclick="quickSearch('2014')">
+            <span class="ci-chip-tag order">Order</span>
+            <span>#MA2014 (Jaipur)</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Loading State -->
+    <div id="CiLoading" class="ci-loading-state" style="display: none;">
+      <div class="ci-spinner-ring">
+        <div></div><div></div><div></div><div></div>
+      </div>
+      <div class="ci-loading-text">
+        <h4>Compiling Customer Dossier</h4>
+        <p>Scanning 7,000+ Shiprocket delivery records &amp; Shopify order history...</p>
+      </div>
+    </div>
+
+    <!-- Error Alert Box -->
+    <div id="CiError" class="ci-alert-card" style="display: none;">
+      <div class="ci-alert-badge">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      </div>
+      <div class="ci-alert-content">
+        <h4 id="CiErrorTitle">No Matching Customer Profile</h4>
+        <p id="CiErrorMsg">We could not locate any order records or phone matching this query in the local intelligence database.</p>
+      </div>
+    </div>
+
+    <!-- Customer Result Container -->
+    <div id="CiResult" class="ci-result-section" style="display: none;">
+      
+      <!-- HERO DOSSIER CARD -->
+      <div class="ci-hero-card">
+        <div class="ci-hero-top">
+          <div class="ci-profile-cluster">
+            <div class="ci-avatar" id="CiCustAvatar">R</div>
+            <div class="ci-profile-text">
+              <div class="ci-name-row">
+                <h2 id="CiCustName" class="ci-cust-title">Customer Name</h2>
+                <div id="CiTrustBadge" class="ci-badge-pill green">
+                  <span class="ci-badge-icon">👑</span>
+                  <span id="CiTrustBadgeText">VIP REPEAT BUYER</span>
+                </div>
+              </div>
+              <div class="ci-profile-meta">
+                <span class="ci-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <strong id="CiCustPhone">+91 -</strong>
+                </span>
+                <span class="ci-meta-divider">|</span>
+                <span class="ci-meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <strong id="CiCustLocation">Location</strong>
+                </span>
+                <span id="CiMultiLocBadge" class="ci-meta-chip warning" style="display: none;">
+                  ⚠️ Multi-City Customer
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Calling Actions -->
+          <div class="ci-hero-actions">
+            <a id="CiCallBtn" href="#" class="ci-action-btn primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Call Direct</span>
+            </a>
+            <a id="CiWaBtn" href="#" target="_blank" rel="noopener" class="ci-action-btn whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              <span>WhatsApp</span>
+            </a>
+            <button type="button" class="ci-action-btn secondary" onclick="copyCustomerSummary()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy Dossier</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIFIED METRICS PANEL (CLEAN, NO THICK LAYERS / BOX PARTITIONS, BIG BOLD NUMBERS) -->
+      <div class="ci-metrics-panel">
+        <!-- 1. Total Orders -->
+        <div class="ci-stat-col">
+          <div class="ci-stat-title">TOTAL ORDERS</div>
+          <div class="ci-stat-value" id="CiTotalOrders">19</div>
+          <div class="ci-stat-sub" id="CiOrderMixSub">19 Lifetime Inquiries</div>
+        </div>
+
+        <!-- 2. Delivered Parcels -->
+        <div class="ci-stat-col">
+          <div class="ci-stat-title">SUCCESSFULLY DELIVERED</div>
+          <div class="ci-stat-value emerald" id="CiDeliveredOrders">7</div>
+          <div class="ci-stat-sub emerald">Safe Completed Deliveries</div>
+        </div>
+
+        <!-- 3. Courier RTOs -->
+        <div class="ci-stat-col">
+          <div class="ci-stat-title">ACTUAL COURIER RTO</div>
+          <div class="ci-stat-value red" id="CiRtoOrders">0</div>
+          <div class="ci-stat-sub" id="CiRtoSub">0 Courier Returns</div>
+        </div>
+
+        <!-- 4. Pre-Dispatch Cancelled -->
+        <div class="ci-stat-col">
+          <div class="ci-stat-title">PRE-DISPATCH CANCELLED</div>
+          <div class="ci-stat-value slate" id="CiCancelledOrders">8</div>
+          <div class="ci-stat-sub">Cancelled Before Shipping</div>
+        </div>
+
+        <!-- 5. Total Spent LTV -->
+        <div class="ci-stat-col">
+          <div class="ci-stat-title">TOTAL SPENT (LTV)</div>
+          <div class="ci-stat-value gold" id="CiTotalSpent">₹42,892</div>
+          <div class="ci-stat-sub" id="CiAovSub">AOV: ₹2,257 per order</div>
+        </div>
+
+        <!-- 6. Delivery Success Rate -->
+        <div class="ci-stat-col last">
+          <div class="ci-stat-title">DISPATCH SUCCESS RATE</div>
+          <div class="ci-stat-value purple" id="CiDeliveryRate">100%</div>
+          <div class="ci-stat-sub" id="CiCodRatio">100% Dispatched Acceptance</div>
+        </div>
+      </div>
+
+      <!-- ACTIVE / LATEST ORDER SHOWCASE -->
+      <div class="ci-surface-card ci-active-card">
+        <div class="ci-surface-head">
+          <div class="ci-head-left">
+            <span class="ci-pill-chip active">LATEST / ACTIVE ORDER</span>
+            <h3 class="ci-card-heading" id="CiLatestOrderName">#MA2014</h3>
+          </div>
+          <div class="ci-head-right">
+            <span id="CiLatestStatusPill" class="ci-status-badge green">DELIVERED</span>
+          </div>
+        </div>
+
+        <div class="ci-active-specs">
+          <div class="ci-spec-box">
+            <span class="ci-spec-label">ORDER DATE</span>
+            <span class="ci-spec-val" id="CiLatestOrderDate">08 Sep 2026</span>
+          </div>
+          <div class="ci-spec-box">
+            <span class="ci-spec-label">ORDER VALUE &amp; MODE</span>
+            <span class="ci-spec-val" id="CiLatestOrderAmt">₹699 · COD</span>
+          </div>
+          <div class="ci-spec-box">
+            <span class="ci-spec-label">ASSIGNED COURIER</span>
+            <span class="ci-spec-val" id="CiLatestCourier">DTDC Surface</span>
+          </div>
+          <div class="ci-spec-box">
+            <span class="ci-spec-label">TRACKING AWB NUMBER</span>
+            <span class="ci-spec-val font-mono" id="CiLatestAwb">19041956859944</span>
+          </div>
+        </div>
+
+        <!-- Ordered Items Summary -->
+        <div class="ci-item-dossier">
+          <div class="ci-item-label">ORDERED ITEM(S):</div>
+          <div class="ci-item-name" id="CiLatestItems">Wild Aroma Royal White Oudh Attar (12ml)</div>
+        </div>
+
+        <!-- NDR / Delivery Alert (If Present) -->
+        <div id="CiNdrBanner" class="ci-ndr-alert" style="display: none;">
+          <div class="ci-ndr-icon-wrap">🚨</div>
+          <div class="ci-ndr-info">
+            <strong>Active Courier Exception (NDR / Delay):</strong>
+            <p id="CiNdrText">-</p>
+          </div>
+        </div>
+
+        <!-- Real-Time Shiprocket Link -->
+        <div id="CiLiveTrackBtnWrapper" class="ci-track-footer">
+          <a id="CiLiveTrackBtn" href="#" target="_blank" rel="noopener" class="ci-btn-track-external">
+            <span>Open Real-Time Courier Tracking Dossier</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- TWO-PANEL INTELLIGENCE & CALLING DISPATCH GUIDELINES -->
+      <div class="ci-split-grid">
+        
+        <!-- Panel 1: Address Quality & Location -->
+        <div class="ci-surface-card">
+          <div class="ci-panel-title-row">
+            <div class="ci-panel-icon">📍</div>
+            <div>
+              <h3 class="ci-panel-title">Address &amp; Pincode Verification</h3>
+              <p class="ci-panel-subtitle">Courier deliverability check for this customer</p>
+            </div>
+          </div>
+
+          <div class="ci-address-sheet">
+            <div class="ci-addr-header">
+              <span id="CiAddrStatus" class="ci-badge-pill green">🟢 Complete Address</span>
+              <span class="ci-addr-pincode" id="CiPincodeBadge">PIN: -</span>
+            </div>
+            <p class="ci-addr-full" id="CiFullAddr">Loading address...</p>
+          </div>
+
+          <div class="ci-check-list">
+            <div class="ci-check-item">
+              <span class="ci-check-icon">✓</span>
+              <div>
+                <strong>Pincode Deliverability:</strong>
+                <p>Recognized serviceable area across Delhivery, DTDC, and BlueDart.</p>
+              </div>
+            </div>
+            <div class="ci-check-item">
+              <span class="ci-check-icon">✓</span>
+              <div>
+                <strong>Phone Accessibility:</strong>
+                <p>10-digit mobile number on file; suitable for OTP and dispatch confirmation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Calling Guidance & Dispatch Verdict -->
+        <div class="ci-surface-card">
+          <div class="ci-panel-title-row">
+            <div class="ci-panel-icon">🛡️</div>
+            <div>
+              <h3 class="ci-panel-title">Dispatch Verdict &amp; Recommendation</h3>
+              <p class="ci-panel-subtitle">AI &amp; courier risk scoring recommendation for caller</p>
+            </div>
+          </div>
+
+          <div class="ci-verdict-box" id="CiVerdictBox">
+            <div class="ci-verdict-tag" id="CiVerdictTag">SAFE TO DISPATCH</div>
+            <p class="ci-verdict-text" id="CiRiskAssessmentText">
+              Customer has 0 actual courier returns with verified delivered shipments. Dispatched orders have a 100% acceptance record.
+            </p>
+          </div>
+
+          <div class="ci-caller-script">
+            <span class="ci-script-label">RECOMMENDED CALLING ACTION:</span>
+            <p class="ci-script-text" id="CiDispatchRecText">
+              Standard greeting. Verify bottle variant preference and inform customer dispatch is scheduled within 24 hours.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CHRONOLOGICAL ORDER TIMELINE -->
+      <div class="ci-surface-card ci-history-panel">
+        <div class="ci-history-header">
+          <div>
+            <h3 class="ci-panel-title">Complete Historical Timeline</h3>
+            <p class="ci-panel-subtitle">Chronological record of all orders, pre-dispatch cancellations, and deliveries</p>
+          </div>
+          <div class="ci-history-count" id="CiHistoryCountBadge">
+            19 Total Records
+          </div>
+        </div>
+
+        <div class="ci-timeline-list" id="CiHistoryList">
+          <!-- Dynamic order cards injected via JS -->
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* Base Reset & Typography Scale */
+  .ci-portal-wrapper {
+    min-height: 100vh;
+    background: #f8fafc;
+    background-image: 
+      radial-gradient(at 100% 0%, rgba(203, 213, 225, 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(226, 232, 240, 0.35) 0px, transparent 50%);
+    color: #0f172a;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    padding: 3.5rem 1.5rem 6.5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .ci-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .ci-top-header {
+    text-align: center;
+    margin-bottom: 2.6rem;
+  }
+
+  .ci-brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 1.2rem;
+  }
+
+  .ci-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #475569;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .ci-pulse-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    animation: ciPulse 2s infinite;
+  }
+
+  @keyframes ciPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+  }
+
+  .ci-security-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 7px 14px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .ci-hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.035em;
+    margin: 0 0 0.6rem;
+    line-height: 1.15;
+  }
+
+  .ci-hero-desc {
+    font-size: 1.18rem;
+    color: #475569;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* Search Panel */
+  .ci-search-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 22px;
+    padding: 1.8rem 2.2rem;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+    margin-bottom: 2.2rem;
+    transition: all 0.2s ease;
+  }
+
+  .ci-search-panel:focus-within {
+    border-color: #cbd5e1;
+    box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.09), 0 0 0 4px rgba(99, 102, 241, 0.08);
+  }
+
+  .ci-search-bar {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .ci-search-input-wrap {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 4px 18px;
+    transition: all 0.2s ease;
+  }
+
+  .ci-search-input-wrap:focus-within {
+    background: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  }
+
+  .ci-search-icon {
+    color: #94a3b8;
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+
+  .ci-search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0f172a;
+    padding: 15px 0;
+  }
+
+  .ci-search-input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+    font-size: 1.15rem;
+  }
+
+  .ci-clear-btn {
+    background: #e2e8f0;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .ci-clear-btn:hover {
+    background: #cbd5e1;
+    color: #0f172a;
+  }
+
+  .ci-search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 32px;
+    font-family: inherit;
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+
+  .ci-search-btn:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
+  }
+
+  .ci-search-chips {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.2rem;
+    font-size: 0.96rem;
+  }
+
+  .ci-chips-title {
+    color: #64748b;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .ci-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 7px 14px;
+    font-family: inherit;
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .ci-chip:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    border-color: #cbd5e1;
+  }
+
+  .ci-chip-tag {
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .ci-chip-tag.vip { background: #dcfce7; color: #15803d; }
+  .ci-chip-tag.verified { background: #e0e7ff; color: #4338ca; }
+  .ci-chip-tag.order { background: #fef3c7; color: #b45309; }
+
+  /* Loading State */
+  .ci-loading-state {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  .ci-spinner-ring {
+    display: inline-block;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.3rem;
+  }
+
+  .ci-spinner-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    border: 4px solid #4f46e5;
+    border-radius: 50%;
+    animation: ciSpin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #4f46e5 transparent transparent transparent;
+  }
+  .ci-spinner-ring div:nth-child(1) { animation-delay: -0.45s; }
+  .ci-spinner-ring div:nth-child(2) { animation-delay: -0.3s; }
+  .ci-spinner-ring div:nth-child(3) { animation-delay: -0.15s; }
+
+  @keyframes ciSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .ci-loading-text h4 {
+    margin: 0 0 5px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .ci-loading-text p {
+    margin: 0;
+    font-size: 1.02rem;
+    color: #64748b;
+  }
+
+  /* Alert Card */
+  .ci-alert-card {
+    background: #fff1f2;
+    border: 1.5px solid #fecdd3;
+    border-radius: 18px;
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 2rem;
+  }
+
+  .ci-alert-badge {
+    background: #ffe4e6;
+    color: #e11d48;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ci-alert-content h4 {
+    margin: 0 0 4px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #9f1239;
+  }
+
+  .ci-alert-content p {
+    margin: 0;
+    font-size: 1.02rem;
+    color: #be123c;
+  }
+
+  /* Surface Cards */
+  .ci-surface-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 6px 16px -6px rgba(15, 23, 42, 0.04);
+  }
+
+  /* Hero Dossier Card */
+  .ci-hero-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 22px;
+    padding: 2.2rem 2.5rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+  }
+
+  .ci-hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+
+  .ci-profile-cluster {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ci-avatar {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0f172a, #334155);
+    color: #ffffff;
+    font-size: 1.9rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+    flex-shrink: 0;
+  }
+
+  .ci-name-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+
+  .ci-cust-title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .ci-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+
+  .ci-badge-pill.green {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1.5px solid #a7f3d0;
+  }
+
+  .ci-badge-pill.red {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1.5px solid #fecaca;
+  }
+
+  .ci-badge-pill.gold {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1.5px solid #fde68a;
+  }
+
+  .ci-badge-pill.blue {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1.5px solid #bfdbfe;
+  }
+
+  .ci-badge-pill.gray {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1.5px solid #cbd5e1;
+  }
+
+  .ci-profile-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 1.12rem;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .ci-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .ci-meta-item strong {
+    color: #1e293b;
+    font-weight: 700;
+  }
+
+  .ci-meta-divider {
+    color: #cbd5e1;
+    font-weight: 300;
+  }
+
+  .ci-meta-chip.warning {
+    background: #fef3c7;
+    color: #b45309;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid #fde68a;
+  }
+
+  /* Action Buttons */
+  .ci-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ci-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1.02rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+  }
+
+  .ci-action-btn.primary {
+    background: #059669;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+  }
+
+  .ci-action-btn.primary:hover {
+    background: #047857;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+  }
+
+  .ci-action-btn.whatsapp {
+    background: #10b981;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  }
+
+  .ci-action-btn.whatsapp:hover {
+    background: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  }
+
+  .ci-action-btn.secondary {
+    background: #f8fafc;
+    color: #334155;
+    border: 1.5px solid #e2e8f0;
+  }
+
+  .ci-action-btn.secondary:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+    border-color: #cbd5e1;
+  }
+
+  /* UNIFIED METRICS PANEL (CLEAN, NO THICK LAYERS / FLAT SURFACE) */
+  .ci-metrics-panel {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 1.8rem 1.4rem;
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+    margin-bottom: 1.8rem;
+  }
+
+  .ci-stat-col {
+    padding: 0.4rem 1.2rem;
+    border-right: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ci-stat-col.last {
+    border-right: none;
+  }
+
+  .ci-stat-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .ci-stat-value {
+    font-size: 2.7rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-bottom: 8px;
+  }
+
+  .ci-stat-value.emerald { color: #059669; }
+  .ci-stat-value.red { color: #dc2626; }
+  .ci-stat-value.slate { color: #475569; }
+  .ci-stat-value.gold { color: #d97706; }
+  .ci-stat-value.purple { color: #7c3aed; }
+
+  .ci-stat-sub {
+    font-size: 0.92rem;
+    color: #64748b;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .ci-stat-sub.emerald { color: #059669; }
+
+  /* Active Order Showcase Card */
+  .ci-active-card {
+    border-left: 5px solid #10b981;
+    background: #ffffff;
+  }
+
+  .ci-surface-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.6rem;
+  }
+
+  .ci-pill-chip.active {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 11px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+
+  .ci-card-heading {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  .ci-status-badge {
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .ci-status-badge.green {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1.5px solid #a7f3d0;
+  }
+
+  .ci-status-badge.red {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1.5px solid #fecaca;
+  }
+
+  .ci-status-badge.amber {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1.5px solid #fde68a;
+  }
+
+  .ci-status-badge.slate {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1.5px solid #cbd5e1;
+  }
+
+  .ci-active-specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.3rem 1.6rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .ci-spec-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ci-spec-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .ci-spec-val {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .ci-spec-val.font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.18rem;
+  }
+
+  .ci-item-dossier {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fafaf9;
+    border: 1px solid #e7e5e4;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 1.4rem;
+  }
+
+  .ci-item-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #78716c;
+    letter-spacing: 0.05em;
+  }
+
+  .ci-item-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1c1917;
+  }
+
+  .ci-ndr-alert {
+    background: #fff1f2;
+    border: 1.5px solid #fecdd3;
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.4rem;
+  }
+
+  .ci-ndr-icon-wrap {
+    font-size: 1.6rem;
+  }
+
+  .ci-ndr-info strong {
+    font-size: 1.02rem;
+    color: #9f1239;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .ci-ndr-info p {
+    margin: 0;
+    font-size: 0.98rem;
+    color: #be123c;
+  }
+
+  .ci-track-footer {
+    text-align: right;
+  }
+
+  .ci-btn-track-external {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #4f46e5;
+    font-size: 1.02rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+  }
+
+  .ci-btn-track-external:hover {
+    background: #eef2ff;
+  }
+
+  /* Two Split Grid */
+  .ci-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .ci-panel-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+
+  .ci-panel-icon {
+    width: 42px;
+    height: 42px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .ci-panel-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 3px;
+    letter-spacing: -0.015em;
+  }
+
+  .ci-panel-subtitle {
+    font-size: 0.96rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Address Box */
+  .ci-address-sheet {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .ci-addr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .ci-addr-pincode {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #475569;
+    background: #e2e8f0;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .ci-addr-full {
+    font-size: 1.15rem;
+    color: #1e293b;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ci-check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ci-check-item {
+    display: flex;
+    gap: 12px;
+    font-size: 1rem;
+    color: #334155;
+  }
+
+  .ci-check-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #15803d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ci-check-item strong {
+    color: #0f172a;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 1.02rem;
+  }
+
+  .ci-check-item p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.94rem;
+  }
+
+  /* Verdict Box */
+  .ci-verdict-box {
+    background: #f0fdf4;
+    border: 1.5px solid #bbf7d0;
+    border-radius: 14px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .ci-verdict-box.red {
+    background: #fff1f2;
+    border-color: #fecdd3;
+  }
+
+  .ci-verdict-tag {
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: #15803d;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .ci-verdict-box.red .ci-verdict-tag {
+    color: #be123c;
+  }
+
+  .ci-verdict-text {
+    font-size: 1.1rem;
+    color: #166534;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ci-verdict-box.red .ci-verdict-text {
+    color: #9f1239;
+  }
+
+  .ci-caller-script {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.3rem 1.5rem;
+  }
+
+  .ci-script-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .ci-script-text {
+    font-size: 1.1rem;
+    color: #1e293b;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* History Timeline */
+  .ci-history-panel {
+    padding-top: 1.8rem;
+  }
+
+  .ci-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.3rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .ci-history-count {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 9999px;
+  }
+
+  .ci-timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ci-hist-row {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.2rem 1.6rem;
+    display: grid;
+    grid-template-columns: 160px 1fr 160px 180px;
+    align-items: center;
+    gap: 18px;
+    transition: all 0.15s ease;
+  }
+
+  .ci-hist-row:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  }
+
+  .ci-hist-row.delivered {
+    border-left: 4px solid #10b981;
+  }
+
+  .ci-hist-row.cancelled {
+    border-left: 4px solid #94a3b8;
+    opacity: 0.9;
+  }
+
+  .ci-hist-row.rto {
+    border-left: 4px solid #ef4444;
+  }
+
+  .ci-hist-row.intransit {
+    border-left: 4px solid #3b82f6;
+  }
+
+  .ci-h-id {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .ci-h-date {
+    font-size: 0.92rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .ci-h-prod {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .ci-h-courier {
+    font-size: 0.92rem;
+    color: #64748b;
+    margin-top: 3px;
+  }
+
+  .ci-h-amt {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .ci-h-mode {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  .ci-h-status-col {
+    text-align: right;
+  }
+
+  .ci-h-status-pill {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 5px 12px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+
+  .ci-h-status-pill.delivered { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+  .ci-h-status-pill.cancelled { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+  .ci-h-status-pill.rto { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+  .ci-h-status-pill.intransit { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .ci-h-status-pill.pending { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+
+  .ci-h-track-btn {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #4f46e5;
+    text-decoration: none;
+  }
+
+  .ci-h-track-btn:hover {
+    text-decoration: underline;
+  }
+
+  /* Tablet Responsive (max-width: 1024px) */
+  @media (max-width: 1024px) {
+    .ci-metrics-panel {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 20px;
+    }
+    .ci-stat-col {
+      border-right: none;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 14px;
+    }
+    .ci-split-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ULTRA-POLISHED MOBILE VIEW (max-width: 768px) */
+  @media (max-width: 768px) {
+    .ci-portal-wrapper {
+      padding: 2.2rem 1rem 5rem;
+    }
+
+    .ci-hero-title {
+      font-size: 2.2rem;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    .ci-hero-desc {
+      font-size: 1.05rem;
+      padding: 0 4px;
+    }
+
+    /* Centered Search Card on Mobile */
+    .ci-search-panel {
+      padding: 1.6rem 1.2rem;
+      border-radius: 18px;
+    }
+
+    .ci-search-bar {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ci-search-input-wrap {
+      width: 100%;
+      padding: 6px 14px;
+      border-radius: 14px;
+      box-sizing: border-box;
+    }
+
+    .ci-search-input {
+      font-size: 1.25rem;
+      padding: 14px 0;
+      text-align: left;
+    }
+
+    .ci-search-input::placeholder {
+      font-size: 1.05rem;
+    }
+
+    .ci-search-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      font-size: 1.05rem;
+      border-radius: 14px;
+    }
+
+    .ci-search-chips {
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.2rem;
+    }
+
+    .ci-chip {
+      font-size: 0.92rem;
+      padding: 7px 12px;
+      border-radius: 8px;
+    }
+
+    /* Customer Profile Card on Mobile */
+    .ci-hero-card {
+      padding: 1.6rem 1.2rem;
+      border-radius: 18px;
+    }
+
+    .ci-hero-top {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .ci-profile-cluster {
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ci-avatar {
+      width: 60px;
+      height: 60px;
+      font-size: 1.7rem;
+    }
+
+    .ci-cust-title {
+      font-size: 2rem;
+    }
+
+    .ci-badge-pill {
+      font-size: 0.88rem;
+      padding: 6px 14px;
+    }
+
+    .ci-profile-meta {
+      font-size: 1.05rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .ci-meta-divider {
+      display: none;
+    }
+
+    .ci-hero-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .ci-action-btn {
+      padding: 14px 10px;
+      font-size: 0.98rem;
+      justify-content: center;
+      border-radius: 12px;
+    }
+
+    .ci-action-btn.secondary {
+      grid-column: span 2;
+    }
+
+    /* Metrics on Mobile (Clean 2-Column Grid with Large Numbers) */
+    .ci-metrics-panel {
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      padding: 1.4rem 1.1rem;
+      border-radius: 18px;
+    }
+
+    .ci-stat-col {
+      padding: 8px 6px;
+      border-right: none;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .ci-stat-col:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .ci-stat-title {
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+    }
+
+    .ci-stat-value {
+      font-size: 2.2rem;
+      margin-bottom: 4px;
+    }
+
+    .ci-stat-sub {
+      font-size: 0.85rem;
+    }
+
+    /* Active Order on Mobile */
+    .ci-surface-card {
+      padding: 1.4rem 1.1rem;
+      border-radius: 18px;
+    }
+
+    .ci-card-heading {
+      font-size: 1.45rem;
+    }
+
+    .ci-active-specs {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 1.1rem;
+    }
+
+    .ci-spec-label {
+      font-size: 0.78rem;
+    }
+
+    .ci-spec-val {
+      font-size: 1.12rem;
+    }
+
+    .ci-item-name {
+      font-size: 1.05rem;
+    }
+
+    .ci-track-footer {
+      text-align: center;
+    }
+
+    .ci-btn-track-external {
+      font-size: 0.96rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* Address & Guidance on Mobile */
+    .ci-addr-full {
+      font-size: 1.08rem;
+    }
+
+    .ci-check-item {
+      font-size: 0.95rem;
+    }
+
+    .ci-verdict-text {
+      font-size: 1.05rem;
+    }
+
+    .ci-script-text {
+      font-size: 1.05rem;
+    }
+
+    /* History Rows on Mobile */
+    .ci-hist-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 1rem 1.2rem;
+    }
+
+    .ci-h-id {
+      font-size: 1.15rem;
+    }
+
+    .ci-h-prod {
+      font-size: 1.05rem;
+    }
+
+    .ci-h-amt {
+      font-size: 1.15rem;
+    }
+
+    .ci-h-status-col {
+      text-align: left;
+    }
+  }
+</style>
+
+<script>
+  let ciDatabase = null;
+  let currentActiveCustomer = null;
+
+  async function loadCustomerDatabase() {
+    if (ciDatabase) return ciDatabase;
+    try {
+      const res = await fetch("{{ 'wildaroma-customer-index.json' | asset_url }}");
+      if (res.ok) {
+        ciDatabase = await res.json();
+        return ciDatabase;
+      }
+    } catch(err) {
+      console.warn('[CI] Failed to load customer index:', err);
+    }
+    return [];
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadCustomerDatabase();
+
+    const input = document.getElementById('CiSearchInput');
+    const clearBtn = document.getElementById('CiClearInputBtn');
+    if (input && clearBtn) {
+      input.addEventListener('input', () => {
+        clearBtn.style.display = input.value.trim() ? 'flex' : 'none';
+      });
+    }
+
+    // Auto-search query param if provided (e.g. ?q=9565179040)
+    const urlParams = new URLSearchParams(window.location.search);
+    const qParam = urlParams.get('q') || urlParams.get('search');
+    if (qParam) {
+      quickSearch(qParam);
+    }
+  });
+
+  function clearSearchInput() {
+    const input = document.getElementById('CiSearchInput');
+    input.value = '';
+    document.getElementById('CiClearInputBtn').style.display = 'none';
+    input.focus();
+  }
+
+  function quickSearch(val) {
+    const input = document.getElementById('CiSearchInput');
+    input.value = val;
+    document.getElementById('CiClearInputBtn').style.display = 'flex';
+    handleCiSearch(new Event('submit'));
+  }
+
+  async function handleCiSearch(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const input = document.getElementById('CiSearchInput');
+    const raw = (input.value || '').trim();
+    if (!raw) return;
+
+    const loading = document.getElementById('CiLoading');
+    const errorBox = document.getElementById('CiError');
+    const resultBox = document.getElementById('CiResult');
+
+    resultBox.style.display = 'none';
+    errorBox.style.display = 'none';
+    loading.style.display = 'block';
+
+    const db = await loadCustomerDatabase();
+    loading.style.display = 'none';
+
+    const qDigits = raw.replace(/\D/g, '');
+    const qClean = raw.replace(/[#\s]/g, '').toLowerCase();
+
+    let match = null;
+
+    if (Array.isArray(db) && db.length > 0) {
+      // 1. Check Phone Match (last 10 digits)
+      if (qDigits.length >= 10) {
+        const last10 = qDigits.slice(-10);
+        match = db.find(c => c.phone && c.phone.endsWith(last10));
+      }
+
+      // 2. Check Order Number Match (e.g. 1977 or MA1977)
+      if (!match && qDigits.length > 0) {
+        match = db.find(c => c.orders && c.orders.some(o => o.num === qDigits || (o.name && o.name.toLowerCase().includes(qClean))));
+      }
+
+      // 3. Check Customer Name Match
+      if (!match && qClean.length >= 3) {
+        match = db.find(c => c.name && c.name.toLowerCase().includes(qClean));
+      }
+    }
+
+    if (match) {
+      currentActiveCustomer = match;
+      renderCustomerProfile(match);
+    } else {
+      errorBox.style.display = 'flex';
+      document.getElementById('CiErrorTitle').textContent = 'No Customer Profile Located';
+      document.getElementById('CiErrorMsg').innerHTML = `No order history or customer matches <strong>"${escapeHtml(raw)}"</strong> in the current intelligence database. Verify the mobile number or order ID.`;
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function renderCustomerProfile(c) {
+    const resultBox = document.getElementById('CiResult');
+
+    // Clean name (strip trailing dots/punctuation like "Ratnakar .")
+    let cleanName = (c.name || 'Customer').trim().replace(/[.\s]+$/, '');
+    if (!cleanName) cleanName = 'Customer';
+
+    // Customer Initials Avatar
+    const avatar = document.getElementById('CiCustAvatar');
+    const initials = cleanName.split(' ').filter(Boolean).map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'C';
+    avatar.textContent = initials;
+
+    // Name & Location
+    document.getElementById('CiCustName').textContent = cleanName;
+    document.getElementById('CiCustPhone').textContent = c.phone ? ('+91 ' + c.phone) : 'No Phone on Record';
+    document.getElementById('CiCustLocation').textContent = (c.city || 'India') + (c.pincode ? (' - ' + c.pincode) : '');
+
+    // Trust Badge
+    const trustBadge = document.getElementById('CiTrustBadge');
+    const trustText = document.getElementById('CiTrustBadgeText');
+    trustText.textContent = c.trustBadge;
+    trustBadge.className = 'ci-badge-pill ' + (c.trustColor || 'green');
+
+    // Multi-location badge
+    const multiLoc = document.getElementById('CiMultiLocBadge');
+    multiLoc.style.display = c.isMultiLocation ? 'inline-block' : 'none';
+
+    // Quick Action Links
+    const callBtn = document.getElementById('CiCallBtn');
+    const waBtn = document.getElementById('CiWaBtn');
+    if (c.phone) {
+      callBtn.href = 'tel:+91' + c.phone;
+      callBtn.style.display = 'inline-flex';
+      waBtn.href = 'https://wa.me/91' + c.phone;
+      waBtn.style.display = 'inline-flex';
+    } else {
+      callBtn.style.display = 'none';
+      waBtn.style.display = 'none';
+    }
+
+    // Lifetime Metrics Numbers (Large, Prominent)
+    document.getElementById('CiTotalOrders').textContent = c.totalOrders || 1;
+    document.getElementById('CiDeliveredOrders').textContent = c.deliveredOrders || 0;
+    document.getElementById('CiRtoOrders').textContent = c.rtoOrders || 0;
+    document.getElementById('CiCancelledOrders').textContent = c.cancelledOrders || 0;
+    document.getElementById('CiTotalSpent').textContent = '₹' + Number(c.totalSpent || 0).toLocaleString('en-IN');
+    
+    document.getElementById('CiOrderMixSub').textContent = `${c.totalOrders || 1} Lifetime Inquiries`;
+    document.getElementById('CiRtoSub').textContent = `${c.rtoOrders || 0} Courier Returns`;
+    document.getElementById('CiAovSub').textContent = `AOV: ₹${Number(c.aov || 0).toLocaleString('en-IN')} per order`;
+
+    // Dispatched success rate: Delivered / (Delivered + RTO) if any dispatched
+    const dispatched = (c.deliveredOrders || 0) + (c.rtoOrders || 0);
+    const dispatchRate = dispatched > 0 ? Math.round(((c.deliveredOrders || 0) / dispatched) * 100) : 100;
+    document.getElementById('CiDeliveryRate').textContent = dispatchRate + '%';
+    document.getElementById('CiCodRatio').textContent = `${dispatchRate}% Dispatched Acceptance`;
+
+    // Active / Latest Order
+    const latest = (c.orders && c.orders[0]) || {};
+    document.getElementById('CiLatestOrderName').textContent = latest.name || ('#MA' + latest.num);
+    document.getElementById('CiLatestOrderDate').textContent = latest.date || 'Recent';
+    document.getElementById('CiLatestOrderAmt').textContent = '₹' + (latest.amount || 0) + ' · ' + (latest.payment_mode || 'COD');
+    document.getElementById('CiLatestCourier').textContent = latest.courier || 'Pending Allocation';
+    document.getElementById('CiLatestAwb').textContent = latest.awb || 'Not Assigned';
+    document.getElementById('CiLatestItems').textContent = latest.items || 'Wild Aroma Fragrance Item';
+
+    // Latest status pill
+    const statusPill = document.getElementById('CiLatestStatusPill');
+    const sUpper = String(latest.status || '').toUpperCase();
+    statusPill.textContent = latest.status || 'CONFIRMED';
+    
+    if (sUpper.includes('DELIVERED')) {
+      statusPill.className = 'ci-status-badge green';
+    } else if (sUpper.includes('RTO')) {
+      statusPill.className = 'ci-status-badge red';
+    } else if (latest.isCancelled) {
+      statusPill.className = 'ci-status-badge slate';
+      statusPill.textContent = 'CANCELLED (Pre-Dispatch)';
+    } else {
+      statusPill.className = 'ci-status-badge amber';
+    }
+
+    // NDR Banner
+    const ndrBanner = document.getElementById('CiNdrBanner');
+    if (latest.ndr) {
+      ndrBanner.style.display = 'flex';
+      document.getElementById('CiNdrText').textContent = latest.ndr;
+    } else {
+      ndrBanner.style.display = 'none';
+    }
+
+    // Live Shiprocket Tracking Link
+    const trackWrap = document.getElementById('CiLiveTrackBtnWrapper');
+    const trackBtn = document.getElementById('CiLiveTrackBtn');
+    if (latest.awb) {
+      trackWrap.style.display = 'block';
+      trackBtn.href = 'https://shiprocket.co/tracking/' + latest.awb;
+      trackBtn.querySelector('span').textContent = 'Open Real-Time Courier Tracking Dossier (' + latest.awb + ')';
+    } else {
+      trackWrap.style.display = 'none';
+    }
+
+    // Address & Quality Panel
+    document.getElementById('CiAddrStatus').textContent = c.addressQuality || '🟢 Complete Address';
+    document.getElementById('CiPincodeBadge').textContent = 'PIN: ' + (c.pincode || 'N/A');
+    document.getElementById('CiFullAddr').textContent = (c.city || 'India') + (c.pincode ? (' - Pincode: ' + c.pincode) : '') + (c.city ? ` (City: ${c.city})` : '');
+
+    // Recommendation Verdict
+    const verdictBox = document.getElementById('CiVerdictBox');
+    const verdictTag = document.getElementById('CiVerdictTag');
+    const riskTxt = document.getElementById('CiRiskAssessmentText');
+    const dispTxt = document.getElementById('CiDispatchRecText');
+
+    if (c.rtoOrders > 0) {
+      verdictBox.className = 'ci-verdict-box red';
+      verdictTag.textContent = '⚠️ HIGH RTO RETURN RISK';
+      riskTxt.textContent = `Customer has ${c.rtoOrders} previous parcel(s) returned by courier. Verification call mandatory before creating shipment.`;
+      dispTxt.textContent = 'Confirm full address landmark, phone availability on delivery day, and payment readiness.';
+    } else if (c.deliveredOrders >= 2) {
+      verdictBox.className = 'ci-verdict-box';
+      verdictTag.textContent = '👑 VIP CUSTOMER · IMMEDIATE DISPATCH';
+      riskTxt.textContent = `Customer has successfully received ${c.deliveredOrders} orders with ZERO courier returns (100% acceptance rate). Highly trusted buyer.`;
+      dispTxt.textContent = 'Safe to dispatch immediately without delay. Treat as priority customer.';
+    } else if (c.deliveredOrders === 1) {
+      verdictBox.className = 'ci-verdict-box';
+      verdictTag.textContent = '🟢 VERIFIED BUYER · SAFE TO DISPATCH';
+      riskTxt.textContent = 'Customer has 1 verified delivery on record with zero courier returns. Clean track record.';
+      dispTxt.textContent = 'Safe to dispatch via regular express courier.';
+    } else if (c.cancelledOrders > 0 && c.deliveredOrders === 0) {
+      verdictBox.className = 'ci-verdict-box';
+      verdictTag.textContent = '⚪ PRE-DISPATCH INQUIRIES ON RECORD';
+      riskTxt.textContent = `Customer previously cancelled ${c.cancelledOrders} order(s) before shipping (no freight loss). Phone call recommended to confirm order intent.`;
+      dispTxt.textContent = 'Verify that the customer intends to receive the order before packing.';
+    } else {
+      verdictBox.className = 'ci-verdict-box';
+      verdictTag.textContent = '🟡 NEW BUYER (1ST ORDER)';
+      riskTxt.textContent = 'First-time customer with no previous courier history. Standard confirmation procedure recommended.';
+      dispTxt.textContent = 'Confirm house number, road name, and recipient availability.';
+    }
+
+    // Chronological History Timeline
+    const list = document.getElementById('CiHistoryList');
+    const countBadge = document.getElementById('CiHistoryCountBadge');
+    list.innerHTML = '';
+    
+    if (c.orders && c.orders.length > 0) {
+      countBadge.textContent = `${c.orders.length} Historical Records`;
+      c.orders.forEach(ord => {
+        const div = document.createElement('div');
+        const isDeliv = ord.isDelivered;
+        const isRto = ord.isRto;
+        const isCanc = ord.isCancelled;
+        const isInTrans = ord.isInTransit;
+
+        let rowType = 'pending';
+        let pillClass = 'pending';
+        let pillText = ord.status || 'CONFIRMED';
+
+        if (isDeliv) {
+          rowType = 'delivered';
+          pillClass = 'delivered';
+          pillText = 'DELIVERED';
+        } else if (isRto) {
+          rowType = 'rto';
+          pillClass = 'rto';
+          pillText = ord.status || 'RTO';
+        } else if (isCanc) {
+          rowType = 'cancelled';
+          pillClass = 'cancelled';
+          pillText = 'CANCELLED (Pre-Dispatch)';
+        } else if (isInTrans) {
+          rowType = 'intransit';
+          pillClass = 'intransit';
+          pillText = 'IN TRANSIT';
+        }
+
+        div.className = `ci-hist-row ${rowType}`;
+        div.innerHTML = `
+          <div>
+            <div class="ci-h-id">${escapeHtml(ord.name || ('#' + ord.num))}</div>
+            <div class="ci-h-date">${escapeHtml(ord.date || '')}</div>
+          </div>
+          <div>
+            <div class="ci-h-prod">${escapeHtml(ord.items || 'Wild Aroma Fragrance')}</div>
+            <div class="ci-h-courier">
+              ${escapeHtml(ord.courier || 'Shiprocket')}
+              ${ord.awb ? ('· AWB: <code>' + escapeHtml(ord.awb) + '</code>') : (isCanc ? '· (Unshipped)' : '')}
+            </div>
+          </div>
+          <div>
+            <div class="ci-h-amt">₹${Number(ord.amount || 0).toLocaleString('en-IN')}</div>
+            <div class="ci-h-mode">${escapeHtml(ord.payment_mode || 'COD')}</div>
+          </div>
+          <div class="ci-h-status-col">
+            <span class="ci-h-status-pill ${pillClass}">${escapeHtml(pillText)}</span>
+            ${ord.awb ? `<br><a href="https://shiprocket.co/tracking/${encodeURIComponent(ord.awb)}" target="_blank" rel="noopener" class="ci-h-track-btn">Track Courier ↗</a>` : ''}
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    resultBox.style.display = 'block';
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function copyCustomerSummary() {
+    if (!currentActiveCustomer) return;
+    const c = currentActiveCustomer;
+    let cleanName = (c.name || 'Customer').trim().replace(/[.\s]+$/, '');
+    const latest = (c.orders && c.orders[0]) || {};
+    const text = `Customer: ${cleanName}
+Phone: +91 ${c.phone || 'N/A'}
+Location: ${c.city || ''} - ${c.pincode || ''}
+Trust Score: ${c.trustBadge || ''}
+Total Orders: ${c.totalOrders} (Delivered: ${c.deliveredOrders}, Cancelled Pre-Dispatch: ${c.cancelledOrders || 0}, Courier RTO: ${c.rtoOrders})
+Total Spent: ₹${Number(c.totalSpent || 0).toLocaleString('en-IN')}
+Latest Order: ${latest.name || ''} - ₹${latest.amount || 0} (${latest.payment_mode || 'COD'})
+Status: ${latest.status || ''}
+Courier/AWB: ${latest.courier || ''} ${latest.awb ? ('- ' + latest.awb) : ''}`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✔ Customer dossier copied to clipboard for CRM/Shiprocket verification!');
+    }).catch(() => {
+      prompt('Copy customer dossier:', text);
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function(m) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Customer Intelligence",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Customer Intelligence"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,326 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Premium Ivory/Cream and Gold Heritage Section */
+  .custom-heritage {
+    overflow: hidden;
+    background: var(--gradient-background);
+    color: rgb(var(--color-foreground));
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+  }
+
+  .custom-heritage__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-heritage__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6rem;
+    }
+  }
+
+  .custom-heritage__image-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(204, 164, 59, 0.15); /* Gold outline */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Elegant thin gold frame inside image */
+  .custom-heritage__image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(204, 164, 59, 0.15);
+    pointer-events: none;
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  .custom-heritage__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .custom-heritage__image-wrapper:hover .custom-heritage__image {
+    transform: scale(1.05);
+  }
+
+  .custom-heritage__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 2.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(204, 164, 59, 0.15); /* Gold outline frame */
+    position: relative;
+    background: rgb(var(--color-background));
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-heritage__content {
+      padding: 5.5rem 4.5rem;
+    }
+  }
+
+  /* Decorative inner frame */
+  .custom-heritage__content::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    border: 1px solid rgba(204, 164, 59, 0.08);
+    pointer-events: none;
+    border-radius: 4px;
+  }
+
+  .custom-heritage__subtitle {
+    margin: 0 0 1rem 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #cca43b !important;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .custom-heritage__title {
+    margin: 0 0 2rem 0;
+    line-height: 1.25;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    color: #121212 !important;
+  }
+
+  .custom-heritage__text {
+    line-height: 1.7;
+    margin: 0 0 2.5rem 0;
+    font-size: 1.45rem;
+    color: #4a453e;
+  }
+
+  .custom-heritage__text p {
+    margin: 0 0 1.5rem 0;
+  }
+
+  .custom-heritage__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .custom-heritage__btn-wrapper {
+    margin-top: 1rem;
+    z-index: 2;
+  }
+
+  .custom-heritage__grid--image-right .custom-heritage__image-wrapper {
+    order: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-heritage__grid--image-right .custom-heritage__image-wrapper {
+      order: 1;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-heritage color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="custom-heritage__grid {% if section.settings.layout == 'image_right' %}custom-heritage__grid--image-right{% endif %}">
+      
+      <div class="custom-heritage__image-wrapper" style="aspect-ratio: {{ section.settings.image_aspect_ratio }};">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1000 }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            loading="lazy"
+            class="custom-heritage__image"
+            width="500"
+            height="500"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'deg-bhapka.png' | asset_url }}"
+            alt="Traditional Kannauj Distillation Process"
+            loading="lazy"
+            class="custom-heritage__image"
+            width="500"
+            height="500"
+          >
+        {%- endif -%}
+      </div>
+
+      <div class="custom-heritage__content">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="custom-heritage__subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="custom-heritage__title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="custom-heritage__text rte body">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <div class="custom-heritage__btn-wrapper">
+            <a
+              {% if section.settings.button_link == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link }}"
+              {% endif %}
+              class="button button--primary"
+            >
+              {{ section.settings.button_label | escape }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Heritage Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Heritage Image",
+      "info": "Upload an image showcasing traditional distillation or pure ingredients. Default is Deg Bhapka pot illustration."
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 3", "label": "Standard (4:3)" },
+        { "value": "4 / 5", "label": "Vertical (4:5)" },
+        { "value": "16 / 9", "label": "Widescreen (16:9)" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "image_left", "label": "Image on left" },
+        { "value": "image_right", "label": "Image on right" }
+      ],
+      "default": "image_left",
+      "label": "Desktop Layout"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "THE ART OF DEG & BHAPKA"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Distilled In Kannauj, Perfume Capital of India"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Story Content",
+      "default": "<p>Since ancient times, Kannauj has kept the heritage of perfume distillation alive. Using the traditional Deg-Bhapka process, flowers and natural raw materials are distilled in copper pots over wood fires, sending fragrant steam to rest in cold clay containers base-filled with sandalwood oil.</p><p>Wild Aroma preserves this pure artisan process, providing long-lasting attars free from chemicals and alcohol.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Explore Our Process"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Padding Bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Heritage Section"
+    }
+  ]
+}
+{% endschema %}

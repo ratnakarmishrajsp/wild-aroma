@@ -1,0 +1,13 @@
+.agents/
+*.zip
+.DS_Store
+Thumbs.db
+node_modules/
+order-sync-engine/.env
+order-sync-engine/data/
+order-sync-engine/exports/
+whatsapp-campaign-data/
+antigravity_reel/
+scratch/
+
+

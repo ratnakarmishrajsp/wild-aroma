@@ -1,0 +1,716 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Premium Ivory-Cream and Gold Fragrance Profile Theme */
+  .fragrance-profile {
+    position: relative;
+    background: #faf8f5 !important; /* Premium Ivory-Cream */
+    color: #121212 !important;
+    border-top: 1px solid rgba(204, 164, 59, 0.15);
+    border-bottom: 1px solid rgba(204, 164, 59, 0.15);
+  }
+
+  .fragrance-profile__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 990px) {
+    .fragrance-profile__grid {
+      grid-template-columns: 1.1fr 0.8fr 1.1fr;
+      gap: 5rem;
+    }
+  }
+
+  .fragrance-profile__title-wrapper {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .fragrance-profile__subtitle {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #cca43b !important;
+    font-style: italic;
+  }
+
+  .fragrance-profile__title {
+    margin: 0;
+    font-weight: 600;
+    color: #121212 !important;
+  }
+
+  /* Scent Notes Pyramid styling */
+  .fragrance-profile__notes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .fragrance-profile__note-card {
+    display: flex;
+    gap: 2rem;
+    padding: 2.2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(204, 164, 59, 0.15);
+    background: #ffffff; /* White card layout */
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.01);
+  }
+
+  .fragrance-profile__note-card:hover {
+    border-color: #cca43b;
+    transform: translateX(6px);
+    background: rgba(204, 164, 59, 0.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  .fragrance-profile__note-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(204, 164, 59, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #cca43b;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(204, 164, 59, 0.2);
+  }
+
+  .fragrance-profile__note-content {
+    flex-grow: 1;
+  }
+
+  .fragrance-profile__note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .fragrance-profile__note-type {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #cca43b !important; /* Gold highlights */
+  }
+
+  .fragrance-profile__note-ingredients {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #121212 !important;
+  }
+
+  .fragrance-profile__note-desc {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: #4a453e !important;
+  }
+
+  /* Center Illustration: Pure Gold Drop */
+  .fragrance-profile__center-illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .fragrance-profile__drop-container {
+    position: relative;
+    width: 100%;
+    max-width: 260px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    overflow: hidden;
+    border: 1px solid rgba(204, 164, 59, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+    animation: floatDrop 5s ease-in-out infinite;
+    background: #ffffff;
+  }
+
+  /* Gold frame inside the drop card */
+  .fragrance-profile__drop-container::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(204, 164, 59, 0.15);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .fragrance-profile__drop-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply; /* Blends white background into cream canvas */
+    transition: transform 0.6s ease;
+  }
+
+  .fragrance-profile__drop-container:hover .fragrance-profile__drop-img {
+    transform: scale(1.08);
+  }
+
+  @keyframes floatDrop {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.02); }
+    100% { transform: translateY(0px) scale(1); }
+  }
+
+  /* Performance Gauges styling */
+  .fragrance-profile__performance {
+    padding: 3.5rem 3rem;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(204, 164, 59, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.01);
+  }
+
+  .fragrance-profile__gauge {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fragrance-profile__gauge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fragrance-profile__gauge-label {
+    color: #121212 !important;
+  }
+
+  .fragrance-profile__gauge-value {
+    color: #cca43b;
+    font-weight: bold;
+  }
+
+  .fragrance-profile__bar-wrapper {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05); /* Light gray bar track */
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .fragrance-profile__bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #cca43b, #f1cb64);
+    box-shadow: 0 0 8px rgba(204, 164, 59, 0.2);
+    transition: width 1s ease-out;
+  }
+
+  .fragrance-profile__gauge-markers {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    opacity: 0.5;
+    padding-top: 0.2rem;
+  }
+
+  .fragrance-profile__best-suited {
+    border-top: 1px solid rgba(204, 164, 59, 0.15);
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+
+  .fragrance-profile__best-suited-title {
+    margin: 0 0 0.6rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #cca43b !important;
+  }
+
+  .fragrance-profile__best-suited-text {
+    margin: 0;
+    font-size: 1.45rem;
+    color: #121212 !important;
+  /* Bounded Attar Scent Mist & Floating Flowers Overlay */
+  .profile-scent-mist {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+  }
+
+  .profile-scent-mist__cloud {
+    position: absolute;
+    bottom: -50px;
+    width: 75vw;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(229, 193, 88, 0.4) 0%, rgba(204, 164, 59, 0.18) 45%, rgba(255, 255, 255, 0) 75%);
+    filter: blur(25px);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none !important;
+    animation: profileFogPulse 10s ease-in-out infinite;
+  }
+
+  .profile-scent-mist__cloud--1 {
+    left: -15%;
+    animation-delay: 0s;
+  }
+
+  .profile-scent-mist__cloud--2 {
+    right: -15%;
+    animation-delay: 5s;
+    background: radial-gradient(ellipse at center, rgba(255, 220, 130, 0.45) 0%, rgba(204, 164, 59, 0.2) 45%, rgba(255, 255, 255, 0) 75%);
+  }
+
+  @keyframes profileFogPulse {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.85);
+    }
+    35% {
+      opacity: 0.6;
+      transform: translateY(-30px) scale(1.15);
+    }
+    70% {
+      opacity: 0.35;
+      transform: translateY(-80px) scale(1.3);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-130px) scale(1.4);
+    }
+  }
+
+  .profile-scent-mist__petals {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+  }
+
+  .profile-scent-mist__petal {
+    position: absolute;
+    bottom: -30px;
+    font-size: 1.8rem;
+    opacity: 0;
+    pointer-events: none !important;
+    animation: profilePetalFloat 9s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  }
+
+  .profile-scent-mist__petal--1 {
+    left: 10%;
+    animation-delay: 0.5s;
+  }
+
+  .profile-scent-mist__petal--2 {
+    left: 45%;
+    animation-delay: 4.5s;
+  }
+
+  .profile-scent-mist__petal--3 {
+    left: 80%;
+    animation-delay: 2.2s;
+  }
+
+  @keyframes profilePetalFloat {
+    0% {
+      opacity: 0;
+      transform: translateY(0) rotate(0deg);
+    }
+    20% {
+      opacity: 0.9;
+    }
+    65% {
+      opacity: 0.65;
+      transform: translateY(-120px) rotate(180deg) translateX(25px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-220px) rotate(360deg) translateX(-25px);
+    }
+  }
+{%- endstyle -%}
+
+<div class="fragrance-profile section-{{ section.id }}-padding" style="position: relative; overflow: hidden;">
+  <div class="profile-scent-mist" aria-hidden="true">
+    <div class="profile-scent-mist__cloud profile-scent-mist__cloud--1"></div>
+    <div class="profile-scent-mist__cloud profile-scent-mist__cloud--2"></div>
+    <div class="profile-scent-mist__petals">
+      <div class="profile-scent-mist__petal profile-scent-mist__petal--1">🌸</div>
+      <div class="profile-scent-mist__petal profile-scent-mist__petal--2">🌼</div>
+      <div class="profile-scent-mist__petal profile-scent-mist__petal--3">🌺</div>
+    </div>
+  </div>
+  <div class="page-width" style="position: relative; z-index: 2;">
+    
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="fragrance-profile__title-wrapper">
+        {%- if section.settings.subtitle != blank -%}
+          <p class="fragrance-profile__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="fragrance-profile__title inline-richtext {{ section.settings.heading_size }}">
+            {{ section.settings.title | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="fragrance-profile__grid">
+      
+      {% comment %} Column 1: Olfactory Notes Pyramid {% endcomment %}
+      <div class="fragrance-profile__notes">
+        
+        {%- if section.settings.top_note_ingredients != blank -%}
+          <div class="fragrance-profile__note-card">
+            <div class="fragrance-profile__note-badge" aria-hidden="true">TOP</div>
+            <div class="fragrance-profile__note-content">
+              <div class="fragrance-profile__note-header">
+                <span class="fragrance-profile__note-type">{{ section.settings.top_note_label }}</span>
+                <span class="fragrance-profile__note-ingredients">{{ section.settings.top_note_ingredients }}</span>
+              </div>
+              {%- if section.settings.top_note_desc != blank -%}
+                <p class="fragrance-profile__note-desc">{{ section.settings.top_note_desc }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.heart_note_ingredients != blank -%}
+          <div class="fragrance-profile__note-card">
+            <div class="fragrance-profile__note-badge" aria-hidden="true">MID</div>
+            <div class="fragrance-profile__note-content">
+              <div class="fragrance-profile__note-header">
+                <span class="fragrance-profile__note-type">{{ section.settings.heart_note_label }}</span>
+                <span class="fragrance-profile__note-ingredients">{{ section.settings.heart_note_ingredients }}</span>
+              </div>
+              {%- if section.settings.heart_note_desc != blank -%}
+                <p class="fragrance-profile__note-desc">{{ section.settings.heart_note_desc }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.base_note_ingredients != blank -%}
+          <div class="fragrance-profile__note-card">
+            <div class="fragrance-profile__note-badge" aria-hidden="true">BASE</div>
+            <div class="fragrance-profile__note-content">
+              <div class="fragrance-profile__note-header">
+                <span class="fragrance-profile__note-type">{{ section.settings.base_note_label }}</span>
+                <span class="fragrance-profile__note-ingredients">{{ section.settings.base_note_ingredients }}</span>
+              </div>
+              {%- if section.settings.base_note_desc != blank -%}
+                <p class="fragrance-profile__note-desc">{{ section.settings.base_note_desc }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+      </div>
+
+      {% comment %} Column 2: Pure Gold Drop Illustration (Floating Card) {% endcomment %}
+      <div class="fragrance-profile__center-illustration">
+        <div class="fragrance-profile__drop-container">
+          <img
+            src="{{ 'pure-drop.png' | asset_url }}"
+            alt="Pure concentrated attar essential oil gold drop illustration"
+            loading="lazy"
+            width="260"
+            height="360"
+            class="fragrance-profile__drop-img"
+          >
+        </div>
+      </div>
+
+      {% comment %} Column 3: Performance Scent Gauges {% endcomment %}
+      <div class="fragrance-profile__performance">
+        
+        {% comment %} Longevity Gauge {% endcomment %}
+        <div class="fragrance-profile__gauge">
+          <div class="fragrance-profile__gauge-header">
+            <span class="fragrance-profile__gauge-label">Longevity</span>
+            <span class="fragrance-profile__gauge-value">{{ section.settings.longevity_hours }} Hours</span>
+          </div>
+          <div class="fragrance-profile__bar-wrapper">
+            {%- assign longevity_percentage = section.settings.longevity_hours | times: 8.33 -%}
+            {%- if longevity_percentage > 100 -%}{%- assign longevity_percentage = 100 -%}{%- endif -%}
+            <div class="fragrance-profile__bar-fill" style="width: {{ longevity_percentage }}%;"></div>
+          </div>
+          <div class="fragrance-profile__gauge-markers">
+            <span>2 hrs</span>
+            <span>6 hrs</span>
+            <span>12+ hrs</span>
+          </div>
+        </div>
+
+        {% comment %} Sillage Gauge {% endcomment %}
+        <div class="fragrance-profile__gauge">
+          <div class="fragrance-profile__gauge-header">
+            <span class="fragrance-profile__gauge-label">Sillage (Projection)</span>
+            <span class="fragrance-profile__gauge-value">{{ section.settings.sillage_text }}</span>
+          </div>
+          <div class="fragrance-profile__bar-wrapper">
+            {%- assign sillage_percentage = section.settings.sillage_rating | times: 20 -%}
+            <div class="fragrance-profile__bar-fill" style="width: {{ sillage_percentage }}%;"></div>
+          </div>
+          <div class="fragrance-profile__gauge-markers">
+            <span>Intimate</span>
+            <span>Moderate</span>
+            <span>Strong</span>
+          </div>
+        </div>
+
+        {% comment %} Intensity Gauge {% endcomment %}
+        <div class="fragrance-profile__gauge">
+          <div class="fragrance-profile__gauge-header">
+            <span class="fragrance-profile__gauge-label">Intensity</span>
+            <span class="fragrance-profile__gauge-value">{{ section.settings.intensity_text }}</span>
+          </div>
+          <div class="fragrance-profile__bar-wrapper">
+            {%- assign intensity_percentage = section.settings.intensity_rating | times: 20 -%}
+            <div class="fragrance-profile__bar-fill" style="width: {{ intensity_percentage }}%;"></div>
+          </div>
+          <div class="fragrance-profile__gauge-markers">
+            <span>Mild</span>
+            <span>Balanced</span>
+            <span>Rich & Deep</span>
+          </div>
+        </div>
+
+        {% comment %} Best Suited For {% endcomment %}
+        {%- if section.settings.best_suited != blank -%}
+          <div class="fragrance-profile__best-suited">
+            <h3 class="fragrance-profile__best-suited-title">{{ section.settings.best_suited_label }}</h3>
+            <p class="fragrance-profile__best-suited-text">{{ section.settings.best_suited }}</p>
+          </div>
+        {%- endif -%}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Fragrance Profile & Notes",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Fragrance Profile"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Scent Anatomy"
+    },
+    {
+      "type": "header",
+      "content": "Scent Notes (Top, Heart, Base)"
+    },
+    {
+      "type": "text",
+      "id": "top_note_label",
+      "label": "Top Note Label",
+      "default": "Top Note"
+    },
+    {
+      "type": "text",
+      "id": "top_note_ingredients",
+      "label": "Top Note Ingredients",
+      "default": "Saffron, Cardamom"
+    },
+    {
+      "type": "text",
+      "id": "top_note_desc",
+      "label": "Top Note Description",
+      "default": "The opening notes provide a luxurious spicy warmth upon application."
+    },
+    {
+      "type": "text",
+      "id": "heart_note_label",
+      "label": "Heart Note Label",
+      "default": "Heart Note"
+    },
+    {
+      "type": "text",
+      "id": "heart_note_ingredients",
+      "label": "Heart Note Ingredients",
+      "default": "Kannauj Rose, Jasmine"
+    },
+    {
+      "type": "text",
+      "id": "heart_note_desc",
+      "label": "Heart Note Description",
+      "default": "The core of the fragrance reveals elegant floral layers that smooth the spices."
+    },
+    {
+      "type": "text",
+      "id": "base_note_label",
+      "label": "Base Note Label",
+      "default": "Base Note"
+    },
+    {
+      "type": "text",
+      "id": "base_note_ingredients",
+      "label": "Base Note Ingredients",
+      "default": "Royal Oudh, Sandalwood, Musk"
+    },
+    {
+      "type": "text",
+      "id": "base_note_desc",
+      "label": "Base Note Description",
+      "default": "The deep, rich foundation remains on your skin for hours with a warm, woody trail."
+    },
+    {
+      "type": "header",
+      "content": "Scent Performance (Gauges)"
+    },
+    {
+      "type": "range",
+      "id": "longevity_hours",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 10,
+      "label": "Longevity (Hours)"
+    },
+    {
+      "type": "range",
+      "id": "sillage_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Sillage / Projection Rating"
+    },
+    {
+      "type": "text",
+      "id": "sillage_text",
+      "label": "Sillage Label Text",
+      "default": "Strong / Radiating"
+    },
+    {
+      "type": "range",
+      "id": "intensity_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Intensity Rating"
+    },
+    {
+      "type": "text",
+      "id": "intensity_text",
+      "label": "Intensity Label Text",
+      "default": "Warm & Rich"
+    },
+    {
+      "type": "text",
+      "id": "best_suited_label",
+      "label": "Best Suited For Label",
+      "default": "Best Suited For"
+    },
+    {
+      "type": "text",
+      "id": "best_suited",
+      "label": "Best Suited For Text",
+      "default": "Special occasions, cool evenings, and ceremonial wear."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Padding Bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fragrance Profile & Notes"
+    }
+  ]
+}
+{% endschema %}
