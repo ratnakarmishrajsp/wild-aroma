@@ -101,20 +101,9 @@
           </button>
           {%- if show_dynamic_checkout -%}
             <input type="hidden" value="true" id="fastrrCollectionPage" />
-<input type="hidden" value={{ product.url }} name="productUrl" />
+            <input type="hidden" value={{ product.url }} name="productUrl" />
             {{ form | payment_button }}
           {%- endif -%}
-
-          <!-- Bella Vita Style BOGO & Exclusive Coupon Card -->
-          <div class="wa-bogo-coupon-card" style="margin-top: 1rem; background: #FAF8F5; border: 1.5px dashed #D4AF37; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 4px 12px rgba(18, 18, 18, 0.03);">
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <span style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #D90429;">🎁 BUY 1 GET 1 FREE</span>
-              <span style="font-size: 0.95rem; font-weight: 600; color: #121212;">Add any 2 items to cart to apply offer</span>
-            </div>
-            <div style="background: #121212; color: #D4AF37; font-weight: 800; font-size: 0.85rem; padding: 6px 12px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #D4AF37; cursor: pointer;" onclick="navigator.clipboard.writeText('WILD100'); this.innerText='COPIED!'; setTimeout(() => this.innerText='WILD100', 2000);">
-              WILD100
-            </div>
-          </div>
 
           <style>
             /* Disable and hide all Releasit COD buttons, popups, sticky bars & embeds */
@@ -146,45 +135,6 @@
         </div>
       {%- endform -%}
     </product-form>
-
-    <!-- Bella Vita Luxury Perfume Attribute Matrix -->
-    <div class="wa-pdp-attribute-matrix" style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
-      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
-        <span style="font-size: 1.4rem;">👑</span>
-        <div>
-          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">Concentrated Parfum</strong>
-          <span style="font-size: 0.75rem; color: #555555;">Pure Perfume Oil</span>
-        </div>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
-        <span style="font-size: 1.4rem;">🌿</span>
-        <div>
-          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">100% Alcohol-Free</strong>
-          <span style="font-size: 0.75rem; color: #555555;">Skin Safe & Pure</span>
-        </div>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
-        <span style="font-size: 1.4rem;">⏳</span>
-        <div>
-          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">12+ Hrs Longevity</strong>
-          <span style="font-size: 0.75rem; color: #555555;">Long-lasting Scent Trail</span>
-        </div>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #E8E2D8; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(18, 18, 18, 0.04);">
-        <span style="font-size: 1.4rem;">🚚</span>
-        <div>
-          <strong style="display: block; font-size: 0.85rem; color: #121212; text-transform: uppercase; letter-spacing: 0.05em;">Free Express COD</strong>
-          <span style="font-size: 0.75rem; color: #555555;">3-5 Days Delivery</span>
-        </div>
-      </div>
-    </div>
-      <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; font-weight: 600; color: #121212;">
-        <span style="font-size: 1.5rem;">🌿</span> 100% Pure & Alcohol-Free (Skin Safe)
-      </div>
-      <div style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; font-weight: 600; color: #121212;">
-        <span style="font-size: 1.5rem;">🚚</span> Free Express Delivery Across India (3-5 Days)
-      </div>
-    </div>
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">
