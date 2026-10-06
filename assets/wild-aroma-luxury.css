@@ -1,0 +1,369 @@
+/* ==========================================================================
+   WILD AROMA - LUXURY BELLA VITA DESIGN SYSTEM & COLOR GRADING
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Palette */
+  --wa-canvas: #FAF8F5;
+  --wa-obsidian: #121212;
+  --wa-obsidian-light: #1A1A1A;
+  --wa-gold: #D4AF37;
+  --wa-gold-light: #F4E7BE;
+  --wa-gold-dark: #A88420;
+  --wa-crimson: #D90429;
+  --wa-crimson-bg: #FFEBEB;
+  --wa-text-primary: #1C1C1C;
+  --wa-text-secondary: #5A5A5A;
+  --wa-border: #E8E2D8;
+  --wa-card-bg: #FFFFFF;
+  --wa-cream-card: #F5F1EA;
+  
+  /* Fonts */
+  --wa-font-heading: 'Cormorant Garamond', Georgia, serif;
+  --wa-font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Shadow & Elevation */
+  --wa-shadow-sm: 0 2px 8px rgba(18, 18, 18, 0.04);
+  --wa-shadow-md: 0 6px 20px rgba(18, 18, 18, 0.08);
+  --wa-shadow-lg: 0 12px 35px rgba(18, 18, 18, 0.12);
+  --wa-shadow-gold: 0 4px 15px rgba(212, 175, 55, 0.25);
+  
+  /* Transition */
+  --wa-transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Global Body Canvas Override */
+body {
+  background-color: var(--wa-canvas) !important;
+  color: var(--wa-text-primary);
+  font-family: var(--wa-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings Typography */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.section-heading,
+.product__title {
+  font-family: var(--wa-font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  color: var(--wa-obsidian);
+}
+
+.luxury-uppercase {
+  font-family: var(--wa-font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Primary Luxury Button (Bella Vita Style) */
+.button,
+.btn-luxury,
+.product-form__submit {
+  background-color: var(--wa-obsidian) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--wa-obsidian) !important;
+  border-radius: 4px !important;
+  font-family: var(--wa-font-body) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  padding: 1.2rem 2.4rem !important;
+  transition: var(--wa-transition) !important;
+  box-shadow: var(--wa-shadow-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.button:hover,
+.btn-luxury:hover,
+.product-form__submit:hover {
+  background-color: var(--wa-gold) !important;
+  color: var(--wa-obsidian) !important;
+  border-color: var(--wa-gold) !important;
+  box-shadow: var(--wa-shadow-gold) !important;
+  transform: translateY(-2px);
+}
+
+/* Secondary Gold Button */
+.button--secondary,
+.btn-gold {
+  background-color: var(--wa-gold) !important;
+  color: var(--wa-obsidian) !important;
+  border: 1px solid var(--wa-gold) !important;
+  font-weight: 700 !important;
+}
+
+.button--secondary:hover,
+.btn-gold:hover {
+  background-color: var(--wa-obsidian) !important;
+  color: #FFFFFF !important;
+  border-color: var(--wa-obsidian) !important;
+}
+
+/* Offer Badges & Ribbons */
+.wa-badge-offer {
+  background-color: var(--wa-crimson);
+  color: #FFFFFF;
+  font-family: var(--wa-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.wa-badge-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #F4E7BE 50%, #A88420 100%);
+  color: var(--wa-obsidian);
+  font-family: var(--wa-font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Star Rating Pill */
+.wa-rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--wa-obsidian);
+}
+
+.wa-rating-pill .star-icon {
+  color: var(--wa-gold);
+  font-size: 0.9rem;
+}
+
+/* Card Styling Override */
+.card-wrapper,
+.card {
+  background-color: var(--wa-card-bg) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--wa-border) !important;
+  transition: var(--wa-transition) !important;
+  overflow: hidden;
+}
+
+.card-wrapper:hover,
+.card:hover {
+  border-color: var(--wa-gold) !important;
+  box-shadow: var(--wa-shadow-md) !important;
+  transform: translateY(-4px);
+}
+
+/* Sticky Mobile Bottom Buy Bar (Bella Vita Style) */
+.wa-sticky-buy-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #FFFFFF;
+  border-top: 2px solid var(--wa-gold);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  animation: slideUp 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.wa-sticky-buy-bar .price-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wa-sticky-buy-bar .price-info .title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--wa-obsidian);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.wa-sticky-buy-bar .price-info .price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--wa-obsidian);
+}
+
+.wa-sticky-buy-bar .price-info .compare-price {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  color: var(--wa-text-secondary);
+  margin-left: 0.4rem;
+}
+
+.wa-sticky-buy-bar .btn-sticky-add {
+  background: var(--wa-obsidian) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 4px !important;
+  font-size: 0.9rem !important;
+  flex-grow: 1;
+  text-align: center;
+
+}
+
+.wa-sticky-buy-bar .btn-sticky-add:hover {
+  background: var(--wa-gold) !important;
+  color: var(--wa-obsidian) !important;
+}
+
+/* Scent Pyramid Component */
+.scent-pyramid-container {
+  background-color: var(--wa-cream-card);
+  border: 1px solid var(--wa-border);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin: 1.5rem 0;
+}
+
+.scent-pyramid-title {
+  font-family: var(--wa-font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--wa-obsidian);
+  margin-bottom: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.scent-level {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--wa-border);
+}
+
+.scent-level:last-child {
+  border-bottom: none;
+}
+
+.scent-level-badge {
+  background-color: var(--wa-obsidian);
+  color: var(--wa-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.scent-level-notes {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--wa-text-primary);
+}
+
+/* Longevity Meter */
+.longevity-meter-box {
+  background: #FFFFFF;
+  border: 1px solid var(--wa-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin: 1rem 0;
+}
+
+.longevity-meter-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+.longevity-bar-bg {
+  height: 8px;
+  background-color: #E8E2D8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.longevity-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--wa-gold) 0%, #F4E7BE 50%, var(--wa-gold) 100%);
+  border-radius: 4px;
+  width: 90%;
+  animation: pulseGold 2s infinite ease-in-out;
+}
+
+@keyframes pulseGold {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Announcement Bar Custom Styling */
+.announcement-bar {
+  background-color: var(--wa-obsidian) !important;
+  color: #FFFFFF !important;
+  font-family: var(--wa-font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  border-bottom: 1px solid var(--wa-gold);
+}
+
+.announcement-bar a {
+  color: var(--wa-gold) !important;
+  text-decoration: underline;
+}
+
+/* Header Luxury Elevation */
+.section-header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid var(--wa-border) !important;
+  box-shadow: var(--wa-shadow-sm);
+}
+
+.header__menu-item {
+  font-family: var(--wa-font-body) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-size: 0.85rem !important;
+  color: var(--wa-obsidian) !important;
+}
+
+.header__menu-item:hover {
+  color: var(--wa-gold) !important;
+}
