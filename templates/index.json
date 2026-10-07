@@ -196,7 +196,7 @@
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "best-selling-attars",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "title": "Best Selling Attars",
         "heading_size": "h1",
         "description": "",
@@ -350,12 +350,109 @@
         "padding_top": 40,
         "padding_bottom": 40
       }
+    },
+    "custom_luxury_products_showcase": {
+      "type": "custom-luxury-products",
+      "blocks": {
+        "prod_white_oud": {
+          "type": "product_card",
+          "settings": {
+            "product": "white-oud-luxury-attar",
+            "custom_title": "White Oud Luxury Attar",
+            "custom_size": "6.6 ml Concentrated Oil",
+            "custom_notes": "Italian Bergamot • White Amber • Cambodian White Oud",
+            "custom_price": "₹599",
+            "custom_compare_price": "₹1,199",
+            "custom_badge": "ROYAL BESTSELLER",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/white-oud-luxury-attar"
+          }
+        },
+        "prod_kasturi_bogo": {
+          "type": "product_card",
+          "settings": {
+            "product": "kasturi-attar-6-6-ml-buy-1-get-1-free",
+            "custom_title": "Kasturi Attar 6.6 Ml (Buy 1 Get 1 Free)",
+            "custom_size": "Pack of 2 (2 x 6.6 ml = 13.2 ml)",
+            "custom_notes": "Warm Cardamom • Ancient Kasturi Accord • Aged Sandalwood",
+            "custom_price": "₹699",
+            "custom_compare_price": "₹1,499",
+            "custom_badge": "🔥 BUY 1 GET 1 FREE",
+            "badge_style": "bogo",
+            "button_label": "Claim BOGO Offer",
+            "button_link": "/products/kasturi-attar-6-6-ml-buy-1-get-1-free"
+          }
+        },
+        "prod_black_oud": {
+          "type": "product_card",
+          "settings": {
+            "product": "black-oud-luxury-attar",
+            "custom_title": "Black Oud Luxury Attar",
+            "custom_size": "6.6 ml Concentrated Oil",
+            "custom_notes": "Crushed Peppercorn • Aged Assam Oud • Smoky Frankincense",
+            "custom_price": "₹649",
+            "custom_compare_price": "₹1,299",
+            "custom_badge": "BEAST MODE LONGEVITY",
+            "badge_style": "dark",
+            "button_label": "Order Now",
+            "button_link": "/products/black-oud-luxury-attar"
+          }
+        },
+        "prod_sanaya": {
+          "type": "product_card",
+          "settings": {
+            "product": "sanaya-attar-luxury",
+            "custom_title": "Sanaya Royal Floral Attar",
+            "custom_size": "6.6 ml Concentrated Oil",
+            "custom_notes": "Citrus Blossom • Kannauj Rose • Royal Mogra • White Musk",
+            "custom_price": "₹499",
+            "custom_compare_price": "₹999",
+            "custom_badge": "PURE FLORAL",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/sanaya-attar-luxury"
+          }
+        },
+        "prod_silk_musk": {
+          "type": "product_card",
+          "settings": {
+            "product": "silk-musk-luxury-attar-100-pure-alcohol-free",
+            "custom_title": "Silk Musk Luxury Attar",
+            "custom_size": "6.6 ml Concentrated Oil",
+            "custom_notes": "Powdery Clean Lily • White Orchid • Cashmere Wood • Pure Musk",
+            "custom_price": "₹549",
+            "custom_compare_price": "₹1,099",
+            "custom_badge": "SENSUAL & CLEAN",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/silk-musk-luxury-attar-100-pure-alcohol-free"
+          }
+        }
+      },
+      "block_order": [
+        "prod_white_oud",
+        "prod_kasturi_bogo",
+        "prod_black_oud",
+        "prod_sanaya",
+        "prod_silk_musk"
+      ],
+      "settings": {
+        "subtitle": "100% PURE CONCENTRATED ATTARS • ALCOHOL-FREE",
+        "title": "Signature Artisanal Fragrances",
+        "description": "<p>Handcrafted through Kannauj's traditional Deg-Bhapka distillation. Lasts 14+ hours with zero alcohol.</p>",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
     "custom_banner_homepage",
     "custom_usp_grid_homepage",
     "custom_categories_homepage",
+    "custom_luxury_products_showcase",
     "featured_product_UXN8fm",
     "featured_collection_miQLWj",
     "custom_scent_notes_wheel_EBHy3B",

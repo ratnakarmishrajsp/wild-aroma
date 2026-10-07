@@ -1,0 +1,627 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .luxury-products-section {
+    background-color: var(--wa-canvas, #FAF8F5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxury-products__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .luxury-products__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .luxury-products__subtitle {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--wa-gold-dark, #A88420);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .luxury-products__title {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--wa-obsidian, #121212);
+    margin: 0 0 0.8rem 0;
+    letter-spacing: 0.02em;
+  }
+
+  .luxury-products__desc {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: var(--wa-text-secondary, #5A5A5A);
+    line-height: 1.6;
+  }
+
+  .luxury-products__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .luxury-products__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .luxury-products__grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop | default: 5 }}, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .luxury-card {
+    background: #FFFFFF;
+    border: 1px solid var(--wa-border, #E8E2D8);
+    border-radius: 10px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+  }
+
+  .luxury-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--wa-gold, #D4AF37);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+  }
+
+  .luxury-card__badge-wrap {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 3;
+  }
+
+  .luxury-card__badge {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .luxury-card__badge--bogo {
+    background: linear-gradient(135deg, #8B0000 0%, #D90429 100%);
+    color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(217, 4, 41, 0.3);
+    animation: waPulseBadge 2s infinite ease-in-out;
+  }
+
+  .luxury-card__badge--gold {
+    background: linear-gradient(135deg, #121212 0%, #2A2418 100%);
+    color: #D4AF37;
+    border: 1px solid #D4AF37;
+  }
+
+  .luxury-card__badge--dark {
+    background: #121212;
+    color: #FFFFFF;
+  }
+
+  .luxury-card__image-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle at center, #FFF8ED 0%, #F5EFE6 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxury-card__image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .luxury-card:hover .luxury-card__image-box img {
+    transform: scale(1.06);
+  }
+
+  .luxury-card__placeholder-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .luxury-card__bottle-icon {
+    font-size: 3rem;
+    margin-bottom: 0.4rem;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  }
+
+  .luxury-card__ml-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #8A8175;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .luxury-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #A88420;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .luxury-card__stars {
+    color: #D4AF37;
+    letter-spacing: -1px;
+  }
+
+  .luxury-card__title {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #121212;
+    margin: 0 0 0.3rem 0;
+    line-height: 1.25;
+    text-decoration: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .luxury-card__notes {
+    font-size: 0.78rem;
+    color: #6A645A;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    min-height: 2.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .luxury-card__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: auto;
+    margin-bottom: 0.9rem;
+  }
+
+  .luxury-card__price-sale {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #121212;
+  }
+
+  .luxury-card__price-compare {
+    font-size: 0.85rem;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .luxury-card__discount-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #D90429;
+    background: #FFEBEB;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+
+  .luxury-card__btn {
+    width: 100%;
+    background: #121212;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #121212;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .luxury-card__btn:hover {
+    background: #D4AF37;
+    color: #121212;
+    border-color: #D4AF37;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  }
+
+  .luxury-card__bogo-ribbon {
+    background: #FFEBEB;
+    border: 1px dashed #D90429;
+    color: #8B0000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+{%- endstyle -%}
+
+<div class="luxury-products-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="luxury-products__container">
+    <div class="luxury-products__header">
+      {%- if section.settings.subtitle != blank -%}
+        <span class="luxury-products__subtitle">{{ section.settings.subtitle }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="luxury-products__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="luxury-products__desc">{{ section.settings.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="luxury-products__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign p = block.settings.product
+          assign title = block.settings.custom_title
+          assign notes = block.settings.custom_notes
+          assign size = block.settings.custom_size
+          assign badge = block.settings.custom_badge
+          assign badge_style = block.settings.badge_style
+          assign price = block.settings.custom_price
+          assign compare_price = block.settings.custom_compare_price
+          assign link = block.settings.button_link
+
+          if p != blank
+            if title == blank
+              assign title = p.title
+            endif
+            if link == blank
+              assign link = p.url
+            endif
+            if price == blank
+              assign price = p.price | money
+            endif
+            if compare_price == blank and p.compare_at_price > p.price
+              assign compare_price = p.compare_at_price | money
+            endif
+          endif
+
+          if link == blank
+            assign link = '/collections/all'
+          endif
+        -%}
+
+        <div class="luxury-card" {{ block.shopify_attributes }}>
+          {%- if badge != blank -%}
+            <div class="luxury-card__badge-wrap">
+              <span class="luxury-card__badge {% if badge_style == 'bogo' %}luxury-card__badge--bogo{% elsif badge_style == 'gold' %}luxury-card__badge--gold{% else %}luxury-card__badge--dark{% endif %}">
+                {{ badge }}
+              </span>
+            </div>
+          {%- endif -%}
+
+          <a href="{{ link }}" class="luxury-card__image-box" aria-label="{{ title }}">
+            {%- if block.settings.custom_image != blank -%}
+              <img
+                src="{{ block.settings.custom_image | image_url: width: 600 }}"
+                alt="{{ block.settings.custom_image.alt | default: title }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            {%- elsif p != blank and p.featured_media != blank -%}
+              <img
+                src="{{ p.featured_media | image_url: width: 600 }}"
+                alt="{{ p.featured_media.alt | default: title }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="luxury-card__placeholder-art">
+                <div class="luxury-card__bottle-icon">
+                  {%- if title contains 'Rose' or title contains 'Sanaya' -%}
+                    🌸
+                  {%- elsif title contains 'Kasturi' -%}
+                    🦌
+                  {%- elsif title contains 'Black' -%}
+                    🪵
+                  {%- elsif title contains 'Silk' -%}
+                    🕊️
+                  {%- else -%}
+                    ✨
+                  {%- endif -%}
+                </div>
+                <span class="luxury-card__ml-tag">{{ size }}</span>
+              </div>
+            {%- endif -%}
+          </a>
+
+          <div class="luxury-card__rating">
+            <span class="luxury-card__stars">★★★★★</span>
+            <span>4.9 (Verified)</span>
+          </div>
+
+          <a href="{{ link }}" class="luxury-card__title">{{ title }}</a>
+
+          {%- if notes != blank -%}
+            <div class="luxury-card__notes">{{ notes }}</div>
+          {%- endif -%}
+
+          {%- if badge_style == 'bogo' or title contains 'Buy 1 Get 1' -%}
+            <div class="luxury-card__bogo-ribbon">
+              🔥 Pack of 2 Bottles (13.2 ml Total)
+            </div>
+          {%- endif -%}
+
+          <div class="luxury-card__pricing">
+            <span class="luxury-card__price-sale">{{ price }}</span>
+            {%- if compare_price != blank -%}
+              <span class="luxury-card__price-compare">{{ compare_price }}</span>
+              <span class="luxury-card__discount-tag">Save 50%</span>
+            {%- endif -%}
+          </div>
+
+          <a href="{{ link }}" class="luxury-card__btn">
+            <span>{{ block.settings.button_label | default: 'Order Now' }}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Luxury Attar Showcase",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "100% PURE CONCENTRATED ATTARS • ALCOHOL-FREE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Signature Artisanal Fragrances"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Distilled through traditional Kannauj copper Deg-Bhapka methods. Enduring 14+ hours longevity with zero alcohol.</p>"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "default": 5,
+      "label": "Columns on Desktop"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Luxury Fragrance Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Shopify Product"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Title",
+          "default": "Royal Attar"
+        },
+        {
+          "type": "text",
+          "id": "custom_size",
+          "label": "Size / Volume",
+          "default": "6.6 ml Concentrated Oil"
+        },
+        {
+          "type": "text",
+          "id": "custom_notes",
+          "label": "Scent Notes Preview",
+          "default": "Top Notes • Heart Notes • Base Notes"
+        },
+        {
+          "type": "text",
+          "id": "custom_price",
+          "label": "Display Price",
+          "default": "₹599"
+        },
+        {
+          "type": "text",
+          "id": "custom_compare_price",
+          "label": "Compare Price",
+          "default": "₹1,199"
+        },
+        {
+          "type": "text",
+          "id": "custom_badge",
+          "label": "Card Badge Text",
+          "default": "BESTSELLER"
+        },
+        {
+          "type": "select",
+          "id": "badge_style",
+          "label": "Badge Style",
+          "options": [
+            { "value": "gold", "label": "Luxury Gold" },
+            { "value": "bogo", "label": "Crimson BOGO Alert" },
+            { "value": "dark", "label": "Obsidian Dark" }
+          ],
+          "default": "gold"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Product Image"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Order Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Custom Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Attar Showcase",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+            "custom_title": "White Oud Luxury Attar",
+            "custom_size": "6.6 ml Pure Oil",
+            "custom_notes": "Bergamot • White Amber • Rare White Cambodian Oud",
+            "custom_price": "₹599",
+            "custom_compare_price": "₹1,199",
+            "custom_badge": "ROYAL BESTSELLER",
+            "badge_style": "gold"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "custom_title": "Kasturi Attar 6.6 Ml (Buy 1 Get 1 Free)",
+            "custom_size": "Pack of 2 (2 x 6.6 ml = 13.2 ml)",
+            "custom_notes": "Warm Cardamom • Kannauj Kasturi Accord • Mysore Sandalwood",
+            "custom_price": "₹699",
+            "custom_compare_price": "₹1,499",
+            "custom_badge": "🔥 BUY 1 GET 1 FREE",
+            "badge_style": "bogo"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "custom_title": "Black Oud Luxury Attar",
+            "custom_size": "6.6 ml Pure Oil",
+            "custom_notes": "Crushed Peppercorn • Aged Assam Oud • Smoky Frankincense",
+            "custom_price": "₹649",
+            "custom_compare_price": "₹1,299",
+            "custom_badge": "BEAST MODE LONGEVITY",
+            "badge_style": "dark"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "custom_title": "Sanaya Royal Floral Attar",
+            "custom_size": "6.6 ml Pure Oil",
+            "custom_notes": "Citrus Blossom • Kannauj Rose • Royal Mogra • White Musk",
+            "custom_price": "₹499",
+            "custom_compare_price": "₹999",
+            "custom_badge": "PURE FLORAL",
+            "badge_style": "gold"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "custom_title": "Silk Musk Luxury Attar",
+            "custom_size": "6.6 ml Pure Oil",
+            "custom_notes": "Powdery Clean Lily • White Orchid • Cashmere Wood • Pure Musk",
+            "custom_price": "₹549",
+            "custom_compare_price": "₹1,099",
+            "custom_badge": "SENSUAL & CLEAN",
+            "badge_style": "gold"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

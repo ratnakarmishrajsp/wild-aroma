@@ -439,3 +439,295 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--wa-font-heading) !important;
   color: var(--wa-obsidian) !important;
 }
+
+/* ==========================================================================
+   WILD AROMA - LUXURY PRODUCT DESCRIPTION & SHOWCASE SYSTEM
+   ========================================================================== */
+
+.wa-product-desc-suite {
+  font-family: var(--wa-font-body);
+  color: var(--wa-text-primary);
+  line-height: 1.65;
+  margin: 1.5rem 0;
+}
+
+.wa-desc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #121212 0%, #2A2418 100%);
+  color: #D4AF37;
+  border: 1px solid #D4AF37;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+}
+
+.wa-desc-badge--bogo {
+  background: linear-gradient(135deg, #8B0000 0%, #D90429 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid #FFB4B4 !important;
+  box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+  animation: waPulseBadge 2s infinite ease-in-out;
+}
+
+@keyframes waPulseBadge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.wa-bogo-callout-box {
+  background: linear-gradient(135deg, #FFF8ED 0%, #FFF0F0 100%);
+  border: 1.5px solid #D4AF37;
+  border-left: 5px solid #D90429;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.15);
+}
+
+.wa-bogo-callout-box h4 {
+  font-family: var(--wa-font-heading) !important;
+  font-size: 1.35rem !important;
+  color: #8B0000 !important;
+  margin: 0 0 0.4rem 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wa-bogo-callout-box p {
+  font-size: 0.9rem !important;
+  color: #4A453E !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+
+.wa-bogo-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.wa-bogo-pill {
+  background: #FFFFFF;
+  border: 1px solid #D4AF37;
+  color: #121212;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+}
+
+.wa-desc-story {
+  font-size: 0.95rem;
+  color: #3C3833;
+  margin: 1rem 0 1.5rem 0;
+  line-height: 1.7;
+}
+
+.wa-desc-story strong {
+  color: #121212;
+}
+
+/* Fragrance Pyramid Section */
+.wa-pyramid-container {
+  background: #FFFFFF;
+  border: 1px solid var(--wa-border);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--wa-shadow-sm);
+}
+
+.wa-pyramid-header {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.wa-pyramid-header h4 {
+  font-family: var(--wa-font-heading);
+  font-size: 1.3rem;
+  color: #121212;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.wa-pyramid-header span {
+  font-size: 0.78rem;
+  color: #8A8175;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.wa-pyramid-tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+@media screen and (min-width: 600px) {
+  .wa-pyramid-tiers {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wa-pyramid-tier {
+  background: var(--wa-cream-card);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.wa-pyramid-tier:hover {
+  transform: translateY(-3px);
+  border-color: #D4AF37;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+}
+
+.wa-tier-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #A88420;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.wa-tier-title {
+  font-family: var(--wa-font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #121212;
+  margin-bottom: 0.4rem;
+}
+
+.wa-tier-notes {
+  font-size: 0.82rem;
+  color: #555047;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Olfactory Performance Radar */
+.wa-performance-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+@media screen and (min-width: 600px) {
+  .wa-performance-matrix {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wa-perf-metric {
+  background: #FAF8F5;
+  border: 1px solid var(--wa-border);
+  border-radius: 8px;
+  padding: 0.9rem;
+  text-align: center;
+}
+
+.wa-perf-icon {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.wa-perf-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7A7266;
+  display: block;
+}
+
+.wa-perf-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #121212;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+/* Purity Pillars Strip */
+.wa-desc-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  background: #121212;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+@media screen and (min-width: 600px) {
+  .wa-desc-pillars {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wa-pillar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.wa-pillar-icon {
+  font-size: 1.2rem;
+  color: #D4AF37;
+  flex-shrink: 0;
+}
+
+.wa-pillar-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.wa-pillar-text span {
+  display: block;
+  font-size: 0.68rem;
+  color: #C0BAAF;
+  font-weight: 400;
+}
+
+/* Application Ritual Card */
+.wa-ritual-guide {
+  background: #FFFDF9;
+  border: 1px dashed #D4AF37;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.wa-ritual-guide h5 {
+  font-family: var(--wa-font-heading);
+  font-size: 1.1rem;
+  color: #121212;
+  margin: 0 0 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wa-ritual-guide p {
+  font-size: 0.85rem;
+  color: #555047;
+  margin: 0;
+  line-height: 1.5;
+}
+

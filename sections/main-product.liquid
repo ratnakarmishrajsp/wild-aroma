@@ -456,10 +456,7 @@
                   {%- if product.description != blank -%}
                     {{ product.description }}
                   {%- else -%}
-                    <div class="custom-description-placeholder" style="position: relative; z-index: 2;">
-                      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: #121212; margin: 0 0 1rem 0;">✨ Wild Aroma Premium Attar Craftsmanship</h3>
-                      <p style="font-size: 1.4rem; line-height: 1.65; color: #4a453e; margin: 0 0 1rem 0;">Experience the royal essence of 100% pure concentrated perfume oil distilled in copper pots from Kannauj. Completely alcohol-free, skin-safe, and formulated for 24+ hour long-lasting projection.</p>
-                    </div>
+                    {% render 'luxury-product-description', product: product %}
                   {%- endif -%}
                 </div>
               {%- when 'sku' -%}

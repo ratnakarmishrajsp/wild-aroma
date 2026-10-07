@@ -1,0 +1,520 @@
+{% comment %}
+  Wild Aroma - Luxury Bespoke Product Description Engine
+  Automatically renders opulent HTML & CSS fragrance descriptions based on product title/handle
+{% endcomment %}
+
+{%- liquid
+  assign handle_lower = product.handle | downcase
+  assign title_lower = product.title | downcase
+-%}
+
+{%- if handle_lower contains 'kasturi' or title_lower contains 'kasturi' -%}
+  <!-- ==================== KASTURI ATTAR BOGO DESCRIPTION ==================== -->
+  <div class="wa-product-desc-suite">
+    <div class="wa-desc-badge wa-desc-badge--bogo">
+      🔥 SPECIAL PROMO: BUY 1 GET 1 FREE (PACK OF 2 BOTTLES)
+    </div>
+
+    <div class="wa-bogo-callout-box">
+      <h4>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#D90429"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Exclusive Double Bottle Offer: Buy 1 Get 1 Free
+      </h4>
+      <p>Order today and receive <strong>TWO individual 6.6 ml glass applicator bottles (Total 13.2 ml)</strong> of pure concentrated Kasturi Attar for the price of one! Share with family or double your personal fragrance reserve.</p>
+      <div class="wa-bogo-pills">
+        <span class="wa-bogo-pill">✓ 2 x 6.6 ml Bottles (13.2 ml Total)</span>
+        <span class="wa-bogo-pill">✓ 100% Pure Concentrated Oil</span>
+        <span class="wa-bogo-pill">✓ Cruelty-Free Botanical Musk</span>
+        <span class="wa-bogo-pill">✓ Free Cash On Delivery</span>
+      </div>
+    </div>
+
+    <div class="wa-desc-story">
+      <p><strong>The Royal Scent of Ancient Monarchs:</strong> Kasturi (Deer Musk) is revered in Indian perfumery lore as the king of fragrances. Distilled with generational reverence in Kannauj, Wild Aroma's Kasturi Attar offers a <em>100% cruelty-free, ethical botanical and herbal deer musk formulation</em> that accurately mirrors the deep, magnetic, mystical warmth of traditional Himalayan musk.</p>
+      <p>Its hypnotic, earthy sweetness anchors your spirit, exuding an unmatched aura of royal stature and quiet confidence that lingers effortlessly for over 18 hours.</p>
+    </div>
+
+    <!-- Fragrance Pyramid -->
+    <div class="wa-pyramid-container">
+      <div class="wa-pyramid-header">
+        <h4>Olfactory Symphony</h4>
+        <span>The 3-Stage Scent Evolution</span>
+      </div>
+      <div class="wa-pyramid-tiers">
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Top Notes</span>
+          <div class="wa-tier-title">Opening Radiance</div>
+          <p class="wa-tier-notes">Cardamom Pods, Warm Clove Bud & Spiced Sweet Amber</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Heart Notes</span>
+          <div class="wa-tier-title">The Mystical Core</div>
+          <p class="wa-tier-notes">Artisanal Kannauj Kasturi Accord, Labdanum & Hydro-distilled Gulab</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Base Notes</span>
+          <div class="wa-tier-title">Enduring Sillage</div>
+          <p class="wa-tier-notes">Earthy Herbal Musk, Aged Indian Sandalwood & Rich Resin Amber</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="wa-performance-matrix">
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">⏳</span>
+        <span class="wa-perf-label">Longevity</span>
+        <span class="wa-perf-value">18+ Hours (Beast Mode)</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">👑</span>
+        <span class="wa-perf-label">Projection</span>
+        <span class="wa-perf-value">Heavy & Mesmerizing</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💧</span>
+        <span class="wa-perf-label">Formulation</span>
+        <span class="wa-perf-value">100% Pure Oil (No Alcohol)</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">🎁</span>
+        <span class="wa-perf-label">Net Content</span>
+        <span class="wa-perf-value">2 x 6.6 ml (Buy 1 Get 1)</span>
+      </div>
+    </div>
+
+    <!-- Purity Pillars -->
+    <div class="wa-desc-pillars">
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌿</div>
+        <div class="wa-pillar-text">100% Alcohol-Free<span>Zero Burn, Pure Oil</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🦌</div>
+        <div class="wa-pillar-text">Cruelty-Free Musk<span>Ethical Plant-Musk Accord</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🏺</div>
+        <div class="wa-pillar-text">Kannauj Distilled<span>Copper Deg-Bhapka Steam</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">✨</div>
+        <div class="wa-pillar-text">Skin Safe & Pure<span>Non-Staining Botanical Base</span></div>
+      </div>
+    </div>
+
+    <!-- Application Guide -->
+    <div class="wa-ritual-guide">
+      <h5>👑 The Royal Application Ritual</h5>
+      <p>Using the luxury glass dip-rod, apply 2 drops onto your pulse points: wrists, carotid neck arteries, and behind your earlobes. <em>Gently dab—do not rub</em>—to preserve the volatile top note molecules for all-day sillage.</p>
+    </div>
+  </div>
+
+{%- elsif handle_lower contains 'white-oud' or title_lower contains 'white oud' -%}
+  <!-- ==================== WHITE OUD DESCRIPTION ==================== -->
+  <div class="wa-product-desc-suite">
+    <div class="wa-desc-badge">
+      ✨ ROYAL SIGNATURE • CREAMY OUDH & WHITE AMBER
+    </div>
+
+    <div class="wa-desc-story">
+      <p><strong>The Luminous Crown of Agarwood:</strong> White Oud is an extraordinary modern reimagining of rare agarwood. Where traditional oud can be dark and intense, White Oud shines with crystal luminescence, opening with sparkling citrus blossom before unveiling a creamy, velvety core of white amber, tender saffron, and smooth Cambodian white oud.</p>
+      <p>Intoxicatingly smooth, elegant, and universally admired, this 100% pure alcohol-free attar draws effortless compliments from morning boardrooms to black-tie galas.</p>
+    </div>
+
+    <!-- Fragrance Pyramid -->
+    <div class="wa-pyramid-container">
+      <div class="wa-pyramid-header">
+        <h4>Olfactory Symphony</h4>
+        <span>The 3-Stage Scent Evolution</span>
+      </div>
+      <div class="wa-pyramid-tiers">
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Top Notes</span>
+          <div class="wa-tier-title">Crisp Opening</div>
+          <p class="wa-tier-notes">Sparkling Bergamot, White Musk & Dewy Citrus Blossoms</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Heart Notes</span>
+          <div class="wa-tier-title">Royal Heart</div>
+          <p class="wa-tier-notes">Kashmiri Saffron, Velvety Jasmine & Luminous White Amber</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Base Notes</span>
+          <div class="wa-tier-title">Creamy Trail</div>
+          <p class="wa-tier-notes">Rare White Cambodian Oud, Mysore Sandalwood & Vanilla Pod</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="wa-performance-matrix">
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">⏳</span>
+        <span class="wa-perf-label">Longevity</span>
+        <span class="wa-perf-value">14+ Hours on Skin</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">👑</span>
+        <span class="wa-perf-label">Projection</span>
+        <span class="wa-perf-value">Radiant & Smooth Sillage</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💧</span>
+        <span class="wa-perf-label">Concentration</span>
+        <span class="wa-perf-value">100% Pure Perfume Oil</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💎</span>
+        <span class="wa-perf-label">Net Content</span>
+        <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
+      </div>
+    </div>
+
+    <!-- Purity Pillars -->
+    <div class="wa-desc-pillars">
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌿</div>
+        <div class="wa-pillar-text">100% Alcohol-Free<span>Concentrated Perfume Oil</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🪵</div>
+        <div class="wa-pillar-text">Pure Agarwood<span>Sustainably Sourced Oud</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🏺</div>
+        <div class="wa-pillar-text">Kannauj Distilled<span>Authentic Copper Stills</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">✨</div>
+        <div class="wa-pillar-text">Zero Synthetics<span>Safe for Sensitive Skin</span></div>
+      </div>
+    </div>
+
+    <!-- Application Guide -->
+    <div class="wa-ritual-guide">
+      <h5>👑 The Royal Application Ritual</h5>
+      <p>Touch the applicator rod to the inner wrists and dab softly against the sides of your neck. Its creamy woody warmth harmonizes with your natural skin warmth to radiate an all-day luxury halo.</p>
+    </div>
+  </div>
+
+{%- elsif handle_lower contains 'black-oud' or title_lower contains 'black oud' -%}
+  <!-- ==================== BLACK OUD DESCRIPTION ==================== -->
+  <div class="wa-product-desc-suite">
+    <div class="wa-desc-badge">
+      👑 POWERHOUSE PROJECTION • DEEP, SMOKY & MAGNETIC
+    </div>
+
+    <div class="wa-desc-story">
+      <p><strong>The Dark Majesty of Aged Assam Agarwood:</strong> Black Oud is not for the faint of heart. Formulated for the discerning connoisseur who commands every room they enter, this attar marries aged Assam Dehn Al Oudh with smoky frankincense, dark spices, leather nuances, and an intoxicating base of dark amber and Indonesian patchouli.</p>
+      <p>Distilled through ancient Kannauj wood-fired degs, it delivers an intense, mysterious, and unapologetically masculine sillage that stays vibrant beyond 24 hours.</p>
+    </div>
+
+    <!-- Fragrance Pyramid -->
+    <div class="wa-pyramid-container">
+      <div class="wa-pyramid-header">
+        <h4>Olfactory Symphony</h4>
+        <span>The 3-Stage Scent Evolution</span>
+      </div>
+      <div class="wa-pyramid-tiers">
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Top Notes</span>
+          <div class="wa-tier-title">Spicy Invocation</div>
+          <p class="wa-tier-notes">Crushed Black Peppercorn, Smoked Incense & Fresh Nutmeg</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Heart Notes</span>
+          <div class="wa-tier-title">Smoky Resins</div>
+          <p class="wa-tier-notes">Aged Assam Agarwood Resin, Dark Damask Rose & Leather</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Base Notes</span>
+          <div class="wa-tier-title">Deep Gravity</div>
+          <p class="wa-tier-notes">Pure Black Oudh, Indonesian Patchouli, Black Amber & Vetiver</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="wa-performance-matrix">
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">⏳</span>
+        <span class="wa-perf-label">Longevity</span>
+        <span class="wa-perf-value">24+ Hours (Beast Mode)</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">👑</span>
+        <span class="wa-perf-label">Projection</span>
+        <span class="wa-perf-value">Commandingly Strong</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💧</span>
+        <span class="wa-perf-label">Concentration</span>
+        <span class="wa-perf-value">100% Pure Perfume Oil</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💎</span>
+        <span class="wa-perf-label">Net Content</span>
+        <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
+      </div>
+    </div>
+
+    <!-- Purity Pillars -->
+    <div class="wa-desc-pillars">
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌿</div>
+        <div class="wa-pillar-text">100% Alcohol-Free<span>Zero Water Dilution</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🔥</div>
+        <div class="wa-pillar-text">Aged Assam Oud<span>Natural Wood Resin Core</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🏺</div>
+        <div class="wa-pillar-text">Slow Fire Distilled<span>Traditional Copper Deg</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">✨</div>
+        <div class="wa-pillar-text">Intense Sillage<span>Guaranteed Beast Projection</span></div>
+      </div>
+    </div>
+
+    <!-- Application Guide -->
+    <div class="wa-ritual-guide">
+      <h5>👑 The Royal Application Ritual</h5>
+      <p>Because Black Oud has beast-mode concentration, just a micro-drop is sufficient. Apply to the collarbone and inner wrists. Best paired with evenings, winter months, and formal gatherings.</p>
+    </div>
+  </div>
+
+{%- elsif handle_lower contains 'sanaya' or title_lower contains 'sanaya' -%}
+  <!-- ==================== SANAYA ATTAR DESCRIPTION ==================== -->
+  <div class="wa-product-desc-suite">
+    <div class="wa-desc-badge">
+      🌸 ROYAL FLORAL • FRESH, ROMANTIC & RADIANT
+    </div>
+
+    <div class="wa-desc-story">
+      <p><strong>The Essence of Radiant Grace:</strong> Named after the spirit of radiance, Sanaya Attar captures the blooming dawn breeze over the royal flower gardens of Kannauj. Fresh green morning dew and sweet Italian citrus intertwine with a rich heart of fresh hydro-distilled Kannauj roses, royal Mogra (Jasmine Sambac), and valley lilies.</p>
+      <p>As the daylight softens, it dries down into a warm, creamy cushion of white musk and golden amber, wrapping you in an enchanting, clean, and poetic floral veil.</p>
+    </div>
+
+    <!-- Fragrance Pyramid -->
+    <div class="wa-pyramid-container">
+      <div class="wa-pyramid-header">
+        <h4>Olfactory Symphony</h4>
+        <span>The 3-Stage Scent Evolution</span>
+      </div>
+      <div class="wa-pyramid-tiers">
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Top Notes</span>
+          <div class="wa-tier-title">Dewy Dawn</div>
+          <p class="wa-tier-notes">Crisp Citrus Blossom, Italian Mandarin & Green Petals</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Heart Notes</span>
+          <div class="wa-tier-title">Blossom Bouquet</div>
+          <p class="wa-tier-notes">Kannauj Rose Petals, Royal Mogra Jasmine & Lily of the Valley</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Base Notes</span>
+          <div class="wa-tier-title">Velvet Finish</div>
+          <p class="wa-tier-notes">Sensual White Musk, Golden Amber & Mysore Sandalwood Base</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="wa-performance-matrix">
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">⏳</span>
+        <span class="wa-perf-label">Longevity</span>
+        <span class="wa-perf-value">12+ Hours on Skin</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">👑</span>
+        <span class="wa-perf-label">Projection</span>
+        <span class="wa-perf-value">Gentle & Radiantly Charming</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💧</span>
+        <span class="wa-perf-label">Concentration</span>
+        <span class="wa-perf-value">100% Pure Perfume Oil</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💎</span>
+        <span class="wa-perf-label">Net Content</span>
+        <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
+      </div>
+    </div>
+
+    <!-- Purity Pillars -->
+    <div class="wa-desc-pillars">
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌿</div>
+        <div class="wa-pillar-text">100% Alcohol-Free<span>Pure Essential Floral Oils</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌹</div>
+        <div class="wa-pillar-text">Real Rose & Mogra<span>Natural Blossoms of Kannauj</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🏺</div>
+        <div class="wa-pillar-text">Deg-Bhapka Heritage<span>Steam Distilled With Care</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">✨</div>
+        <div class="wa-pillar-text">Uplifting & Calming<span>Perfect for Daily Wear</span></div>
+      </div>
+    </div>
+
+    <!-- Application Guide -->
+    <div class="wa-ritual-guide">
+      <h5>👑 The Royal Application Ritual</h5>
+      <p>Dab onto wrists, pulse points, and behind ears after bathing. Its refreshing floral symphony lifts the spirits throughout your day without overwhelming the senses.</p>
+    </div>
+  </div>
+
+{%- elsif handle_lower contains 'silk-musk' or title_lower contains 'silk musk' -%}
+  <!-- ==================== SILK MUSK DESCRIPTION ==================== -->
+  <div class="wa-product-desc-suite">
+    <div class="wa-desc-badge">
+      ✨ TIMELESS LUXURY • POWDERY WHITE MUSK & CASHMERE
+    </div>
+
+    <div class="wa-desc-story">
+      <p><strong>The Velvet Touch of Pure White Musk:</strong> Silk Musk is the very definition of quiet luxury. Clean, airy, and profoundly comforting, it evokes the sensation of pristine white silk caressing warm skin. Opening with dewy lily petals and powdery cotton blossoms, it gracefully melts into white orchids and plush cashmere woods.</p>
+      <p>Free from any sharp alcohol edges, Silk Musk acts as a second skin—intimate, sensual, and universally magnetic to everyone who leans in close.</p>
+    </div>
+
+    <!-- Fragrance Pyramid -->
+    <div class="wa-pyramid-container">
+      <div class="wa-pyramid-header">
+        <h4>Olfactory Symphony</h4>
+        <span>The 3-Stage Scent Evolution</span>
+      </div>
+      <div class="wa-pyramid-tiers">
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Top Notes</span>
+          <div class="wa-tier-title">Crisp Serenity</div>
+          <p class="wa-tier-notes">Powdery Clean Lily, Cotton Blossom & Soft Bergamot</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Heart Notes</span>
+          <div class="wa-tier-title">Silken Florals</div>
+          <p class="wa-tier-notes">White Orchid, Dew-Kissed Peony & Velvety Silk Petals</p>
+        </div>
+        <div class="wa-pyramid-tier">
+          <span class="wa-tier-tag">Base Notes</span>
+          <div class="wa-tier-title">Cashmere Cloud</div>
+          <p class="wa-tier-notes">Pure White Musk, Cashmere Wood & Subtle Madagascar Vanilla</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="wa-performance-matrix">
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">⏳</span>
+        <span class="wa-perf-label">Longevity</span>
+        <span class="wa-perf-value">14+ Hours on Skin</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">👑</span>
+        <span class="wa-perf-label">Projection</span>
+        <span class="wa-perf-value">Soft, Intimate All-Day Halo</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💧</span>
+        <span class="wa-perf-label">Concentration</span>
+        <span class="wa-perf-value">100% Pure Perfume Oil</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💎</span>
+        <span class="wa-perf-label">Net Content</span>
+        <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
+      </div>
+    </div>
+
+    <!-- Purity Pillars -->
+    <div class="wa-desc-pillars">
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌿</div>
+        <div class="wa-pillar-text">100% Alcohol-Free<span>Gentle on All Skin Types</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🕊️</div>
+        <div class="wa-pillar-text">Clean Scent Profile<span>Zero Artificial Pungency</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🏺</div>
+        <div class="wa-pillar-text">Kannauj Heritage<span>Artisanal Small-Batch Blend</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">✨</div>
+        <div class="wa-pillar-text">Perfect Layering Base<span>Elevates Any Other Scent</span></div>
+      </div>
+    </div>
+
+    <!-- Application Guide -->
+    <div class="wa-ritual-guide">
+      <h5>👑 The Royal Application Ritual</h5>
+      <p>Apply to wrists, inner elbows, and collarbone after a warm shower. Excellent on its own for understated elegance or layered beneath heavier ouds to soften and enrich their profile.</p>
+    </div>
+  </div>
+
+{%- else -%}
+  <!-- ==================== BESPOKE WILD AROMA CRAFTSMANSHIP (FALLBACK) ==================== -->
+  <div class="wa-product-desc-suite">
+    <div class="wa-desc-badge">
+      ✨ 100% PURE CONCENTRATED ATTAR • ALCOHOL-FREE
+    </div>
+
+    <div class="wa-desc-story">
+      <p><strong>Artisanal Kannauj Perfumery:</strong> Each bottle of Wild Aroma attar is crafted through centuries-old Deg-Bhapka distillation in copper vessels from Kannauj, the perfume capital of India. Free from harsh chemicals, synthetic fixatives, and drying alcohol, our concentrated perfume oils adapt uniquely to your skin chemistry for enduring, luxurious sillage.</p>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="wa-performance-matrix">
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">⏳</span>
+        <span class="wa-perf-label">Longevity</span>
+        <span class="wa-perf-value">12-24 Hours</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">👑</span>
+        <span class="wa-perf-label">Projection</span>
+        <span class="wa-perf-value">Rich Royal Sillage</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💧</span>
+        <span class="wa-perf-label">Concentration</span>
+        <span class="wa-perf-value">100% Pure Perfume Oil</span>
+      </div>
+      <div class="wa-perf-metric">
+        <span class="wa-perf-icon">💎</span>
+        <span class="wa-perf-label">Volume</span>
+        <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
+      </div>
+    </div>
+
+    <!-- Purity Pillars -->
+    <div class="wa-desc-pillars">
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🌿</div>
+        <div class="wa-pillar-text">100% Alcohol-Free<span>Zero Burn, Pure Oil</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">🏺</div>
+        <div class="wa-pillar-text">Kannauj Distilled<span>Authentic Copper Stills</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">✨</div>
+        <div class="wa-pillar-text">Skin Kind<span>Non-Irritating Formulation</span></div>
+      </div>
+      <div class="wa-pillar-item">
+        <div class="wa-pillar-icon">👑</div>
+        <div class="wa-pillar-text">High Longevity<span>Lasts Day & Night</span></div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
