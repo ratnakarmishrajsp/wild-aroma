@@ -87,6 +87,7 @@
     transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     overflow: hidden;
+    cursor: pointer;
   }
 
   .luxury-card:hover {
@@ -342,7 +343,7 @@
           endif
         -%}
 
-        <div class="luxury-card" {{ block.shopify_attributes }}>
+        <div class="luxury-card" onclick="if(!event.target.closest('a')){ window.location.href='{{ link }}'; }" {{ block.shopify_attributes }}>
           {%- if badge != blank -%}
             <div class="luxury-card__badge-wrap">
               <span class="luxury-card__badge {% if badge_style == 'bogo' %}luxury-card__badge--bogo{% elsif badge_style == 'gold' %}luxury-card__badge--gold{% else %}luxury-card__badge--dark{% endif %}">
