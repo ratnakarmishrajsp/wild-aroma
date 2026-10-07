@@ -75,12 +75,75 @@
             if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
               assign quantity_rule_soldout = true
             endif
+
+            assign current_var_price = product.selected_or_first_available_variant.price
+            assign online_discounted_price = current_var_price | minus: 10000
           -%}
+
+          {%- if product.selected_or_first_available_variant.available and quantity_rule_soldout != true -%}
+            <!-- Custom High-Converting COD & Prepaid Checkout Action Set -->
+            <div class="wa-custom-buy-wrapper">
+              <!-- Primary: Cash on Delivery Button (Releasit Style) -->
+              <button
+                type="button"
+                id="wa-main-cod-btn"
+                class="wa-cod-trigger-btn"
+                onclick="openWildAromaOrderModal('cod')"
+              >
+                <div class="wa-cod-btn-left">
+                  <span class="wa-cod-btn-icon">📦</span>
+                  <div class="wa-cod-btn-titles">
+                    <span class="wa-cod-btn-main-title">ORDER NOW • CASH ON DELIVERY</span>
+                    <span class="wa-cod-btn-sub-title">Pay with cash at doorstep • Free Express Shipping</span>
+                  </div>
+                </div>
+                <div class="wa-cod-btn-pill" id="wa-custom-cod-pill">
+                  {{ current_var_price | money }}
+                </div>
+              </button>
+
+              <!-- Secondary: Prepaid Extra ₹100 Off Button (SMD Style) -->
+              <button
+                type="button"
+                id="wa-main-online-btn"
+                class="wa-prepaid-trigger-btn"
+                onclick="openWildAromaOrderModal('online')"
+              >
+                <div class="wa-prepaid-btn-left">
+                  <span class="wa-prepaid-btn-icon">⚡</span>
+                  <div class="wa-prepaid-btn-titles">
+                    <span class="wa-prepaid-btn-main-title">
+                      PAY ONLINE • EXTRA ₹100 OFF
+                      <span class="wa-prepaid-save-pill">SAVE ₹100</span>
+                    </span>
+                    <span class="wa-prepaid-btn-sub-title">Instant UPI • Google Pay • PhonePe • Cards</span>
+                  </div>
+                </div>
+                <div class="wa-prepaid-btn-pill" id="wa-custom-online-pill">
+                  {%- if online_discounted_price > 0 -%}
+                    {{ online_discounted_price | money }}
+                  {%- else -%}
+                    {{ current_var_price | money }}
+                  {%- endif -%}
+                </div>
+              </button>
+
+              <div class="wa-trust-micro-strip">
+                <span>🛡️ 100% Pure Alcohol-Free</span>
+                <span>•</span>
+                <span>🚚 3-5 Days Express Delivery</span>
+                <span>•</span>
+                <span>💬 WhatsApp Updates</span>
+              </div>
+            </div>
+          {%- endif -%}
+
           <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit button button--full-width button--secondary"
+            style="margin-top: 8px;"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -102,11 +165,11 @@
           {%- if show_dynamic_checkout -%}
             <input type="hidden" value="true" id="fastrrCollectionPage" />
             <input type="hidden" value={{ product.url }} name="productUrl" />
-            {{ form | payment_button }}
+            <div style="display:none !important;">{{ form | payment_button }}</div>
           {%- endif -%}
 
           <style>
-            /* Disable and hide all Releasit COD buttons, popups, sticky bars & embeds */
+            /* Disable and hide all external Releasit buttons, popups, sticky bars & embeds */
             iframe[src*="releasit"],
             iframe[src*="releas.it"],
             div[class*="releasit"],
@@ -134,6 +197,9 @@
           </style>
         </div>
       {%- endform -%}
+
+      {%- render 'custom-cod-checkout-modal', product: product -%}
+
     </product-form>
   {%- else -%}
     <div class="product-form">

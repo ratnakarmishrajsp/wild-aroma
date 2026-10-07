@@ -903,8 +903,8 @@
         </div>
       </div>
       <div class="sticky-buy-bar__action">
-        <button type="submit" class="button button--primary sticky-buy-bar__btn" onclick="const srBtn = document.querySelector('form[action*=\'/cart/add\'] .sr-headless-checkout'); let clicked = false; if(srBtn) { if(!srBtn.disabled) { srBtn.click(); clicked = true; } } if(!clicked) { const buyFormBtn = document.querySelector('form[action=\'/cart/add\'] [name=\'add\']'); if(buyFormBtn) { buyFormBtn.click(); } }">
-          Buy Now
+        <button type="button" class="button button--primary sticky-buy-bar__btn" onclick="if(window.openWildAromaOrderModal) { window.openWildAromaOrderModal('cod'); } else { const buyBtn = document.querySelector('form[action*=\'/cart/add\'] [name=\'add\']'); if(buyBtn) buyBtn.click(); }">
+          <span>📦 ORDER NOW (COD)</span>
         </button>
       </div>
     </div>
