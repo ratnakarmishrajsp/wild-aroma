@@ -106,34 +106,24 @@
           </button>
 
           {%- if product.selected_or_first_available_variant.available and quantity_rule_soldout != true -%}
-            <!-- 2. Order Now - Cash on Delivery Button (Second) -->
+            <!-- 2. Order Now Cash On Delivery Button (Option 01 Royal Red) -->
             <button
               type="button"
               id="wa-main-cod-btn"
               class="wa-btn-cod"
               onclick="openWildAromaOrderModal('cod')"
             >
-              <span class="wa-btn-label">📦 ORDER NOW CASH ON DELIVERY</span>
-              <span class="wa-btn-price" id="wa-custom-cod-pill">
-                {{ current_var_price | money }}
-              </span>
+              <span class="wa-btn-label">Order Now Cash On Delivery</span>
             </button>
 
-            <!-- 3. Pay Online - 100₹ Off Button (Third) -->
+            <!-- 3. Pay Online 100₹ Off Button (Option 01 Burgundy Gold) -->
             <button
               type="button"
               id="wa-main-online-btn"
               class="wa-btn-online"
               onclick="openWildAromaOrderModal('online')"
             >
-              <span class="wa-btn-label">⚡ PAY ONLINE 100₹ OFF</span>
-              <span class="wa-btn-price" id="wa-custom-online-pill">
-                {%- if online_discounted_price > 0 -%}
-                  {{ online_discounted_price | money }}
-                {%- else -%}
-                  {{ current_var_price | money }}
-                {%- endif -%}
-              </span>
+              <span class="wa-btn-label">Pay Online 100₹ Off</span>
             </button>
           {%- endif -%}
           {%- if show_dynamic_checkout -%}

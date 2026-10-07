@@ -39,6 +39,19 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {%- comment -%} Automatic routing from default Shopify /policies/* to custom Hindi policy pages {%- endcomment -%}
+    {%- if request.path contains '/policies/' -%}
+      <script>
+        (function() {
+          var p = window.location.pathname;
+          if (p.indexOf('privacy-policy') !== -1) window.location.replace('/pages/privacy-policy');
+          else if (p.indexOf('terms-of-service') !== -1 || p.indexOf('terms') !== -1) window.location.replace('/pages/terms-and-conditions');
+          else if (p.indexOf('shipping') !== -1) window.location.replace('/pages/shipping-policy');
+          else if (p.indexOf('refund') !== -1) window.location.replace('/pages/refund-policy');
+        })();
+      </script>
+    {%- endif -%}
+
     {{ content_for_header }}
 
     {%- liquid
