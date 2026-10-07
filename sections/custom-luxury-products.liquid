@@ -252,6 +252,14 @@
     border-radius: 3px;
   }
 
+  .luxury-card__cover-link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+
   .luxury-card__btn {
     width: 100%;
     background: #1A1A1A;
@@ -270,6 +278,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
+    position: relative;
+    z-index: 3;
   }
 
   .luxury-card__btn:hover {
@@ -293,6 +303,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.3rem;
+    position: relative;
+    z-index: 3;
   }
 {%- endstyle -%}
 
@@ -311,115 +323,203 @@
     </div>
 
     <div class="luxury-products__grid">
-      {%- for block in section.blocks -%}
-        {%- liquid
-          assign p = block.settings.product
-          assign title = block.settings.custom_title
-          assign notes = block.settings.custom_notes
-          assign size = block.settings.custom_size
-          assign badge = block.settings.custom_badge
-          assign badge_style = block.settings.badge_style
-          assign price = block.settings.custom_price
-          assign compare_price = block.settings.custom_compare_price
-          assign link = block.settings.button_link
+      {%- liquid
+        assign dynamic_collection = section.settings.collection
+        assign use_dynamic_collection = false
+        if dynamic_collection != blank and dynamic_collection.products.size > 0
+          assign use_dynamic_collection = true
+        endif
+      -%}
 
-          if p != blank
-            if title == blank
-              assign title = p.title
+      {%- if use_dynamic_collection -%}
+        {%- for prod in dynamic_collection.products limit: section.settings.products_to_show -%}
+          {%- liquid
+            assign link = prod.url
+            assign title = prod.title
+            assign price = prod.price | money
+            assign compare_price = ''
+            if prod.compare_at_price > prod.price
+              assign compare_price = prod.compare_at_price | money
             endif
-            if link == blank
-              assign link = p.url
+            assign size = 'Pure Concentrated Perfume Oil'
+            assign badge = ''
+            assign badge_style = 'gold'
+            if prod.tags contains 'BOGO' or prod.title contains 'Buy 1 Get 1' or prod.title contains 'BOGO'
+              assign badge = '🔥 BUY 1 GET 1 FREE'
+              assign badge_style = 'bogo'
+            elsif prod.tags contains 'Best Seller' or prod.tags contains 'BESTSELLER'
+              assign badge = 'ROYAL BESTSELLER'
+              assign badge_style = 'gold'
             endif
-            if price == blank
-              assign price = p.price | money
-            endif
-            if compare_price == blank and p.compare_at_price > p.price
-              assign compare_price = p.compare_at_price | money
-            endif
-          endif
+          -%}
+          <div class="luxury-card">
+            <a href="{{ link }}" class="luxury-card__cover-link" aria-label="{{ title | escape }}">{{ title | escape }}</a>
 
-          if link == blank
-            assign link = '/collections/all'
-          endif
-        -%}
-
-        <div class="luxury-card" onclick="if(!event.target.closest('a')){ window.location.href='{{ link }}'; }" {{ block.shopify_attributes }}>
-          {%- if badge != blank -%}
-            <div class="luxury-card__badge-wrap">
-              <span class="luxury-card__badge {% if badge_style == 'bogo' %}luxury-card__badge--bogo{% elsif badge_style == 'gold' %}luxury-card__badge--gold{% else %}luxury-card__badge--dark{% endif %}">
-                {{ badge }}
-              </span>
-            </div>
-          {%- endif -%}
-
-          <a href="{{ link }}" class="luxury-card__image-box" aria-label="{{ title }}">
-            {%- if block.settings.custom_image != blank -%}
-              <img
-                src="{{ block.settings.custom_image | image_url: width: 600 }}"
-                alt="{{ block.settings.custom_image.alt | default: title }}"
-                width="600"
-                height="600"
-                loading="lazy"
-              >
-            {%- elsif p != blank and p.featured_media != blank -%}
-              <img
-                src="{{ p.featured_media | image_url: width: 600 }}"
-                alt="{{ p.featured_media.alt | default: title }}"
-                width="600"
-                height="600"
-                loading="lazy"
-              >
-            {%- else -%}
-              <div class="luxury-card__placeholder-art">
-                <div class="luxury-card__bottle-icon">
-                  {%- if title contains 'Rose' or title contains 'Sanaya' -%}
-                    🌸
-                  {%- elsif title contains 'Kasturi' -%}
-                    🦌
-                  {%- elsif title contains 'Black' -%}
-                    🪵
-                  {%- elsif title contains 'Silk' -%}
-                    🕊️
-                  {%- else -%}
-                    ✨
-                  {%- endif -%}
-                </div>
-                <span class="luxury-card__ml-tag">{{ size }}</span>
+            {%- if badge != blank -%}
+              <div class="luxury-card__badge-wrap">
+                <span class="luxury-card__badge {% if badge_style == 'bogo' %}luxury-card__badge--bogo{% elsif badge_style == 'gold' %}luxury-card__badge--gold{% else %}luxury-card__badge--dark{% endif %}">
+                  {{ badge }}
+                </span>
               </div>
             {%- endif -%}
-          </a>
 
-          <div class="luxury-card__rating">
-            <span class="luxury-card__stars">★★★★★</span>
-            <span>4.9 (Verified)</span>
-          </div>
-
-          <a href="{{ link }}" class="luxury-card__title">{{ title }}</a>
-
-          {%- if notes != blank -%}
-            <div class="luxury-card__notes">{{ notes }}</div>
-          {%- endif -%}
-
-          {%- if badge_style == 'bogo' or title contains 'Buy 1 Get 1' -%}
-            <div class="luxury-card__bogo-ribbon">
-              🔥 Pack of 2 Bottles (13.2 ml Total)
+            <div class="luxury-card__image-box">
+              {%- if prod.featured_media != blank -%}
+                <img
+                  src="{{ prod.featured_media | image_url: width: 600 }}"
+                  alt="{{ prod.featured_media.alt | default: title }}"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <div class="luxury-card__placeholder-art">
+                  <div class="luxury-card__bottle-icon">✨</div>
+                  <span class="luxury-card__ml-tag">{{ size }}</span>
+                </div>
+              {%- endif -%}
             </div>
-          {%- endif -%}
 
-          <div class="luxury-card__pricing">
-            <span class="luxury-card__price-sale">{{ price }}</span>
-            {%- if compare_price != blank -%}
-              <span class="luxury-card__price-compare">{{ compare_price }}</span>
-              <span class="luxury-card__discount-tag">Save 50%</span>
+            <div class="luxury-card__rating">
+              <span class="luxury-card__stars">★★★★★</span>
+              <span>4.9 (Verified)</span>
+            </div>
+
+            <h3 class="luxury-card__title">{{ title }}</h3>
+
+            <div class="luxury-card__notes">{{ prod.description | strip_html | truncatewords: 8, '...' }}</div>
+
+            {%- if badge_style == 'bogo' or title contains 'Buy 1 Get 1' -%}
+              <div class="luxury-card__bogo-ribbon">
+                🔥 Special BOGO Package Deal
+              </div>
             {%- endif -%}
-          </div>
 
-          <a href="{{ link }}" class="luxury-card__btn">
-            <span>{{ block.settings.button_label | default: 'Order Now' }}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      {%- endfor -%}
+            <div class="luxury-card__pricing">
+              <span class="luxury-card__price-sale">{{ price }}</span>
+              {%- if compare_price != blank -%}
+                <span class="luxury-card__price-compare">{{ compare_price }}</span>
+                <span class="luxury-card__discount-tag">Save</span>
+              {%- endif -%}
+            </div>
+
+            <a href="{{ link }}" class="luxury-card__btn">
+              <span>View Product</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign p = block.settings.product
+            assign title = block.settings.custom_title
+            assign notes = block.settings.custom_notes
+            assign size = block.settings.custom_size
+            assign badge = block.settings.custom_badge
+            assign badge_style = block.settings.badge_style
+            assign price = block.settings.custom_price
+            assign compare_price = block.settings.custom_compare_price
+            assign link = block.settings.button_link
+
+            if p != blank
+              assign link = p.url
+              if title == blank
+                assign title = p.title
+              endif
+              if price == blank
+                assign price = p.price | money
+              endif
+              if compare_price == blank and p.compare_at_price > p.price
+                assign compare_price = p.compare_at_price | money
+              endif
+            endif
+
+            if link == blank
+              assign link = '/collections/all'
+            endif
+          -%}
+
+          <div class="luxury-card" {{ block.shopify_attributes }}>
+            <a href="{{ link }}" class="luxury-card__cover-link" aria-label="{{ title | escape }}">{{ title | escape }}</a>
+
+            {%- if badge != blank -%}
+              <div class="luxury-card__badge-wrap">
+                <span class="luxury-card__badge {% if badge_style == 'bogo' %}luxury-card__badge--bogo{% elsif badge_style == 'gold' %}luxury-card__badge--gold{% else %}luxury-card__badge--dark{% endif %}">
+                  {{ badge }}
+                </span>
+              </div>
+            {%- endif -%}
+
+            <div class="luxury-card__image-box">
+              {%- if block.settings.custom_image != blank -%}
+                <img
+                  src="{{ block.settings.custom_image | image_url: width: 600 }}"
+                  alt="{{ block.settings.custom_image.alt | default: title }}"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                >
+              {%- elsif p != blank and p.featured_media != blank -%}
+                <img
+                  src="{{ p.featured_media | image_url: width: 600 }}"
+                  alt="{{ p.featured_media.alt | default: title }}"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <div class="luxury-card__placeholder-art">
+                  <div class="luxury-card__bottle-icon">
+                    {%- if title contains 'Rose' or title contains 'Sanaya' -%}
+                      🌸
+                    {%- elsif title contains 'Kasturi' -%}
+                      🦌
+                    {%- elsif title contains 'Black' -%}
+                      🪵
+                    {%- elsif title contains 'Silk' -%}
+                      🕊️
+                    {%- else -%}
+                      ✨
+                    {%- endif -%}
+                  </div>
+                  <span class="luxury-card__ml-tag">{{ size }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="luxury-card__rating">
+              <span class="luxury-card__stars">★★★★★</span>
+              <span>4.9 (Verified)</span>
+            </div>
+
+            <h3 class="luxury-card__title">{{ title }}</h3>
+
+            {%- if notes != blank -%}
+              <div class="luxury-card__notes">{{ notes }}</div>
+            {%- endif -%}
+
+            {%- if badge_style == 'bogo' or title contains 'Buy 1 Get 1' -%}
+              <div class="luxury-card__bogo-ribbon">
+                🔥 Pack of 2 Bottles (13.2 ml Total)
+              </div>
+            {%- endif -%}
+
+            <div class="luxury-card__pricing">
+              <span class="luxury-card__price-sale">{{ price }}</span>
+              {%- if compare_price != blank -%}
+                <span class="luxury-card__price-compare">{{ compare_price }}</span>
+                <span class="luxury-card__discount-tag">Save 50%</span>
+              {%- endif -%}
+            </div>
+
+            <a href="{{ link }}" class="luxury-card__btn">
+              <span>{{ block.settings.button_label | default: 'Order Now' }}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -447,6 +547,20 @@
       "id": "description",
       "label": "Description",
       "default": "<p>Distilled through traditional Kannauj copper Deg-Bhapka methods. Enduring 14+ hours longevity with zero alcohol.</p>"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection (Optional - Auto-loads live products)"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 5,
+      "label": "Products to show from collection"
     },
     {
       "type": "range",
