@@ -927,8 +927,8 @@
         return;
       }
 
-      // Order API endpoint from Theme Settings or global override
-      const THEME_ORDER_API = '{{ settings.wa_order_api_url | default: "" }}' || window.WILD_AROMA_ORDER_API || '';
+      // Order API endpoint from Theme Settings or default live Wild Aroma endpoint
+      const THEME_ORDER_API = '{{ settings.wa_order_api_url | default: "" }}' || window.WILD_AROMA_ORDER_API || 'https://crm.ratnakarmishra.in/wildaroma_order.php';
 
       // UI state
       if (submitBtn) submitBtn.disabled = true;
