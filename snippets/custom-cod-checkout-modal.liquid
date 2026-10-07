@@ -912,26 +912,123 @@
         return;
       }
 
+      // API endpoint on merchant CRM
+      const BACKEND_ORDER_API = 'https://crm.ratnakarmishra.in/wildaroma_order.php';
+
       // UI state
       if (submitBtn) submitBtn.disabled = true;
-      if (btnText) btnText.textContent = '⏳ Preparing Checkout...';
+      if (btnText) btnText.textContent = '⏳ Creating Your Order...';
       if (statusBox) {
         statusBox.className = 'smd-status-box success';
-        statusBox.textContent = '🚀 Address saved! Redirecting to secure checkout...';
+        statusBox.textContent = '🚀 Placing your order... please wait a moment.';
         statusBox.style.display = 'block';
       }
 
       const activeVar = getActiveVariant();
       const variantId = activeVar ? activeVar.id : '{{ product.selected_or_first_available_variant.id }}';
 
-      try {
-        // Clear previous cart
-        await fetch('/cart/clear.js', { method: 'POST' });
+      // ========================================================
+      // 1. CASH ON DELIVERY: DIRECT ORDER CREATION & THANK YOU REDIRECT
+      // ========================================================
+      if (currentMode === 'cod') {
+        try {
+          const res = await fetch(BACKEND_ORDER_API + '?action=create_cod_order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              phone,
+              address,
+              landmark,
+              pincode,
+              city,
+              state,
+              variant_id: variantId,
+              quantity: 1
+            })
+          });
 
+          const data = await res.json();
+          if (data && data.success && data.order_status_url) {
+            statusBox.className = 'smd-status-box success';
+            statusBox.textContent = '🎉 Order #' + (data.order_name || '') + ' Confirmed! Redirecting to confirmation page...';
+            setTimeout(() => {
+              window.location.href = data.order_status_url;
+            }, 600);
+            return;
+          } else {
+            throw new Error(data ? data.error : 'Order API response missing');
+          }
+        } catch (apiErr) {
+          console.warn('Direct COD API not reached or returned error, executing fallback prefill checkout:', apiErr);
+        }
+      }
+
+      // ========================================================
+      // 2. PREPAID ONLINE: PAYU INTEGRATION OR PREFILLED CHECKOUT
+      // ========================================================
+      if (currentMode === 'online') {
+        try {
+          const regularPrice = Math.round((activeVar.price || 59900) / 100);
+          const payAmount = Math.max(0, regularPrice - DISCOUNT_AMOUNT);
+
+          const res = await fetch(BACKEND_ORDER_API + '?action=payu_initiate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              amount: payAmount,
+              product_name: '{{ product.title | escape }}',
+              name,
+              email: phone + '@wildaroma.in',
+              phone
+            })
+          });
+
+          const data = await res.json();
+          if (data && data.success && data.hash && data.key && data.key !== 'YOUR_PAYU_MERCHANT_KEY') {
+            // Dynamically post to PayU gateway
+            const payuForm = document.createElement('form');
+            payuForm.method = 'POST';
+            payuForm.action = data.action_url;
+
+            const fields = {
+              key: data.key,
+              txnid: data.txnid,
+              amount: data.amount,
+              productinfo: data.productinfo,
+              firstname: data.firstname,
+              email: data.email,
+              phone: data.phone,
+              surl: data.surl,
+              furl: data.furl,
+              hash: data.hash
+            };
+
+            for (const k in fields) {
+              const input = document.createElement('input');
+              input.type = 'hidden';
+              input.name = k;
+              input.value = fields[k];
+              payuForm.appendChild(input);
+            }
+
+            document.body.appendChild(payuForm);
+            payuForm.submit();
+            return;
+          }
+        } catch (payuErr) {
+          console.warn('PayU initiation fallback to Shopify checkout:', payuErr);
+        }
+      }
+
+      // ========================================================
+      // 3. FALLBACK: NATIVE PREFILLED CHECKOUT
+      // ========================================================
+      try {
+        await fetch('/cart/clear.js', { method: 'POST' });
         const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
         const paymentChoice = currentMode === 'online' ? 'Prepaid Online (Extra ₹100 Off)' : 'Cash on Delivery (COD)';
 
-        // Add selected variant with customer properties
         await fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -950,7 +1047,6 @@
           })
         });
 
-        // Redirect to pre-filled Shopify checkout
         const checkoutParams = new URLSearchParams();
         checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
         checkoutParams.append('checkout[shipping_address][first_name]', name);
@@ -967,7 +1063,6 @@
 
         window.location.href = '/checkout?' + checkoutParams.toString();
       } catch (err) {
-        console.error('Checkout error:', err);
         window.location.href = '/checkout';
       }
     };
