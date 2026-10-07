@@ -1,0 +1,805 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 0 }}px;
+  }
+
+  .wa-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #121212;
+    color: #FFFFFF;
+  }
+
+  .wa-slider {
+    position: relative;
+    width: 100%;
+    display: flex;
+    transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .wa-slide {
+    position: relative;
+    min-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  /* Desktop heights */
+  {%- if section.settings.desktop_height == 'adapt' -%}
+    .wa-slide {
+      min-height: 520px;
+    }
+  {%- else -%}
+    .wa-slide {
+      height: {{ section.settings.desktop_height | default: '640px' }};
+    }
+  {%- endif -%}
+
+  /* Mobile heights */
+  @media screen and (max-width: 749px) {
+    {%- if section.settings.mobile_height == 'adapt' -%}
+      .wa-slide {
+        min-height: 460px;
+        height: auto;
+      }
+    {%- else -%}
+      .wa-slide {
+        height: {{ section.settings.mobile_height | default: '500px' }};
+      }
+    {%- endif -%}
+  }
+
+  /* Background Media */
+  .wa-slide__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .wa-slide__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(1.04);
+  }
+
+  .wa-slide.is-active .wa-slide__img {
+    transform: scale(1);
+  }
+
+  .wa-slide__img--desktop {
+    display: block;
+  }
+
+  .wa-slide__img--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .wa-slide__img--desktop {
+      display: none;
+    }
+    .wa-slide__img--mobile {
+      display: block;
+    }
+  }
+
+  /* Default Luxury Fallback Background when no image uploaded */
+  .wa-slide__fallback-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 65% 50%, #2A2117 0%, #171410 50%, #0E0D0C 100%);
+    z-index: 1;
+  }
+
+  .wa-slide__fallback-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    right: 15%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(184, 151, 79, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(40px);
+    border-radius: 50%;
+  }
+
+  /* Overlay */
+  .wa-slide__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(
+      90deg,
+      rgba(18, 18, 18, 0.88) 0%,
+      rgba(18, 18, 18, 0.65) 45%,
+      rgba(18, 18, 18, 0.2) 100%
+    );
+  }
+
+  @media screen and (max-width: 749px) {
+    .wa-slide__overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(18, 18, 18, 0.3) 0%,
+        rgba(18, 18, 18, 0.75) 50%,
+        rgba(18, 18, 18, 0.95) 100%
+      );
+    }
+  }
+
+  /* Content Container */
+  .wa-slide__content-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .wa-slide__content {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+
+  .wa-slide.is-active .wa-slide__content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .wa-slide__content--center {
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+  }
+
+  .wa-slide__content--left {
+    margin-right: auto;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .wa-slide__content--right {
+    margin-left: auto;
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  /* Badge */
+  .wa-slide__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.1rem;
+    background: rgba(184, 151, 79, 0.15);
+    border: 1px solid rgba(184, 151, 79, 0.45);
+    color: #D4AF37;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    border-radius: 30px;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  /* Heading */
+  .wa-slide__heading {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: #FFFFFF;
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .wa-slide__heading em {
+    font-style: italic;
+    color: #E2C98A;
+  }
+
+  /* Subtitle */
+  .wa-slide__subheading {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: clamp(0.95rem, 1.3vw, 1.12rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 1.8rem 0;
+    max-width: 580px;
+  }
+
+  /* Buttons Group */
+  .wa-slide__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 550px) {
+    .wa-slide__buttons {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  .wa-slide__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.05rem 2.2rem;
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 550px) {
+    .wa-slide__btn {
+      width: 100%;
+    }
+  }
+
+  .wa-slide__btn--primary {
+    background: #B8974F;
+    color: #121212;
+    border: 1.5px solid #B8974F;
+    box-shadow: 0 8px 24px rgba(184, 151, 79, 0.35);
+  }
+
+  .wa-slide__btn--primary:hover {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #121212;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.25);
+  }
+
+  .wa-slide__btn--secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+  }
+
+  .wa-slide__btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+    transform: translateY(-3px);
+  }
+
+  /* Slider Controls: Arrows & Indicators */
+  .wa-slider__nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(18, 18, 18, 0.55);
+    border: 1px solid rgba(184, 151, 79, 0.35);
+    color: #B8974F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px);
+  }
+
+  .wa-slider__nav-btn:hover {
+    background: #B8974F;
+    color: #121212;
+    border-color: #B8974F;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 4px 18px rgba(184, 151, 79, 0.4);
+  }
+
+  .wa-slider__nav-btn--prev {
+    left: 1.5rem;
+  }
+
+  .wa-slider__nav-btn--next {
+    right: 1.5rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .wa-slider__nav-btn {
+      display: none; /* Mobile uses swipe and pagination dots */
+    }
+  }
+
+  .wa-slider__dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 10;
+  }
+
+  .wa-slider__dot {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.35s ease;
+    border: none;
+    padding: 0;
+  }
+
+  .wa-slider__dot.is-active {
+    width: 54px;
+    background: #B8974F;
+    box-shadow: 0 0 10px rgba(184, 151, 79, 0.8);
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="wa-slider-wrapper" id="Slider-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+    
+    <div class="wa-slider" id="SliderTrack-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <div class="wa-slide {% if forloop.first %}is-active{% endif %}" data-slide-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          
+          <!-- Slide Media Background -->
+          <div class="wa-slide__media">
+            {%- if block.settings.image_desktop != blank -%}
+              <img
+                src="{{ block.settings.image_desktop | image_url: width: 2200 }}"
+                alt="{{ block.settings.heading | escape }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                class="wa-slide__img wa-slide__img--desktop"
+                width="2200"
+                height="1000"
+              >
+            {%- else -%}
+              <div class="wa-slide__fallback-bg"></div>
+              <div class="wa-slide__fallback-glow"></div>
+            {%- endif -%}
+
+            {%- if block.settings.image_mobile != blank -%}
+              <img
+                src="{{ block.settings.image_mobile | image_url: width: 1100 }}"
+                alt="{{ block.settings.heading | escape }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                class="wa-slide__img wa-slide__img--mobile"
+                width="1100"
+                height="1200"
+              >
+            {%- elsif block.settings.image_desktop != blank -%}
+              <img
+                src="{{ block.settings.image_desktop | image_url: width: 1100 }}"
+                alt="{{ block.settings.heading | escape }}"
+                loading="lazy"
+                class="wa-slide__img wa-slide__img--mobile"
+                width="1100"
+                height="1200"
+              >
+            {%- endif -%}
+          </div>
+
+          <!-- Ambient Gradient Overlay -->
+          <div class="wa-slide__overlay" style="opacity: {{ block.settings.overlay_opacity | default: 75 | divided_by: 100.0 }};"></div>
+
+          <!-- Slide Text Content -->
+          <div class="wa-slide__content-container">
+            <div class="wa-slide__content wa-slide__content--{{ block.settings.text_alignment | default: 'left' }}">
+              
+              {%- if block.settings.badge_text != blank -%}
+                <div class="wa-slide__badge">
+                  <span>✦</span> {{ block.settings.badge_text }}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.heading != blank -%}
+                <h2 class="wa-slide__heading">
+                  {{ block.settings.heading }}
+                </h2>
+              {%- endif -%}
+
+              {%- if block.settings.subheading != blank -%}
+                <p class="wa-slide__subheading">
+                  {{ block.settings.subheading }}
+                </p>
+              {%- endif -%}
+
+              <div class="wa-slide__buttons">
+                {%- if block.settings.button_label_1 != blank -%}
+                  <a href="{{ block.settings.button_link_1 | default: '/collections/best-selling-attars' }}" class="wa-slide__btn wa-slide__btn--primary">
+                    {{ block.settings.button_label_1 }} <span>→</span>
+                  </a>
+                {%- endif -%}
+
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a href="{{ block.settings.button_link_2 | default: '/collections/all' }}" class="wa-slide__btn wa-slide__btn--secondary">
+                    {{ block.settings.button_label_2 }}
+                  </a>
+                {%- endif -%}
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <!-- Navigation Arrows -->
+    {%- if section.settings.show_arrows and section.blocks.size > 1 -%}
+      <button class="wa-slider__nav-btn wa-slider__nav-btn--prev" id="PrevBtn-{{ section.id }}" aria-label="Previous Slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="wa-slider__nav-btn wa-slider__nav-btn--next" id="NextBtn-{{ section.id }}" aria-label="Next Slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    <!-- Pagination Dots -->
+    {%- if section.settings.show_dots and section.blocks.size > 1 -%}
+      <div class="wa-slider__dots" id="Dots-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          <button class="wa-slider__dot {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Slide {{ forloop.index }}"></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    const slider = document.getElementById('Slider-{{ section.id }}');
+    if (!slider) return;
+
+    const track = document.getElementById('SliderTrack-{{ section.id }}');
+    const slides = track ? track.querySelectorAll('.wa-slide') : [];
+    const prevBtn = document.getElementById('PrevBtn-{{ section.id }}');
+    const nextBtn = document.getElementById('NextBtn-{{ section.id }}');
+    const dotsContainer = document.getElementById('Dots-{{ section.id }}');
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.wa-slider__dot') : [];
+
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoplayTimer = null;
+    const isAutoplay = slider.getAttribute('data-autoplay') === 'true';
+    const autoplaySpeed = parseInt(slider.getAttribute('data-speed'), 10) || 5000;
+
+    function goToSlide(index) {
+      if (index < 0) {
+        index = totalSlides - 1;
+      } else if (index >= totalSlides) {
+        index = 0;
+      }
+      currentIndex = index;
+
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === currentIndex);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentIndex);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+        resetAutoplay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+        resetAutoplay();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goToSlide(i);
+        resetAutoplay();
+      });
+    });
+
+    // Touch Swipe Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 45) {
+        if (diff > 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+        resetAutoplay();
+      }
+    }
+
+    function startAutoplay() {
+      if (!isAutoplay) return;
+      stopAutoplay();
+      autoplayTimer = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, autoplaySpeed);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function resetAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Luxury Hero Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop Height",
+      "options": [
+        { "value": "600px", "label": "Compact (600px)" },
+        { "value": "680px", "label": "Medium (680px)" },
+        { "value": "760px", "label": "Luxury Large (760px)" },
+        { "value": "adapt", "label": "Adapt to Content" }
+      ],
+      "default": "680px"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile Height",
+      "options": [
+        { "value": "460px", "label": "Compact (460px)" },
+        { "value": "520px", "label": "Medium (520px)" },
+        { "value": "600px", "label": "Full Screen Feel (600px)" },
+        { "value": "adapt", "label": "Adapt to Content" }
+      ],
+      "default": "520px"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Auto-Slide",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "label": "Slide Change Speed",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Next/Prev Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Navigation Indicators",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Luxury Banner Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktop Image (1920x800 recommended)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image (1080x1350 recommended)"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Luxury Pill Badge",
+          "default": "✦ THE ROYAL KANNAUJ HERITAGE"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Slide Heading",
+          "default": "Pure Concentrated Attar Oils"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Slide Subheading",
+          "default": "Traditional Deg-Bhapka copper pot distillation. 0% alcohol, 0% synthetic gas. Intimate 16-hour royal sillage."
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 10,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "label": "Background Dark Dimmer",
+          "default": 65
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Primary Button Label",
+          "default": "Shop Best Sellers"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "Primary Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Secondary Button Label",
+          "default": "Explore All Fragrances"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Secondary Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Hero Slider",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "badge_text": "✦ ROYAL KANNAUJ HERITAGE",
+            "heading": "Imperial Sillage That Commands The Room",
+            "subheading": "Handcrafted pure attar oils distilled in copper degs. Zero alcohol, zero gas—intimate 16+ hour projection.",
+            "button_label_1": "Shop Best Sellers",
+            "button_link_1": "/collections/best-selling-attars",
+            "button_label_2": "Explore All Scents",
+            "button_link_2": "/collections/all"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "badge_text": "✦ 100% ALCOHOL-FREE PERFUMERY",
+            "heading": "The Turkish Oud & Amber Collection",
+            "subheading": "Intoxicating Isparta rose married with aged Cambodian agarwood and glowing fossilized amber.",
+            "button_label_1": "Experience Turkish Oud",
+            "button_link_1": "/products/turkish-oud-luxury-attar",
+            "button_label_2": "Discover The Notes",
+            "button_link_2": "/collections/best-selling-attars"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "badge_text": "✦ DEG-BHAPKA HYDRO-DISTILLED",
+            "heading": "Ancient Fragrance Artistry, Modern Elegance",
+            "subheading": "Gentle on delicate skin. Pure undiluted botanical oils that develop richer with your body warmth.",
+            "button_label_1": "Order With Cash On Delivery",
+            "button_link_1": "/collections/best-selling-attars",
+            "button_label_2": "View All 10 Attars",
+            "button_link_2": "/collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

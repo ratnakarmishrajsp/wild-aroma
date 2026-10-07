@@ -1,336 +1,428 @@
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | default: 48 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 48 }}px;
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+  .wa-families {
+    background: #FFFFFF;
+    position: relative;
+  }
+
+  .wa-families__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .wa-families__header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .wa-families__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #917333;
+    background: #FAF6ED;
+    border: 1px solid #E5D7B5;
+    padding: 0.35rem 0.95rem;
+    border-radius: 4px;
+    margin-bottom: 0.85rem;
+  }
+
+  .wa-families__title {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    font-weight: 700;
+    color: #121212;
+    margin: 0 0 0.6rem 0;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .wa-families__subtitle {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.96rem;
+    color: #555555;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .wa-families__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .wa-families__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
     }
   }
 
-  /* Pure White and Gold Theme for Category Cards */
-  .custom-categories {
-    text-align: center;
-    background: #FFFFFF !important;
-    color: #1A1A1A !important;
-    position: relative;
-    border-top: 1px solid #EAE5DE;
-    border-bottom: 1px solid #EAE5DE;
+  @media screen and (max-width: 480px) {
+    .wa-families__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
   }
 
-  .custom-categories__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.5rem;
+  .wa-family-card {
     position: relative;
-    z-index: 2;
-  }
-
-  .custom-categories__card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #FAF8F5;
+    border: 1.5px solid #EAE5DE;
     text-decoration: none;
     color: inherit;
-    width: calc(50% - 1.25rem);
-    max-width: 220px;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
   }
 
-  @media screen and (min-width: 750px) {
-    .custom-categories__card {
-      width: calc(25% - 1.88rem);
-    }
+  .wa-family-card:hover {
+    transform: translateY(-6px);
+    border-color: #B8974F;
+    box-shadow: 0 14px 35px rgba(184, 151, 79, 0.18);
   }
 
-  .custom-categories__image-wrapper {
+  .wa-family-card__img-wrap {
     position: relative;
     width: 100%;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    background-color: #ffffff;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(204, 164, 59, 0.15); /* Gold outline */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    background: #1A1A1A;
   }
 
-  /* Shapes */
-  .custom-categories__image-wrapper--circle {
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
+  .wa-family-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
   }
 
-  .custom-categories__image-wrapper--arch {
-    border-radius: 120px 120px 0 0;
-    aspect-ratio: 1 / 1.35;
+  .wa-family-card:hover .wa-family-card__img {
+    transform: scale(1.08);
   }
 
-  /* Thin gold inner frame for arches */
-  .custom-categories__image-wrapper--arch::before {
-    content: '';
+  /* Default luxury artistic gradient background if no category image */
+  .wa-family-card__placeholder-bg {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border: 1px solid rgba(204, 164, 59, 0.15);
-    border-radius: 112px 112px 0 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wa-family-card__placeholder-bg--oud {
+    background: radial-gradient(circle at 50% 40%, #3B2A1E 0%, #1A130D 100%);
+  }
+
+  .wa-family-card__placeholder-bg--rose {
+    background: radial-gradient(circle at 50% 40%, #4A222B 0%, #1E0C10 100%);
+  }
+
+  .wa-family-card__placeholder-bg--khus {
+    background: radial-gradient(circle at 50% 40%, #1E382B 0%, #0C1A13 100%);
+  }
+
+  .wa-family-card__placeholder-bg--musk {
+    background: radial-gradient(circle at 50% 40%, #2A2C38 0%, #101117 100%);
+  }
+
+  .wa-family-card__placeholder-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s ease;
+  }
+
+  .wa-family-card:hover .wa-family-card__placeholder-icon {
+    transform: scale(1.15) rotate(5deg);
+    color: rgba(184, 151, 79, 0.4);
+  }
+
+  .wa-family-card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(180deg, transparent 0%, rgba(18, 18, 18, 0.75) 50%, rgba(18, 18, 18, 0.95) 100%);
     pointer-events: none;
     z-index: 2;
   }
 
-  .custom-categories__image-wrapper--square {
-    border-radius: 8px;
-    aspect-ratio: 1 / 1;
-  }
-
-  .custom-categories__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-
-  .custom-categories__card:hover .custom-categories__image {
-    transform: scale(1.06);
-  }
-
-  .custom-categories__card:hover {
-    transform: translateY(-6px);
-  }
-
-  .custom-categories__card:hover .custom-categories__image-wrapper {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06), 0 0 15px rgba(204, 164, 59, 0.15);
-    border-color: #cca43b; /* Gold glow on hover */
-  }
-
-  .custom-categories__title {
-    margin: 1.8rem 0 0.6rem 0;
-    font-weight: 600;
-    font-size: 1.5rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #121212 !important;
-  }
-
-  .custom-categories__subtitle {
-    margin: 0;
-    font-size: 1.25rem;
-    opacity: 0.8;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #cca43b !important; /* Gold subtitle accent */
-  }
-
-  .custom-categories__overlay {
+  .wa-family-card__tag {
     position: absolute;
-    top: 0;
+    top: 1rem;
+    left: 1rem;
+    z-index: 3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #121212;
+    background: #FFFFFF;
+    border: 1px solid #EAE5DE;
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .wa-family-card__content {
+    position: absolute;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.02);
-    transition: background 0.3s ease;
-    z-index: 1;
+    right: 0;
+    padding: 1.4rem 1.2rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
-  .custom-categories__card:hover .custom-categories__overlay {
-    background: rgba(0, 0, 0, 0.05);
+  @media screen and (max-width: 480px) {
+    .wa-family-card__content {
+      padding: 1rem 0.85rem;
+    }
   }
 
-  .custom-categories__subtitle-text {
-    font-style: italic;
-    color: #cca43b !important;
+  .wa-family-card__title {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+  }
+
+  .wa-family-card:hover .wa-family-card__title {
+    color: #E2C98A;
+  }
+
+  .wa-family-card__vibe {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .wa-family-card__cta {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #B8974F;
+    margin-top: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.3s ease;
+  }
+
+  .wa-family-card:hover .wa-family-card__cta {
+    gap: 0.6rem;
+    color: #FFFFFF;
   }
 {%- endstyle -%}
 
-<div class="custom-categories section-{{ section.id }}-padding">
-  <div class="page-width">
-    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
-      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin text-center" style="margin-bottom: 4.5rem; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2;">
-        {%- if section.settings.subtitle != blank -%}
-          <p class="image-with-text__text image-with-text__text--caption custom-categories__subtitle-text" style="margin: 0 0 0.8rem 0; font-size: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase;">
-            {{ section.settings.subtitle | escape }}
-          </p>
-        {%- endif -%}
-        {%- if section.settings.title != blank -%}
-          <h2 class="title inline-richtext {{ section.settings.heading_size }}" style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; color: #121212; letter-spacing: 0.03em;">
-            {{ section.settings.title | escape }}
-          </h2>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
+<div class="wa-families section-{{ section.id }}-padding">
+  <div class="wa-families__container">
+    
+    <div class="wa-families__header">
+      {%- if section.settings.badge != blank -%}
+        <div class="wa-families__badge">
+          <span>✦</span> {{ section.settings.badge }}
+        </div>
+      {%- endif -%}
 
-    <div class="custom-categories__grid">
+      <h2 class="wa-families__title">{{ section.settings.title }}</h2>
+      
+      {%- if section.settings.subtitle != blank -%}
+        <p class="wa-families__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="wa-families__grid">
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link | default: '#' }}" class="custom-categories__card" {{ block.shopify_attributes }}>
-          <div class="custom-categories__image-wrapper custom-categories__image-wrapper--{{ section.settings.card_shape }}">
+        {%- assign fallback_class = 'oud' -%}
+        {%- if forloop.index == 2 -%}{%- assign fallback_class = 'rose' -%}{%- endif -%}
+        {%- if forloop.index == 3 -%}{%- assign fallback_class = 'khus' -%}{%- endif -%}
+        {%- if forloop.index == 4 -%}{%- assign fallback_class = 'musk' -%}{%- endif -%}
+
+        <a href="{{ block.settings.link | default: '/collections/all' }}" class="wa-family-card" {{ block.shopify_attributes }}>
+          <div class="wa-family-card__img-wrap">
+            {%- if block.settings.tag != blank -%}
+              <span class="wa-family-card__tag">{{ block.settings.tag }}</span>
+            {%- endif -%}
+
             {%- if block.settings.image != blank -%}
               <img
-                src="{{ block.settings.image | image_url: width: 440 }}"
-                alt="{{ block.settings.image.alt | escape }}"
+                src="{{ block.settings.image | image_url: width: 800 }}"
+                alt="{{ block.settings.title | escape }}"
                 loading="lazy"
-                width="220"
-                height="220"
-                class="custom-categories__image"
+                class="wa-family-card__img"
+                width="800"
+                height="1000"
               >
             {%- else -%}
-              {%- assign index_val = forloop.index -%}
-              {%- if index_val == 1 -%}
-                <img src="{{ 'note-oudh.png' | asset_url }}" alt="Royal Oudh Note" class="custom-categories__image" loading="lazy" width="220" height="280">
-              {%- elsif index_val == 2 -%}
-                <img src="{{ 'note-rose.png' | asset_url }}" alt="Classic Rose Note" class="custom-categories__image" loading="lazy" width="220" height="280">
-              {%- elsif index_val == 3 -%}
-                <img src="{{ 'note-khus.png' | asset_url }}" alt="Earthy Khus Note" class="custom-categories__image" loading="lazy" width="220" height="280">
-              {%- elsif index_val == 4 -%}
-                <img src="{{ 'note-musk.png' | asset_url }}" alt="Exotic Musk Note" class="custom-categories__image" loading="lazy" width="220" height="280">
-              {%- else -%}
-                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg custom-categories__image' }}
-              {%- endif -%}
+              <div class="wa-family-card__placeholder-bg wa-family-card__placeholder-bg--{{ fallback_class }}">
+                <span class="wa-family-card__placeholder-icon">✦</span>
+              </div>
             {%- endif -%}
-            <div class="custom-categories__overlay"></div>
+
+            <div class="wa-family-card__overlay"></div>
+
+            <div class="wa-family-card__content">
+              <h3 class="wa-family-card__title">{{ block.settings.title }}</h3>
+              <p class="wa-family-card__vibe">{{ block.settings.subtitle }}</p>
+              <span class="wa-family-card__cta">Explore Scents →</span>
+            </div>
           </div>
-          {%- if block.settings.title != blank -%}
-            <h3 class="custom-categories__title h5">{{ block.settings.title | escape }}</h3>
-          {%- endif -%}
-          {%- if block.settings.subtitle != blank -%}
-            <p class="custom-categories__subtitle">{{ block.settings.subtitle | escape }}</p>
-          {%- endif -%}
         </a>
       {%- endfor -%}
     </div>
+
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Custom Category Cards",
+  "name": "Fragrance Families Grid",
   "tag": "section",
   "class": "section",
-  "max_blocks": 8,
   "settings": [
     {
       "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Shop By Fragrance Notes"
+      "id": "badge",
+      "label": "Top Badge",
+      "default": "CURATED OLFACTORY FAMILIES"
     },
     {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        { "value": "h2", "label": "Small" },
-        { "value": "h1", "label": "Medium" },
-        { "value": "h0", "label": "Large" }
-      ],
-      "default": "h1",
-      "label": "Heading size"
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Explore By Fragrance Family"
     },
     {
       "type": "text",
       "id": "subtitle",
-      "label": "Subheading",
-      "default": "Find your signature scent profile"
-    },
-    {
-      "type": "select",
-      "id": "card_shape",
-      "label": "Card Shape",
-      "options": [
-        { "value": "circle", "label": "Circular" },
-        { "value": "arch", "label": "Arched (Luxury look)" },
-        { "value": "square", "label": "Square" }
-      ],
-      "default": "arch"
-    },
-    {
-      "type": "header",
-      "content": "Section Padding"
+      "label": "Section Subtitle",
+      "default": "Every attar tells a distinct story. Find the note profile that resonates with your presence."
     },
     {
       "type": "range",
       "id": "padding_top",
-      "min": 0,
-      "max": 100,
+      "min": 16,
+      "max": 80,
       "step": 4,
       "unit": "px",
-      "default": 48,
-      "label": "Padding Top"
+      "label": "Padding Top",
+      "default": 48
     },
     {
       "type": "range",
       "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
+      "min": 16,
+      "max": 80,
       "step": 4,
       "unit": "px",
-      "default": 48,
-      "label": "Padding Bottom"
+      "label": "Padding Bottom",
+      "default": 48
     }
   ],
   "blocks": [
     {
       "type": "category",
-      "name": "Category Card",
+      "name": "Fragrance Family",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Category Image"
+          "label": "Family Image (800x1000 recommended)"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Corner Pill Tag",
+          "default": "WARM & NOBLE"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
-          "default": "Fragrance Family"
+          "label": "Family Title",
+          "default": "Royal Oudh"
         },
         {
           "type": "text",
           "id": "subtitle",
-          "label": "Subtitle / Note",
-          "default": "Woody & Rich"
+          "label": "Scent Character",
+          "default": "Smoky Agarwood, Amber & Mysore Sandalwood"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link"
+          "label": "Collection Link"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Custom Category Cards",
+      "name": "Fragrance Families Grid",
       "blocks": [
         {
           "type": "category",
           "settings": {
+            "tag": "WARM & NOBLE",
             "title": "Royal Oudh",
-            "subtitle": "Warm & Intense"
+            "subtitle": "Smoky Agarwood, Frankincense & Amber Resin",
+            "link": "/collections/best-selling-attars"
           }
         },
         {
           "type": "category",
           "settings": {
-            "title": "Classic Rose",
-            "subtitle": "Floral & Romantic"
+            "tag": "ROMANTIC VELVET",
+            "title": "Kannauj Rose",
+            "subtitle": "Dewy Isparta Petals, Mogra & Bourbon Vanilla",
+            "link": "/collections/best-selling-attars"
           }
         },
         {
           "type": "category",
           "settings": {
-            "title": "Earthy Khus",
-            "subtitle": "Fresh & Calming"
+            "tag": "EARTHY COOLING",
+            "title": "Sacred Khus & Woods",
+            "subtitle": "Wild Mountain Vetiver, Blue Lotus & Sandalwood",
+            "link": "/collections/best-selling-attars"
           }
         },
         {
           "type": "category",
           "settings": {
-            "title": "Exotic Musk",
-            "subtitle": "Powdery & Sensual"
+            "tag": "CLEAN & POWDERY",
+            "title": "Exotic White Musk",
+            "subtitle": "Himalayan Musk, White Amber & Cashmere",
+            "link": "/collections/best-selling-attars"
           }
         }
       ]

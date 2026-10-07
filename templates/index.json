@@ -1,30 +1,69 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "custom_banner_homepage": {
-      "type": "custom-banner",
+    "luxury_hero_slider": {
+      "type": "luxury-hero-slider",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/IMG_20260821_234128.png",
+            "badge_text": "✦ ROYAL KANNAUJ HERITAGE",
+            "heading": "Imperial Sillage That Commands The Room",
+            "subheading": "Handcrafted pure attar oils distilled in copper degs. Zero alcohol, zero gas—intimate 16+ hour projection.",
+            "text_alignment": "left",
+            "overlay_opacity": 70,
+            "button_label_1": "Shop Best Sellers",
+            "button_link_1": "/collections/best-selling-attars",
+            "button_label_2": "Explore All Scents",
+            "button_link_2": "/collections/all"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "badge_text": "✦ 100% ALCOHOL-FREE PERFUMERY",
+            "heading": "The Turkish Oud & Amber Collection",
+            "subheading": "Intoxicating Isparta rose married with aged Cambodian agarwood and glowing fossilized amber.",
+            "text_alignment": "left",
+            "overlay_opacity": 65,
+            "button_label_1": "Experience Turkish Oud",
+            "button_link_1": "/products/turkish-oud-luxury-attar",
+            "button_label_2": "Discover The Notes",
+            "button_link_2": "/collections/best-selling-attars"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "badge_text": "✦ DEG-BHAPKA HYDRO-DISTILLED",
+            "heading": "Ancient Fragrance Artistry, Modern Elegance",
+            "subheading": "Gentle on delicate skin. Pure undiluted botanical oils that develop richer with your body warmth.",
+            "text_alignment": "left",
+            "overlay_opacity": 70,
+            "button_label_1": "Order With Cash On Delivery",
+            "button_link_1": "/collections/best-selling-attars",
+            "button_label_2": "View All 10 Attars",
+            "button_link_2": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
       "settings": {
-        "image_desktop": "shopify://shop_images/IMG_20260821_234128.png",
-        "desktop_height": "adapt",
-        "desktop_alignment": "center center",
-        "mobile_height": "350px",
-        "mobile_alignment": "center center",
-        "link": "/collections/best-selling-attars",
-        "button_label": "Shop Best Sellers",
-        "color_scheme": "",
+        "desktop_height": "680px",
+        "mobile_height": "520px",
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true,
+        "show_dots": true,
         "padding_top": 0,
         "padding_bottom": 0
       }
     },
-    "custom_usp_grid_homepage": {
+    "custom_usp_strip_homepage": {
       "type": "custom-usp-grid",
       "blocks": {
         "usp_1": {
@@ -32,31 +71,31 @@
           "settings": {
             "icon": "perfume",
             "title": "100% Alcohol-Free",
-            "text": "Pure concentrated perfume oil that is gentle on your skin."
+            "text": "Pure uncut attar oil. 0% synthetic gas or skin irritation."
           }
         },
         "usp_2": {
           "type": "usp",
           "settings": {
             "icon": "stopwatch",
-            "title": "Long Lasting",
-            "text": "Carefully selected ingredients that keep you fragrant all day long."
+            "title": "14+ Hours Projection",
+            "text": "High molecular weight density that bonds with skin warmth."
           }
         },
         "usp_3": {
           "type": "usp",
           "settings": {
             "icon": "leaf",
-            "title": "Natural Craftsmanship",
-            "text": "Traditional steam distillation process (Deg-Bhapka) from Kannauj."
+            "title": "Ancient Kannauj Craft",
+            "text": "Artisanal Deg-Bhapka wood-fired copper steam distillation."
           }
         },
         "usp_4": {
           "type": "usp",
           "settings": {
-            "icon": "heart",
-            "title": "Premium & Pure",
-            "text": "No animal testing, crafted with clean and authentic ingredients."
+            "icon": "truck",
+            "title": "Free Cash On Delivery",
+            "text": "Pan-India fast dispatch with 100% leak-proof packaging."
           }
         }
       },
@@ -67,288 +106,8 @@
         "usp_4"
       ],
       "settings": {
-        "title": "Pure & Authentic Fragrances",
-        "heading_size": "h1",
-        "subtitle": "The Wild Aroma Standard",
-        "columns_desktop": 4,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "custom_categories_homepage": {
-      "type": "custom-category-cards",
-      "blocks": {
-        "cat_1": {
-          "type": "category",
-          "settings": {
-            "title": "Royal Oudh",
-            "subtitle": "Warm & Intense",
-            "link": "/collections/all"
-          }
-        },
-        "cat_2": {
-          "type": "category",
-          "settings": {
-            "title": "Classic Rose",
-            "subtitle": "Floral & Romantic",
-            "link": "/collections/all"
-          }
-        },
-        "cat_3": {
-          "type": "category",
-          "settings": {
-            "title": "Earthy Khus",
-            "subtitle": "Fresh & Calming",
-            "link": "/collections/all"
-          }
-        },
-        "cat_4": {
-          "type": "category",
-          "settings": {
-            "title": "Exotic Musk",
-            "subtitle": "Powdery & Sensual",
-            "link": "/collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "cat_1",
-        "cat_2",
-        "cat_3",
-        "cat_4"
-      ],
-      "settings": {
-        "title": "Shop By Fragrance Notes",
-        "heading_size": "h1",
-        "subtitle": "Find your signature scent profile",
-        "card_shape": "arch",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "featured_product_UXN8fm": {
-      "type": "featured-product",
-      "blocks": {
-        "text_YVBLPJ": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title_FRcHL6": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "price_JwPjmx": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_XGJ3H3": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector_HLHUg3": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_qJgy7e": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true,
-            "show_cod_button": false,
-            "cod_button_text": "Order Now - Cash on Delivery"
-          }
-        }
-      },
-      "block_order": [
-        "text_YVBLPJ",
-        "title_FRcHL6",
-        "price_JwPjmx",
-        "variant_picker_XGJ3H3",
-        "quantity_selector_HLHUg3",
-        "buy_buttons_qJgy7e"
-      ],
-      "name": "t:sections.featured-product.presets.name",
-      "settings": {
-        "product": "turkish-oud-luxury-attar",
-        "color_scheme": "scheme-2",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_miQLWj": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "collection": "best-selling-attars",
-        "products_to_show": 8,
-        "title": "Best Selling Attars",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-2",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "custom_scent_notes_wheel_EBHy3B": {
-      "type": "custom-scent-notes-wheel",
-      "name": "Scent Notes Wheel",
-      "settings": {
-        "title": "Scent Anatomy Visualizer",
-        "subtitle": "Interactive Fragrance Wheel",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "custom_heritage_homepage": {
-      "type": "custom-heritage",
-      "settings": {
-        "image_aspect_ratio": "1 / 1",
-        "layout": "image_left",
-        "subtitle": "THE ART OF DEG & BHAPKA",
-        "title": "Distilled In Kannauj, Perfume Capital of India",
-        "heading_size": "h1",
-        "text": "<p>Since ancient times, Kannauj has kept the heritage of perfume distillation alive. Using the traditional Deg-Bhapka process, flowers and natural raw materials are distilled in copper pots over wood fires, sending fragrant steam to rest in cold clay containers base-filled with sandalwood oil.</p><p>Wild Aroma preserves this pure artisan process, providing long-lasting attars free from chemicals and alcohol.</p>",
-        "button_label": "Explore Our Process",
-        "button_link": "/pages/our-process",
-        "color_scheme": "scheme-2",
-        "padding_top": 44,
-        "padding_bottom": 44
-      }
-    },
-    "custom_testimonials_homepage": {
-      "type": "custom-testimonials",
-      "blocks": {
-        "test_1": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "I have tried many luxury Oudh fragrances, but Wild Aroma's Oudh attar is outstanding. It is 100% alcohol-free and lasts more than 10 hours on my skin. Worth every rupee!",
-            "author": "Aarav Mehta",
-            "location": "Mumbai",
-            "verified_buyer": true,
-            "product": ""
-          }
-        },
-        "test_2": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "The Classic Rose attar smells exactly like fresh Kannauj roses. It's clean, non-greasy, and incredibly soothing. Very premium quality packaging too.",
-            "author": "Priya Patel",
-            "location": "Ahmedabad",
-            "verified_buyer": true,
-            "product": ""
-          }
-        },
-        "test_3": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "quote": "Highly recommend the Ruh Khus. It has a beautiful earthy aroma that cools the mind instantly. Authentic Kannauj distillation shine through.",
-            "author": "Kabir Sen",
-            "location": "Kolkata",
-            "verified_buyer": true,
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "test_1",
-        "test_2",
-        "test_3"
-      ],
-      "settings": {
-        "title": "Loved By Fragrance Lovers",
-        "heading_size": "h1",
-        "subtitle": "REVIEWS & TESTIMONIALS",
-        "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "custom_scent_quiz_e8zy3L": {
-      "type": "custom-scent-quiz",
-      "name": "Custom Scent Quiz",
-      "settings": {
-        "title": "Find Your Signature Scent",
-        "subtitle": "Fragrance Matchmaker",
-        "product_floral": "salma-luxury-attar",
-        "product_woody": "turkish-oud-luxury-attar",
-        "product_combo": "rasasi-oud-al-mubarakh-luxury-attar",
-        "padding_top": 48,
-        "padding_bottom": 48
-      }
-    },
-    "custom_faq_homepage": {
-      "type": "custom-faq",
-      "blocks": {
-        "faq_1": {
-          "type": "faq",
-          "settings": {
-            "question": "How should I apply concentrated attar oil?",
-            "answer": "<p>Apply a few drops of attar to your pulse points, such as your wrists, behind the ears, and inner elbows. Gently dab the oil on the skin without rubbing too vigorously. Rubbing can break down the fragrance molecules.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "question": "Is it safe to apply attar on clothes?",
-            "answer": "<p>Attar contains pure essential oils, so applying it directly to light-colored or delicate clothing can sometimes leave a faint oil stain. We recommend applying it on pulse points. If you want to use it on clothes, apply a small amount to the inner seams or use it on dark fabrics.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "question": "How long does Wild Aroma attar last?",
-            "answer": "<p>Due to its high concentration of pure oils and traditional steam distillation process, our attars typically last between 8 to 12 hours on skin, and even longer on fabric. The exact duration depends on the specific note profile (e.g., Oudh and Amber profiles last longer than light Floral profiles).</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3"
-      ],
-      "settings": {
-        "title": "Frequently Asked Questions",
-        "heading_size": "h1",
-        "subtitle": "HAVE QUESTIONS?",
-        "content_width": 800,
-        "open_first": true,
-        "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 40
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "custom_luxury_products_showcase": {
@@ -526,19 +285,167 @@
         "padding_top": 48,
         "padding_bottom": 48
       }
+    },
+    "custom_categories_homepage": {
+      "type": "custom-category-cards",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "tag": "WARM & NOBLE",
+            "title": "Royal Oudh",
+            "subtitle": "Smoky Agarwood, Frankincense & Amber Resin",
+            "link": "/collections/best-selling-attars"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "tag": "ROMANTIC VELVET",
+            "title": "Kannauj Rose",
+            "subtitle": "Dewy Isparta Petals, Mogra & Bourbon Vanilla",
+            "link": "/collections/best-selling-attars"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "tag": "EARTHY COOLING",
+            "title": "Sacred Khus & Woods",
+            "subtitle": "Wild Mountain Vetiver, Blue Lotus & Sandalwood",
+            "link": "/collections/best-selling-attars"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "tag": "CLEAN & POWDERY",
+            "title": "Exotic White Musk",
+            "subtitle": "Himalayan Musk, White Amber & Cashmere",
+            "link": "/collections/best-selling-attars"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4"
+      ],
+      "settings": {
+        "badge": "CURATED OLFACTORY FAMILIES",
+        "title": "Explore By Fragrance Family",
+        "subtitle": "Every attar tells a distinct story. Find the note profile that resonates with your presence.",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "custom_scent_notes_wheel_EBHy3B": {
+      "type": "custom-scent-notes-wheel",
+      "settings": {
+        "title": "The 3 Evolution Phases of Pure Attar",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "custom_testimonials_homepage": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "perfume": "Turkish Oud Luxury Attar",
+            "headline": "Lasts easily 16 hours. Absolute beast mode.",
+            "quote": "I have spent thousands on French designer perfumes, but this pure Turkish Oud attar beats them in pure longevity. Just 2 drops on my pulse points and I was getting compliments all evening.",
+            "author": "Vikramaditya Sharma",
+            "location": "New Delhi • Verified Order",
+            "longevity_tag": "16+ Hours Verified"
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "perfume": "Salma Royal Floral Attar",
+            "headline": "Dewiest Mogra rose scent ever. So intimate.",
+            "quote": "Being sensitive to chemical perfumes, alcohol sprays give me headaches. Salma is 100% pure and gentle on my neck. The dewy Mogra and cashmere musk dry-down feels like royal Kannauj royalty.",
+            "author": "Ananya Sengupta",
+            "location": "Bengaluru • Verified Order",
+            "longevity_tag": "Skin Safe & Pure"
+          }
+        },
+        "test_3": {
+          "type": "testimonial",
+          "settings": {
+            "perfume": "Bakhoor Luxury Attar",
+            "headline": "Incense smoke & oud that commands the room.",
+            "quote": "Bakhoor smells like an ancient Arabian palace courtyard. Deep frankincense and smoldering agarwood. Even after washing my kurta, a faint royal sillage remained. Outstanding packaging too.",
+            "author": "Tariq Mansoor",
+            "location": "Hyderabad • Verified Order",
+            "longevity_tag": "Beast Mode Sillage"
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3"
+      ],
+      "settings": {
+        "title": "Loved by Fragrance Connoisseurs",
+        "subtitle": "Read unfiltered feedback from perfume lovers across India who switched to pure, uncut Kannauj attars.",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "custom_faq_homepage": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How should I apply concentrated attar oil?",
+            "answer": "<p>Apply 2–3 drops to your key pulse points: inner wrists, base of the neck, behind the ears, and collarbones. Gently tap—never rub—to preserve the fragrance pyramid and let it develop naturally with your body heat.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe to apply attar on clothes?",
+            "answer": "<p>Because Wild Aroma attars are 100% pure concentrated essential oils with zero synthetic solvents, we recommend applying directly onto warm pulse points. If applying on fabrics, dab lightly onto inner dark seams or jacket lapels.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does Wild Aroma attar last?",
+            "answer": "<p>Due to high natural oil concentration and ancient Kannauj Deg-Bhapka distillation, our attars typically project for 12 to 16+ hours on skin and well past 24 hours on fabrics. Oud, amber, and musk profiles exhibit exceptional longevity.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "heading_size": "h1",
+        "subtitle": "HAVE QUESTIONS?",
+        "content_width": 800,
+        "open_first": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
-    "custom_banner_homepage",
-    "custom_usp_grid_homepage",
-    "custom_categories_homepage",
+    "luxury_hero_slider",
+    "custom_usp_strip_homepage",
     "custom_luxury_products_showcase",
-    "featured_product_UXN8fm",
-    "featured_collection_miQLWj",
+    "custom_categories_homepage",
     "custom_scent_notes_wheel_EBHy3B",
-    "custom_heritage_homepage",
     "custom_testimonials_homepage",
-    "custom_scent_quiz_e8zy3L",
     "custom_faq_homepage"
   ]
 }

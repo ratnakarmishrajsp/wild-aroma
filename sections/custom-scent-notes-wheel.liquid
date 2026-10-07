@@ -1,502 +1,581 @@
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | default: 56 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 56 }}px;
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-
-  /* Scent Notes Wheel Grid layout */
-  .scent-wheel {
-    background: #ffffff !important; /* Bella Vita Luxury Pure White Canvas */
-    border-top: 1px solid rgba(204, 164, 59, 0.15);
-    border-bottom: 1px solid rgba(204, 164, 59, 0.15);
-  }
-
-  .scent-wheel__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  @media screen and (min-width: 990px) {
-    .scent-wheel__grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-    }
-  }
-
-  /* Left Column: Interactive Scent Wheel */
-  .scent-wheel__visual-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 2rem 0;
-  }
-
-  /* Rotating Wheel Animation */
-  @keyframes rotateWheel {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .scent-wheel__svg {
-    width: 100%;
-    max-width: 380px;
-    height: auto;
-    overflow: visible;
-    animation: rotateWheel 30s infinite linear;
-    transform-origin: center;
-    transition: filter 0.3s ease;
-  }
-
-  /* Pause rotation on hover so the user can interact easily */
-  .scent-wheel__svg:hover {
-    animation-play-state: paused;
-  }
-
-  /* concentric rings sectors styling */
-  .scent-wheel__sector {
-    cursor: pointer;
-    transition: all 0.3s ease;
-    fill-opacity: 0.85;
-    stroke: #ffffff;
-    stroke-width: 2.5px;
-  }
-
-  .scent-wheel__sector:hover {
-    fill-opacity: 1;
-    filter: drop-shadow(0 4px 12px rgba(204, 164, 59, 0.35));
-    transform: scale(1.02);
-    transform-origin: center;
-  }
-
-  /* Ring center drop decoration */
-  .scent-wheel__center-drop {
-    fill: #cca43b;
-    stroke: #ffffff;
-    stroke-width: 3px;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
-  }
-
-  /* Scent Details Card Version 2.0 */
-  .scent-wheel__info-card {
-    background: #ffffff;
-    border: 1.5px solid rgba(204, 164, 59, 0.45);
-    border-radius: 12px;
-    padding: 3.5rem 3rem;
-    box-shadow: 0 12px 35px rgba(204, 164, 59, 0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    min-height: 320px;
-    justify-content: center;
-    transition: all 0.3s ease;
-    text-align: left;
+  .wa-anatomy {
+    background: #FAF8F5;
+    border-top: 1px solid #EAE5DE;
+    border-bottom: 1px solid #EAE5DE;
     position: relative;
     overflow: hidden;
   }
 
-  .scent-wheel__info-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: #cca43b;
+  .wa-anatomy__container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
   }
 
-  .scent-wheel__card-header {
+  .wa-anatomy__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .wa-anatomy__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #917333;
+    background: #FFFFFF;
+    border: 1px solid #E5D7B5;
+    padding: 0.35rem 0.95rem;
+    border-radius: 4px;
+    margin-bottom: 0.85rem;
+    box-shadow: 0 2px 10px rgba(184, 151, 79, 0.1);
+  }
+
+  .wa-anatomy__title {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(2rem, 3.4vw, 2.85rem);
+    font-weight: 700;
+    color: #121212;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .wa-anatomy__subtitle {
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.98rem;
+    color: #555555;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Attar Switcher Tabs */
+  .wa-anatomy__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .wa-anatomy__tab-btn {
+    padding: 0.7rem 1.4rem;
+    background: #FFFFFF;
+    border: 1.5px solid #EAE5DE;
+    border-radius: 30px;
+    font-family: var(--wa-font-body, 'Montserrat', sans-serif);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4A4A4A;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+
+  .wa-anatomy__tab-btn:hover {
+    border-color: #B8974F;
+    color: #121212;
+  }
+
+  .wa-anatomy__tab-btn.is-active {
+    background: #121212;
+    color: #FFFFFF;
+    border-color: #121212;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Grid Layout: Left Stats Panel + Right Phase Timeline */
+  .wa-anatomy__layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+  }
+
+  @media screen and (max-width: 989px) {
+    .wa-anatomy__layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* Left Panel: Scent Profile Card */
+  .wa-anatomy__profile-card {
+    background: #FFFFFF;
+    border: 1.5px solid #EAE5DE;
+    border-radius: 12px;
+    padding: 2.2rem 1.8rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .wa-anatomy__profile-tag {
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #917333;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .wa-anatomy__profile-name {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #121212;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .wa-anatomy__profile-vibe {
+    font-size: 0.88rem;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Metrics Gauges */
+  .wa-anatomy__metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    border-top: 1px solid #EFEAE2;
+    border-bottom: 1px solid #EFEAE2;
+    padding: 1.4rem 0;
+  }
+
+  .wa-anatomy__metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .wa-anatomy__metric-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .scent-wheel__info-badge {
-    background: rgba(204, 164, 59, 0.08);
-    color: #cca43b;
-    border: 1px solid rgba(204, 164, 59, 0.25);
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .scent-wheel__effect-badge {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #8a8276;
-    background: #f7f5f0;
-    padding: 3px 10px;
-    border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.03);
+  .wa-anatomy__metric-label {
+    color: #666666;
   }
 
-  .scent-wheel__title-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    margin-bottom: 1.2rem;
+  .wa-anatomy__metric-val {
+    color: #B8974F;
   }
 
-  .scent-wheel__info-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #121212;
-    margin: 0;
-    letter-spacing: 0.02em;
-  }
-
-  .scent-wheel__sub-name {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: #8a8276;
-  }
-
-  .scent-wheel__info-desc {
-    font-size: 1.4rem;
-    color: #4a453e !important;
-    line-height: 1.65;
-    margin: 0 0 1.5rem 0;
-    min-height: 60px;
-  }
-
-  @keyframes fbFadeInDetail {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Longevity & Intensity Metrics */
-  .scent-wheel__detail-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    border-top: 1px solid rgba(204, 164, 59, 0.18);
-    padding-top: 1.5rem;
-    animation: fbFadeInDetail 0.4s ease forwards;
-  }
-
-  .scent-wheel__metric {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-  }
-
-  .scent-wheel__metric-label {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #121212;
-    width: 75px;
-    flex-shrink: 0;
-  }
-
-  .scent-wheel__bar-wrapper {
-    background: #f0ebe4;
+  .wa-anatomy__metric-bar {
+    width: 100%;
     height: 6px;
-    border-radius: 10px;
-    flex-grow: 1;
+    background: #EFEAE2;
+    border-radius: 3px;
     overflow: hidden;
   }
 
-  .scent-wheel__bar-fill {
-    background: linear-gradient(90deg, #cca43b, #ffd700);
+  .wa-anatomy__metric-fill {
     height: 100%;
-    border-radius: 10px;
-    width: 0;
-    transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: linear-gradient(90deg, #CCA43B 0%, #B8974F 100%);
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  .scent-wheel__metric-value {
-    font-size: 1.25rem;
+  .wa-anatomy__profile-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.5rem;
+    background: #121212;
+    color: #FFFFFF;
+    font-size: 0.86rem;
     font-weight: 700;
-    color: #cca43b;
-    width: 85px;
-    text-align: right;
-    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
   }
 
-  .scent-wheel__metric-info {
-    font-size: 1.35rem;
-    color: #4a453e;
-    text-align: left;
-  }
-
-  .scent-wheel__metric-info strong {
+  .wa-anatomy__profile-cta:hover {
+    background: #B8974F;
     color: #121212;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 151, 79, 0.3);
   }
 
-  .scent-wheel__info-instruction {
-    font-size: 1.3rem;
-    font-style: italic;
-    color: #cca43b;
-    text-align: center;
-    margin-top: 1rem;
+  /* Right Panel: 3 Evolution Phases */
+  .wa-anatomy__phases {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .wa-anatomy__phase-card {
+    background: #FFFFFF;
+    border: 1.5px solid #EAE5DE;
+    border-radius: 12px;
+    padding: 1.6rem 1.8rem;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 600px) {
+    .wa-anatomy__phase-card {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      padding: 1.3rem 1.2rem;
+    }
+  }
+
+  .wa-anatomy__phase-card:hover {
+    border-color: #B8974F;
+    box-shadow: 0 8px 25px rgba(184, 151, 79, 0.15);
+    transform: translateX(4px);
+  }
+
+  .wa-anatomy__phase-badge-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .wa-anatomy__phase-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #917333;
+  }
+
+  .wa-anatomy__phase-title {
+    font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #121212;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .wa-anatomy__phase-time {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #888888;
+    display: inline-block;
+  }
+
+  .wa-anatomy__phase-desc-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .wa-anatomy__phase-notes {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .wa-anatomy__phase-story {
+    font-size: 0.86rem;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
   }
 {%- endstyle -%}
 
-<div class="scent-wheel section-{{ section.id }}-padding" id="scent-wheel-{{ section.id }}">
-  <div class="page-width">
+<div class="wa-anatomy section-{{ section.id }}-padding">
+  <div class="wa-anatomy__container">
     
-    <!-- Title Section -->
-    <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin text-center" style="margin-bottom: 4.5rem; display: flex; flex-direction: column; align-items: center; position: relative;">
-      {%- if section.settings.subtitle != blank -%}
-        <p class="image-with-text__text image-with-text__text--caption custom-usp-grid__subtitle-text" style="margin: 0 0 0.8rem 0; font-size: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase;">
-          {{ section.settings.subtitle | escape }}
-        </p>
-      {%- endif -%}
-      {%- if section.settings.title != blank -%}
-        <h2 class="title inline-richtext h1" style="margin: 0; font-weight: 600; color: #121212; letter-spacing: 0.03em;">
-          {{ section.settings.title | escape }}
-        </h2>
-      {%- endif -%}
+    <div class="wa-anatomy__header">
+      <div class="wa-anatomy__badge">
+        <span>✦</span> MASTER PERFUMER’S NOTE ARCHITECTURE
+      </div>
+      <h2 class="wa-anatomy__title">{{ section.settings.title | default: 'The 3 Evolution Phases of Pure Attar' }}</h2>
+      <p class="wa-anatomy__subtitle">
+        Unlike synthetic alcohol sprays that vanish in minutes, 100% pure attar oil bonds with your pulse points, revealing a magnificent three-stage aromatic journey throughout your day.
+      </p>
     </div>
 
-    <!-- Scent Wheel Visual & Details Grid -->
-    <div class="scent-wheel__grid">
+    <!-- Attar Switcher Tabs -->
+    <div class="wa-anatomy__tabs" id="AnatomyTabs">
+      <button class="wa-anatomy__tab-btn is-active" data-attar="turkish-oud">Turkish Oud</button>
+      <button class="wa-anatomy__tab-btn" data-attar="bakhoor">Bakhoor</button>
+      <button class="wa-anatomy__tab-btn" data-attar="salma">Salma</button>
+      <button class="wa-anatomy__tab-btn" data-attar="musk-al-oudh">Musk Al Oudh</button>
+    </div>
+
+    <!-- Layout: Left Profile Card + Right Phase Breakdown -->
+    <div class="wa-anatomy__layout">
       
-      <!-- Interactive SVG Scent Notes Wheel -->
-      <div class="scent-wheel__visual-wrapper">
-        <svg class="scent-wheel__svg" viewBox="0 0 200 200">
-          
-          <!-- Outer Circle / Ring 3: Top Notes -->
-          <!-- sector 1 (Mogra/Floral) -->
-          <path class="scent-wheel__sector" d="M 100 10 A 90 90 0 0 1 178 55 L 152 70 A 60 60 0 0 0 100 40 Z" fill="#faf5e6" data-type="top" data-name="Mogra Jasmine" data-desc="Delivers a sweet, clean floral entrance. Extracted through steam distillation from Kannauj jasmine buds to greet the senses."></path>
-          <!-- sector 2 (Katcha Bela/Fresh) -->
-          <path class="scent-wheel__sector" d="M 178 55 A 90 90 0 0 1 178 145 L 152 130 A 60 60 0 0 0 152 70 Z" fill="#f8eed0" data-type="top" data-name="Katcha Bela" data-desc="Fresh, green, and sweet aroma. Captures the fragrance of blooming wet buds in Kannauj gardens right after the first rain."></path>
+      <!-- Left Panel -->
+      <div class="wa-anatomy__profile-card">
+        <div>
+          <span class="wa-anatomy__profile-tag" id="ProfileTag">WARM WOODY & ROSE</span>
+          <h3 class="wa-anatomy__profile-name" id="ProfileName">Turkish Oud Luxury Attar</h3>
+          <p class="wa-anatomy__profile-vibe" id="ProfileVibe">
+            An opulent union of Isparta Rose petals, warm glowing amber, and Cambodian agarwood crafted for memorable authority.
+          </p>
+        </div>
 
-          <!-- Middle Circle / Ring 2: Heart Notes -->
-          <!-- sector 3 (Saffron/Kesar) -->
-          <path class="scent-wheel__sector" d="M 178 145 A 90 90 0 0 1 100 190 L 100 160 A 60 60 0 0 0 152 130 Z" fill="#ffd700" data-type="heart" data-name="Kesar Saffron" data-desc="Exotic Kashmiri saffron strands provide a spicy, warm, luxurious core note that bridges the scent profile."></path>
-          <!-- sector 4 (Chandan/Sandalwood) -->
-          <path class="scent-wheel__sector" d="M 100 190 A 90 90 0 0 1 22 145 L 48 130 A 60 60 0 0 0 100 160 Z" fill="#f1cb64" data-type="heart" data-name="Chandan Mysore" data-desc="Creamy, balsamic sandalwood heart notes that add depth and velvety warmth to the middle phase of development."></path>
-
-          <!-- Inner Circle / Ring 1: Base Notes -->
-          <!-- sector 5 (Royal Amber) -->
-          <path class="scent-wheel__sector" d="M 22 145 A 90 90 0 0 1 22 55 L 48 70 A 60 60 0 0 0 48 130 Z" fill="#e5b33a" data-type="base" data-name="Royal Amber" data-desc="A rich, golden resinous note that locks the fragrance molecules, ensuring maximum longevity and projection."></path>
-          <!-- sector 6 (Earthy Musk) -->
-          <path class="scent-wheel__sector" d="M 22 55 A 90 90 0 0 1 100 10 L 100 40 A 60 60 0 0 0 48 70 Z" fill="#cca43b" data-type="base" data-name="Earthy Musk" data-desc="Powdery, warm musk undertones that linger for hours, leaving a majestic, unforgettable trail of luxury."></path>
-
-          <!-- Center decorative drop icon -->
-          <circle class="scent-wheel__center-drop" cx="100" cy="100" r="16"></circle>
-          <path d="M 100 90 Q 94 99 94 103 A 6 6 0 1 0 106 103 Q 106 99 100 90 Z" fill="#ffffff"></path>
-          
-        </svg>
-      </div>
-
-      <!-- Scent Details Card (Version 2.0 Redesigned Layout) -->
-      <div class="scent-wheel__info-card" id="sq-info-card-{{ section.id }}">
-        <div id="sq-card-content-{{ section.id }}">
-          <div class="scent-wheel__card-header">
-            <span class="scent-wheel__info-badge" id="sq-detail-badge-{{ section.id }}">Interactive Profile</span>
-            <span class="scent-wheel__effect-badge" id="sq-detail-effect-{{ section.id }}">Explore Notes</span>
-          </div>
-          
-          <div class="scent-wheel__title-row">
-            <h3 class="scent-wheel__info-title" id="sq-detail-title-{{ section.id }}">Fragrance Anatomy</h3>
-            <span class="scent-wheel__sub-name" id="sq-detail-subname-{{ section.id }}">Anatomy Visualizer</span>
-          </div>
-          
-          <p class="scent-wheel__info-desc" id="sq-detail-desc-{{ section.id }}">Hover over or tap any sector of the scent notes wheel to analyze the ingredients, extraction, and note category details.</p>
-          
-          <div class="scent-wheel__detail-metrics" id="sq-detail-metrics-{{ section.id }}" style="display: none;">
-            <div class="scent-wheel__metric">
-              <span class="scent-wheel__metric-label">Longevity:</span>
-              <div class="scent-wheel__bar-wrapper">
-                <div class="scent-wheel__bar-fill" id="sq-detail-bar-{{ section.id }}"></div>
-              </div>
-              <span class="scent-wheel__metric-value" id="sq-detail-longevity-{{ section.id }}"></span>
+        <div class="wa-anatomy__metrics">
+          <div class="wa-anatomy__metric">
+            <div class="wa-anatomy__metric-header">
+              <span class="wa-anatomy__metric-label">Longevity on Skin</span>
+              <span class="wa-anatomy__metric-val" id="MetricLongevity">14+ Hours</span>
             </div>
-            <div class="scent-wheel__metric-info">
-              <span><strong>Intensity:</strong> <span id="sq-detail-strength-{{ section.id }}"></span></span>
+            <div class="wa-anatomy__metric-bar">
+              <div class="wa-anatomy__metric-fill" id="FillLongevity" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <div class="wa-anatomy__metric">
+            <div class="wa-anatomy__metric-header">
+              <span class="wa-anatomy__metric-label">Sillage Aura</span>
+              <span class="wa-anatomy__metric-val" id="MetricSillage">Room-Filling Presence</span>
+            </div>
+            <div class="wa-anatomy__metric-bar">
+              <div class="wa-anatomy__metric-fill" id="FillSillage" style="width: 92%;"></div>
+            </div>
+          </div>
+
+          <div class="wa-anatomy__metric">
+            <div class="wa-anatomy__metric-header">
+              <span class="wa-anatomy__metric-label">Concentration</span>
+              <span class="wa-anatomy__metric-val">100% Pure Oil</span>
+            </div>
+            <div class="wa-anatomy__metric-bar">
+              <div class="wa-anatomy__metric-fill" style="width: 100%;"></div>
             </div>
           </div>
         </div>
-        <p class="scent-wheel__info-instruction" id="sq-instruction-{{ section.id }}">👈 Hover over notes sectors to explore</p>
+
+        <a href="/products/turkish-oud-luxury-attar" class="wa-anatomy__profile-cta" id="ProfileLink">
+          Experience This Fragrance →
+        </a>
+      </div>
+
+      <!-- Right 3-Phase Timeline -->
+      <div class="wa-anatomy__phases">
+        
+        <!-- Phase 1: Top Notes -->
+        <div class="wa-anatomy__phase-card">
+          <div class="wa-anatomy__phase-badge-col">
+            <span class="wa-anatomy__phase-num">PHASE 01</span>
+            <h4 class="wa-anatomy__phase-title">Top Notes</h4>
+            <span class="wa-anatomy__phase-time">First 0 – 30 Minutes</span>
+          </div>
+          <div class="wa-anatomy__phase-desc-col">
+            <p class="wa-anatomy__phase-notes" id="NotesTop">Turkish Rose Petals, Sweet Cardamom, Pink Pepper</p>
+            <p class="wa-anatomy__phase-story" id="StoryTop">
+              The opening greeting. An effervescent, spicy-floral burst that captures immediate attention without harsh synthetic fumes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Phase 2: Heart Notes -->
+        <div class="wa-anatomy__phase-card">
+          <div class="wa-anatomy__phase-badge-col">
+            <span class="wa-anatomy__phase-num">PHASE 02</span>
+            <h4 class="wa-anatomy__phase-title">Heart Notes</h4>
+            <span class="wa-anatomy__phase-time">30 Mins – 6 Hours</span>
+          </div>
+          <div class="wa-anatomy__phase-desc-col">
+            <p class="wa-anatomy__phase-notes" id="NotesHeart">Golden Amber Resin, Smoky Frankincense, Cedarwood</p>
+            <p class="wa-anatomy__phase-story" id="StoryHeart">
+              The signature body. As body warmth melts the oil, deep balsamic resins emerge into a warm, intoxicating velvet aura.
+            </p>
+          </div>
+        </div>
+
+        <!-- Phase 3: Base Notes -->
+        <div class="wa-anatomy__phase-card">
+          <div class="wa-anatomy__phase-badge-col">
+            <span class="wa-anatomy__phase-num">PHASE 03</span>
+            <h4 class="wa-anatomy__phase-title">Base Notes</h4>
+            <span class="wa-anatomy__phase-time">6 – 16+ Hours</span>
+          </div>
+          <div class="wa-anatomy__phase-desc-col">
+            <p class="wa-anatomy__phase-notes" id="NotesBase">Aged Cambodian Agarwood, Mysore Sandalwood, Velvet Musk</p>
+            <p class="wa-anatomy__phase-story" id="StoryBase">
+              The regal foundation. Heavy molecular resin bonds to skin lipids, leaving an intimate trail that endures through evening encounters.
+            </p>
+          </div>
+        </div>
+
       </div>
 
     </div>
+
   </div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const sectionId = "{{ section.id }}";
-    const scentSection = document.getElementById(`scent-wheel-${sectionId}`);
-    if (!scentSection) return;
-
-    const sectors = scentSection.querySelectorAll(".scent-wheel__sector");
-    const detailBadge = scentSection.querySelector(`#sq-detail-badge-${sectionId}`);
-    const detailTitle = scentSection.querySelector(`#sq-detail-title-${sectionId}`);
-    const detailDesc = scentSection.querySelector(`#sq-detail-desc-${sectionId}`);
-    const instruction = scentSection.querySelector(`#sq-instruction-${sectionId}`);
-
-    sectors.forEach(sector => {
-      function showDetails() {
-        const type = sector.getAttribute("data-type");
-        const name = sector.getAttribute("data-name");
-        const desc = sector.getAttribute("data-desc");
-
-        // Format type label
-        let badgeLabel = "TOP NOTE";
-        if (type === "heart") badgeLabel = "HEART NOTE";
-        if (type === "base") badgeLabel = "BASE NOTE";
-
-        // Redesigned 2.0 metrics mapping
-        const noteData = {
-          "Mogra Jasmine": {
-            subName: "Jasminum Sambac",
-            longevity: "1-2 Hours",
-            strength: "Fresh & Floral Sweet",
-            effect: "Calming & Uplifting",
-            longevityPct: "25%"
-          },
-          "Katcha Bela": {
-            subName: "Monsoon Jasmine Buds",
-            longevity: "1-2 Hours",
-            strength: "Green & Crisp",
-            effect: "Uplifting & Fresh",
-            longevityPct: "25%"
-          },
-          "Kesar Saffron": {
-            subName: "Crocus Sativus",
-            longevity: "4-6 Hours",
-            strength: "Spicy & Warm Saffron",
-            effect: "Exotic & Luxurious",
-            longevityPct: "60%"
-          },
-          "Chandan Mysore": {
-            subName: "Santalum Album",
-            longevity: "6-8 Hours",
-            strength: "Creamy & Balsamic Woody",
-            effect: "Soothing & Meditative",
-            longevityPct: "80%"
-          },
-          "Royal Amber": {
-            subName: "Golden Amber Accord",
-            longevity: "8-12+ Hours",
-            strength: "Deep Warm & Balsamic Resin",
-            effect: "Rich & Long-lasting",
-            longevityPct: "100%"
-          },
-          "Earthy Musk": {
-            subName: "Soft Powdery Musk Accord",
-            longevity: "10-12+ Hours",
-            strength: "Warm, Earthy & Clean Musk",
-            effect: "Sensual & Magnetic",
-            longevityPct: "100%"
-          }
-        };
-
-        const data = noteData[name] || {
-          subName: "Extraction Extract",
-          longevity: "N/A",
-          strength: "N/A",
-          effect: "N/A",
-          longevityPct: "0%"
-        };
-
-        detailBadge.textContent = badgeLabel;
-        detailTitle.textContent = name;
-        
-        // Dynamic re-trigger fade-in animation
-        detailDesc.style.animation = 'none';
-        detailDesc.offsetHeight; /* trigger reflow */
-        detailDesc.style.animation = '';
-        detailDesc.textContent = desc;
-
-        // Version 2.0 details display
-        const subNameEl = scentSection.querySelector(`#sq-detail-subname-${sectionId}`);
-        const effectEl = scentSection.querySelector(`#sq-detail-effect-${sectionId}`);
-        const metricsEl = scentSection.querySelector(`#sq-detail-metrics-${sectionId}`);
-        const barFillEl = scentSection.querySelector(`#sq-detail-bar-${sectionId}`);
-        const longevityEl = scentSection.querySelector(`#sq-detail-longevity-${sectionId}`);
-        const strengthEl = scentSection.querySelector(`#sq-detail-strength-${sectionId}`);
-
-        if (subNameEl) subNameEl.textContent = data.subName;
-        if (effectEl) {
-          effectEl.textContent = data.effect;
-          effectEl.style.color = "#cca43b";
-          effectEl.style.background = "rgba(204, 164, 59, 0.08)";
-        }
-        if (metricsEl) metricsEl.style.display = "flex";
-        if (barFillEl) {
-          barFillEl.style.width = "0%";
-          setTimeout(() => {
-            barFillEl.style.width = data.longevityPct;
-          }, 50);
-        }
-        if (longevityEl) longevityEl.textContent = data.longevity;
-        if (strengthEl) strengthEl.textContent = data.strength;
-        
-        instruction.style.opacity = "0.2";
+  (function() {
+    const data = {
+      'turkish-oud': {
+        tag: 'WARM WOODY & ROSE',
+        name: 'Turkish Oud Luxury Attar',
+        vibe: 'An opulent union of Isparta Rose petals, warm glowing amber, and Cambodian agarwood crafted for memorable authority.',
+        link: '/products/turkish-oud-luxury-attar',
+        longevity: '14+ Hours',
+        longevityFill: '95%',
+        sillage: 'Room-Filling Presence',
+        sillageFill: '92%',
+        topNotes: 'Turkish Rose Petals, Sweet Cardamom, Pink Pepper',
+        topStory: 'The opening greeting. An effervescent, spicy-floral burst that captures immediate attention without harsh synthetic fumes.',
+        heartNotes: 'Golden Amber Resin, Smoky Frankincense, Cedarwood',
+        heartStory: 'The signature body. As body warmth melts the oil, deep balsamic resins emerge into a warm, intoxicating velvet aura.',
+        baseNotes: 'Aged Cambodian Agarwood, Mysore Sandalwood, Velvet Musk',
+        baseStory: 'The regal foundation. Heavy molecular resin bonds to skin lipids, leaving an intimate trail that endures through evening encounters.'
+      },
+      'bakhoor': {
+        tag: 'SMOKY INCENSE & RESIN',
+        name: 'Bakhoor Luxury Attar',
+        vibe: 'Mystical Arabian evening incense and smoldering agarwood chips that evoke grand royal courtyards.',
+        link: '/products/bakhoor-luxury-attar',
+        longevity: '16+ Hours',
+        longevityFill: '98%',
+        sillage: 'Beast Mode Trail',
+        sillageFill: '96%',
+        topNotes: 'Frankincense Smoke, Crushed Peppercorns, Saffron Threads',
+        topStory: 'A spiritual smoky-sweet aura that commands instant reverence upon entering any gathering.',
+        heartNotes: 'Smoldering Agarwood, Labdanum Resin, Birchwood',
+        heartStory: 'Deep balsamic resins that envelope you in a dignified shield of incense warmth.',
+        baseNotes: 'Aged Assam Oud, Dark Benzoin, Golden Tobacco Accord',
+        baseStory: 'Unshakable longevity that lingers past 24 hours on wool, cotton, and jacket collars.'
+      },
+      'salma': {
+        tag: 'DEWY ROMANTIC FLORAL',
+        name: 'Salma Royal Floral Attar',
+        vibe: 'A romantic whisper of morning Kannauj blossoms, Sambac Mogra, and velvety cashmere musk.',
+        link: '/products/salma-luxury-attar',
+        longevity: '12+ Hours',
+        longevityFill: '88%',
+        sillage: 'Intimate Alluring Halo',
+        sillageFill: '85%',
+        topNotes: 'Morning Rose Water, Citrus Blossom, Sweet Lily',
+        topStory: 'Crisp, dewy floral sweetness that feels fresh like garden rain at dawn.',
+        heartNotes: 'Royal Sambac Mogra, French Jasmine, White Amber',
+        heartStory: 'Intoxicating white flowers that effortlessly draw quiet compliments in close conversations.',
+        baseNotes: 'Velvet Cashmere Musk, Soft Sandalwood, Bourbon Vanilla',
+        baseStory: 'A creamy, soothing cocoon that softens into an irresistible second-skin signature.'
+      },
+      'musk-al-oudh': {
+        tag: 'IMPERIAL DEPTH & PRESENCE',
+        name: 'Musk Al Oudh Luxury Attar',
+        vibe: 'Pristine Himalayan white musk crowned with the regal depth of vintage Assam agarwood.',
+        link: '/products/musk-al-oudh-luxury-attar',
+        longevity: '15+ Hours',
+        longevityFill: '96%',
+        sillage: 'Executive Boardroom Sillage',
+        sillageFill: '94%',
+        topNotes: 'Himalayan White Musk, Fresh Bergamot, Dry Cardamom',
+        topStory: 'Pristine mountain coolness that projects sharp, poised executive authority.',
+        heartNotes: 'Aged Assam Agarwood, Cedar Leaf, Warm Leather Accord',
+        heartStory: 'Noble woods that establish steadfast confidence throughout boardroom marathons.',
+        baseNotes: 'Mysore Sandalwood, Birch Wood, Earthy Patchouli',
+        baseStory: 'A timeless aristocratic finish that refuses to fade until washed.'
       }
+    };
 
-      sector.addEventListener("mouseenter", showDetails);
-      sector.addEventListener("click", showDetails);
+    const tabsContainer = document.getElementById('AnatomyTabs');
+    if (!tabsContainer) return;
+
+    const btns = tabsContainer.querySelectorAll('.wa-anatomy__tab-btn');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-attar');
+        const item = data[key];
+        if (!item) return;
+
+        btns.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        document.getElementById('ProfileTag').textContent = item.tag;
+        document.getElementById('ProfileName').textContent = item.name;
+        document.getElementById('ProfileVibe').textContent = item.vibe;
+        document.getElementById('ProfileLink').setAttribute('href', item.link);
+        
+        document.getElementById('MetricLongevity').textContent = item.longevity;
+        document.getElementById('FillLongevity').style.width = item.longevityFill;
+        document.getElementById('MetricSillage').textContent = item.sillage;
+        document.getElementById('FillSillage').style.width = item.sillageFill;
+
+        document.getElementById('NotesTop').textContent = item.topNotes;
+        document.getElementById('StoryTop').textContent = item.topStory;
+        document.getElementById('NotesHeart').textContent = item.heartNotes;
+        document.getElementById('StoryHeart').textContent = item.heartStory;
+        document.getElementById('NotesBase').textContent = item.baseNotes;
+        document.getElementById('StoryBase').textContent = item.baseStory;
+      });
     });
-  });
+  })();
 </script>
 
 {% schema %}
 {
-  "name": "Scent Notes Wheel",
+  "name": "Scent Anatomy Visualizer",
   "tag": "section",
   "class": "section",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "Heading",
-      "default": "Scent Anatomy Visualizer"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subheading",
-      "default": "Interactive Fragrance Wheel"
-    },
-    {
-      "type": "header",
-      "content": "Section Padding"
+      "label": "Section Heading",
+      "default": "The 3 Evolution Phases of Pure Attar"
     },
     {
       "type": "range",
       "id": "padding_top",
-      "min": 0,
-      "max": 100,
+      "min": 24,
+      "max": 80,
       "step": 4,
       "unit": "px",
-      "default": 48,
-      "label": "Padding Top"
+      "label": "Padding Top",
+      "default": 56
     },
     {
       "type": "range",
       "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
+      "min": 24,
+      "max": 80,
       "step": 4,
       "unit": "px",
-      "default": 48,
-      "label": "Padding Bottom"
+      "label": "Padding Bottom",
+      "default": 56
     }
   ],
   "presets": [
     {
-      "name": "Scent Notes Wheel",
-      "category": "Premium Custom Sections"
+      "name": "Scent Anatomy Visualizer"
     }
   ]
 }
