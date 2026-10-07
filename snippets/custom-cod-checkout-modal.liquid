@@ -83,21 +83,6 @@
         <div id="smd-pin-verified-badge" class="smd-pin-verified" style="display:none;"></div>
         <div id="WildAromaStatusBox" class="smd-status-box" style="display:none;"></div>
 
-        <!-- Repeat Order Confirmation Dialog (Shown on 2nd Order) -->
-        <div id="WildAromaConfirmRepeatModal" class="smd-repeat-dialog" style="display:none;">
-          <div class="smd-repeat-content">
-            <div class="smd-repeat-icon">⚠️</div>
-            <h4 class="smd-repeat-title">Second Order Confirmation</h4>
-            <p class="smd-repeat-desc" id="smd-confirm-desc">
-              You already placed an order today with this number. Do you want to place another order for this item?
-            </p>
-            <div class="smd-repeat-actions">
-              <button type="button" class="smd-btn-repeat-yes" onclick="executeVerifiedOrder()">Yes, Confirm 2nd Order</button>
-              <button type="button" class="smd-btn-repeat-no" onclick="cancelRepeatOrder()">No, Keep My First Order</button>
-            </div>
-          </div>
-        </div>
-
         <!-- Daily Limit Reached (3rd Order Block) WhatsApp Card -->
         <div id="WildAromaWhatsAppBlockCard" class="smd-wa-block-card" style="display:none;">
           <div class="smd-wa-block-header">
@@ -137,6 +122,25 @@
           <span>💬 WhatsApp Support</span>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Repeat Order Confirmation Dialog (Shown on 2nd Order) - Independent Fixed Overlay -->
+  <div id="WildAromaConfirmRepeatModal" class="smd-repeat-dialog" style="display:none;" role="dialog" aria-modal="true">
+    <div class="smd-repeat-content">
+      <div class="smd-repeat-icon">⚠️</div>
+      <h4 class="smd-repeat-title">Second Order Confirmation</h4>
+      <p class="smd-repeat-desc" id="smd-confirm-desc">
+        Aapne aaj iss number se pehle bhi ek order place kiya hai. Kya aap confirm ek aur order place karna chahte hain?
+      </p>
+      <div class="smd-repeat-actions">
+        <button type="button" id="smd-btn-repeat-yes" class="smd-btn-repeat-yes" onclick="executeVerifiedOrder(event)">
+          Yes, Confirm 2nd Order
+        </button>
+        <button type="button" id="smd-btn-repeat-no" class="smd-btn-repeat-no" onclick="cancelRepeatOrder(event)">
+          No, Keep My First Order
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -585,23 +589,28 @@
     color: #15803d !important;
   }
 
-  /* Repeat Order Confirmation Dialog */
+  /* Repeat Order Confirmation Dialog - Fixed Global Topmost Overlay */
   .smd-repeat-dialog {
-    position: absolute !important;
+    position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    background: rgba(10, 15, 12, 0.85) !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(6px) !important;
-    z-index: 100 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: rgba(10, 15, 12, 0.90) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 2147483647 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     padding: 20px !important;
-    border-radius: 20px !important;
     box-sizing: border-box !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    pointer-events: auto !important;
     animation: smdFadeIn 0.2s ease !important;
   }
   @keyframes smdFadeIn {
@@ -611,20 +620,24 @@
   .smd-repeat-content {
     background: #ffffff !important;
     border: 2px solid #b8974f !important;
-    border-radius: 16px !important;
+    border-radius: 18px !important;
     padding: 24px 20px !important;
     text-align: center !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6) !important;
     max-width: 360px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
   }
   .smd-repeat-icon {
-    font-size: 34px !important;
+    font-size: 36px !important;
     margin-bottom: 8px !important;
+    line-height: 1 !important;
   }
   .smd-repeat-title {
-    font-size: 16.5px !important;
+    font-size: 17px !important;
     font-weight: 800 !important;
     color: #0f172a !important;
     margin: 0 0 8px !important;
@@ -638,34 +651,59 @@
   .smd-repeat-actions {
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px !important;
+    gap: 10px !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 2147483647 !important;
   }
   .smd-btn-repeat-yes {
     background: #0b3b24 !important;
     color: #ffffff !important;
     border: 1.5px solid #22c55e !important;
-    border-radius: 10px !important;
-    padding: 12px 16px !important;
-    font-size: 14px !important;
+    border-radius: 12px !important;
+    padding: 15px 18px !important;
+    font-size: 15px !important;
     font-weight: 800 !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 12px rgba(11, 59, 36, 0.25) !important;
-    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 14px rgba(11, 59, 36, 0.35) !important;
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    pointer-events: auto !important;
   }
-  .smd-btn-repeat-yes:hover {
-    background: #0f4d30 !important;
-    transform: translateY(-1px) !important;
+  .smd-btn-repeat-yes:active {
+    transform: scale(0.97) !important;
+    background: #14532d !important;
   }
   .smd-btn-repeat-no {
-    background: #f8fafc !important;
-    color: #64748b !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 10px !important;
-    padding: 10px 16px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 12px 18px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
     cursor: pointer !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.15s ease !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    pointer-events: auto !important;
   }
 
   /* Daily Limit Reached (3rd Order) WhatsApp Card */
@@ -858,11 +896,38 @@
     let currentMode = 'online'; // 'online' or 'cod'
     const DISCOUNT_AMOUNT = 100; // Extra Rs 100 Off on Prepaid
 
+    function bindRepeatButtons() {
+      const yesBtn = document.getElementById('smd-btn-repeat-yes');
+      if (yesBtn && !yesBtn._waBound) {
+        yesBtn._waBound = true;
+        yesBtn.addEventListener('click', window.executeVerifiedOrder);
+        yesBtn.addEventListener('touchend', function(ev) {
+          ev.preventDefault();
+          window.executeVerifiedOrder(ev);
+        }, { passive: false });
+      }
+
+      const noBtn = document.getElementById('smd-btn-repeat-no');
+      if (noBtn && !noBtn._waBound) {
+        noBtn._waBound = true;
+        noBtn.addEventListener('click', window.cancelRepeatOrder);
+        noBtn.addEventListener('touchend', function(ev) {
+          ev.preventDefault();
+          window.cancelRepeatOrder(ev);
+        }, { passive: false });
+      }
+    }
+
     function ensureModalInBody() {
       const modal = document.getElementById('WildAromaOrderModal');
       if (modal && modal.parentElement !== document.body) {
         document.body.appendChild(modal);
       }
+      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
+      if (repeatModal && repeatModal.parentElement !== document.body) {
+        document.body.appendChild(repeatModal);
+      }
+      bindRepeatButtons();
     }
 
     function getActiveVariant() {
@@ -1106,14 +1171,32 @@
     }
 
     // Repeat confirmation callbacks
-    window.executeVerifiedOrder = function() {
+    window.executeVerifiedOrder = function(e) {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
+
+      const yesBtn = document.getElementById('smd-btn-repeat-yes');
+      if (yesBtn) {
+        yesBtn.disabled = true;
+        yesBtn.textContent = '⏳ Confirming 2nd Order...';
+      }
+
       repeatConfirmed = true;
+
       const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
       if (repeatModal) repeatModal.style.display = 'none';
+
+      // Submit immediately
       window.submitWildAromaOrder();
     };
 
-    window.cancelRepeatOrder = function() {
+    window.cancelRepeatOrder = function(e) {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
       repeatConfirmed = false;
       const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
       if (repeatModal) repeatModal.style.display = 'none';
@@ -1231,7 +1314,18 @@
           const prevOrderText = pastOrders[0].orderName ? ` (Order #${pastOrders[0].orderName})` : '';
           confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Kya aap confirm ek aur order place karna chahte hain?`;
         }
-        if (repeatModal) repeatModal.style.display = 'flex';
+        const yesBtn = document.getElementById('smd-btn-repeat-yes');
+        if (yesBtn) {
+          yesBtn.disabled = false;
+          yesBtn.textContent = 'Yes, Confirm 2nd Order';
+        }
+        if (repeatModal) {
+          if (repeatModal.parentElement !== document.body) {
+            document.body.appendChild(repeatModal);
+          }
+          bindRepeatButtons();
+          repeatModal.style.display = 'flex';
+        }
         return; // Pause until customer confirms
       }
 
@@ -1443,6 +1537,12 @@
 
       const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
       if (waBlockCard) waBlockCard.style.display = 'none';
+
+      const yesBtn = document.getElementById('smd-btn-repeat-yes');
+      if (yesBtn) {
+        yesBtn.disabled = false;
+        yesBtn.textContent = 'Yes, Confirm 2nd Order';
+      }
 
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
       if (submitBtn) {
