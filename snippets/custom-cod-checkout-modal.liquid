@@ -83,6 +83,38 @@
         <div id="smd-pin-verified-badge" class="smd-pin-verified" style="display:none;"></div>
         <div id="WildAromaStatusBox" class="smd-status-box" style="display:none;"></div>
 
+        <!-- Repeat Order Confirmation Dialog (Shown on 2nd Order) -->
+        <div id="WildAromaConfirmRepeatModal" class="smd-repeat-dialog" style="display:none;">
+          <div class="smd-repeat-content">
+            <div class="smd-repeat-icon">⚠️</div>
+            <h4 class="smd-repeat-title">Second Order Confirmation</h4>
+            <p class="smd-repeat-desc" id="smd-confirm-desc">
+              You already placed an order today with this number. Do you want to place another order for this item?
+            </p>
+            <div class="smd-repeat-actions">
+              <button type="button" class="smd-btn-repeat-yes" onclick="executeVerifiedOrder()">Yes, Confirm 2nd Order</button>
+              <button type="button" class="smd-btn-repeat-no" onclick="cancelRepeatOrder()">No, Keep My First Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Limit Reached (3rd Order Block) WhatsApp Card -->
+        <div id="WildAromaWhatsAppBlockCard" class="smd-wa-block-card" style="display:none;">
+          <div class="smd-wa-block-header">
+            <span class="smd-wa-block-icon">🔒</span>
+            <div>
+              <h4 class="smd-wa-block-title">Daily COD Limit Reached (2 Orders Max)</h4>
+              <p class="smd-wa-block-subtitle">To prevent duplicate bookings, maximum 2 COD orders per day are permitted online.</p>
+            </div>
+          </div>
+          <p class="smd-wa-block-desc">
+            Want to add more flacons or need custom assistance? Tap below to connect directly with our WhatsApp concierge:
+          </p>
+          <a id="smd-wa-block-btn" href="https://api.whatsapp.com/send?phone=919153334960" target="_blank" class="smd-wa-block-btn">
+            <span>💬</span> Order via WhatsApp Support
+          </a>
+        </div>
+
         <!-- Submit Button -->
         <button type="button" id="WildAromaSubmitOrderBtn" class="smd-submit-btn" onclick="submitWildAromaOrder(event)">
           <span id="smd-btn-icon">🔒</span>
@@ -553,6 +585,151 @@
     color: #15803d !important;
   }
 
+  /* Repeat Order Confirmation Dialog */
+  .smd-repeat-dialog {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(10, 15, 12, 0.85) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    z-index: 100 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+    animation: smdFadeIn 0.2s ease !important;
+  }
+  @keyframes smdFadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .smd-repeat-content {
+    background: #ffffff !important;
+    border: 2px solid #b8974f !important;
+    border-radius: 16px !important;
+    padding: 24px 20px !important;
+    text-align: center !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45) !important;
+    max-width: 360px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .smd-repeat-icon {
+    font-size: 34px !important;
+    margin-bottom: 8px !important;
+  }
+  .smd-repeat-title {
+    font-size: 16.5px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin: 0 0 8px !important;
+  }
+  .smd-repeat-desc {
+    font-size: 13px !important;
+    color: #475569 !important;
+    line-height: 1.5 !important;
+    margin: 0 0 18px !important;
+  }
+  .smd-repeat-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .smd-btn-repeat-yes {
+    background: #0b3b24 !important;
+    color: #ffffff !important;
+    border: 1.5px solid #22c55e !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(11, 59, 36, 0.25) !important;
+    transition: all 0.2s ease !important;
+  }
+  .smd-btn-repeat-yes:hover {
+    background: #0f4d30 !important;
+    transform: translateY(-1px) !important;
+  }
+  .smd-btn-repeat-no {
+    background: #f8fafc !important;
+    color: #64748b !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* Daily Limit Reached (3rd Order) WhatsApp Card */
+  .smd-wa-block-card {
+    background: #f0fdf4 !important;
+    border: 1.5px solid #86efac !important;
+    border-radius: 14px !important;
+    padding: 16px 18px !important;
+    text-align: left !important;
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.12) !important;
+    margin-top: 4px !important;
+    margin-bottom: 8px !important;
+    box-sizing: border-box !important;
+  }
+  .smd-wa-block-header {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    margin-bottom: 8px !important;
+  }
+  .smd-wa-block-icon {
+    font-size: 24px !important;
+    flex-shrink: 0 !important;
+  }
+  .smd-wa-block-title {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    color: #14532d !important;
+    margin: 0 0 2px !important;
+  }
+  .smd-wa-block-subtitle {
+    font-size: 11.5px !important;
+    color: #166534 !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+  .smd-wa-block-desc {
+    font-size: 12px !important;
+    color: #334155 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 12px !important;
+  }
+  .smd-wa-block-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: #25d366 !important;
+    color: #ffffff !important;
+    padding: 13px 18px !important;
+    border-radius: 10px !important;
+    font-size: 14.5px !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35) !important;
+    transition: transform 0.2s ease, background 0.2s ease !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .smd-wa-block-btn:hover {
+    background: #20ba5a !important;
+    transform: translateY(-1px) !important;
+  }
+
   /* Submit Button */
   .smd-submit-btn {
     width: 100% !important;
@@ -808,6 +985,9 @@
       if (e.key === 'Escape') closeWildAromaOrderModal();
     });
 
+    // In-memory Pincode Cache for instantaneous autocomplete
+    const pinCache = {};
+
     // Pincode auto-lookup
     const pinInput = document.getElementById('smd_input_pincode');
     const pinLoader = document.getElementById('smd-pin-loader');
@@ -815,12 +995,25 @@
     const cityInput = document.getElementById('smd_input_city');
     const stateInput = document.getElementById('smd_input_state');
 
+    function applyPinData(city, state) {
+      if (cityInput) cityInput.value = city;
+      if (stateInput) stateInput.value = state;
+      if (pinBadge) {
+        pinBadge.textContent = `✓ Delivery verified for ${city}, ${state}`;
+        pinBadge.style.display = 'block';
+      }
+    }
+
     if (pinInput) {
       pinInput.addEventListener('input', function() {
         const pin = this.value.replace(/\D/g, '').slice(0, 6);
         this.value = pin;
 
         if (pin.length === 6) {
+          if (pinCache[pin]) {
+            applyPinData(pinCache[pin].city, pinCache[pin].state);
+            return;
+          }
           if (pinLoader) pinLoader.style.display = 'inline';
           fetch('https://api.postalpincode.in/pincode/' + pin)
             .then(res => res.json())
@@ -830,13 +1023,8 @@
                 const po = data[0].PostOffice[0];
                 const city = po.District || po.Block || po.Circle || '';
                 const state = po.State || '';
-                if (cityInput) cityInput.value = city;
-                if (stateInput) stateInput.value = state;
-
-                if (pinBadge) {
-                  pinBadge.textContent = `✓ Delivery verified for ${city}, ${state}`;
-                  pinBadge.style.display = 'block';
-                }
+                pinCache[pin] = { city, state };
+                applyPinData(city, state);
               }
             })
             .catch(() => {
@@ -848,6 +1036,90 @@
       });
     }
 
+    // ========================================================
+    // DUPLICATE / MULTI-ORDER GUARD (24 Hours per Phone Number)
+    // 1st Order: Normal & Instant
+    // 2nd Order: Confirmation Prompt
+    // 3rd Order: Blocked with Direct WhatsApp Support Button
+    // ========================================================
+    const WA_ORDERS_KEY = 'wa_user_orders_v2';
+    let repeatConfirmed = false;
+
+    function getTodayOrders(phoneClean) {
+      try {
+        const raw = localStorage.getItem(WA_ORDERS_KEY);
+        if (!raw) return [];
+        const list = JSON.parse(raw);
+        const now = Date.now();
+        const oneDayAgo = now - 24 * 60 * 60 * 1000;
+        return list.filter(item => item.phone === phoneClean && item.time > oneDayAgo);
+      } catch(e) {
+        return [];
+      }
+    }
+
+    function recordOrder(phoneClean, orderName) {
+      try {
+        const raw = localStorage.getItem(WA_ORDERS_KEY);
+        let list = raw ? JSON.parse(raw) : [];
+        const now = Date.now();
+        const oneDayAgo = now - 24 * 60 * 60 * 1000;
+        list = list.filter(item => item.time > oneDayAgo);
+        list.push({ phone: phoneClean, orderName: orderName || '', time: now });
+        localStorage.setItem(WA_ORDERS_KEY, JSON.stringify(list));
+      } catch(e) {}
+    }
+
+    // Live phone number monitor to trigger WhatsApp card if 3rd order
+    const phoneInputEl = document.getElementById('smd_input_phone');
+    if (phoneInputEl) {
+      phoneInputEl.addEventListener('input', function() {
+        let phone = this.value.replace(/\D/g, '').slice(0, 10);
+        this.value = phone;
+
+        const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
+        const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
+        const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
+
+        if (phone.length === 10) {
+          const pastOrders = getTodayOrders(phone);
+          if (pastOrders.length >= 2) {
+            // Block 3rd order immediately
+            if (waBlockCard) waBlockCard.style.display = 'block';
+            if (submitBtn) submitBtn.style.display = 'none';
+            if (repeatModal) repeatModal.style.display = 'none';
+
+            const waBtn = document.getElementById('smd-wa-block-btn');
+            if (waBtn) {
+              const prodTitle = encodeURIComponent('{{ product.title | escape }}');
+              waBtn.href = `https://api.whatsapp.com/send?phone=919153334960&text=Hi%20Wild%20Aroma%2C%20I%20want%20to%20place%20an%20additional%20order%20for%20${prodTitle}.%20My%20Phone%3A%20${phone}`;
+            }
+          } else {
+            if (waBlockCard) waBlockCard.style.display = 'none';
+            if (submitBtn) submitBtn.style.display = 'flex';
+          }
+        } else {
+          if (waBlockCard) waBlockCard.style.display = 'none';
+          if (submitBtn) submitBtn.style.display = 'flex';
+        }
+      });
+    }
+
+    // Repeat confirmation callbacks
+    window.executeVerifiedOrder = function() {
+      repeatConfirmed = true;
+      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
+      if (repeatModal) repeatModal.style.display = 'none';
+      window.submitWildAromaOrder();
+    };
+
+    window.cancelRepeatOrder = function() {
+      repeatConfirmed = false;
+      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
+      if (repeatModal) repeatModal.style.display = 'none';
+      window.closeWildAromaOrderModal();
+    };
+
     // Handle variant changes on product page
     document.addEventListener('change', function(e) {
       if (e.target && (e.target.name === 'id' || e.target.closest('variant-selects') || e.target.closest('.product-form__input'))) {
@@ -855,7 +1127,7 @@
       }
     });
 
-    // Order Submit & Shopify Checkout Redirect
+    // Order Submit & Shopify Direct Placement
     window.submitWildAromaOrder = async function(e) {
       if (e && typeof e.preventDefault === 'function') {
         e.preventDefault();
@@ -872,13 +1144,18 @@
       const statusBox = document.getElementById('WildAromaStatusBox');
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
       const btnText = document.getElementById('smd-btn-text');
+      const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
+      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
 
       function showError(msg) {
         if (!statusBox) return;
         statusBox.textContent = msg;
         statusBox.className = 'smd-status-box error';
         statusBox.style.display = 'block';
-        if (submitBtn) submitBtn.disabled = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.display = 'flex';
+        }
         if (btnText) {
           const v = getActiveVariant();
           const regularRupees = Math.round(v.price / 100);
@@ -927,7 +1204,38 @@
         return;
       }
 
-      // Order API endpoint from Theme Settings or default live Wild Aroma endpoint
+      // ----------------------------------------------------
+      // Multi-Order Protection Check
+      // ----------------------------------------------------
+      const pastOrders = getTodayOrders(phone);
+
+      // Check 3rd Order: Blocked completely
+      if (pastOrders.length >= 2) {
+        if (waBlockCard) waBlockCard.style.display = 'block';
+        if (submitBtn) submitBtn.style.display = 'none';
+        if (repeatModal) repeatModal.style.display = 'none';
+        if (statusBox) statusBox.style.display = 'none';
+
+        const waBtn = document.getElementById('smd-wa-block-btn');
+        if (waBtn) {
+          const prodTitle = encodeURIComponent('{{ product.title | escape }}');
+          waBtn.href = `https://api.whatsapp.com/send?phone=919153334960&text=Hi%20Wild%20Aroma%2C%20I%20want%20to%20place%20an%20additional%20order%20for%20${prodTitle}.%20My%20Phone%3A%20${phone}`;
+        }
+        return;
+      }
+
+      // Check 2nd Order: Confirmation prompt required
+      if (pastOrders.length === 1 && !repeatConfirmed) {
+        const confirmDesc = document.getElementById('smd-confirm-desc');
+        if (confirmDesc) {
+          const prevOrderText = pastOrders[0].orderName ? ` (Order #${pastOrders[0].orderName})` : '';
+          confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Kya aap confirm ek aur order place karna chahte hain?`;
+        }
+        if (repeatModal) repeatModal.style.display = 'flex';
+        return; // Pause until customer confirms
+      }
+
+      // Order API endpoint
       const THEME_ORDER_API = '{{ settings.wa_order_api_url | default: "" }}' || window.WILD_AROMA_ORDER_API || 'https://crm.ratnakarmishra.in/wildaroma_order.php';
 
       // UI state
@@ -943,7 +1251,7 @@
       const variantId = activeVar ? activeVar.id : '{{ product.selected_or_first_available_variant.id }}';
 
       // ========================================================
-      // 1. CASH ON DELIVERY VIA SERVERLESS / WORKER API (IF CONFIGURED)
+      // 1. CASH ON DELIVERY VIA WORKER / SERVER API
       // ========================================================
       if (currentMode === 'cod' && THEME_ORDER_API) {
         try {
@@ -964,12 +1272,32 @@
           });
 
           const data = await res.json();
+
+          // Server-side limit reached catch
+          if (data && data.limit_reached) {
+            if (waBlockCard) waBlockCard.style.display = 'block';
+            if (submitBtn) submitBtn.style.display = 'none';
+            if (statusBox) statusBox.style.display = 'none';
+            const waBtn = document.getElementById('smd-wa-block-btn');
+            if (waBtn && data.whatsapp_url) waBtn.href = data.whatsapp_url;
+            return;
+          }
+
           if (data && data.success && data.order_status_url) {
+            // Record order in local cache
+            recordOrder(phone, data.order_name);
+            repeatConfirmed = false;
+
             statusBox.className = 'smd-status-box success';
             statusBox.textContent = '🎉 Order #' + (data.order_name || '') + ' Confirmed! Redirecting to confirmation page...';
+
+            // Clean form inputs so back button shows pristine state
+            const form = document.getElementById('WildAromaOrderForm');
+            if (form) form.reset();
+
             setTimeout(() => {
               window.location.href = data.order_status_url;
-            }, 600);
+            }, 500);
             return;
           } else {
             throw new Error(data ? (data.error || 'Server returned failure') : 'Order API response missing');
@@ -1038,7 +1366,7 @@
       }
 
       // ========================================================
-      // 3. SHOPIFY NATIVE CHECKOUT REDIRECT (PRE-FILLED)
+      // 3. SHOPIFY NATIVE CHECKOUT FALLBACK (PRE-FILLED)
       // ========================================================
       try {
         await fetch('/cart/clear.js', { method: 'POST' });
@@ -1083,9 +1411,50 @@
 
         window.location.href = '/checkout?' + checkoutParams.toString();
       } catch (err) {
-        showError('⚠️ ' + (err.message || 'Unable to open checkout. Please ensure Cash on Delivery is enabled in Shopify Admin Payments.'));
+        showError('⚠️ ' + (err.message || 'Unable to open checkout.'));
       }
     };
+
+    // ========================================================
+    // BROWSER BACK BUTTON (BFCACHE) DATA & MODAL SANITIZATION
+    // Ensures stale customer data is completely cleared if the user
+    // navigates back from the Thank You page.
+    // ========================================================
+    window.addEventListener('pageshow', function() {
+      repeatConfirmed = false;
+      const form = document.getElementById('WildAromaOrderForm');
+      if (form) form.reset();
+
+      const modal = document.getElementById('WildAromaOrderModal');
+      if (modal) {
+        modal.classList.remove('is-open');
+        modal.style.display = 'none';
+      }
+      document.body.classList.remove('wa-modal-active');
+
+      const statusBox = document.getElementById('WildAromaStatusBox');
+      if (statusBox) {
+        statusBox.style.display = 'none';
+        statusBox.textContent = '';
+      }
+
+      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
+      if (repeatModal) repeatModal.style.display = 'none';
+
+      const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
+      if (waBlockCard) waBlockCard.style.display = 'none';
+
+      const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.style.display = 'flex';
+      }
+
+      const pinBadge = document.getElementById('smd-pin-verified-badge');
+      if (pinBadge) pinBadge.style.display = 'none';
+
+      updateModalPricing();
+    });
 
     // Initial pricing sync and DOM relocation
     document.addEventListener('DOMContentLoaded', function() {
