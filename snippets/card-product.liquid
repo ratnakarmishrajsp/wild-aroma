@@ -78,22 +78,49 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+    assign fallback_asset = ''
+    if card_product.featured_media == blank
+      assign check_title = card_product.title | downcase
+      assign check_handle = card_product.handle | downcase
+      if check_title contains 'white musk' or check_handle contains 'white-musk'
+        assign fallback_asset = 'product-white-musk.jpg'
+      elsif check_title contains 'musk amber' or check_handle contains 'musk-amber'
+        assign fallback_asset = 'product-musk-amber.jpg'
+      elsif check_title contains 'musk' or check_handle contains 'musk'
+        assign fallback_asset = 'product-musk-al-oudh.jpg'
+      elsif check_title contains 'turkish' or check_handle contains 'turkish'
+        assign fallback_asset = 'product-turkish-oud.jpg'
+      elsif check_title contains 'salma' or check_handle contains 'salma'
+        assign fallback_asset = 'product-salma.jpg'
+      elsif check_title contains 'bakhoor' or check_handle contains 'bakhoor'
+        assign fallback_asset = 'product-bakhoor.jpg'
+      elsif check_title contains 'rasasi' or check_title contains 'mubarak' or check_handle contains 'rasasi'
+        assign fallback_asset = 'product-rasasi-oud.jpg'
+      elsif check_title contains 'park avenue' or check_handle contains 'park-avenue'
+        assign fallback_asset = 'product-park-avenue.jpg'
+      elsif check_title contains 'fantasia' or check_handle contains 'fantasia'
+        assign fallback_asset = 'product-fantasia.jpg'
+      elsif check_title contains 'jannatul' or check_title contains 'firdaus' or check_handle contains 'jannatul'
+        assign fallback_asset = 'product-jannatul-firdaus.jpg'
+      endif
+    endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
         card card--{{ settings.card_style }}
-        {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
+        {% if card_product.featured_media or fallback_asset != blank %} card--media{% else %} card--text{% endif %}
         {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
         {% if image_shape and image_shape != 'default' %} card--shape{% endif %}
         {% if extend_height %} card--extend-height{% endif %}
-        {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
+        {% if card_product.featured_media == nil and fallback_asset == blank and settings.card_style == 'card' %} ratio{% endif %}
         {% if horizontal_class %} card--horizontal{% endif %}
       "
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
       <div
-        class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+        class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or fallback_asset != blank or settings.card_style == 'standard' %} ratio{% endif %}"
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         {%- if card_product.featured_media -%}
@@ -142,6 +169,20 @@
                   height="{{ card_product.media[1].height }}"
                 >
               {%- endif -%}
+            </div>
+          </div>
+        {%- elsif fallback_asset != blank -%}
+          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+            <div class="media media--transparent media--hover-effect">
+              <img
+                src="{{ fallback_asset | asset_url }}"
+                alt="{{ card_product.title | escape }}"
+                class="motion-reduce"
+                loading="lazy"
+                width="600"
+                height="600"
+                style="object-fit: cover; width: 100%; height: 100%;"
+              >
             </div>
           </div>
         {%- endif -%}

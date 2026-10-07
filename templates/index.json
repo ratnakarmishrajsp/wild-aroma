@@ -428,6 +428,81 @@
             "button_label": "Order Now",
             "button_link": "/products/rasasi-oud-al-mubarakh-luxury-attar"
           }
+        },
+        "prod_park_avenue": {
+          "type": "product_card",
+          "settings": {
+            "product": "park-avenue-luxury-attar",
+            "custom_title": "Park Avenue Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "City Lights & Sophistication • Fresh Citrus • Woody Cedar • Modern Musk",
+            "custom_price": "₹549",
+            "custom_compare_price": "₹1,099",
+            "custom_badge": "MODERN ELEGANCE",
+            "badge_style": "dark",
+            "button_label": "Order Now",
+            "button_link": "/products/park-avenue-luxury-attar"
+          }
+        },
+        "prod_musk_amber": {
+          "type": "product_card",
+          "settings": {
+            "product": "musk-amber-luxury-attar",
+            "custom_title": "Musk Amber Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Golden Light • Radiant Warmth • Golden Amber • Sensual Musk",
+            "custom_price": "₹599",
+            "custom_compare_price": "₹1,199",
+            "custom_badge": "WARM & RADIANT",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/musk-amber-luxury-attar"
+          }
+        },
+        "prod_fantasia": {
+          "type": "product_card",
+          "settings": {
+            "product": "fantasia-luxury-attar",
+            "custom_title": "Fantasia Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Dreamlike Dusk • Exotic Fruits • Sweet Vanilla • Velvet Florals",
+            "custom_price": "₹549",
+            "custom_compare_price": "₹1,099",
+            "custom_badge": "DREAMLIKE DUSK",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/fantasia-luxury-attar"
+          }
+        },
+        "prod_white_musk": {
+          "type": "product_card",
+          "settings": {
+            "product": "white-musk-luxury-attar",
+            "custom_title": "White Musk Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Ivory Light & Purity • Soft Powdery Florals • Clean Cashmere Musk",
+            "custom_price": "₹499",
+            "custom_compare_price": "₹999",
+            "custom_badge": "PURE & SILK",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/white-musk-luxury-attar"
+          }
+        },
+        "prod_jannatul_firdaus": {
+          "type": "product_card",
+          "settings": {
+            "product": "jannatul-firdaus-luxury-attar",
+            "custom_title": "Jannatul Firdaus Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Emerald Garden of Paradise • Wild Jasmine • Garden Greens • Pure Sandalwood",
+            "custom_price": "₹649",
+            "custom_compare_price": "₹1,299",
+            "custom_badge": "GARDEN OF PARADISE",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/jannatul-firdaus-luxury-attar"
+          }
         }
       },
       "block_order": [
@@ -435,7 +510,12 @@
         "prod_salma",
         "prod_bakhoor",
         "prod_musk_al_oudh",
-        "prod_rasasi_oud"
+        "prod_rasasi_oud",
+        "prod_park_avenue",
+        "prod_musk_amber",
+        "prod_fantasia",
+        "prod_white_musk",
+        "prod_jannatul_firdaus"
       ],
       "settings": {
         "subtitle": "100% PURE CONCENTRATED ATTARS • ALCOHOL-FREE",

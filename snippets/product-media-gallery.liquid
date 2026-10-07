@@ -61,6 +61,52 @@
       class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
       role="list"
     >
+      {%- if product.media.size == 0 -%}
+        {%- liquid
+          assign fallback_asset = ''
+          assign check_title = product.title | downcase
+          assign check_handle = product.handle | downcase
+          if check_title contains 'white musk' or check_handle contains 'white-musk'
+            assign fallback_asset = 'product-white-musk.jpg'
+          elsif check_title contains 'musk amber' or check_handle contains 'musk-amber'
+            assign fallback_asset = 'product-musk-amber.jpg'
+          elsif check_title contains 'musk' or check_handle contains 'musk'
+            assign fallback_asset = 'product-musk-al-oudh.jpg'
+          elsif check_title contains 'turkish' or check_handle contains 'turkish'
+            assign fallback_asset = 'product-turkish-oud.jpg'
+          elsif check_title contains 'salma' or check_handle contains 'salma'
+            assign fallback_asset = 'product-salma.jpg'
+          elsif check_title contains 'bakhoor' or check_handle contains 'bakhoor'
+            assign fallback_asset = 'product-bakhoor.jpg'
+          elsif check_title contains 'rasasi' or check_title contains 'mubarak' or check_handle contains 'rasasi'
+            assign fallback_asset = 'product-rasasi-oud.jpg'
+          elsif check_title contains 'park avenue' or check_handle contains 'park-avenue'
+            assign fallback_asset = 'product-park-avenue.jpg'
+          elsif check_title contains 'fantasia' or check_handle contains 'fantasia'
+            assign fallback_asset = 'product-fantasia.jpg'
+          elsif check_title contains 'jannatul' or check_title contains 'firdaus' or check_handle contains 'jannatul'
+            assign fallback_asset = 'product-jannatul-firdaus.jpg'
+          endif
+        -%}
+        {%- if fallback_asset != blank -%}
+          <li
+            id="Slide-{{ section.id }}-fallback"
+            class="product__media-item grid__item slider__slide is-active product__media-item--single"
+            data-media-id="{{ section.id }}-fallback"
+          >
+            <div class="product-media-container media-type-image" style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #EAE5DE;">
+              <img
+                src="{{ fallback_asset | asset_url }}"
+                alt="{{ product.title | escape }}"
+                loading="eager"
+                width="1200"
+                height="1200"
+                style="width: 100%; height: auto; max-height: 600px; object-fit: contain; display: block; margin: 0 auto;"
+              >
+            </div>
+          </li>
+        {%- endif -%}
+      {%- endif -%}
       {%- if product.selected_or_first_available_variant.featured_media != null -%}
         {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
         <li
