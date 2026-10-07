@@ -1,485 +1,477 @@
-# Wild Aroma - Luxury HTML/CSS Product Descriptions
+# Wild Aroma - Bella Vita Luxury Product Descriptions
 
-This file contains the complete, luxury HTML & CSS descriptions for all 5 artisanal attars, specially styled for Wild Aroma's Bella Vita aesthetic.
-
-> [!TIP]
-> **Instant 1-Click Import:** All 5 products with these exact descriptions, handles, variants, pricing, and SEO metadata are already pre-formatted inside [wild_aroma_products_import.csv](file:///c:/Users/Ratnakar/Desktop/Wild%20Aroma%20theme/wild_aroma_products_import.csv).
-> In Shopify Admin, simply navigate to **Products > Import**, choose `wild_aroma_products_import.csv`, and upload!
+This document contains the complete HTML & CSS product descriptions aligned with **Bella Vita Luxury's exact color grading**:
+- **Canvas / Background**: Pure crisp white (`#FFFFFF`) with subtle oyster/pearl cards (`#FCFBF9`).
+- **Typography**: Obsidian charcoal (`#1A1A1A`) for headings and refined slate (`#4A4A4A` / `#555555`) for readable descriptions.
+- **Accents**: Muted Champagne Gold (`#B8974F` / `#917333`) and soft champagne badges (`#FAF6ED`).
+- **BOGO Deal (Kasturi)**: Clean crimson red (`#D90429`) with blush container (`#FFFBFB` / `#F5D0D3`).
 
 ---
 
-## 1. White Oud Luxury Attar (6.6 ml)
-- **Title:** `White Oud Luxury Attar - 100% Pure Alcohol-Free Perfume Oil`
+## White Oud Luxury Attar - 100% Pure Alcohol-Free Perfume Oil
 - **Handle:** `white-oud-luxury-attar`
-- **Size / Volume:** `6.6 ml Concentrated Oil`
-- **Price:** ₹599 (Compare at: ₹1,199)
+- **Price:** ₹599.00 (Compare at: ₹1199.00)
 - **Badge:** ✨ ROYAL SIGNATURE • CREAMY OUDH & WHITE AMBER
 
 ```html
-<div class="wa-product-desc-suite">
-  <div class="wa-desc-badge">
+<div class="wa-product-desc-suite" style="font-family:'Montserrat',sans-serif;color:#1A1A1A;line-height:1.65;margin:1.2rem 0;">
+  <div class="wa-desc-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAF6ED;color:#917333;border:1px solid #E5D7B5;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.35rem 0.85rem;border-radius:4px;margin-bottom:0.8rem;">
     ✨ ROYAL SIGNATURE • CREAMY OUDH & WHITE AMBER
   </div>
 
-  <div class="wa-desc-story">
-    <p><strong>The Luminous Crown of Agarwood:</strong> White Oud is an extraordinary modern reimagining of rare agarwood. Where traditional oud can be dark and intense, White Oud shines with crystal luminescence, opening with sparkling citrus blossom before unveiling a creamy, velvety core of white amber, tender saffron, and smooth Cambodian white oud.</p>
+  <div class="wa-desc-story" style="font-size:0.92rem;color:#4A4A4A;margin:1rem 0 1.5rem 0;line-height:1.7;">
+    <p><strong style="color:#1A1A1A;font-weight:600;">The Luminous Crown of Agarwood:</strong> White Oud is an extraordinary modern reimagining of rare agarwood. Where traditional oud can be dark and intense, White Oud shines with crystal luminescence, opening with sparkling citrus blossom before unveiling a creamy, velvety core of white amber, tender saffron, and smooth Cambodian white oud.</p>
     <p>Intoxicatingly smooth, elegant, and universally admired, this 100% pure alcohol-free attar draws effortless compliments from morning boardrooms to black-tie galas.</p>
   </div>
 
-  <div class="wa-pyramid-container">
-    <div class="wa-pyramid-header">
-      <h4>Olfactory Symphony</h4>
-      <span>The 3-Stage Scent Evolution</span>
+  <div class="wa-pyramid-container" style="background:#FFFFFF;border:1px solid #EAE5DE;border-radius:8px;padding:1.3rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+    <div class="wa-pyramid-header" style="text-align:center;margin-bottom:1.2rem;">
+      <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:#1A1A1A;margin:0;letter-spacing:0.06em;text-transform:uppercase;">Olfactory Symphony</h4>
+      <span style="font-size:0.74rem;color:#8C8479;text-transform:uppercase;letter-spacing:0.12em;">The 3-Stage Scent Evolution</span>
     </div>
-    <div class="wa-pyramid-tiers">
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Top Notes</span>
-        <div class="wa-tier-title">Crisp Opening</div>
-        <p class="wa-tier-notes">Sparkling Bergamot, White Musk & Dewy Citrus Blossoms</p>
+    <div class="wa-pyramid-tiers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;">
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Top Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Crisp Opening</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Sparkling Bergamot, White Musk & Dewy Citrus Blossoms</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Heart Notes</span>
-        <div class="wa-tier-title">Royal Heart</div>
-        <p class="wa-tier-notes">Kashmiri Saffron, Velvety Jasmine & Luminous White Amber</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Heart Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Royal Heart</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Kashmiri Saffron, Velvety Jasmine & Luminous White Amber</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Base Notes</span>
-        <div class="wa-tier-title">Creamy Trail</div>
-        <p class="wa-tier-notes">Rare White Cambodian Oud, Mysore Sandalwood & Vanilla Pod</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Base Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Creamy Trail</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Rare White Cambodian Oud, Mysore Sandalwood & Vanilla Pod</p>
       </div>
     </div>
   </div>
 
-  <div class="wa-performance-matrix">
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">⏳</span>
-      <span class="wa-perf-label">Longevity</span>
-      <span class="wa-perf-value">14+ Hours on Skin</span>
+  <div class="wa-performance-matrix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.8rem;margin:1.5rem 0;">
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">⏳</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Longevity</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">14+ Hours</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">👑</span>
-      <span class="wa-perf-label">Projection</span>
-      <span class="wa-perf-value">Radiant & Smooth Sillage</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">👑</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Projection</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">Radiant & Smooth</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💧</span>
-      <span class="wa-perf-label">Concentration</span>
-      <span class="wa-perf-value">100% Pure Perfume Oil</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💧</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Concentration</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">100% Pure Oil</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💎</span>
-      <span class="wa-perf-label">Net Content</span>
-      <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
-    </div>
-  </div>
-
-  <div class="wa-desc-pillars">
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🌿</div>
-      <div class="wa-pillar-text">100% Alcohol-Free<span>Concentrated Perfume Oil</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🪵</div>
-      <div class="wa-pillar-text">Pure Agarwood<span>Sustainably Sourced Oud</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🏺</div>
-      <div class="wa-pillar-text">Kannauj Distilled<span>Authentic Copper Stills</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">✨</div>
-      <div class="wa-pillar-text">Zero Synthetics<span>Safe for Sensitive Skin</span></div>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💎</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Net Content</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">6.6 ml Oil</span>
     </div>
   </div>
 
-  <div class="wa-ritual-guide">
-    <h5>👑 The Royal Application Ritual</h5>
-    <p>Touch the applicator rod to the inner wrists and dab softly against the sides of your neck. Its creamy woody warmth harmonizes with your natural skin warmth to radiate an all-day luxury halo.</p>
+  <div class="wa-desc-pillars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;background:#FCFBF9;border:1px solid #EAE5DE;color:#1A1A1A;border-radius:8px;padding:1.1rem;margin:1.5rem 0;">
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🌿</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">100% Alcohol-Free<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Safe For All Skin</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🪵</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Pure Agarwood<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Rare White Oud</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🏺</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Kannauj Stills<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Deg-Bhapka Steam</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">✨</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Zero Synthetics<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Concentrated Extract</span></div>
+    </div>
+  </div>
+
+  <div class="wa-ritual-guide" style="background:#FCFBF9;border:1px dashed #D6C7A8;border-radius:6px;padding:1rem 1.2rem;margin-top:1.2rem;">
+    <h5 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:#1A1A1A;margin:0 0 0.35rem 0;display:flex;align-items:center;gap:0.5rem;">👑 The Royal Application Ritual</h5>
+    <p style="font-size:0.85rem;color:#555555;margin:0;line-height:1.55;">Touch the applicator rod to the inner wrists and dab softly against the sides of your neck. Its creamy woody warmth harmonizes with your natural skin warmth to radiate an all-day luxury halo.</p>
   </div>
 </div>
 ```
 
 ---
 
-## 2. Kasturi Attar 6.6 Ml Buy 1 Get 1 Free (Pack of 2 Bottles)
-- **Title:** `Kasturi Attar 6.6 Ml (Buy 1 Get 1 Free - Pack of 2 Bottles) - Royal Musk Perfume Oil`
+## Kasturi Attar 6.6 Ml (Buy 1 Get 1 Free - Pack of 2 Bottles) - Royal Musk Perfume Oil
 - **Handle:** `kasturi-attar-6-6-ml-buy-1-get-1-free`
-- **Size / Volume:** `Pack of 2 Bottles (2 x 6.6 ml = 13.2 ml Total)`
-- **Price:** ₹699 (Compare at: ₹1,499)
+- **Price:** ₹699.00 (Compare at: ₹1499.00)
 - **Badge:** 🔥 SPECIAL PROMO: BUY 1 GET 1 FREE (PACK OF 2 BOTTLES)
 
 ```html
-<div class="wa-product-desc-suite">
-  <div class="wa-desc-badge wa-desc-badge--bogo">
+<div class="wa-product-desc-suite" style="font-family:'Montserrat',sans-serif;color:#1A1A1A;line-height:1.65;margin:1.2rem 0;">
+  <div class="wa-desc-badge wa-desc-badge--bogo" style="display:inline-flex;align-items:center;gap:0.5rem;background:#FFF5F5;color:#D90429;border:1px solid #FFC9C9;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.35rem 0.85rem;border-radius:4px;margin-bottom:0.8rem;box-shadow:0 2px 8px rgba(217,4,41,0.15);">
     🔥 SPECIAL PROMO: BUY 1 GET 1 FREE (PACK OF 2 BOTTLES)
   </div>
 
-  <div class="wa-bogo-callout-box">
-    <h4>
+  <div class="wa-bogo-callout-box" style="background:#FFFBFB;border:1px solid #F5D0D3;border-left:4px solid #D90429;border-radius:6px;padding:1.1rem 1.3rem;margin:1.2rem 0;box-shadow:0 2px 10px rgba(217,4,41,0.05);">
+    <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:#D90429;margin:0 0 0.35rem 0;display:flex;align-items:center;gap:0.5rem;">
       ★ Exclusive Double Bottle Offer: Buy 1 Get 1 Free
     </h4>
-    <p>Order today and receive <strong>TWO individual 6.6 ml glass applicator bottles (Total 13.2 ml)</strong> of pure concentrated Kasturi Attar for the price of one! Keep one for daily use and gift one to a loved one.</p>
-    <div class="wa-bogo-pills">
-      <span class="wa-bogo-pill">✓ 2 x 6.6 ml Bottles (13.2 ml Total)</span>
-      <span class="wa-bogo-pill">✓ 100% Pure Concentrated Oil</span>
-      <span class="wa-bogo-pill">✓ Cruelty-Free Botanical Musk</span>
-      <span class="wa-bogo-pill">✓ Free Cash On Delivery Available</span>
+    <p style="font-size:0.88rem;color:#4A4A4A;margin:0;line-height:1.55;">Order today and receive <strong style="color:#1A1A1A;">TWO individual 6.6 ml glass applicator bottles (Total 13.2 ml)</strong> of pure concentrated Kasturi Attar for the price of one! Keep one for daily use and gift one to a loved one.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem;">
+      <span style="background:#FFFFFF;border:1px solid #EAE5DE;color:#1A1A1A;font-size:0.74rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:20px;">✓ 2 x 6.6 ml Bottles (13.2 ml Total)</span>
+      <span style="background:#FFFFFF;border:1px solid #EAE5DE;color:#1A1A1A;font-size:0.74rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:20px;">✓ 100% Pure Concentrated Oil</span>
+      <span style="background:#FFFFFF;border:1px solid #EAE5DE;color:#1A1A1A;font-size:0.74rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:20px;">✓ Cruelty-Free Botanical Musk</span>
+      <span style="background:#FFFFFF;border:1px solid #EAE5DE;color:#1A1A1A;font-size:0.74rem;font-weight:600;padding:0.3rem 0.65rem;border-radius:20px;">✓ Free Cash On Delivery Available</span>
     </div>
   </div>
 
-  <div class="wa-desc-story">
-    <p><strong>The Royal Scent of Ancient Monarchs:</strong> Kasturi (Deer Musk) is revered in Indian perfumery lore as the king of fragrances. Distilled with generational reverence in Kannauj, Wild Aroma's Kasturi Attar offers a <em>100% cruelty-free, ethical botanical and herbal deer musk formulation</em> that accurately mirrors the deep, magnetic, mystical warmth of traditional Himalayan musk.</p>
+  <div class="wa-desc-story" style="font-size:0.92rem;color:#4A4A4A;margin:1rem 0 1.5rem 0;line-height:1.7;">
+    <p><strong style="color:#1A1A1A;font-weight:600;">The Royal Scent of Ancient Monarchs:</strong> Kasturi (Deer Musk) is revered in Indian perfumery lore as the king of fragrances. Distilled with generational reverence in Kannauj, Wild Aroma's Kasturi Attar offers a <em style="color:#1A1A1A;">100% cruelty-free, ethical botanical and herbal deer musk formulation</em> that accurately mirrors the deep, magnetic, mystical warmth of traditional Himalayan musk.</p>
     <p>Its hypnotic, earthy sweetness anchors your spirit, exuding an unmatched aura of royal stature and quiet confidence that lingers effortlessly for over 18 hours.</p>
   </div>
 
-  <div class="wa-pyramid-container">
-    <div class="wa-pyramid-header">
-      <h4>Olfactory Symphony</h4>
-      <span>The 3-Stage Scent Evolution</span>
+  <div class="wa-pyramid-container" style="background:#FFFFFF;border:1px solid #EAE5DE;border-radius:8px;padding:1.3rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+    <div class="wa-pyramid-header" style="text-align:center;margin-bottom:1.2rem;">
+      <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:#1A1A1A;margin:0;letter-spacing:0.06em;text-transform:uppercase;">Olfactory Symphony</h4>
+      <span style="font-size:0.74rem;color:#8C8479;text-transform:uppercase;letter-spacing:0.12em;">The 3-Stage Scent Evolution</span>
     </div>
-    <div class="wa-pyramid-tiers">
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Top Notes</span>
-        <div class="wa-tier-title">Opening Radiance</div>
-        <p class="wa-tier-notes">Cardamom Pods, Warm Clove Bud & Spiced Sweet Amber</p>
+    <div class="wa-pyramid-tiers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;">
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Top Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Opening Radiance</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Cardamom Pods, Warm Clove Bud & Spiced Sweet Amber</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Heart Notes</span>
-        <div class="wa-tier-title">The Mystical Core</div>
-        <p class="wa-tier-notes">Artisanal Kannauj Kasturi Accord, Labdanum & Hydro-distilled Gulab</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Heart Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">The Mystical Core</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Artisanal Kannauj Kasturi Accord, Labdanum & Gulab</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Base Notes</span>
-        <div class="wa-tier-title">Enduring Sillage</div>
-        <p class="wa-tier-notes">Earthy Herbal Musk, Aged Indian Sandalwood & Rich Resin Amber</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Base Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Enduring Sillage</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Earthy Herbal Musk, Aged Sandalwood & Rich Amber</p>
       </div>
     </div>
   </div>
 
-  <div class="wa-performance-matrix">
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">⏳</span>
-      <span class="wa-perf-label">Longevity</span>
-      <span class="wa-perf-value">18+ Hours (Beast Mode)</span>
+  <div class="wa-performance-matrix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.8rem;margin:1.5rem 0;">
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">⏳</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Longevity</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">18+ Hours (Beast)</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">👑</span>
-      <span class="wa-perf-label">Projection</span>
-      <span class="wa-perf-value">Heavy & Mesmerizing</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">👑</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Projection</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">Heavy & Mesmerizing</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💧</span>
-      <span class="wa-perf-label">Formulation</span>
-      <span class="wa-perf-value">100% Pure Oil (No Alcohol)</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💧</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Formulation</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">100% Pure Oil</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">🎁</span>
-      <span class="wa-perf-label">Net Content</span>
-      <span class="wa-perf-value">2 x 6.6 ml (Buy 1 Get 1)</span>
-    </div>
-  </div>
-
-  <div class="wa-desc-pillars">
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🌿</div>
-      <div class="wa-pillar-text">100% Alcohol-Free<span>Zero Burn, Pure Oil</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🦌</div>
-      <div class="wa-pillar-text">Cruelty-Free Musk<span>Ethical Plant-Musk Accord</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🏺</div>
-      <div class="wa-pillar-text">Kannauj Distilled<span>Copper Deg-Bhapka Steam</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">✨</div>
-      <div class="wa-pillar-text">Skin Safe & Pure<span>Non-Staining Botanical Base</span></div>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">🎁</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Net Content</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">2 x 6.6 ml (BOGO)</span>
     </div>
   </div>
 
-  <div class="wa-ritual-guide">
-    <h5>👑 The Royal Application Ritual</h5>
-    <p>Using the luxury glass dip-rod, apply 2 drops onto your pulse points: wrists, carotid neck arteries, and behind your earlobes. <em>Gently dab—do not rub</em>—to preserve the volatile top note molecules for all-day sillage.</p>
+  <div class="wa-desc-pillars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;background:#FCFBF9;border:1px solid #EAE5DE;color:#1A1A1A;border-radius:8px;padding:1.1rem;margin:1.5rem 0;">
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🌿</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">100% Alcohol-Free<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Zero Burning</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🦌</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Cruelty-Free Musk<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Botanical Accord</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🏺</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Kannauj Distilled<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Traditional Deg</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">✨</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Skin Safe & Pure<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Non-Staining Base</span></div>
+    </div>
+  </div>
+
+  <div class="wa-ritual-guide" style="background:#FCFBF9;border:1px dashed #D6C7A8;border-radius:6px;padding:1rem 1.2rem;margin-top:1.2rem;">
+    <h5 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:#1A1A1A;margin:0 0 0.35rem 0;display:flex;align-items:center;gap:0.5rem;">👑 The Royal Application Ritual</h5>
+    <p style="font-size:0.85rem;color:#555555;margin:0;line-height:1.55;">Using the luxury glass dip-rod, apply 2 drops onto your pulse points: wrists, carotid neck arteries, and behind your earlobes. <em style="color:#1A1A1A;">Gently dab—do not rub</em>—to preserve the volatile top note molecules for all-day sillage.</p>
   </div>
 </div>
 ```
 
 ---
 
-## 3. Black Oud Luxury Attar (6.6 ml)
-- **Title:** `Black Oud Luxury Attar - Intense Smokey Agarwood & Dark Amber`
+## Black Oud Luxury Attar - Intense Smokey Agarwood & Dark Amber
 - **Handle:** `black-oud-luxury-attar`
-- **Size / Volume:** `6.6 ml Concentrated Oil`
-- **Price:** ₹649 (Compare at: ₹1,299)
+- **Price:** ₹649.00 (Compare at: ₹1299.00)
 - **Badge:** 👑 POWERHOUSE PROJECTION • DEEP, SMOKY & MAGNETIC
 
 ```html
-<div class="wa-product-desc-suite">
-  <div class="wa-desc-badge">
+<div class="wa-product-desc-suite" style="font-family:'Montserrat',sans-serif;color:#1A1A1A;line-height:1.65;margin:1.2rem 0;">
+  <div class="wa-desc-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAF6ED;color:#917333;border:1px solid #E5D7B5;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.35rem 0.85rem;border-radius:4px;margin-bottom:0.8rem;">
     👑 POWERHOUSE PROJECTION • DEEP, SMOKY & MAGNETIC
   </div>
 
-  <div class="wa-desc-story">
-    <p><strong>The Dark Majesty of Aged Assam Agarwood:</strong> Black Oud is not for the faint of heart. Formulated for the discerning connoisseur who commands every room they enter, this attar marries aged Assam Dehn Al Oudh with smoky frankincense, dark spices, leather nuances, and an intoxicating base of dark amber and Indonesian patchouli.</p>
+  <div class="wa-desc-story" style="font-size:0.92rem;color:#4A4A4A;margin:1rem 0 1.5rem 0;line-height:1.7;">
+    <p><strong style="color:#1A1A1A;font-weight:600;">The Dark Majesty of Aged Assam Agarwood:</strong> Black Oud is not for the faint of heart. Formulated for the discerning connoisseur who commands every room they enter, this attar marries aged Assam Dehn Al Oudh with smoky frankincense, dark spices, leather nuances, and an intoxicating base of dark amber and Indonesian patchouli.</p>
     <p>Distilled through ancient Kannauj wood-fired degs, it delivers an intense, mysterious, and unapologetically masculine sillage that stays vibrant beyond 24 hours.</p>
   </div>
 
-  <div class="wa-pyramid-container">
-    <div class="wa-pyramid-header">
-      <h4>Olfather Symphony</h4>
-      <span>The 3-Stage Scent Evolution</span>
+  <div class="wa-pyramid-container" style="background:#FFFFFF;border:1px solid #EAE5DE;border-radius:8px;padding:1.3rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+    <div class="wa-pyramid-header" style="text-align:center;margin-bottom:1.2rem;">
+      <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:#1A1A1A;margin:0;letter-spacing:0.06em;text-transform:uppercase;">Olfactory Symphony</h4>
+      <span style="font-size:0.74rem;color:#8C8479;text-transform:uppercase;letter-spacing:0.12em;">The 3-Stage Scent Evolution</span>
     </div>
-    <div class="wa-pyramid-tiers">
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Top Notes</span>
-        <div class="wa-tier-title">Spicy Invocation</div>
-        <p class="wa-tier-notes">Crushed Black Peppercorn, Smoked Incense & Fresh Nutmeg</p>
+    <div class="wa-pyramid-tiers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;">
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Top Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Spicy Invocation</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Crushed Black Peppercorn, Smoked Incense & Fresh Nutmeg</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Heart Notes</span>
-        <div class="wa-tier-title">Smoky Resins</div>
-        <p class="wa-tier-notes">Aged Assam Agarwood Resin, Dark Damask Rose & Leather</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Heart Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Smoky Resins</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Aged Assam Agarwood Resin, Dark Damask Rose & Leather</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Base Notes</span>
-        <div class="wa-tier-title">Deep Gravity</div>
-        <p class="wa-tier-notes">Pure Black Oudh, Indonesian Patchouli, Black Amber & Vetiver</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Base Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Deep Gravity</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Pure Black Oudh, Indonesian Patchouli, Black Amber & Vetiver</p>
       </div>
     </div>
   </div>
 
-  <div class="wa-performance-matrix">
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">⏳</span>
-      <span class="wa-perf-label">Longevity</span>
-      <span class="wa-perf-value">24+ Hours (Beast Mode)</span>
+  <div class="wa-performance-matrix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.8rem;margin:1.5rem 0;">
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">⏳</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Longevity</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">24+ Hours (Beast)</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">👑</span>
-      <span class="wa-perf-label">Projection</span>
-      <span class="wa-perf-value">Commandingly Strong</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">👑</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Projection</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">Commandingly Strong</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💧</span>
-      <span class="wa-perf-label">Concentration</span>
-      <span class="wa-perf-value">100% Pure Perfume Oil</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💧</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Concentration</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">100% Pure Oil</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💎</span>
-      <span class="wa-perf-label">Net Content</span>
-      <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
-    </div>
-  </div>
-
-  <div class="wa-desc-pillars">
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🌿</div>
-      <div class="wa-pillar-text">100% Alcohol-Free<span>Zero Water Dilution</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🔥</div>
-      <div class="wa-pillar-text">Aged Assam Oud<span>Natural Wood Resin Core</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🏺</div>
-      <div class="wa-pillar-text">Slow Fire Distilled<span>Traditional Copper Deg</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">✨</div>
-      <div class="wa-pillar-text">Intense Sillage<span>Guaranteed Beast Projection</span></div>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💎</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Net Content</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">6.6 ml Oil</span>
     </div>
   </div>
 
-  <div class="wa-ritual-guide">
-    <h5>👑 The Royal Application Ritual</h5>
-    <p>Because Black Oud has beast-mode concentration, just a micro-drop is sufficient. Apply to the collarbone and inner wrists. Best paired with evenings, winter months, and formal gatherings.</p>
+  <div class="wa-desc-pillars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;background:#FCFBF9;border:1px solid #EAE5DE;color:#1A1A1A;border-radius:8px;padding:1.1rem;margin:1.5rem 0;">
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🌿</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">100% Alcohol-Free<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Zero Dilution</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🔥</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Assam Oud Core<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Aged Natural Resin</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🏺</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Kannauj Stills<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Wood-Fire Distilled</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">✨</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Intense Sillage<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Guaranteed 24H+</span></div>
+    </div>
+  </div>
+
+  <div class="wa-ritual-guide" style="background:#FCFBF9;border:1px dashed #D6C7A8;border-radius:6px;padding:1rem 1.2rem;margin-top:1.2rem;">
+    <h5 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:#1A1A1A;margin:0 0 0.35rem 0;display:flex;align-items:center;gap:0.5rem;">👑 The Royal Application Ritual</h5>
+    <p style="font-size:0.85rem;color:#555555;margin:0;line-height:1.55;">Because Black Oud has beast-mode concentration, just a micro-drop is sufficient. Apply to the collarbone and inner wrists. Best paired with evenings, winter months, and formal gatherings.</p>
   </div>
 </div>
 ```
 
 ---
 
-## 4. Sanaya Attar (6.6 ml)
-- **Title:** `Sanaya Attar - Royal Floral Bouquet & Sensual Amber Musk`
+## Sanaya Attar - Royal Floral Bouquet & Sensual Amber Musk
 - **Handle:** `sanaya-attar-luxury`
-- **Size / Volume:** `6.6 ml Concentrated Oil`
-- **Price:** ₹499 (Compare at: ₹999)
+- **Price:** ₹499.00 (Compare at: ₹999.00)
 - **Badge:** 🌸 ROYAL FLORAL • FRESH, ROMANTIC & RADIANT
 
 ```html
-<div class="wa-product-desc-suite">
-  <div class="wa-desc-badge">
+<div class="wa-product-desc-suite" style="font-family:'Montserrat',sans-serif;color:#1A1A1A;line-height:1.65;margin:1.2rem 0;">
+  <div class="wa-desc-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAF6ED;color:#917333;border:1px solid #E5D7B5;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.35rem 0.85rem;border-radius:4px;margin-bottom:0.8rem;">
     🌸 ROYAL FLORAL • FRESH, ROMANTIC & RADIANT
   </div>
 
-  <div class="wa-desc-story">
-    <p><strong>The Essence of Radiant Grace:</strong> Named after the spirit of radiance, Sanaya Attar captures the blooming dawn breeze over the royal flower gardens of Kannauj. Fresh green morning dew and sweet Italian citrus intertwine with a rich heart of fresh hydro-distilled Kannauj roses, royal Mogra (Jasmine Sambac), and valley lilies.</p>
+  <div class="wa-desc-story" style="font-size:0.92rem;color:#4A4A4A;margin:1rem 0 1.5rem 0;line-height:1.7;">
+    <p><strong style="color:#1A1A1A;font-weight:600;">The Essence of Radiant Grace:</strong> Named after the spirit of radiance, Sanaya Attar captures the blooming dawn breeze over the royal flower gardens of Kannauj. Fresh green morning dew and sweet Italian citrus intertwine with a rich heart of fresh hydro-distilled Kannauj roses, royal Mogra (Jasmine Sambac), and valley lilies.</p>
     <p>As the daylight softens, it dries down into a warm, creamy cushion of white musk and golden amber, wrapping you in an enchanting, clean, and poetic floral veil.</p>
   </div>
 
-  <div class="wa-pyramid-container">
-    <div class="wa-pyramid-header">
-      <h4>Olfactory Symphony</h4>
-      <span>The 3-Stage Scent Evolution</span>
+  <div class="wa-pyramid-container" style="background:#FFFFFF;border:1px solid #EAE5DE;border-radius:8px;padding:1.3rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+    <div class="wa-pyramid-header" style="text-align:center;margin-bottom:1.2rem;">
+      <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:#1A1A1A;margin:0;letter-spacing:0.06em;text-transform:uppercase;">Olfactory Symphony</h4>
+      <span style="font-size:0.74rem;color:#8C8479;text-transform:uppercase;letter-spacing:0.12em;">The 3-Stage Scent Evolution</span>
     </div>
-    <div class="wa-pyramid-tiers">
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Top Notes</span>
-        <div class="wa-tier-title">Dewy Dawn</div>
-        <p class="wa-tier-notes">Crisp Citrus Blossom, Italian Mandarin & Green Petals</p>
+    <div class="wa-pyramid-tiers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;">
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Top Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Dewy Dawn</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Crisp Citrus Blossom, Italian Mandarin & Green Petals</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Heart Notes</span>
-        <div class="wa-tier-title">Blossom Bouquet</div>
-        <p class="wa-tier-notes">Kannauj Rose Petals, Royal Mogra Jasmine & Lily of the Valley</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Heart Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Blossom Bouquet</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Kannauj Rose Petals, Royal Mogra Jasmine & Lilies</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Base Notes</span>
-        <div class="wa-tier-title">Velvet Finish</div>
-        <p class="wa-tier-notes">Sensual White Musk, Golden Amber & Mysore Sandalwood Base</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Base Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Velvet Finish</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Sensual White Musk, Golden Amber & Sandalwood</p>
       </div>
     </div>
   </div>
 
-  <div class="wa-performance-matrix">
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">⏳</span>
-      <span class="wa-perf-label">Longevity</span>
-      <span class="wa-perf-value">12+ Hours on Skin</span>
+  <div class="wa-performance-matrix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.8rem;margin:1.5rem 0;">
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">⏳</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Longevity</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">12+ Hours</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">👑</span>
-      <span class="wa-perf-label">Projection</span>
-      <span class="wa-perf-value">Gentle & Radiantly Charming</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">👑</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Projection</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">Gentle & Charming</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💧</span>
-      <span class="wa-perf-label">Concentration</span>
-      <span class="wa-perf-value">100% Pure Perfume Oil</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💧</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Concentration</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">100% Pure Oil</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💎</span>
-      <span class="wa-perf-label">Net Content</span>
-      <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
-    </div>
-  </div>
-
-  <div class="wa-desc-pillars">
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🌿</div>
-      <div class="wa-pillar-text">100% Alcohol-Free<span>Pure Essential Floral Oils</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🌹</div>
-      <div class="wa-pillar-text">Real Rose & Mogra<span>Natural Blossoms of Kannauj</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🏺</div>
-      <div class="wa-pillar-text">Deg-Bhapka Heritage<span>Steam Distilled With Care</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">✨</div>
-      <div class="wa-pillar-text">Uplifting & Calming<span>Perfect for Daily Wear</span></div>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💎</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Net Content</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">6.6 ml Oil</span>
     </div>
   </div>
 
-  <div class="wa-ritual-guide">
-    <h5>👑 The Royal Application Ritual</h5>
-    <p>Dab onto wrists, pulse points, and behind ears after bathing. Its refreshing floral symphony lifts the spirits throughout your day without overwhelming the senses.</p>
+  <div class="wa-desc-pillars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;background:#FCFBF9;border:1px solid #EAE5DE;color:#1A1A1A;border-radius:8px;padding:1.1rem;margin:1.5rem 0;">
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🌿</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">100% Alcohol-Free<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Safe Daily Wear</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🌹</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Real Rose & Mogra<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Natural Blossoms</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🏺</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Kannauj Stills<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Deg-Bhapka Steam</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">✨</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Uplifting Mood<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Calming Scent</span></div>
+    </div>
+  </div>
+
+  <div class="wa-ritual-guide" style="background:#FCFBF9;border:1px dashed #D6C7A8;border-radius:6px;padding:1rem 1.2rem;margin-top:1.2rem;">
+    <h5 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:#1A1A1A;margin:0 0 0.35rem 0;display:flex;align-items:center;gap:0.5rem;">👑 The Royal Application Ritual</h5>
+    <p style="font-size:0.85rem;color:#555555;margin:0;line-height:1.55;">Dab onto wrists, pulse points, and behind ears after bathing. Its refreshing floral symphony lifts the spirits throughout your day without overwhelming the senses.</p>
   </div>
 </div>
 ```
 
 ---
 
-## 5. Silk Musk Luxury Attar (6.6 ml)
-- **Title:** `Silk Musk Luxury Attar - Pure Powdered White Musk & Cashmere`
+## Silk Musk Luxury Attar - Pure Powdered White Musk & Cashmere
 - **Handle:** `silk-musk-luxury-attar-100-pure-alcohol-free`
-- **Size / Volume:** `6.6 ml Concentrated Oil`
-- **Price:** ₹549 (Compare at: ₹1,099)
+- **Price:** ₹549.00 (Compare at: ₹1099.00)
 - **Badge:** ✨ TIMELESS LUXURY • POWDERY WHITE MUSK & CASHMERE
 
 ```html
-<div class="wa-product-desc-suite">
-  <div class="wa-desc-badge">
+<div class="wa-product-desc-suite" style="font-family:'Montserrat',sans-serif;color:#1A1A1A;line-height:1.65;margin:1.2rem 0;">
+  <div class="wa-desc-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:#FAF6ED;color:#917333;border:1px solid #E5D7B5;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.35rem 0.85rem;border-radius:4px;margin-bottom:0.8rem;">
     ✨ TIMELESS LUXURY • POWDERY WHITE MUSK & CASHMERE
   </div>
 
-  <div class="wa-desc-story">
-    <p><strong>The Velvet Touch of Pure White Musk:</strong> Silk Musk is the very definition of quiet luxury. Clean, airy, and profoundly comforting, it evokes the sensation of pristine white silk caressing warm skin. Opening with dewy lily petals and powdery cotton blossoms, it gracefully melts into white orchids and plush cashmere woods.</p>
+  <div class="wa-desc-story" style="font-size:0.92rem;color:#4A4A4A;margin:1rem 0 1.5rem 0;line-height:1.7;">
+    <p><strong style="color:#1A1A1A;font-weight:600;">The Velvet Touch of Pure White Musk:</strong> Silk Musk is the very definition of quiet luxury. Clean, airy, and profoundly comforting, it evokes the sensation of pristine white silk caressing warm skin. Opening with dewy lily petals and powdery cotton blossoms, it gracefully melts into white orchids and plush cashmere woods.</p>
     <p>Free from any sharp alcohol edges, Silk Musk acts as a second skin—intimate, sensual, and universally magnetic to everyone who leans in close.</p>
   </div>
 
-  <div class="wa-pyramid-container">
-    <div class="wa-pyramid-header">
-      <h4>Olfactory Symphony</h4>
-      <span>The 3-Stage Scent Evolution</span>
+  <div class="wa-pyramid-container" style="background:#FFFFFF;border:1px solid #EAE5DE;border-radius:8px;padding:1.3rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+    <div class="wa-pyramid-header" style="text-align:center;margin-bottom:1.2rem;">
+      <h4 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:#1A1A1A;margin:0;letter-spacing:0.06em;text-transform:uppercase;">Olfactory Symphony</h4>
+      <span style="font-size:0.74rem;color:#8C8479;text-transform:uppercase;letter-spacing:0.12em;">The 3-Stage Scent Evolution</span>
     </div>
-    <div class="wa-pyramid-tiers">
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Top Notes</span>
-        <div class="wa-tier-title">Crisp Serenity</div>
-        <p class="wa-tier-notes">Powdery Clean Lily, Cotton Blossom & Soft Bergamot</p>
+    <div class="wa-pyramid-tiers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;">
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Top Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Crisp Serenity</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Powdery Clean Lily, Cotton Blossom & Soft Bergamot</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Heart Notes</span>
-        <div class="wa-tier-title">Silken Florals</div>
-        <p class="wa-tier-notes">White Orchid, Dew-Kissed Peony & Velvety Silk Petals</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Heart Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Silken Florals</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">White Orchid, Dew-Kissed Peony & Velvety Silk Petals</p>
       </div>
-      <div class="wa-pyramid-tier">
-        <span class="wa-tier-tag">Base Notes</span>
-        <div class="wa-tier-title">Cashmere Cloud</div>
-        <p class="wa-tier-notes">Pure White Musk, Cashmere Wood & Subtle Madagascar Vanilla</p>
+      <div class="wa-pyramid-tier" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:1rem;text-align:center;">
+        <span class="wa-tier-tag" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#917333;background:#FAF6ED;border:1px solid #E5D7B5;padding:0.2rem 0.55rem;border-radius:3px;display:inline-block;margin-bottom:0.4rem;">Base Notes</span>
+        <div class="wa-tier-title" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:700;color:#1A1A1A;margin-bottom:0.35rem;">Cashmere Cloud</div>
+        <p class="wa-tier-notes" style="font-size:0.82rem;color:#555555;line-height:1.45;margin:0;">Pure White Musk, Cashmere Wood & Subtle Vanilla Pod</p>
       </div>
     </div>
   </div>
 
-  <div class="wa-performance-matrix">
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">⏳</span>
-      <span class="wa-perf-label">Longevity</span>
-      <span class="wa-perf-value">14+ Hours on Skin</span>
+  <div class="wa-performance-matrix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.8rem;margin:1.5rem 0;">
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">⏳</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Longevity</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">14+ Hours</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">👑</span>
-      <span class="wa-perf-label">Projection</span>
-      <span class="wa-perf-value">Soft, Intimate All-Day Halo</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">👑</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Projection</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">Soft, Intimate Halo</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💧</span>
-      <span class="wa-perf-label">Concentration</span>
-      <span class="wa-perf-value">100% Pure Perfume Oil</span>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💧</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Concentration</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">100% Pure Oil</span>
     </div>
-    <div class="wa-perf-metric">
-      <span class="wa-perf-icon">💎</span>
-      <span class="wa-perf-label">Net Content</span>
-      <span class="wa-perf-value">6.6 ml Concentrated Oil</span>
-    </div>
-  </div>
-
-  <div class="wa-desc-pillars">
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🌿</div>
-      <div class="wa-pillar-text">100% Alcohol-Free<span>Gentle on All Skin Types</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🕊️</div>
-      <div class="wa-pillar-text">Clean Scent Profile<span>Zero Artificial Pungency</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">🏺</div>
-      <div class="wa-pillar-text">Kannauj Heritage<span>Artisanal Small-Batch Blend</span></div>
-    </div>
-    <div class="wa-pillar-item">
-      <div class="wa-pillar-icon">✨</div>
-      <div class="wa-pillar-text">Perfect Layering Base<span>Elevates Any Other Scent</span></div>
+    <div class="wa-perf-metric" style="background:#FCFBF9;border:1px solid #EFEBE5;border-radius:6px;padding:0.9rem;text-align:center;">
+      <span class="wa-perf-icon" style="font-size:1.25rem;display:block;margin-bottom:0.25rem;">💎</span>
+      <span class="wa-perf-label" style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8C8479;display:block;">Net Content</span>
+      <span class="wa-perf-value" style="font-size:0.85rem;font-weight:700;color:#1A1A1A;margin-top:0.25rem;display:block;">6.6 ml Oil</span>
     </div>
   </div>
 
-  <div class="wa-ritual-guide">
-    <h5>👑 The Royal Application Ritual</h5>
-    <p>Apply to wrists, inner elbows, and collarbone after a warm shower. Excellent on its own for understated elegance or layered beneath heavier ouds to soften and enrich their profile.</p>
+  <div class="wa-desc-pillars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.8rem;background:#FCFBF9;border:1px solid #EAE5DE;color:#1A1A1A;border-radius:8px;padding:1.1rem;margin:1.5rem 0;">
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🌿</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">100% Alcohol-Free<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Gentle on All Skin</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🕊️</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Clean Scent<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Zero Artificial Odor</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">🏺</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Kannauj Stills<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Small-Batch Blend</span></div>
+    </div>
+    <div class="wa-pillar-item" style="display:flex;align-items:center;gap:0.6rem;">
+      <div class="wa-pillar-icon" style="font-size:1.25rem;color:#B8974F;">✨</div>
+      <div class="wa-pillar-text" style="font-size:0.78rem;font-weight:700;color:#1A1A1A;line-height:1.3;">Layering Base<span style="display:block;font-size:0.68rem;color:#767067;font-weight:400;">Elevates Any Scent</span></div>
+    </div>
+  </div>
+
+  <div class="wa-ritual-guide" style="background:#FCFBF9;border:1px dashed #D6C7A8;border-radius:6px;padding:1rem 1.2rem;margin-top:1.2rem;">
+    <h5 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:#1A1A1A;margin:0 0 0.35rem 0;display:flex;align-items:center;gap:0.5rem;">👑 The Royal Application Ritual</h5>
+    <p style="font-size:0.85rem;color:#555555;margin:0;line-height:1.55;">Apply to wrists, inner elbows, and collarbone after a warm shower. Excellent on its own for understated elegance or layered beneath heavier ouds to soften and enrich their profile.</p>
   </div>
 </div>
 ```
+
+---

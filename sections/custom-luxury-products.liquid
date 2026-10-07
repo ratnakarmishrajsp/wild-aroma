@@ -12,7 +12,7 @@
   }
 
   .luxury-products-section {
-    background-color: var(--wa-canvas, #FAF8F5);
+    background-color: #FFFFFF !important;
     position: relative;
     overflow: hidden;
   }
@@ -30,11 +30,11 @@
 
   .luxury-products__subtitle {
     font-family: var(--wa-font-body, 'Montserrat', sans-serif);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--wa-gold-dark, #A88420);
+    color: var(--wa-gold-dark, #917333);
     margin-bottom: 0.5rem;
     display: inline-block;
   }
@@ -43,7 +43,7 @@
     font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 700;
-    color: var(--wa-obsidian, #121212);
+    color: var(--wa-obsidian, #1A1A1A);
     margin: 0 0 0.8rem 0;
     letter-spacing: 0.02em;
   }
@@ -52,7 +52,7 @@
     max-width: 650px;
     margin: 0 auto;
     font-size: 0.95rem;
-    color: var(--wa-text-secondary, #5A5A5A);
+    color: var(--wa-text-secondary, #555555);
     line-height: 1.6;
   }
 
@@ -78,21 +78,21 @@
 
   .luxury-card {
     background: #FFFFFF;
-    border: 1px solid var(--wa-border, #E8E2D8);
-    border-radius: 10px;
+    border: 1px solid var(--wa-border, #EAE5DE);
+    border-radius: 8px;
     padding: 1.2rem;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     overflow: hidden;
   }
 
   .luxury-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--wa-gold, #D4AF37);
-    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+    transform: translateY(-5px);
+    border-color: var(--wa-gold, #B8974F);
+    box-shadow: 0 8px 25px rgba(184, 151, 79, 0.16);
   }
 
   .luxury-card__badge-wrap {
@@ -105,37 +105,39 @@
   .luxury-card__badge {
     font-family: var(--wa-font-body, 'Montserrat', sans-serif);
     font-size: 0.68rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.28rem 0.65rem;
     border-radius: 3px;
     display: inline-block;
   }
 
   .luxury-card__badge--bogo {
-    background: linear-gradient(135deg, #8B0000 0%, #D90429 100%);
-    color: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(217, 4, 41, 0.3);
+    background: #FFF5F5 !important;
+    color: #D90429 !important;
+    border: 1px solid #FFC9C9 !important;
+    box-shadow: 0 2px 8px rgba(217, 4, 41, 0.15);
     animation: waPulseBadge 2s infinite ease-in-out;
   }
 
   .luxury-card__badge--gold {
-    background: linear-gradient(135deg, #121212 0%, #2A2418 100%);
-    color: #D4AF37;
-    border: 1px solid #D4AF37;
+    background: #FAF6ED !important;
+    color: #917333 !important;
+    border: 1px solid #E5D7B5 !important;
   }
 
   .luxury-card__badge--dark {
-    background: #121212;
-    color: #FFFFFF;
+    background: #1A1A1A !important;
+    color: #FFFFFF !important;
   }
 
   .luxury-card__image-box {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: radial-gradient(circle at center, #FFF8ED 0%, #F5EFE6 100%);
-    border-radius: 8px;
+    background: #FAFAF8;
+    border: 1px solid #F2EEE9;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +154,7 @@
   }
 
   .luxury-card:hover .luxury-card__image-box img {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
 
   .luxury-card__placeholder-art {
@@ -165,15 +167,15 @@
   }
 
   .luxury-card__bottle-icon {
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-bottom: 0.4rem;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
   }
 
   .luxury-card__ml-tag {
     font-size: 0.72rem;
-    font-weight: 700;
-    color: #8A8175;
+    font-weight: 600;
+    color: #8C8479;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
@@ -182,14 +184,14 @@
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 0.75rem;
-    color: #A88420;
+    font-size: 0.74rem;
+    color: #917333;
     font-weight: 700;
     margin-bottom: 0.4rem;
   }
 
   .luxury-card__stars {
-    color: #D4AF37;
+    color: #B8974F;
     letter-spacing: -1px;
   }
 
@@ -197,7 +199,7 @@
     font-family: var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);
     font-size: 1.25rem;
     font-weight: 700;
-    color: #121212;
+    color: #1A1A1A;
     margin: 0 0 0.3rem 0;
     line-height: 1.25;
     text-decoration: none;
@@ -209,7 +211,7 @@
 
   .luxury-card__notes {
     font-size: 0.78rem;
-    color: #6A645A;
+    color: #666666;
     line-height: 1.4;
     margin-bottom: 0.8rem;
     min-height: 2.2rem;
@@ -230,12 +232,12 @@
   .luxury-card__price-sale {
     font-size: 1.15rem;
     font-weight: 800;
-    color: #121212;
+    color: #1A1A1A;
   }
 
   .luxury-card__price-compare {
     font-size: 0.85rem;
-    color: #999;
+    color: #8C8479;
     text-decoration: line-through;
   }
 
@@ -243,24 +245,25 @@
     font-size: 0.7rem;
     font-weight: 700;
     color: #D90429;
-    background: #FFEBEB;
+    background: #FFF5F5;
+    border: 1px solid #FFC9C9;
     padding: 0.15rem 0.4rem;
     border-radius: 3px;
   }
 
   .luxury-card__btn {
     width: 100%;
-    background: #121212;
+    background: #1A1A1A;
     color: #FFFFFF;
     text-align: center;
     padding: 0.75rem 1rem;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     border-radius: 4px;
     text-decoration: none;
-    border: 1px solid #121212;
+    border: 1px solid #1A1A1A;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -269,16 +272,16 @@
   }
 
   .luxury-card__btn:hover {
-    background: #D4AF37;
-    color: #121212;
-    border-color: #D4AF37;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    background: #B8974F;
+    color: #FFFFFF;
+    border-color: #B8974F;
+    box-shadow: 0 4px 15px rgba(184, 151, 79, 0.25);
   }
 
   .luxury-card__bogo-ribbon {
-    background: #FFEBEB;
-    border: 1px dashed #D90429;
-    color: #8B0000;
+    background: #FFF5F5;
+    border: 1px dashed #F5C6CB;
+    color: #D90429;
     font-size: 0.7rem;
     font-weight: 700;
     text-align: center;
