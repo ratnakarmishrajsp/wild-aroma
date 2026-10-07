@@ -1,164 +1,108 @@
 {% comment %}
-  Custom High-Converting Cash on Delivery & Online Checkout Modal for Wild Aroma
-  Inspired by SMD Neelambari / Releasit style, crafted in luxury royal aesthetics.
+  Custom High-Converting Checkout Modal for Wild Aroma
+  Pixel-perfect replica of the SMD / Releasit reference design, styled in Wild Aroma Luxury aesthetics.
 {% endcomment %}
 
-<div id="WildAromaOrderModal" class="wa-modal-overlay" style="display:none;" aria-hidden="true" role="dialog">
-  <div class="wa-modal-container">
+<div id="WildAromaOrderModal" class="smd-modal-overlay" style="display:none;" aria-hidden="true" role="dialog">
+  <div class="smd-modal-card">
     <!-- Modal Header -->
-    <div class="wa-modal-header">
-      <div class="wa-modal-header-text">
-        <div class="wa-modal-badge">⚡ EXPRESS CHECKOUT</div>
-        <h3 class="wa-modal-title">Complete Your Luxury Order</h3>
-        <p class="wa-modal-subtitle">Free Express Delivery Across India • 100% Pure Alcohol-Free</p>
+    <div class="smd-modal-header" id="smd-modal-header-bg">
+      <div class="smd-modal-header-left">
+        <div class="smd-title-row">
+          <span class="smd-lightning" id="smd-head-icon">⚡</span>
+          <h3 class="smd-header-title" id="smd-head-title">Instant Prepaid Checkout</h3>
+        </div>
+        <p class="smd-header-subtitle" id="smd-head-subtitle">Pay with UPI, Google Pay, PhonePe, Cards or Net Banking</p>
       </div>
-      <button type="button" class="wa-modal-close" onclick="closeWildAromaOrderModal()" aria-label="Close Modal">&times;</button>
+      <button type="button" class="smd-modal-close" onclick="closeWildAromaOrderModal()" aria-label="Close modal">&times;</button>
     </div>
 
-    <div class="wa-modal-body">
-      <!-- Order Summary Card -->
-      <div class="wa-summary-card">
-        <div class="wa-summary-media">
-          {%- if product.featured_media -%}
-            <img id="wa-summary-img" src="{{ product.featured_media | image_url: width: 140 }}" alt="{{ product.title | escape }}" width="64" height="64" loading="eager">
-          {%- endif -%}
-        </div>
-        <div class="wa-summary-details">
-          <div class="wa-summary-tag">🔥 BESTSELLER • 100% PURE ATTAR</div>
-          <h4 class="wa-summary-name" id="wa-summary-title">{{ product.title | escape }}</h4>
-          <div class="wa-summary-variant" id="wa-summary-variant-title">
+    <!-- Modal Body -->
+    <div class="smd-modal-body">
+      <!-- Special Offer Summary Card -->
+      <div class="smd-offer-card" id="smd-offer-card">
+        <div class="smd-offer-left">
+          <span class="smd-offer-tag" id="smd-offer-badge">🔥 SPECIAL PREPAID OFFER</span>
+          <span class="smd-offer-title" id="smd-offer-title">{{ product.title | escape }}</span>
+          <span class="smd-offer-variant" id="smd-offer-variant">
             {%- unless product.has_only_default_variant -%}
               Size: {{ product.selected_or_first_available_variant.title }}
             {%- else -%}
-              Premium 6 ML Roll-On Flacon
+              Pure Attar Flacon (6 ML)
             {%- endunless -%}
-          </div>
-          <div class="wa-summary-pricing">
-            <span class="wa-summary-price" id="wa-summary-price-display">{{ product.selected_or_first_available_variant.price | money }}</span>
-            {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-              <span class="wa-summary-compare" id="wa-summary-compare-display">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
-            {%- else -%}
-              <span class="wa-summary-compare" id="wa-summary-compare-display">₹1,199</span>
-            {%- endif -%}
-            <span class="wa-summary-discount-pill" id="wa-summary-save-badge">SAVE ₹100 EXTRA ONLINE</span>
-          </div>
+          </span>
         </div>
-      </div>
-
-      <!-- Payment Option Selection Tabs -->
-      <div class="wa-payment-selector">
-        <label class="wa-payment-option is-active" id="wa-opt-cod" onclick="selectWildAromaPayment('cod')">
-          <input type="radio" name="wa_payment_method" value="cod" checked>
-          <div class="wa-payment-option-inner">
-            <div class="wa-payment-option-icon">📦</div>
-            <div class="wa-payment-option-info">
-              <span class="wa-payment-option-title">Cash on Delivery (COD)</span>
-              <span class="wa-payment-option-desc">Pay cash when package arrives at your doorstep</span>
-            </div>
-            <div class="wa-payment-option-price" id="wa-cod-price-tag">{{ product.selected_or_first_available_variant.price | money }}</div>
-          </div>
-        </label>
-
-        <label class="wa-payment-option" id="wa-opt-online" onclick="selectWildAromaPayment('online')">
-          <input type="radio" name="wa_payment_method" value="online">
-          <div class="wa-payment-option-inner">
-            <div class="wa-payment-option-icon">⚡</div>
-            <div class="wa-payment-option-info">
-              <div class="wa-payment-title-row">
-                <span class="wa-payment-option-title">Pay Online • Extra ₹100 OFF</span>
-                <span class="wa-instant-badge">INSTANT UPI</span>
-              </div>
-              <span class="wa-payment-option-desc">Google Pay, PhonePe, Paytm, UPI, Cards</span>
-            </div>
-            <div class="wa-payment-option-price is-discounted" id="wa-online-price-tag">
-              {%- assign discounted_price = product.selected_or_first_available_variant.price | minus: 10000 -%}
-              {%- if discounted_price > 0 -%}
-                {{ discounted_price | money }}
-              {%- else -%}
-                {{ product.selected_or_first_available_variant.price | money }}
-              {%- endif -%}
-            </div>
-          </div>
-        </label>
+        <div class="smd-offer-pricing">
+          <span class="smd-price-bold" id="smd-display-price">₹549</span>
+          <span class="smd-price-cut" id="smd-display-cut">₹1,299</span>
+        </div>
       </div>
 
       <!-- Customer Address Form -->
-      <form id="WildAromaOrderForm" class="wa-address-form" onsubmit="return false;" novalidate>
-        <div class="wa-form-row">
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_name">Full Name <span class="wa-req">*</span></label>
-            <input type="text" id="wa_order_name" class="wa-input" placeholder="Enter your full name" required autocomplete="name" />
-          </div>
+      <form id="WildAromaOrderForm" class="smd-form" onsubmit="return false;" novalidate>
+        <div class="smd-form-group">
+          <label class="smd-label" for="smd_input_name">Full Name *</label>
+          <input type="text" id="smd_input_name" class="smd-input" placeholder="Enter your full name" required autocomplete="name" />
         </div>
 
-        <div class="wa-form-row">
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_phone">Mobile Number (10 Digits) <span class="wa-req">*</span></label>
-            <div class="wa-phone-input-wrap">
-              <span class="wa-phone-prefix">+91</span>
-              <input type="tel" id="wa_order_phone" class="wa-input wa-phone-input" placeholder="10-digit mobile number" maxlength="10" required autocomplete="tel" />
-            </div>
-            <span class="wa-field-hint">We will send tracking updates to this number on WhatsApp</span>
-          </div>
+        <div class="smd-form-group">
+          <label class="smd-label" for="smd_input_phone">Mobile Number (10 Digits) *</label>
+          <input type="tel" id="smd_input_phone" class="smd-input" placeholder="e.g. 9876543210" maxlength="10" required autocomplete="tel" />
+          <span class="smd-hint">We will send live tracking updates to this number on WhatsApp</span>
         </div>
 
-        <div class="wa-form-row">
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_address">Delivery Address (House / Flat No., Street, Colony) <span class="wa-req">*</span></label>
-            <input type="text" id="wa_order_address" class="wa-input" placeholder="House / Flat No., Building name, Road, Area" required autocomplete="street-address" />
-          </div>
+        <div class="smd-form-group">
+          <label class="smd-label" for="smd_input_address">Delivery Address (House / Flat No., Street, Colony) *</label>
+          <input type="text" id="smd_input_address" class="smd-input" placeholder="House No., Building, Street Name, Area" required autocomplete="street-address" />
         </div>
 
-        <div class="wa-form-row">
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_landmark">Landmark (Optional)</label>
-            <input type="text" id="wa_order_landmark" class="wa-input" placeholder="Nearby Temple, School, Hospital, or Metro Station" />
-          </div>
+        <div class="smd-form-group">
+          <label class="smd-label" for="smd_input_landmark">Landmark (Optional)</label>
+          <input type="text" id="smd_input_landmark" class="smd-input" placeholder="Nearby School, Hospital, Temple, or Shop" />
         </div>
 
-        <div class="wa-form-grid-3">
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_pincode">Pincode <span class="wa-req">*</span></label>
-            <div class="wa-pincode-wrap">
-              <input type="tel" id="wa_order_pincode" class="wa-input" placeholder="6 Digits" maxlength="6" required autocomplete="postal-code" />
-              <span id="wa-pincode-spinner" class="wa-pincode-spinner" style="display:none;">⏳</span>
+        <div class="smd-row-2">
+          <div class="smd-form-group">
+            <label class="smd-label" for="smd_input_pincode">Pincode *</label>
+            <div class="smd-pin-wrap">
+              <input type="tel" id="smd_input_pincode" class="smd-input" placeholder="6-Digit PIN Code" maxlength="6" required autocomplete="postal-code" />
+              <span id="smd-pin-loader" class="smd-pin-loader" style="display:none;">⏳</span>
             </div>
           </div>
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_city">City <span class="wa-req">*</span></label>
-            <input type="text" id="wa_order_city" class="wa-input" placeholder="City / District" required autocomplete="address-level2" />
-          </div>
-          <div class="wa-form-group">
-            <label class="wa-label" for="wa_order_state">State <span class="wa-req">*</span></label>
-            <input type="text" id="wa_order_state" class="wa-input" placeholder="State" required autocomplete="address-level1" />
+          <div class="smd-form-group">
+            <label class="smd-label" for="smd_input_city">City *</label>
+            <input type="text" id="smd_input_city" class="smd-input" placeholder="City" required autocomplete="address-level2" />
           </div>
         </div>
-        <div id="wa-pincode-success" class="wa-pincode-success" style="display:none;"></div>
 
-        <!-- Status / Error Notification Box -->
-        <div id="WildAromaStatusBox" class="wa-status-box" style="display:none;"></div>
+        <div class="smd-form-group">
+          <label class="smd-label" for="smd_input_state">State *</label>
+          <input type="text" id="smd_input_state" class="smd-input" placeholder="State" required autocomplete="address-level1" />
+        </div>
+
+        <div id="smd-pin-verified-badge" class="smd-pin-verified" style="display:none;"></div>
+        <div id="WildAromaStatusBox" class="smd-status-box" style="display:none;"></div>
 
         <!-- Submit Button -->
-        <button type="button" id="WildAromaSubmitOrderBtn" class="wa-submit-btn" onclick="submitWildAromaOrder()">
-          <span class="wa-btn-icon">📦</span>
-          <span class="wa-btn-text" id="wa-btn-label">CONFIRM CASH ON DELIVERY ORDER ({{ product.selected_or_first_available_variant.price | money }})</span>
-          <span class="wa-btn-shimmer"></span>
+        <button type="button" id="WildAromaSubmitOrderBtn" class="smd-submit-btn" onclick="submitWildAromaOrder()">
+          <span id="smd-btn-icon">🔒</span>
+          <span id="smd-btn-text">PAY ₹549 WITH INSTANT UPI</span>
         </button>
 
-        <!-- Trust & Security Strip -->
-        <div class="wa-modal-trust-strip">
-          <div class="wa-trust-item">
-            <span class="wa-trust-icon">🛡️</span>
-            <span>100% Pure Alcohol-Free</span>
-          </div>
-          <div class="wa-trust-item">
-            <span class="wa-trust-icon">🚚</span>
-            <span>Free Express Delivery</span>
-          </div>
-          <div class="wa-trust-item">
-            <span class="wa-trust-icon">💬</span>
-            <span>WhatsApp Support</span>
-          </div>
+        <!-- Toggle Payment Mode Link -->
+        <div class="smd-mode-switch">
+          <a href="javascript:void(0)" id="smd-switch-link" onclick="togglePaymentMode()">
+            Prefer Cash on Delivery? Click here to switch
+          </a>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="smd-trust-row">
+          <span>🔒 100% Safe & Verified</span>
+          <span>•</span>
+          <span>🚚 Free Express Delivery</span>
+          <span>•</span>
+          <span>💬 WhatsApp Support</span>
         </div>
       </form>
     </div>
@@ -166,774 +110,509 @@
 </div>
 
 <style>
-  /* =======================================================
-     WILD AROMA LUXURY COD & ONLINE CHECKOUT MODAL STYLES
-     ======================================================= */
-  .wa-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(10, 10, 12, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
+  /* =====================================================================
+     SMD REPLICA MODAL - WILD AROMA LUXURY EDITION
+     ===================================================================== */
+  
+  /* Suppress all floating elements when checkout modal is active */
+  body.wa-modal-active {
+    overflow: hidden !important;
+  }
+  body.wa-modal-active .sales-notification-popup,
+  body.wa-modal-active #SalesNotificationPopup,
+  body.wa-modal-active .left-compact-support,
+  body.wa-modal-active .mobile-sticky-buy-bar,
+  body.wa-modal-active #ExitIntentPopup,
+  body.wa-modal-active [class*="whatsapp"],
+  body.wa-modal-active [id*="whatsapp"],
+  body.wa-modal-active [class*="call-widget"],
+  body.wa-modal-active [id*="call-widget"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -999 !important;
+  }
+
+  .smd-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(10, 15, 12, 0.78) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    z-index: 2147483647 !important; /* Topmost priority */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.25s ease;
   }
 
-  .wa-modal-overlay.is-open {
-    opacity: 1;
-    pointer-events: auto;
+  .smd-modal-overlay.is-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
-  .wa-modal-container {
-    background: #ffffff;
-    width: 100%;
-    max-width: 540px;
-    max-height: 94vh;
-    border-radius: 20px;
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(184, 151, 79, 0.2);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-    transform: translateY(20px) scale(0.97);
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    font-family: inherit;
-    color: #1a1a1a;
+  .smd-modal-card {
+    background: #ffffff !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    max-height: 92vh !important;
+    border-radius: 20px !important;
+    border: 1.5px solid #0e4e2a !important;
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.4) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    position: relative !important;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.25s ease;
   }
 
-  .wa-modal-overlay.is-open .wa-modal-container {
-    transform: translateY(0) scale(1);
+  .smd-modal-overlay.is-open .smd-modal-card {
+    transform: translateY(0) scale(1) !important;
   }
 
   /* Header */
-  .wa-modal-header {
-    background: linear-gradient(135deg, #0d0d0f 0%, #17171c 100%);
-    padding: 20px 24px 18px;
-    position: relative;
-    border-bottom: 2px solid rgba(197, 160, 89, 0.3);
-    color: #ffffff;
-    flex-shrink: 0;
+  .smd-modal-header {
+    background: #0b3b24 !important;
+    border-bottom: 2px solid #b8974f !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    color: #ffffff !important;
+    flex-shrink: 0 !important;
   }
 
-  .wa-modal-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(197, 160, 89, 0.15);
-    border: 1px solid rgba(197, 160, 89, 0.4);
-    color: #dfba73;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 99px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+  .smd-modal-header.is-cod-mode {
+    background: #092c1c !important;
+    border-bottom: 2px solid #22c55e !important;
   }
 
-  .wa-modal-title {
-    margin: 0;
-    font-family: inherit;
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
+  .smd-modal-header-left {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
   }
 
-  .wa-modal-subtitle {
-    margin: 4px 0 0;
-    font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.01em;
+  .smd-title-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
   }
 
-  .wa-modal-close {
-    position: absolute;
-    top: 16px;
-    right: 18px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    font-size: 24px;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  .smd-lightning {
+    font-size: 18px !important;
+    color: #fbbf24 !important;
+    line-height: 1 !important;
   }
 
-  .wa-modal-close:hover {
-    background: rgba(197, 160, 89, 0.3);
-    color: #ffffff;
-    transform: rotate(90deg);
+  .smd-header-title {
+    margin: 0 !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: #fbbf24 !important;
+    letter-spacing: -0.01em !important;
+    font-family: inherit !important;
+  }
+
+  .smd-header-subtitle {
+    margin: 0 !important;
+    font-size: 11.5px !important;
+    color: #e2e8f0 !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .smd-modal-close {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border: none !important;
+    color: #ffffff !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease, transform 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+
+  .smd-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    transform: rotate(90deg) !important;
   }
 
   /* Body */
-  .wa-modal-body {
-    padding: 20px 24px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    background: #faf9f6;
+  .smd-modal-body {
+    padding: 16px 18px 20px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    background: #ffffff !important;
   }
 
-  /* Summary Card */
-  .wa-summary-card {
-    background: #ffffff;
-    border: 1px solid #ebd7b3;
-    border-radius: 14px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    box-shadow: 0 4px 14px rgba(184, 151, 79, 0.08);
+  /* Offer Summary Card */
+  .smd-offer-card {
+    border: 1.5px dashed #16a34a !important;
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 12px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
   }
 
-  .wa-summary-media {
-    width: 64px;
-    height: 64px;
-    border-radius: 10px;
-    background: #f4efe6;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 1px solid #e8dec8;
+  .smd-offer-left {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    min-width: 0 !important;
   }
 
-  .wa-summary-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .smd-offer-tag {
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    color: #15803d !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
   }
 
-  .wa-summary-details {
-    flex: 1;
-    min-width: 0;
+  .smd-offer-title {
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
-  .wa-summary-tag {
-    font-size: 10px;
-    font-weight: 700;
-    color: #9b722b;
-    letter-spacing: 0.05em;
-    margin-bottom: 2px;
+  .smd-offer-variant {
+    font-size: 12px !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
   }
 
-  .wa-summary-name {
-    margin: 0;
-    font-size: 14.5px;
-    font-weight: 700;
-    color: #121212;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.3;
+  .smd-offer-pricing {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    flex-shrink: 0 !important;
   }
 
-  .wa-summary-variant {
-    font-size: 12px;
-    color: #666666;
-    margin-top: 1px;
+  .smd-price-bold {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #15803d !important;
+    line-height: 1 !important;
   }
 
-  .wa-summary-pricing {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-    flex-wrap: wrap;
+  .smd-price-cut {
+    font-size: 13px !important;
+    color: #94a3b8 !important;
+    text-decoration: line-through !important;
+    margin-top: 3px !important;
   }
 
-  .wa-summary-price {
-    font-size: 16px;
-    font-weight: 800;
-    color: #0b6e3f;
+  /* Form Elements */
+  .smd-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
   }
 
-  .wa-summary-compare {
-    font-size: 13px;
-    color: #888888;
-    text-decoration: line-through;
+  .smd-form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    position: relative !important;
   }
 
-  .wa-summary-discount-pill {
-    background: #eef7ee;
-    color: #0d7342;
-    border: 1px solid #bce1c9;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 6px;
-    letter-spacing: 0.02em;
+  .smd-label {
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    letter-spacing: 0.01em !important;
   }
 
-  /* Payment Selector */
-  .wa-payment-selector {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .smd-input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 14px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    font-size: 14.5px !important;
+    color: #0f172a !important;
+    outline: none !important;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+    font-family: inherit !important;
   }
 
-  .wa-payment-option {
-    display: block;
-    cursor: pointer;
-    position: relative;
-    user-select: none;
+  .smd-input:focus {
+    border-color: #16a34a !important;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15) !important;
   }
 
-  .wa-payment-option input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+  .smd-hint {
+    font-size: 11px !important;
+    color: #64748b !important;
+    margin-top: 2px !important;
   }
 
-  .wa-payment-option-inner {
-    border: 2px solid #e5e5e5;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 12px 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.2s ease;
+  .smd-row-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
   }
 
-  .wa-payment-option.is-active .wa-payment-option-inner {
-    border-color: #b8974f;
-    background: #fffdf9;
-    box-shadow: 0 4px 12px rgba(184, 151, 79, 0.15);
+  .smd-pin-wrap {
+    position: relative !important;
   }
 
-  .wa-payment-option-icon {
-    font-size: 22px;
-    line-height: 1;
-    width: 32px;
-    text-align: center;
+  .smd-pin-loader {
+    position: absolute !important;
+    right: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 13px !important;
   }
 
-  .wa-payment-option-info {
-    flex: 1;
-  }
-
-  .wa-payment-title-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .wa-payment-option-title {
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #121212;
-  }
-
-  .wa-instant-badge {
-    background: #fdf3d8;
-    color: #8a6519;
-    border: 1px solid #e8cd87;
-    font-size: 9.5px;
-    font-weight: 800;
-    padding: 1px 6px;
-    border-radius: 4px;
-    letter-spacing: 0.03em;
-  }
-
-  .wa-payment-option-desc {
-    display: block;
-    font-size: 11.5px;
-    color: #666666;
-    margin-top: 2px;
-  }
-
-  .wa-payment-option-price {
-    font-size: 15px;
-    font-weight: 800;
-    color: #121212;
-    text-align: right;
-  }
-
-  .wa-payment-option-price.is-discounted {
-    color: #0b6e3f;
-  }
-
-  /* Form Controls */
-  .wa-address-form {
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-  }
-
-  .wa-form-row {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wa-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative;
-  }
-
-  .wa-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #333333;
-    letter-spacing: 0.01em;
-  }
-
-  .wa-req {
-    color: #d32f2f;
-    font-weight: 800;
-  }
-
-  .wa-input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 14px;
-    background: #ffffff;
-    border: 1.5px solid #dcdcdc;
-    border-radius: 9px;
-    font-size: 14px;
-    color: #121212;
-    transition: all 0.18s ease;
-    outline: none;
-    font-family: inherit;
-  }
-
-  .wa-input:focus {
-    border-color: #b8974f;
-    box-shadow: 0 0 0 3px rgba(184, 151, 79, 0.15);
-    background: #ffffff;
-  }
-
-  .wa-phone-input-wrap {
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  .wa-phone-prefix {
-    position: absolute;
-    left: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #555555;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .wa-phone-input {
-    padding-left: 48px;
-    letter-spacing: 0.05em;
-  }
-
-  .wa-field-hint {
-    font-size: 11px;
-    color: #777777;
-    margin-top: 3px;
-  }
-
-  .wa-form-grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
-  }
-
-  .wa-pincode-wrap {
-    position: relative;
-  }
-
-  .wa-pincode-spinner {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 13px;
-  }
-
-  .wa-pincode-success {
-    background: #eef7ee;
-    border: 1px solid #bce1c9;
-    color: #0b6e3f;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 8px;
-    margin-top: -2px;
+  .smd-pin-verified {
+    background: #f0fdf4 !important;
+    border: 1px solid #bbf7d0 !important;
+    color: #15803d !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 6px 10px !important;
+    border-radius: 8px !important;
   }
 
   /* Status Box */
-  .wa-status-box {
-    padding: 10px 14px;
-    border-radius: 9px;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.4;
+  .smd-status-box {
+    padding: 10px 14px !important;
+    border-radius: 9px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
   }
 
-  .wa-status-box.error {
-    background: #feebee;
-    border: 1px solid #f5c2c7;
-    color: #b02a37;
+  .smd-status-box.error {
+    background: #fef2f2 !important;
+    border: 1px solid #fecaca !important;
+    color: #b91c1c !important;
   }
 
-  .wa-status-box.success {
-    background: #e8f5e9;
-    border: 1px solid #c3e6cb;
-    color: #155724;
+  .smd-status-box.success {
+    background: #f0fdf4 !important;
+    border: 1px solid #bbf7d0 !important;
+    color: #15803d !important;
   }
 
   /* Submit Button */
-  .wa-submit-btn {
-    position: relative;
-    width: 100%;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #1b7a42 0%, #0d5f2f 100%);
-    box-shadow: 0 8px 24px rgba(13, 95, 47, 0.35), 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-    margin-top: 4px;
+  .smd-submit-btn {
+    width: 100% !important;
+    padding: 15px 18px !important;
+    background: #0b3b24 !important;
+    border: 1.5px solid #22c55e !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-size: 15.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.03em !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 15px rgba(11, 59, 36, 0.25) !important;
+    transition: background 0.2s ease, transform 0.15s ease !important;
+    margin-top: 4px !important;
   }
 
-  .wa-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(13, 95, 47, 0.45);
-    background: linear-gradient(135deg, #1f8a4b 0%, #0e6b35 100%);
+  .smd-submit-btn:hover {
+    background: #0e4e2a !important;
+    transform: translateY(-1px) !important;
   }
 
-  .wa-submit-btn.is-online-mode {
-    background: linear-gradient(135deg, #b8974f 0%, #8a6b24 100%);
-    box-shadow: 0 8px 24px rgba(184, 151, 79, 0.4);
+  .smd-submit-btn:disabled {
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
   }
 
-  .wa-submit-btn.is-online-mode:hover {
-    background: linear-gradient(135deg, #c7a75c 0%, #99782b 100%);
-    box-shadow: 0 12px 28px rgba(184, 151, 79, 0.5);
+  /* Mode Switch Link */
+  .smd-mode-switch {
+    text-align: center !important;
+    margin-top: 2px !important;
   }
 
-  .wa-submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
+  .smd-mode-switch a {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #0b3b24 !important;
+    text-decoration: underline !important;
+    cursor: pointer !important;
   }
 
-  .wa-btn-shimmer {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-    animation: wa-shimmer 2.4s infinite;
+  .smd-mode-switch a:hover {
+    color: #15803d !important;
   }
 
-  @keyframes wa-shimmer {
-    0% { left: -100%; }
-    50%, 100% { left: 160%; }
+  /* Trust Row */
+  .smd-trust-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    padding-top: 8px !important;
+    border-top: 1px dashed #e2e8f0 !important;
+    font-size: 11px !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
   }
 
-  /* Trust Badges */
-  .wa-modal-trust-strip {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 4px 4px;
-    border-top: 1px dashed #e5dccb;
-    gap: 6px;
-  }
-
-  .wa-trust-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #555555;
-  }
-
-  /* =======================================================
-     CUSTOM CHECKOUT BUTTONS IN PRODUCT PAGE (RELEASIT STYLE)
-     ======================================================= */
-  .wa-custom-buy-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 14px 0 6px;
-    width: 100%;
-  }
-
-  /* COD Main Button */
-  .wa-cod-trigger-btn {
-    position: relative;
-    width: 100%;
-    padding: 14px 18px;
-    background: linear-gradient(135deg, #106637 0%, #084824 100%);
-    border: 1.5px solid #148045;
-    border-radius: 12px;
-    color: #ffffff;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(16, 102, 55, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow: hidden;
-    text-decoration: none;
-    animation: wa-pulse-soft 2.5s infinite;
-  }
-
-  @keyframes wa-pulse-soft {
-    0% { box-shadow: 0 8px 20px rgba(16, 102, 55, 0.3); }
-    50% { box-shadow: 0 10px 28px rgba(16, 102, 55, 0.55), 0 0 0 4px rgba(20, 128, 69, 0.2); }
-    100% { box-shadow: 0 8px 20px rgba(16, 102, 55, 0.3); }
-  }
-
-  .wa-cod-trigger-btn:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #137740 0%, #0a542b 100%);
-    box-shadow: 0 12px 30px rgba(16, 102, 55, 0.5);
-  }
-
-  .wa-cod-btn-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
-  }
-
-  .wa-cod-btn-icon {
-    font-size: 22px;
-    line-height: 1;
-  }
-
-  .wa-cod-btn-titles {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wa-cod-btn-main-title {
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-
-  .wa-cod-btn-sub-title {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.85);
-    font-weight: 500;
-  }
-
-  .wa-cod-btn-pill {
-    background: #ffffff;
-    color: #084824;
-    font-size: 15px;
-    font-weight: 800;
-    padding: 6px 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-  }
-
-  /* Online Prepaid Button */
-  .wa-prepaid-trigger-btn {
-    position: relative;
-    width: 100%;
-    padding: 12px 18px;
-    background: linear-gradient(135deg, #121214 0%, #1e1e24 100%);
-    border: 1.5px solid #c5a059;
-    border-radius: 12px;
-    color: #ffffff;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.25s ease;
-    overflow: hidden;
-  }
-
-  .wa-prepaid-trigger-btn:hover {
-    transform: translateY(-2px);
-    border-color: #dfba73;
-    box-shadow: 0 10px 24px rgba(197, 160, 89, 0.25);
-  }
-
-  .wa-prepaid-btn-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
-  }
-
-  .wa-prepaid-btn-icon {
-    font-size: 20px;
-    line-height: 1;
-  }
-
-  .wa-prepaid-btn-titles {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wa-prepaid-btn-main-title {
-    font-size: 13.5px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    color: #e2c079;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .wa-prepaid-save-pill {
-    background: #e2c079;
-    color: #121212;
-    font-size: 9.5px;
-    font-weight: 800;
-    padding: 1px 6px;
-    border-radius: 4px;
-    letter-spacing: 0.02em;
-  }
-
-  .wa-prepaid-btn-sub-title {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 400;
-  }
-
-  .wa-prepaid-btn-pill {
-    background: rgba(197, 160, 89, 0.15);
-    border: 1px solid rgba(197, 160, 89, 0.5);
-    color: #dfba73;
-    font-size: 14.5px;
-    font-weight: 800;
-    padding: 5px 12px;
-    border-radius: 8px;
-    white-space: nowrap;
-  }
-
-  .wa-trust-micro-strip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    font-size: 11.5px;
-    color: #666666;
-    margin-top: 4px;
-    font-weight: 500;
-  }
-
-  .wa-trust-micro-strip span {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  /* Mobile Bottom Sheet adjustments */
+  /* Mobile Slide Up */
   @media (max-width: 600px) {
-    .wa-modal-overlay {
-      padding: 0;
-      align-items: flex-end;
+    .smd-modal-overlay {
+      padding: 0 !important;
+      align-items: flex-end !important;
     }
 
-    .wa-modal-container {
-      max-height: 90vh;
-      border-radius: 20px 20px 0 0;
+    .smd-modal-card {
+      max-height: 92vh !important;
+      border-radius: 20px 20px 0 0 !important;
+      border-bottom: none !important;
       transform: translateY(100%);
     }
 
-    .wa-modal-overlay.is-open .wa-modal-container {
-      transform: translateY(0);
-    }
-
-    .wa-form-grid-3 {
-      grid-template-columns: 1fr;
-    }
-
-    .wa-cod-btn-main-title {
-      font-size: 14px;
-    }
-
-    .wa-prepaid-btn-main-title {
-      font-size: 12.5px;
+    .smd-modal-overlay.is-open .smd-modal-card {
+      transform: translateY(0) !important;
     }
   }
 </style>
 
 <script>
   (function() {
-    let currentSelectedPayment = 'cod';
-    let basePriceInt = {{ product.selected_or_first_available_variant.price | default: 59900 }};
-    let comparePriceInt = {{ product.selected_or_first_available_variant.compare_at_price | default: 119900 }};
-    let onlineDiscountAmount = 10000; // Rs 100 off (in paise)
+    // Exact variant data from Shopify Liquid
+    const rawVariants = {{ product.variants | json }};
+    let currentMode = 'online'; // 'online' or 'cod'
+    const DISCOUNT_AMOUNT = 100; // Extra Rs 100 Off on Prepaid
 
-    function formatMoney(cents) {
-      const rupees = Math.round(cents / 100);
-      return '₹' + rupees.toLocaleString('en-IN');
+    function getActiveVariant() {
+      const varInput = document.querySelector('input[name="id"], select[name="id"]');
+      const curId = varInput ? varInput.value : '';
+      return rawVariants.find(v => String(v.id) === String(curId)) || rawVariants[0];
     }
 
-    window.openWildAromaOrderModal = function(preferredPayment) {
-      const modal = document.getElementById('WildAromaOrderModal');
-      if (!modal) return;
-      
-      // Update variant info from active selector if available
-      syncVariantData();
+    function formatRupees(num) {
+      return '₹' + Math.round(num).toLocaleString('en-IN');
+    }
 
-      if (preferredPayment) {
-        selectWildAromaPayment(preferredPayment);
-      } else {
-        selectWildAromaPayment('cod');
+    function updateModalPricing() {
+      const v = getActiveVariant();
+      if (!v) return;
+
+      const regularRupees = Math.round(v.price / 100);
+      const compareRupees = v.compare_at_price ? Math.round(v.compare_at_price / 100) : (regularRupees * 2);
+      const prepaidRupees = Math.max(0, regularRupees - DISCOUNT_AMOUNT);
+
+      const titleEl = document.getElementById('smd-offer-title');
+      const variantEl = document.getElementById('smd-offer-variant');
+      const badgeEl = document.getElementById('smd-offer-badge');
+      const displayPriceEl = document.getElementById('smd-display-price');
+      const displayCutEl = document.getElementById('smd-display-cut');
+      const headTitleEl = document.getElementById('smd-head-title');
+      const headSubEl = document.getElementById('smd-head-subtitle');
+      const headIconEl = document.getElementById('smd-head-icon');
+      const headerBgEl = document.getElementById('smd-modal-header-bg');
+      const btnTextEl = document.getElementById('smd-btn-text');
+      const btnIconEl = document.getElementById('smd-btn-icon');
+      const switchLinkEl = document.getElementById('smd-switch-link');
+
+      // Update titles
+      if (titleEl) titleEl.textContent = '{{ product.title | escape }}';
+      if (variantEl) {
+        variantEl.textContent = v.title && v.title !== 'Default Title' ? 'Size / Option: ' + v.title : 'Pure Attar Flacon (6 ML)';
       }
 
+      if (currentMode === 'online') {
+        // PREPAID MODE (Image 3 exact layout)
+        if (headerBgEl) headerBgEl.classList.remove('is-cod-mode');
+        if (headIconEl) headIconEl.textContent = '⚡';
+        if (headTitleEl) headTitleEl.textContent = 'Instant Prepaid Checkout';
+        if (headSubEl) headSubEl.textContent = 'Pay with UPI, Google Pay, PhonePe, Cards or Net Banking';
+        if (badgeEl) badgeEl.textContent = '🔥 SPECIAL PREPAID OFFER';
+        if (displayPriceEl) displayPriceEl.textContent = formatRupees(prepaidRupees);
+        if (displayCutEl) displayCutEl.textContent = formatRupees(compareRupees);
+        if (btnIconEl) btnIconEl.textContent = '🔒';
+        if (btnTextEl) btnTextEl.textContent = `PAY ${formatRupees(prepaidRupees)} WITH INSTANT UPI`;
+        if (switchLinkEl) switchLinkEl.textContent = 'Prefer Cash on Delivery? Click here to switch';
+      } else {
+        // COD MODE
+        if (headerBgEl) headerBgEl.classList.add('is-cod-mode');
+        if (headIconEl) headIconEl.textContent = '📦';
+        if (headTitleEl) headTitleEl.textContent = 'Cash on Delivery Checkout';
+        if (headSubEl) headSubEl.textContent = 'Pay with cash at doorstep • Free Express Shipping';
+        if (badgeEl) badgeEl.textContent = '📦 CASH ON DELIVERY AVAILABLE';
+        if (displayPriceEl) displayPriceEl.textContent = formatRupees(regularRupees);
+        if (displayCutEl) displayCutEl.textContent = formatRupees(compareRupees);
+        if (btnIconEl) btnIconEl.textContent = '📦';
+        if (btnTextEl) btnTextEl.textContent = `CONFIRM CASH ON DELIVERY (${formatRupees(regularRupees)})`;
+        if (switchLinkEl) switchLinkEl.textContent = '⚡ Want Extra ₹100 OFF? Switch to Prepaid Payment';
+      }
+
+      // Also sync product page buttons pills
+      const codPill = document.getElementById('wa-custom-cod-pill');
+      const onlinePill = document.getElementById('wa-custom-online-pill');
+      if (codPill) codPill.textContent = formatRupees(regularRupees);
+      if (onlinePill) onlinePill.textContent = formatRupees(prepaidRupees);
+    }
+
+    window.openWildAromaOrderModal = function(preferredMode) {
+      currentMode = preferredMode === 'cod' ? 'cod' : 'online';
+      updateModalPricing();
+
+      const modal = document.getElementById('WildAromaOrderModal');
+      if (!modal) return;
+
       modal.style.display = 'flex';
-      // Force repaint for transition
+      document.body.classList.add('wa-modal-active');
+
       setTimeout(() => {
         modal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
       }, 10);
     };
 
     window.closeWildAromaOrderModal = function() {
       const modal = document.getElementById('WildAromaOrderModal');
       if (!modal) return;
+
       modal.classList.remove('is-open');
-      document.body.style.overflow = '';
+      document.body.classList.remove('wa-modal-active');
+
       setTimeout(() => {
         modal.style.display = 'none';
       }, 250);
+    };
+
+    window.togglePaymentMode = function() {
+      currentMode = currentMode === 'online' ? 'cod' : 'online';
+      updateModalPricing();
     };
 
     // Close on backdrop click
@@ -944,97 +623,17 @@
       }
     });
 
-    // Close on Escape key
+    // Close on Escape
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeWildAromaOrderModal();
-      }
-    });
-
-    window.selectWildAromaPayment = function(method) {
-      currentSelectedPayment = method;
-      const optCod = document.getElementById('wa-opt-cod');
-      const optOnline = document.getElementById('wa-opt-online');
-      const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
-      const btnLabel = document.getElementById('wa-btn-label');
-      const summaryPrice = document.getElementById('wa-summary-price-display');
-      const saveBadge = document.getElementById('wa-summary-save-badge');
-
-      if (method === 'online') {
-        optCod?.classList.remove('is-active');
-        optOnline?.classList.add('is-active');
-        const radio = optOnline?.querySelector('input[type="radio"]');
-        if (radio) radio.checked = true;
-
-        const payableOnline = Math.max(0, basePriceInt - onlineDiscountAmount);
-        if (summaryPrice) summaryPrice.textContent = formatMoney(payableOnline);
-        if (saveBadge) saveBadge.textContent = '🔥 ₹100 ONLINE DISCOUNT APPLIED';
-        
-        if (submitBtn) submitBtn.classList.add('is-online-mode');
-        if (btnLabel) btnLabel.textContent = `CONTINUE TO ONLINE PAYMENT (${formatMoney(payableOnline)})`;
-      } else {
-        optOnline?.classList.remove('is-active');
-        optCod?.classList.add('is-active');
-        const radio = optCod?.querySelector('input[type="radio"]');
-        if (radio) radio.checked = true;
-
-        if (summaryPrice) summaryPrice.textContent = formatMoney(basePriceInt);
-        if (saveBadge) saveBadge.textContent = 'FREE EXPRESS SHIPPING INCLUDED';
-
-        if (submitBtn) submitBtn.classList.remove('is-online-mode');
-        if (btnLabel) btnLabel.textContent = `CONFIRM CASH ON DELIVERY ORDER (${formatMoney(basePriceInt)})`;
-      }
-    };
-
-    function syncVariantData() {
-      const variantInput = document.querySelector('input[name="id"], select[name="id"]');
-      if (!variantInput) return;
-      const currentId = variantInput.value;
-
-      // Update variant display text
-      const variantSelectEl = document.querySelector('variant-selects select, .product-form__input input:checked');
-      if (variantSelectEl) {
-        const variantLabel = variantSelectEl.value || variantSelectEl.nextElementSibling?.textContent;
-        const displayEl = document.getElementById('wa-summary-variant-title');
-        if (displayEl && variantLabel) {
-          displayEl.textContent = 'Size / Option: ' + variantLabel.trim();
-        }
-      }
-
-      // Update button pills if price changes
-      const priceElement = document.querySelector('.price__regular .price-item--regular, .price__sale .price-item--sale');
-      if (priceElement) {
-        const priceText = priceElement.textContent.replace(/[^0-9]/g, '');
-        if (priceText) {
-          basePriceInt = parseInt(priceText, 10) * 100;
-          const codPill = document.getElementById('wa-custom-cod-pill');
-          const onlinePill = document.getElementById('wa-custom-online-pill');
-          const codModalPrice = document.getElementById('wa-cod-price-tag');
-          const onlineModalPrice = document.getElementById('wa-online-price-tag');
-
-          const payableOnline = Math.max(0, basePriceInt - onlineDiscountAmount);
-
-          if (codPill) codPill.textContent = formatMoney(basePriceInt);
-          if (onlinePill) onlinePill.textContent = formatMoney(payableOnline);
-          if (codModalPrice) codModalPrice.textContent = formatMoney(basePriceInt);
-          if (onlineModalPrice) onlineModalPrice.textContent = formatMoney(payableOnline);
-        }
-      }
-    }
-
-    // Listen to variant changes
-    document.addEventListener('change', function(e) {
-      if (e.target && (e.target.name === 'id' || e.target.closest('variant-selects') || e.target.closest('.product-form__input'))) {
-        setTimeout(syncVariantData, 100);
-      }
+      if (e.key === 'Escape') closeWildAromaOrderModal();
     });
 
     // Pincode auto-lookup
-    const pinInput = document.getElementById('wa_order_pincode');
-    const pinSpinner = document.getElementById('wa-pincode-spinner');
-    const pinSuccess = document.getElementById('wa-pincode-success');
-    const cityInput = document.getElementById('wa_order_city');
-    const stateInput = document.getElementById('wa_order_state');
+    const pinInput = document.getElementById('smd_input_pincode');
+    const pinLoader = document.getElementById('smd-pin-loader');
+    const pinBadge = document.getElementById('smd-pin-verified-badge');
+    const cityInput = document.getElementById('smd_input_city');
+    const stateInput = document.getElementById('smd_input_state');
 
     if (pinInput) {
       pinInput.addEventListener('input', function() {
@@ -1042,55 +641,57 @@
         this.value = pin;
 
         if (pin.length === 6) {
-          if (pinSpinner) pinSpinner.style.display = 'inline';
+          if (pinLoader) pinLoader.style.display = 'inline';
           fetch('https://api.postalpincode.in/pincode/' + pin)
             .then(res => res.json())
             .then(data => {
-              if (pinSpinner) pinSpinner.style.display = 'none';
+              if (pinLoader) pinLoader.style.display = 'none';
               if (data && data[0] && data[0].Status === 'Success' && data[0].PostOffice && data[0].PostOffice.length > 0) {
                 const po = data[0].PostOffice[0];
                 const city = po.District || po.Block || po.Circle || '';
                 const state = po.State || '';
-                if (cityInput && !cityInput.value) cityInput.value = city;
-                if (stateInput && !stateInput.value) stateInput.value = state;
+                if (cityInput) cityInput.value = city;
+                if (stateInput) stateInput.value = state;
 
-                if (pinSuccess) {
-                  pinSuccess.textContent = `✓ Delivery verified for ${city}, ${state}`;
-                  pinSuccess.style.display = 'block';
-                }
-              } else {
-                if (pinSuccess) {
-                  pinSuccess.textContent = `ℹ️ Pincode entered. Please fill City and State below.`;
-                  pinSuccess.style.display = 'block';
+                if (pinBadge) {
+                  pinBadge.textContent = `✓ Delivery verified for ${city}, ${state}`;
+                  pinBadge.style.display = 'block';
                 }
               }
             })
             .catch(() => {
-              if (pinSpinner) pinSpinner.style.display = 'none';
+              if (pinLoader) pinLoader.style.display = 'none';
             });
         } else {
-          if (pinSuccess) pinSuccess.style.display = 'none';
+          if (pinBadge) pinBadge.style.display = 'none';
         }
       });
     }
 
-    // Form submission & checkout redirection
+    // Handle variant changes on product page
+    document.addEventListener('change', function(e) {
+      if (e.target && (e.target.name === 'id' || e.target.closest('variant-selects') || e.target.closest('.product-form__input'))) {
+        setTimeout(updateModalPricing, 50);
+      }
+    });
+
+    // Order Submit & Shopify Checkout Redirect
     window.submitWildAromaOrder = async function() {
-      const nameInput = document.getElementById('wa_order_name');
-      const phoneInput = document.getElementById('wa_order_phone');
-      const addressInput = document.getElementById('wa_order_address');
-      const landmarkInput = document.getElementById('wa_order_landmark');
-      const pincodeInput = document.getElementById('wa_order_pincode');
-      const cityInput = document.getElementById('wa_order_city');
-      const stateInput = document.getElementById('wa_order_state');
+      const nameInput = document.getElementById('smd_input_name');
+      const phoneInput = document.getElementById('smd_input_phone');
+      const addressInput = document.getElementById('smd_input_address');
+      const landmarkInput = document.getElementById('smd_input_landmark');
+      const pincodeInput = document.getElementById('smd_input_pincode');
+      const cityInput = document.getElementById('smd_input_city');
+      const stateInput = document.getElementById('smd_input_state');
       const statusBox = document.getElementById('WildAromaStatusBox');
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
-      const btnLabel = document.getElementById('wa-btn-label');
+      const btnText = document.getElementById('smd-btn-text');
 
       function showError(msg) {
         if (!statusBox) return;
         statusBox.textContent = msg;
-        statusBox.className = 'wa-status-box error';
+        statusBox.className = 'smd-status-box error';
         statusBox.style.display = 'block';
       }
 
@@ -1103,96 +704,77 @@
       const city = cityInput ? cityInput.value.trim() : '';
       const state = stateInput ? stateInput.value.trim() : '';
 
-      // Validation
+      // Strict validation
       if (!name || name.length < 2) {
         showError('⚠️ Please enter your full name.');
         nameInput?.focus();
         return;
       }
-
       if (!phone || phone.length !== 10) {
         showError('⚠️ Please enter a valid 10-digit mobile number.');
         phoneInput?.focus();
         return;
       }
-
       if (!address || address.length < 5) {
-        showError('⚠️ Please enter your complete delivery address (House / Flat No., Street, Colony).');
+        showError('⚠️ Please enter complete delivery address (House / Flat No., Street, Colony).');
         addressInput?.focus();
         return;
       }
-
       if (!pincode || pincode.length !== 6) {
         showError('⚠️ Please enter a valid 6-digit Pincode.');
         pincodeInput?.focus();
         return;
       }
-
       if (!city) {
         showError('⚠️ Please enter your City.');
         cityInput?.focus();
         return;
       }
-
       if (!state) {
         showError('⚠️ Please enter your State.');
         stateInput?.focus();
         return;
       }
 
-      // Lock button and show spinner
-      if (submitBtn) {
-        submitBtn.disabled = true;
-      }
-      if (btnLabel) {
-        btnLabel.textContent = '⏳ Preparing Your Express Checkout...';
-      }
+      // UI state
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.textContent = '⏳ Preparing Checkout...';
       if (statusBox) {
-        statusBox.className = 'wa-status-box success';
+        statusBox.className = 'smd-status-box success';
         statusBox.textContent = '🚀 Address saved! Redirecting to secure checkout...';
         statusBox.style.display = 'block';
       }
 
-      // Determine variant ID
-      let variantId = '{{ product.selected_or_first_available_variant.id }}';
-      const variantInput = document.querySelector('input[name="id"], select[name="id"]');
-      if (variantInput && variantInput.value) {
-        variantId = variantInput.value;
-      }
+      const activeVar = getActiveVariant();
+      const variantId = activeVar ? activeVar.id : '{{ product.selected_or_first_available_variant.id }}';
 
       try {
-        // Clear old cart to avoid leftover items
+        // Clear previous cart
         await fetch('/cart/clear.js', { method: 'POST' });
 
-        // Add item with shipping details in properties
         const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
-        const paymentLabel = currentSelectedPayment === 'online' ? 'Prepaid Online (Extra ₹100 Off)' : 'Cash on Delivery (COD)';
+        const paymentChoice = currentMode === 'online' ? 'Prepaid Online (Extra ₹100 Off)' : 'Cash on Delivery (COD)';
 
-        const payload = {
-          id: variantId,
-          quantity: 1,
-          properties: {
-            'Customer Name': name,
-            'Mobile Number': phone,
-            'Delivery Address': fullAddress,
-            'City': city,
-            'State': state,
-            'Pincode': pincode,
-            'Payment Mode': paymentLabel
-          }
-        };
-
-        const addRes = await fetch('/cart/add.js', {
+        // Add selected variant with customer properties
+        await fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1,
+            properties: {
+              'Customer Name': name,
+              'Mobile': phone,
+              'Delivery Address': fullAddress,
+              'City': city,
+              'State': state,
+              'Pincode': pincode,
+              'Payment Mode': paymentChoice
+            }
+          })
         });
 
-        if (!addRes.ok) {
-          throw new Error('Failed to prepare cart for order.');
-        }
-
-        // Build pre-filled checkout URL
+        // Redirect to pre-filled Shopify checkout
         const checkoutParams = new URLSearchParams();
         checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
         checkoutParams.append('checkout[shipping_address][first_name]', name);
@@ -1203,18 +785,19 @@
         checkoutParams.append('checkout[shipping_address][zip]', pincode);
         checkoutParams.append('checkout[shipping_address][country]', 'India');
 
-        if (currentSelectedPayment === 'online') {
+        if (currentMode === 'online') {
           checkoutParams.append('discount', 'WILD100');
         }
 
-        // Redirect to checkout
         window.location.href = '/checkout?' + checkoutParams.toString();
-
       } catch (err) {
-        console.error('Checkout redirect error:', err);
-        // Fallback: direct redirect to checkout
+        console.error('Checkout error:', err);
         window.location.href = '/checkout';
       }
     };
+
+    // Initial pricing sync
+    document.addEventListener('DOMContentLoaded', updateModalPricing);
+    setTimeout(updateModalPricing, 200);
   })();
 </script>
