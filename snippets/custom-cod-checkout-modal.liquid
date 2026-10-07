@@ -39,7 +39,7 @@
       </div>
 
       <!-- Customer Address Form -->
-      <form id="WildAromaOrderForm" class="smd-form" onsubmit="return false;" novalidate>
+      <form id="WildAromaOrderForm" class="smd-form" onsubmit="if(event)event.preventDefault(); submitWildAromaOrder(event); return false;" novalidate>
         <div class="smd-form-group">
           <label class="smd-label" for="smd_input_name">Full Name *</label>
           <input type="text" id="smd_input_name" class="smd-input" placeholder="Enter your full name" required autocomplete="name" />
@@ -84,7 +84,7 @@
         <div id="WildAromaStatusBox" class="smd-status-box" style="display:none;"></div>
 
         <!-- Submit Button -->
-        <button type="button" id="WildAromaSubmitOrderBtn" class="smd-submit-btn" onclick="submitWildAromaOrder()">
+        <button type="button" id="WildAromaSubmitOrderBtn" class="smd-submit-btn" onclick="submitWildAromaOrder(event)">
           <span id="smd-btn-icon">🔒</span>
           <span id="smd-btn-text">PAY ₹549 WITH INSTANT UPI</span>
         </button>
@@ -689,9 +689,13 @@
     }
 
     function getActiveVariant() {
-      const varInput = document.querySelector('input[name="id"], select[name="id"]');
+      const varInput = document.querySelector('.product-form input[name="id"], input[name="id"]:not([disabled]), select[name="id"]');
       const curId = varInput ? varInput.value : '';
-      return rawVariants.find(v => String(v.id) === String(curId)) || rawVariants[0];
+      if (curId) {
+        const found = rawVariants.find(v => String(v.id) === String(curId));
+        if (found) return found;
+      }
+      return rawVariants[0];
     }
 
     function formatRupees(num) {
@@ -852,7 +856,12 @@
     });
 
     // Order Submit & Shopify Checkout Redirect
-    window.submitWildAromaOrder = async function() {
+    window.submitWildAromaOrder = async function(e) {
+      if (e && typeof e.preventDefault === 'function') {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
       const nameInput = document.getElementById('smd_input_name');
       const phoneInput = document.getElementById('smd_input_phone');
       const addressInput = document.getElementById('smd_input_address');
@@ -869,6 +878,12 @@
         statusBox.textContent = msg;
         statusBox.className = 'smd-status-box error';
         statusBox.style.display = 'block';
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) {
+          const v = getActiveVariant();
+          const regularRupees = Math.round(v.price / 100);
+          btnText.textContent = currentMode === 'online' ? `PAY ₹${Math.max(0, regularRupees - DISCOUNT_AMOUNT)} WITH INSTANT UPI` : `CONFIRM CASH ON DELIVERY (₹${regularRupees})`;
+        }
       }
 
       const name = nameInput ? nameInput.value.trim() : '';
@@ -912,8 +927,8 @@
         return;
       }
 
-      // API endpoint on merchant CRM
-      const BACKEND_ORDER_API = 'https://crm.ratnakarmishra.in/wildaroma_order.php';
+      // Order API endpoint from Theme Settings or global override
+      const THEME_ORDER_API = '{{ settings.wa_order_api_url | default: "" }}' || window.WILD_AROMA_ORDER_API || '';
 
       // UI state
       if (submitBtn) submitBtn.disabled = true;
@@ -928,11 +943,11 @@
       const variantId = activeVar ? activeVar.id : '{{ product.selected_or_first_available_variant.id }}';
 
       // ========================================================
-      // 1. CASH ON DELIVERY: DIRECT ORDER CREATION & THANK YOU REDIRECT
+      // 1. CASH ON DELIVERY VIA SERVERLESS / WORKER API (IF CONFIGURED)
       // ========================================================
-      if (currentMode === 'cod') {
+      if (currentMode === 'cod' && THEME_ORDER_API) {
         try {
-          const res = await fetch(BACKEND_ORDER_API + '?action=create_cod_order', {
+          const res = await fetch(THEME_ORDER_API + (THEME_ORDER_API.includes('?') ? '&' : '?') + 'action=create_cod_order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -957,22 +972,24 @@
             }, 600);
             return;
           } else {
-            throw new Error(data ? data.error : 'Order API response missing');
+            throw new Error(data ? (data.error || 'Server returned failure') : 'Order API response missing');
           }
         } catch (apiErr) {
-          console.warn('Direct COD API not reached or returned error, executing fallback prefill checkout:', apiErr);
+          console.warn('Direct COD API error:', apiErr);
+          showError('⚠️ Direct order could not be placed: ' + apiErr.message);
+          return;
         }
       }
 
       // ========================================================
-      // 2. PREPAID ONLINE: PAYU INTEGRATION OR PREFILLED CHECKOUT
+      // 2. PREPAID ONLINE VIA PAYU (IF CONFIGURED)
       // ========================================================
-      if (currentMode === 'online') {
+      if (currentMode === 'online' && THEME_ORDER_API) {
         try {
           const regularPrice = Math.round((activeVar.price || 59900) / 100);
           const payAmount = Math.max(0, regularPrice - DISCOUNT_AMOUNT);
 
-          const res = await fetch(BACKEND_ORDER_API + '?action=payu_initiate', {
+          const res = await fetch(THEME_ORDER_API + (THEME_ORDER_API.includes('?') ? '&' : '?') + 'action=payu_initiate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -986,7 +1003,6 @@
 
           const data = await res.json();
           if (data && data.success && data.hash && data.key && data.key !== 'YOUR_PAYU_MERCHANT_KEY') {
-            // Dynamically post to PayU gateway
             const payuForm = document.createElement('form');
             payuForm.method = 'POST';
             payuForm.action = data.action_url;
@@ -1017,19 +1033,19 @@
             return;
           }
         } catch (payuErr) {
-          console.warn('PayU initiation fallback to Shopify checkout:', payuErr);
+          console.warn('PayU initiation error:', payuErr);
         }
       }
 
       // ========================================================
-      // 3. FALLBACK: NATIVE PREFILLED CHECKOUT
+      // 3. SHOPIFY NATIVE CHECKOUT REDIRECT (PRE-FILLED)
       // ========================================================
       try {
         await fetch('/cart/clear.js', { method: 'POST' });
         const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
         const paymentChoice = currentMode === 'online' ? 'Prepaid Online (Extra ₹100 Off)' : 'Cash on Delivery (COD)';
 
-        await fetch('/cart/add.js', {
+        const addRes = await fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1047,6 +1063,10 @@
           })
         });
 
+        if (!addRes.ok) {
+          throw new Error('Failed to update cart. Please refresh and try again.');
+        }
+
         const checkoutParams = new URLSearchParams();
         checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
         checkoutParams.append('checkout[shipping_address][first_name]', name);
@@ -1063,7 +1083,7 @@
 
         window.location.href = '/checkout?' + checkoutParams.toString();
       } catch (err) {
-        window.location.href = '/checkout';
+        showError('⚠️ ' + (err.message || 'Unable to open checkout. Please ensure Cash on Delivery is enabled in Shopify Admin Payments.'));
       }
     };
 

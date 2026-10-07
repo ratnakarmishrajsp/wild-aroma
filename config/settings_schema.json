@@ -1451,5 +1451,32 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Wild Aroma 1-Click Checkout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cash on Delivery & Payment Gateway Settings"
+      },
+      {
+        "type": "text",
+        "id": "wa_order_api_url",
+        "label": "Custom COD Order API URL (Cloudflare Worker)",
+        "info": "URL of your Cloudflare Worker / Serverless Order Endpoint. Creates real Shopify orders and redirects directly to Thank You page."
+      },
+      {
+        "type": "text",
+        "id": "wa_payu_merchant_key",
+        "label": "PayU Merchant Key",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "wa_payu_merchant_salt",
+        "label": "PayU Merchant Salt",
+        "default": ""
+      }
+    ]
   }
 ]
