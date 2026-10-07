@@ -1,571 +1,661 @@
 Handle,Title,Body (HTML),Vendor,Product Category,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Option3 Name,Option3 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Variant Barcode,Image Src,Image Position,Image Alt Text,Gift Card,SEO Title,SEO Description,Google Shopping / Google Product Category,Google Shopping / Gender,Google Shopping / Age Group,Google Shopping / MPN,Google Shopping / Condition,Google Shopping / Custom Product,Google Shopping / Custom Label 0,Google Shopping / Custom Label 1,Google Shopping / Custom Label 2,Google Shopping / Custom Label 3,Google Shopping / Custom Label 4,Variant Image,Variant Weight Unit,Variant Tax Code,Cost per item,Status
-turkish-oud-luxury-attar,Turkish Oud Luxury Attar - 100% Pure Alcohol-Free Perfume Oil,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+turkish-oud-luxury-attar,Turkish Oud Luxury Attar - 100% Pure Alcohol-Free Perfume Oil,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     An intoxicating union of Turkish Isparta Rose, warm golden amber, and dark Cambodian agarwood.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Turkish Oud is crafted for those who command the room. Distilled in Kannauj using ancient Deg-Bhapka copper pots, it opens with a velvety spiced aura before settling into a rich, creamy sandalwood and oud sillage that lasts 14+ hours on skin.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Warm Woody & Velvet Floral
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Turkish Rose Petals, Sweet Cardamom, Pink Pepper</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Turkish Rose Petals, Sweet Cardamom, Pink Pepper</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Golden Amber Resin, Smoky Frankincense, Cedarwood</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Golden Amber Resin, Smoky Frankincense, Cedarwood</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Aged Cambodian Agarwood, Mysore Sandalwood, Velvet Musk</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Aged Cambodian Agarwood, Mysore Sandalwood, Velvet Musk</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 14+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 14+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Turkish Oud, Oudh, Attar, Alcohol Free, Kannauj, Luxury, Unisex, Best Seller, Rich Ritual, best-selling-attars",TRUE,Size,6 ml,,,,,WA-TURK-6ML,100,shopify,100,deny,manual,599.00,1199.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-turkish-oud.jpg,1,Turkish Oud Luxury Attar - 100% Pure Alcohol-Free Perfume Oil,FALSE,Turkish Oud Luxury Attar - 100% Pure Alcohol-Free Perfume Oil | Wild Aroma,"Turkish Oud is crafted for those who command the room. Distilled in Kannauj using ancient Deg-Bhapka copper pots, it opens with a velvety spiced aura ",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-turkish-oud.jpg,g,,150.00,active
-salma-luxury-attar,Salma Royal Floral Attar - Quietly Captivating Pure Perfume Oil,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+salma-luxury-attar,Salma Royal Floral Attar - Quietly Captivating Pure Perfume Oil,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     A whisper of dewy morning Kannauj blossoms, soft Sambac Mogra, and creamy cashmere musk.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Salma is designed for lovers of understated sophistication. Completely alcohol-free and gentle on delicate skin, this romantic attar creates an intimate, alluring aura that effortlessly draws compliments in close encounters.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Quietly Captivating Floral
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Morning Rose Water, Citrus Blossom, Sweet Lily</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Morning Rose Water, Citrus Blossom, Sweet Lily</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Royal Sambac Mogra, French Jasmine, White Amber</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Royal Sambac Mogra, French Jasmine, White Amber</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Velvet Cashmere Musk, Soft Sandalwood, Bourbon Vanilla</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Velvet Cashmere Musk, Soft Sandalwood, Bourbon Vanilla</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 12+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 12+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Salma, Floral Attar, Rose, Mogra, Jasmine, Alcohol Free, Kannauj, Luxury, Women, Romantic, Quietly Captivating, best-selling-attars",TRUE,Size,6 ml,,,,,WA-SALMA-6ML,100,shopify,100,deny,manual,499.00,999.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-salma.jpg,1,Salma Royal Floral Attar - Quietly Captivating Pure Perfume Oil,FALSE,Salma Royal Floral Attar - Quietly Captivating Pure Perfume Oil | Wild Aroma,"Salma is designed for lovers of understated sophistication. Completely alcohol-free and gentle on delicate skin, this romantic attar creates an intima",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-salma.jpg,g,,150.00,active
-bakhoor-luxury-attar,Bakhoor Luxury Attar - An Evening Ritual Smokey Agarwood & Frankincense,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+bakhoor-luxury-attar,Bakhoor Luxury Attar - An Evening Ritual Smokey Agarwood & Frankincense,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     Mystical Arabian evening incense, smoldering agarwood chips, and rich balsamic resins.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Bakhoor captures the spiritual grandeur of ancient royal courtyards. Hand-distilled without alcohol or synthetic gas, it delivers a deeply grounding, smoky-sweet cloud that endures well over 16 hours on apparel.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Smoky & Resinous Beast Mode
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Frankincense Smoke, Crushed Peppercorns, Saffron Threads</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Frankincense Smoke, Crushed Peppercorns, Saffron Threads</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Smoldering Agarwood, Labdanum Resin, Birchwood</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Smoldering Agarwood, Labdanum Resin, Birchwood</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Aged Assam Oud, Dark Benzoin, Golden Tobacco Accord</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Aged Assam Oud, Dark Benzoin, Golden Tobacco Accord</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 16+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 16+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Bakhoor, Oudh, Agarwood, Attar, Alcohol Free, Kannauj, Luxury, Beast Mode, Evening Ritual, Men, best-selling-attars",TRUE,Size,6 ml,,,,,WA-BAKH-6ML,100,shopify,100,deny,manual,649.00,1299.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-bakhoor.jpg,1,Bakhoor Luxury Attar - An Evening Ritual Smokey Agarwood & Frankincense,FALSE,Bakhoor Luxury Attar - An Evening Ritual Smokey Agarwood & Frankincense | Wild Aroma,"Bakhoor captures the spiritual grandeur of ancient royal courtyards. Hand-distilled without alcohol or synthetic gas, it delivers a deeply grounding, ",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-bakhoor.jpg,g,,150.00,active
-musk-al-oudh-luxury-attar,Musk Al Oudh Luxury Attar - Depth. Character. Presence.,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+musk-al-oudh-luxury-attar,Musk Al Oudh Luxury Attar - Depth. Character. Presence.,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     Pristine Himalayan white musk crowned with the noble depth of vintage Assam agarwood.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Musk Al Oudh exudes unwavering authority and boardroom sophistication. A masterstroke of Kannauj perfumery that harmonizes clean mountain musk with resinous woods for a regal, magnetic presence.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Depth, Character & Regal Presence
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Himalayan White Musk, Fresh Bergamot, Dry Cardamom</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Himalayan White Musk, Fresh Bergamot, Dry Cardamom</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Aged Assam Agarwood, Cedar Leaf, Warm Leather Accord</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Aged Assam Agarwood, Cedar Leaf, Warm Leather Accord</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Mysore Sandalwood, Birch Wood, Earthy Patchouli</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Mysore Sandalwood, Birch Wood, Earthy Patchouli</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 15+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 15+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Musk Al Oudh, White Musk, Agarwood, Attar, Alcohol Free, Kannauj, Luxury, Unisex, Best Seller, Presence, best-selling-attars",TRUE,Size,6 ml,,,,,WA-MAO-6ML,100,shopify,100,deny,manual,599.00,1199.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-musk-al-oudh.jpg,1,Musk Al Oudh Luxury Attar - Depth. Character. Presence.,FALSE,Musk Al Oudh Luxury Attar - Depth. Character. Presence. | Wild Aroma,Musk Al Oudh exudes unwavering authority and boardroom sophistication. A masterstroke of Kannauj perfumery that harmonizes clean mountain musk with re,,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-musk-al-oudh.jpg,g,,150.00,active
-rasasi-oud-al-mubarakh-luxury-attar,Rasasi Oud Al Mubarakh Luxury Attar - Make An Impression,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+rasasi-oud-al-mubarakh-luxury-attar,Rasasi Oud Al Mubarakh Luxury Attar - Make An Impression,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     Rare Kashmiri Saffron threads, royal vintage agarwood, and creamy Mysore sandalwood.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Rasasi Oud Al Mubarakh is tailored for grand celebrations and unforgettable impressions. 100% pure concentrated oil that announces your arrival with opulent royal grandeur.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Imperial Royal Sillage
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Kashmiri Mogra Saffron, Mandarin Zest, Nutmeg</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Kashmiri Mogra Saffron, Mandarin Zest, Nutmeg</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Kannauj Deg-Distilled Oud, Jasmine Sambac, Ambergris</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Kannauj Deg-Distilled Oud, Jasmine Sambac, Ambergris</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Vintage Mysore Sandalwood, Raw Honey, Black Oud Oil</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Vintage Mysore Sandalwood, Raw Honey, Black Oud Oil</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 18+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 18+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Rasasi Oud, Mubarakh, Oudh, Attar, Alcohol Free, Kannauj, Luxury, Royal, Impression, BOGO, best-selling-attars",TRUE,Size,6 ml,,,,,WA-ROAM-6ML,100,shopify,100,deny,manual,699.00,1499.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-rasasi-oud.jpg,1,Rasasi Oud Al Mubarakh Luxury Attar - Make An Impression,FALSE,Rasasi Oud Al Mubarakh Luxury Attar - Make An Impression | Wild Aroma,Rasasi Oud Al Mubarakh is tailored for grand celebrations and unforgettable impressions. 100% pure concentrated oil that announces your arrival with o,,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-rasasi-oud.jpg,g,,150.00,active
-park-avenue-luxury-attar,Park Avenue Luxury Attar - City Lights & Modern Sophistication,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+park-avenue-luxury-attar,Park Avenue Luxury Attar - City Lights & Modern Sophistication,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     Metropolitan elegance featuring sunlit Italian bergamot, sharp Virginia cedar, and modern white musk.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Park Avenue is an homage to contemporary corporate confidence. Fresh, crisp, and invigorated by sea salt and woody vetiver, it keeps you sharp and refined through high-powered days.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Fresh, Modern & Corporate Masterclass
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Italian Bergamot, Sunlit Neroli, Crisp Sea Salt Accord</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Italian Bergamot, Sunlit Neroli, Crisp Sea Salt Accord</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Virginia Cedarwood, Black Pepper, French Lavender</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Virginia Cedarwood, Black Pepper, French Lavender</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Haitian Vetiver, White Amber, Crisp Cashmere Musk</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Haitian Vetiver, White Amber, Crisp Cashmere Musk</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 12+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 12+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Park Avenue, Fresh, Citrus, Cedar, Woody, Attar, Alcohol Free, Kannauj, Luxury, Modern, Men, best-selling-attars",TRUE,Size,6 ml,,,,,WA-PAVE-6ML,100,shopify,100,deny,manual,549.00,1099.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-park-avenue.jpg,1,Park Avenue Luxury Attar - City Lights & Modern Sophistication,FALSE,Park Avenue Luxury Attar - City Lights & Modern Sophistication | Wild Aroma,"Park Avenue is an homage to contemporary corporate confidence. Fresh, crisp, and invigorated by sea salt and woody vetiver, it keeps you sharp and ref",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-park-avenue.jpg,g,,150.00,active
-musk-amber-luxury-attar,Musk Amber Luxury Attar - Radiant Warmth in Golden Light,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+musk-amber-luxury-attar,Musk Amber Luxury Attar - Radiant Warmth in Golden Light,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     Radiant golden amber glowing like twilight sunlight, melted into warm sensual musk.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Musk Amber envelops you in a comforting halo of caramel-tinged amber resin, sweet tonka bean, and botanical deer-free musk. Warm, cozy, and irresistibly sensual for romantic evenings.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Warm, Radiant & Sweetly Sensual
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Cinnamon Bark, Golden Mandarin, Star Anise</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Cinnamon Bark, Golden Mandarin, Star Anise</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Fossilized Amber Resin, Labdanum, Sweet Benzoin</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Fossilized Amber Resin, Labdanum, Sweet Benzoin</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Golden Botanical Musk, Tonka Bean, Bourbon Sandalwood</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Golden Botanical Musk, Tonka Bean, Bourbon Sandalwood</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 15+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 15+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Musk Amber, Amber, Musk, Warm, Sweet, Attar, Alcohol Free, Kannauj, Luxury, Unisex, Golden Light, best-selling-attars",TRUE,Size,6 ml,,,,,WA-MAMB-6ML,100,shopify,100,deny,manual,599.00,1199.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-musk-amber.jpg,1,Musk Amber Luxury Attar - Radiant Warmth in Golden Light,FALSE,Musk Amber Luxury Attar - Radiant Warmth in Golden Light | Wild Aroma,"Musk Amber envelops you in a comforting halo of caramel-tinged amber resin, sweet tonka bean, and botanical deer-free musk. Warm, cozy, and irresistib",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-musk-amber.jpg,g,,150.00,active
-fantasia-luxury-attar,Fantasia Luxury Attar - Dreamlike Dusk & Exotic Florals,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+fantasia-luxury-attar,Fantasia Luxury Attar - Dreamlike Dusk & Exotic Florals,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     Dreamlike twilight dusk with exotic passionfruit, candied peaches, and Madagascar vanilla orchid.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Fantasia is a playful, seductive fragrance journey. Sweet without being cloying, it blends mouthwatering exotic fruits with velvet florals for a dreamy, addictive signature trail.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Fruity-Floral & Dreamy Allure
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Exotic Passionfruit, Ripe Golden Peach, Wild Berries</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Exotic Passionfruit, Ripe Golden Peach, Wild Berries</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Night-Blooming Jasmine, Red Orchid, Sweet Lily</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Night-Blooming Jasmine, Red Orchid, Sweet Lily</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Madagascar Vanilla Bean, Fluffy Marshmallow Musk, Sandalwood</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Madagascar Vanilla Bean, Fluffy Marshmallow Musk, Sandalwood</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 14+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 14+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Fantasia, Fruity, Floral, Vanilla, Attar, Alcohol Free, Kannauj, Luxury, Women, Dreamlike Dusk, Sweet, best-selling-attars",TRUE,Size,6 ml,,,,,WA-FANT-6ML,100,shopify,100,deny,manual,549.00,1099.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-fantasia.jpg,1,Fantasia Luxury Attar - Dreamlike Dusk & Exotic Florals,FALSE,Fantasia Luxury Attar - Dreamlike Dusk & Exotic Florals | Wild Aroma,"Fantasia is a playful, seductive fragrance journey. Sweet without being cloying, it blends mouthwatering exotic fruits with velvet florals for a dream",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-fantasia.jpg,g,,150.00,active
-white-musk-luxury-attar,White Musk Luxury Attar - Ivory Light & Sheer Cashmere Purity,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+white-musk-luxury-attar,White Musk Luxury Attar - Ivory Light & Sheer Cashmere Purity,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     The sheer purity of crisp white linen dried in mountain air, velvety iris, and powdery cashmere.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     White Musk is the definitive second-skin luxury attar. Calming, clean, and universally beloved, it provides a discreet yet lasting halo of pristine elegance for daily wear.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Pristine, Clean & Powdery Luxury
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Crisp Cotton Blossom, Alpine Dew, White Freesia</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Crisp Cotton Blossom, Alpine Dew, White Freesia</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Powdery Tuscan Iris, White Lily, Bulgarian Rose Water</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Powdery Tuscan Iris, White Lily, Bulgarian Rose Water</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Sheer Cashmere Musk, Soft Cedar, Blonde Woods</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Sheer Cashmere Musk, Soft Cedar, Blonde Woods</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 12+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 12+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"White Musk, Clean, Powdery, Cotton, Attar, Alcohol Free, Kannauj, Luxury, Unisex, Daily Wear, Ivory Light, best-selling-attars",TRUE,Size,6 ml,,,,,WA-WMUSK-6ML,100,shopify,100,deny,manual,499.00,999.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-white-musk.jpg,1,White Musk Luxury Attar - Ivory Light & Sheer Cashmere Purity,FALSE,White Musk Luxury Attar - Ivory Light & Sheer Cashmere Purity | Wild Aroma,"White Musk is the definitive second-skin luxury attar. Calming, clean, and universally beloved, it provides a discreet yet lasting halo of pristine el",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-white-musk.jpg,g,,150.00,active
-jannatul-firdaus-luxury-attar,Jannatul Firdaus Luxury Attar - The Emerald Garden of Paradise,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;"">
-  <p style=""font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;"">
+jannatul-firdaus-luxury-attar,Jannatul Firdaus Luxury Attar - The Emerald Garden of Paradise,"<div class=""bv-luxury-desc"" style=""font-family:'Montserrat',-apple-system,sans-serif;color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;"">
+  <!-- Luxury Glow Badge -->
+  <div class=""bv-desc__badge"" style=""display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);"">
+    <span style=""color:#B8974F;font-size:1rem;"">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class=""bv-desc__hook"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;"">
     The emerald Garden of Paradise — wild botanical greens, coriander seed, blue lotus, and sacred sandalwood.
-  </p>
-  <p style=""color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;"">
+  </h3>
+  <p class=""bv-desc__story"" style=""font-family:'Montserrat',sans-serif;font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;"">
     Jannatul Firdaus is Kannauj’s legendary heritage formulation. Revered for over a century for its cooling, meditative properties, it harmonizes fresh herbal greenery with deeply grounding sacred woods.
   </p>
 
-  <div style=""background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;"">
-      <h4 style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class=""bv-desc__notes-card"" style=""position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);"">
+    <div class=""bv-desc__notes-header"" style=""display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;"">
+      <h4 class=""bv-desc__notes-title"" style=""font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;"">
         Olfactory Pyramid
       </h4>
-      <span style=""font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;"">
+      <span class=""bv-desc__notes-vibe"" style=""font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;"">
         Sacred, Green & Spiritual Serenity
       </span>
     </div>
-    <div style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;"">
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Top Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Wild Grasses, Coriander Seed, Bergamot, Mint Leaf</span>
+    <div class=""bv-desc__notes-grid"" style=""display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;"">
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Top Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Wild Grasses, Coriander Seed, Bergamot, Mint Leaf</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Heart Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Blue Lotus, Wild Jasmine, Spiced Clove, Geranium</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Heart Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Blue Lotus, Wild Jasmine, Spiced Clove, Geranium</span>
       </div>
-      <div>
-        <span style=""font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;"">Base Notes</span>
-        <span style=""font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;"">Aged Indian Sandalwood, Vetiver Moss, Herbal Amber</span>
+      <div class=""bv-desc__note-tier"" style=""background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;"">
+        <span class=""bv-desc__tier-tag"" style=""font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;"">Base Notes</span>
+        <span class=""bv-desc__tier-val"" style=""font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;"">Aged Indian Sandalwood, Vetiver Moss, Herbal Amber</span>
       </div>
     </div>
   </div>
 
-  <div style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;"">
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class=""bv-desc__benefits-grid"" style=""display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;"">
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> 16+ Hours Long-Lasting Sillage
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> 16+ Hours Long-Lasting Sillage
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Gentle On Sensitive Skin
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style=""display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;"">
-      <span style=""color:#B8974F;font-size:0.9rem;"">✦</span> Deg-Bhapka Steam Distilled
+    <div class=""bv-desc__benefit-pill"" style=""display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);"">
+      <span class=""bv-desc__benefit-icon"" style=""color:#B8974F;font-size:1.25rem;"">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
-  <div style=""border-top:1px solid #EAE5DE;padding-top:1rem;"">
-    <span style=""font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;"">
-      How to Apply
+  <!-- How to Apply -->
+  <div class=""bv-desc__ritual-box"" style=""background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);"">
+    <span class=""bv-desc__ritual-title"" style=""font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;"">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style=""font-size:0.86rem;color:#666666;line-height:1.6;margin:0;"">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class=""bv-desc__ritual-text"" style=""font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;"">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>",Wild Aroma,Health & Beauty > Personal Care > Cosmetics > Perfume & Cologne,Concentrated Attar,"Jannatul Firdaus, Green, Herbal, Sandalwood, Lotus, Attar, Alcohol Free, Kannauj, Luxury, Spiritual, Paradise, best-selling-attars",TRUE,Size,6 ml,,,,,WA-JFIR-6ML,100,shopify,100,deny,manual,649.00,1299.00,TRUE,TRUE,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-jannatul-firdaus.jpg,1,Jannatul Firdaus Luxury Attar - The Emerald Garden of Paradise,FALSE,Jannatul Firdaus Luxury Attar - The Emerald Garden of Paradise | Wild Aroma,"Jannatul Firdaus is Kannauj’s legendary heritage formulation. Revered for over a century for its cooling, meditative properties, it harmonizes fresh h",,unisex,adult,,new,FALSE,Best Seller,Kannauj Attar,Alcohol Free,,,https://raw.githubusercontent.com/ratnakarmishrajsp/wild-aroma/main/assets/product-jannatul-firdaus.jpg,g,,150.00,active

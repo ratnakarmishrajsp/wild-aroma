@@ -107,64 +107,69 @@
   endif
 -%}
 
-<div class="bv-luxury-desc" style="font-family:var(--wa-font-body, 'Montserrat', sans-serif);color:#1A1A1A;font-size:0.95rem;line-height:1.7;margin:1rem 0;">
-  <!-- Hook -->
-  <p style="font-size:1.02rem;font-weight:600;color:#121212;margin:0 0 0.6rem 0;line-height:1.5;">
+<div class="bv-luxury-desc" style="font-family:var(--wa-font-body, 'Montserrat', sans-serif);color:#1A1A1A;font-size:1.05rem;line-height:1.8;margin:1.2rem 0;">
+  <!-- Luxury Glow Badge -->
+  <div class="bv-desc__badge" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg, #FAF6ED 0%, #FFFDF8 100%);color:#917333;border:1px solid #E5D7B5;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;padding:0.45rem 1rem;border-radius:6px;margin-bottom:1rem;box-shadow:0 4px 15px rgba(184, 151, 79, 0.18);">
+    <span style="color:#B8974F;font-size:1rem;">✦</span> 100% Artisanal Deg-Bhapka Distilled
+  </div>
+
+  <!-- Hook & Story -->
+  <h3 class="bv-desc__hook" style="font-family:var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);font-size:1.55rem;font-weight:700;color:#121212;line-height:1.4;margin:0 0 0.85rem 0;letter-spacing:0.02em;">
     {{ hook }}
-  </p>
-  <p style="color:#555555;font-size:0.92rem;margin:0 0 1.4rem 0;line-height:1.65;">
+  </h3>
+  <p class="bv-desc__story" style="font-family:var(--wa-font-body, 'Montserrat', sans-serif);font-size:1.06rem;color:#3A3A3A;line-height:1.85;margin:0 0 1.6rem 0;">
     {{ story }}
   </p>
 
-  <!-- Fragrance Notes (Bella Vita Style) -->
-  <div style="background:#FAF8F5;border:1px solid #EAE5DE;border-radius:8px;padding:1.2rem;margin-bottom:1.4rem;">
-    <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE5DE;padding-bottom:0.6rem;margin-bottom:1rem;">
-      <h4 style="font-family:var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);font-size:1.18rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;">
+  <!-- Fragrance Notes (Bella Vita Style with Animated Light Sweep) -->
+  <div class="bv-desc__notes-card" style="position:relative;overflow:hidden;background:linear-gradient(145deg, #FCFBF9 0%, #FFFFFF 100%);border:1.5px solid #EAE5DE;border-radius:12px;padding:1.6rem 1.4rem;margin-bottom:1.6rem;box-shadow:0 8px 30px rgba(0, 0, 0, 0.04);">
+    <div class="bv-desc__notes-header" style="display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid #EFEAE2;padding-bottom:0.85rem;margin-bottom:1.2rem;position:relative;z-index:2;">
+      <h4 class="bv-desc__notes-title" style="font-family:var(--wa-font-heading, 'Cormorant Garamond', Georgia, serif);font-size:1.35rem;font-weight:700;color:#121212;text-transform:uppercase;letter-spacing:0.08em;margin:0;">
         Olfactory Pyramid
       </h4>
-      <span style="font-size:0.75rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid #E5D7B5;">
+      <span class="bv-desc__notes-vibe" style="font-size:0.82rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.1em;background:#FAF6ED;padding:0.35rem 0.75rem;border-radius:4px;border:1px solid #E5D7B5;">
         {{ vibe }}
       </span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.9rem;">
-      <div>
-        <span style="font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;">Top Notes</span>
-        <span style="font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;">{{ top_notes }}</span>
+    <div class="bv-desc__notes-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;position:relative;z-index:2;">
+      <div class="bv-desc__note-tier" style="background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;">
+        <span class="bv-desc__tier-tag" style="font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;">Top Notes</span>
+        <span class="bv-desc__tier-val" style="font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;">{{ top_notes }}</span>
       </div>
-      <div>
-        <span style="font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;">Heart Notes</span>
-        <span style="font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;">{{ heart_notes }}</span>
+      <div class="bv-desc__note-tier" style="background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;">
+        <span class="bv-desc__tier-tag" style="font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;">Heart Notes</span>
+        <span class="bv-desc__tier-val" style="font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;">{{ heart_notes }}</span>
       </div>
-      <div>
-        <span style="font-size:0.72rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.12em;display:block;">Base Notes</span>
-        <span style="font-size:0.88rem;font-weight:600;color:#1A1A1A;display:block;margin-top:0.25rem;">{{ base_notes }}</span>
+      <div class="bv-desc__note-tier" style="background:#FFFFFF;border:1px solid #F0ECE5;border-radius:8px;padding:1.1rem 1rem;">
+        <span class="bv-desc__tier-tag" style="font-size:0.78rem;font-weight:700;color:#917333;text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:0.35rem;">Base Notes</span>
+        <span class="bv-desc__tier-val" style="font-size:1.02rem;font-weight:600;color:#1A1A1A;line-height:1.5;display:block;">{{ base_notes }}</span>
       </div>
     </div>
   </div>
 
-  <!-- Key Benefits Grid -->
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.65rem;margin-bottom:1.4rem;">
-    <div style="display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;">
-      <span style="color:#B8974F;font-size:0.9rem;">✦</span> 100% Pure & Alcohol-Free
+  <!-- Key Benefits Grid with Star Glow Micro-Animations -->
+  <div class="bv-desc__benefits-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-bottom:1.6rem;">
+    <div class="bv-desc__benefit-pill" style="display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+      <span class="bv-desc__benefit-icon" style="color:#B8974F;font-size:1.25rem;">✦</span> 100% Pure & Alcohol-Free
     </div>
-    <div style="display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;">
-      <span style="color:#B8974F;font-size:0.9rem;">✦</span> {{ longevity }} Long-Lasting Sillage
+    <div class="bv-desc__benefit-pill" style="display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+      <span class="bv-desc__benefit-icon" style="color:#B8974F;font-size:1.25rem;">✦</span> {{ longevity }} Long-Lasting Sillage
     </div>
-    <div style="display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;">
-      <span style="color:#B8974F;font-size:0.9rem;">✦</span> Gentle On Sensitive Skin
+    <div class="bv-desc__benefit-pill" style="display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+      <span class="bv-desc__benefit-icon" style="color:#B8974F;font-size:1.25rem;">✦</span> Gentle On Sensitive Skin
     </div>
-    <div style="display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.85rem;background:#FFFFFF;border:1px solid #EAE5DE;border-radius:6px;font-size:0.82rem;font-weight:600;color:#1A1A1A;">
-      <span style="color:#B8974F;font-size:0.9rem;">✦</span> Deg-Bhapka Steam Distilled
+    <div class="bv-desc__benefit-pill" style="display:flex;align-items:center;gap:0.75rem;padding:0.95rem 1.1rem;background:#FFFFFF;border:1.5px solid #EAE5DE;border-radius:8px;font-size:0.98rem;font-weight:600;color:#1A1A1A;box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+      <span class="bv-desc__benefit-icon" style="color:#B8974F;font-size:1.25rem;">✦</span> Deg-Bhapka Steam Distilled
     </div>
   </div>
 
   <!-- How to Apply -->
-  <div style="border-top:1px solid #EAE5DE;padding-top:1rem;">
-    <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.3rem;">
-      How to Apply
+  <div class="bv-desc__ritual-box" style="background:#FCFBF9;border-left:3.5px solid #B8974F;border-radius:0 8px 8px 0;padding:1.3rem 1.5rem;margin-top:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,0.02);">
+    <span class="bv-desc__ritual-title" style="font-size:0.92rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#121212;display:block;margin-bottom:0.45rem;">
+      The Fragrance Ritual • How to Apply
     </span>
-    <p style="font-size:0.86rem;color:#666666;line-height:1.6;margin:0;">
-      Dab 2-3 drops onto your pulse points (wrists, base of the neck, and behind ears). Gently pat the oil—do not rub—to let the top notes develop naturally throughout the day.
+    <p class="bv-desc__ritual-text" style="font-size:1rem;color:#4A4A4A;line-height:1.75;margin:0;">
+      Dab 2–3 drops onto your key pulse points—inner wrists, base of neck, and collarbones. Gently tap—never rub—to allow each aromatic layer to bloom naturally through body warmth.
     </p>
   </div>
 </div>
