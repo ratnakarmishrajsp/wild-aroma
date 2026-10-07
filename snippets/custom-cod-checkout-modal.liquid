@@ -121,6 +121,12 @@
           <span>•</span>
           <span>💬 WhatsApp Support</span>
         </div>
+
+        <div style="text-align: center; margin-top: 6px;">
+          <a href="javascript:void(0)" onclick="clearWildAromaTestLimits()" style="font-size: 11px; color: #94a3b8; text-decoration: underline;">
+            🛠️ Reset Test Limits (Developer IP Mode)
+          </a>
+        </div>
       </form>
     </div>
   </div>
@@ -129,13 +135,13 @@
   <div id="WildAromaConfirmRepeatModal" class="smd-repeat-dialog" style="display:none;" role="dialog" aria-modal="true">
     <div class="smd-repeat-content">
       <div class="smd-repeat-icon">⚠️</div>
-      <h4 class="smd-repeat-title">Second Order Verification</h4>
+      <h4 class="smd-repeat-title">Second Order Confirmation</h4>
       <p class="smd-repeat-desc" id="smd-confirm-desc">
-        Aapne aaj iss number se pehle bhi ek order place kiya hai. Dusre order ko verify karke complete karne ke liye Shopify Secure Checkout open kiya ja raha hai.
+        Aapne aaj iss number se pehle bhi ek order place kiya hai. Kya aap confirm ek aur order place karna chahte hain?
       </p>
       <div class="smd-repeat-actions">
         <button type="button" id="smd-btn-repeat-yes" class="smd-btn-repeat-yes" onclick="executeVerifiedOrder(event)">
-          Proceed to Checkout (2nd Order)
+          Yes, Confirm 2nd Order
         </button>
         <button type="button" id="smd-btn-repeat-no" class="smd-btn-repeat-no" onclick="cancelRepeatOrder(event)">
           No, Keep My First Order
@@ -889,8 +895,14 @@
   }
 </style>
 
+{%- assign is_theme_preview_or_admin = false -%}
+{%- if content_for_header contains 'adminBarInjector' or content_for_header contains 'preview_bar_injector' or request.design_mode -%}
+  {%- assign is_theme_preview_or_admin = true -%}
+{%- endif -%}
+
 <script>
   (function() {
+    const IS_ADMIN_VIEWER = {{ is_theme_preview_or_admin | json }};
     // Exact variant data from Shopify Liquid
     const rawVariants = {{ product.variants | json }};
     let currentMode = 'online'; // 'online' or 'cod'
@@ -1104,13 +1116,65 @@
     // ========================================================
     // DUPLICATE / MULTI-ORDER GUARD (24 Hours per Phone Number)
     // 1st Order: Normal & Instant
-    // 2nd Order: Confirmation Prompt
+    // 2nd Order: Confirmation Prompt -> Places order via Custom Modal Checkout
     // 3rd Order: Blocked with Direct WhatsApp Support Button
     // ========================================================
     const WA_ORDERS_KEY = 'wa_user_orders_v2';
     let repeatConfirmed = false;
+    let isWhitelistedTestingIP = false;
+
+    // Detect if client is testing from IP 152.58.155.233 / 152.58.* or admin/tester
+    (function initTestingIPCheck() {
+      // 1. Immediate local / URL / Admin checks
+      if (
+        (typeof IS_ADMIN_VIEWER !== 'undefined' && IS_ADMIN_VIEWER) ||
+        localStorage.getItem('wa_tester_mode') === 'true' ||
+        window.location.search.includes('test') ||
+        window.location.search.includes('reset') ||
+        window.location.search.includes('preview') ||
+        window.location.search.includes('admin')
+      ) {
+        isWhitelistedTestingIP = true;
+        localStorage.setItem('wa_tester_mode', 'true');
+        try { localStorage.removeItem(WA_ORDERS_KEY); } catch(e) {}
+      }
+
+      // 2. Query Server API for client IP whitelist
+      const ORDER_API = '{{ settings.wa_order_api_url | default: "" }}' || window.WILD_AROMA_ORDER_API || 'https://crm.ratnakarmishra.in/wildaroma_order.php';
+      fetch(ORDER_API + (ORDER_API.includes('?') ? '&' : '?') + 'action=check_client_ip')
+        .then(res => res.json())
+        .then(data => {
+          if (data && (data.is_whitelisted || (data.ip && (data.ip.includes('152.58.') || data.ip.includes('152.58.155'))))) {
+            isWhitelistedTestingIP = true;
+            localStorage.setItem('wa_tester_mode', 'true');
+            try { localStorage.removeItem(WA_ORDERS_KEY); } catch(e) {}
+          }
+        })
+        .catch(() => {});
+
+      // 3. Query ipify for IPv4 (matches 152.58.155.233 or 152.58.*)
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => {
+          if (data && (data.ip === '152.58.155.233' || (data.ip && data.ip.startsWith('152.58.')))) {
+            isWhitelistedTestingIP = true;
+            localStorage.setItem('wa_tester_mode', 'true');
+            try { localStorage.removeItem(WA_ORDERS_KEY); } catch(e) {}
+          }
+        })
+        .catch(() => {});
+    })();
 
     function getTodayOrders(phoneClean) {
+      if (
+        isWhitelistedTestingIP ||
+        (typeof IS_ADMIN_VIEWER !== 'undefined' && IS_ADMIN_VIEWER) ||
+        localStorage.getItem('wa_tester_mode') === 'true' ||
+        phoneClean === '9153334960' ||
+        phoneClean === '9999999999'
+      ) {
+        return []; // NEVER block or prompt developer testing IP or admin!
+      }
       try {
         const raw = localStorage.getItem(WA_ORDERS_KEY);
         if (!raw) return [];
@@ -1124,6 +1188,15 @@
     }
 
     function recordOrder(phoneClean, orderName) {
+      if (
+        isWhitelistedTestingIP ||
+        (typeof IS_ADMIN_VIEWER !== 'undefined' && IS_ADMIN_VIEWER) ||
+        localStorage.getItem('wa_tester_mode') === 'true' ||
+        phoneClean === '9153334960' ||
+        phoneClean === '9999999999'
+      ) {
+        return; // Don't persist locks for developer IP / admin
+      }
       try {
         const raw = localStorage.getItem(WA_ORDERS_KEY);
         let list = raw ? JSON.parse(raw) : [];
@@ -1170,53 +1243,8 @@
       });
     }
 
-    // Helper to redirect 2nd orders directly to prefilled Shopify Checkout
-    async function redirectToShopifyCheckout(name, phone, address, landmark, pincode, city, state, variantId) {
-      try {
-        await fetch('/cart/clear.js', { method: 'POST' });
-        const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
-
-        const addRes = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            id: variantId,
-            quantity: 1,
-            properties: {
-              'Customer Name': name,
-              'Mobile': phone,
-              'Delivery Address': fullAddress,
-              'City': city,
-              'State': state,
-              'Pincode': pincode,
-              'Order Type': '2nd Order (Verified)'
-            }
-          })
-        });
-
-        if (!addRes.ok) {
-          throw new Error('Cart update failed');
-        }
-
-        const checkoutParams = new URLSearchParams();
-        checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
-        checkoutParams.append('checkout[shipping_address][first_name]', name);
-        checkoutParams.append('checkout[shipping_address][phone]', phone);
-        checkoutParams.append('checkout[shipping_address][address1]', fullAddress);
-        checkoutParams.append('checkout[shipping_address][city]', city);
-        checkoutParams.append('checkout[shipping_address][province]', state);
-        checkoutParams.append('checkout[shipping_address][zip]', pincode);
-        checkoutParams.append('checkout[shipping_address][country]', 'India');
-
-        window.location.href = '/checkout?' + checkoutParams.toString();
-      } catch (err) {
-        console.warn('Checkout redirect error:', err);
-        window.location.href = '/checkout';
-      }
-    }
-
-    // Repeat confirmation callbacks: 2nd order opens directly in Shopify Checkout
-    window.executeVerifiedOrder = async function(e) {
+    // Repeat confirmation callbacks: 2nd order places directly via Custom Order Modal (NOT Shopify default checkout)
+    window.executeVerifiedOrder = function(e) {
       if (e) {
         if (typeof e.preventDefault === 'function') e.preventDefault();
         if (typeof e.stopPropagation === 'function') e.stopPropagation();
@@ -1225,40 +1253,15 @@
       const yesBtn = document.getElementById('smd-btn-repeat-yes');
       if (yesBtn) {
         yesBtn.disabled = true;
-        yesBtn.textContent = '🚀 Opening Secure Checkout...';
+        yesBtn.textContent = '⏳ Confirming 2nd Order...';
       }
 
-      const nameInput = document.getElementById('smd_input_name');
-      const phoneInput = document.getElementById('smd_input_phone');
-      const addressInput = document.getElementById('smd_input_address');
-      const landmarkInput = document.getElementById('smd_input_landmark');
-      const pincodeInput = document.getElementById('smd_input_pincode');
-      const cityInput = document.getElementById('smd_input_city');
-      const stateInput = document.getElementById('smd_input_state');
-
-      const name = nameInput ? nameInput.value.trim() : '';
-      let phone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
-      if (phone.length === 12 && phone.startsWith('91')) phone = phone.slice(2);
-      const address = addressInput ? addressInput.value.trim() : '';
-      const landmark = landmarkInput ? landmarkInput.value.trim() : '';
-      const pincode = pincodeInput ? pincodeInput.value.trim() : '';
-      const city = cityInput ? cityInput.value.trim() : '';
-      const state = stateInput ? stateInput.value.trim() : '';
-
-      const activeVar = getActiveVariant();
-      const variantId = activeVar ? activeVar.id : '{{ product.selected_or_first_available_variant.id }}';
-
-      // Record 2nd order intent in client cache
-      recordOrder(phone, 'Checkout-Verified-2');
-
+      repeatConfirmed = true;
       const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
       if (repeatModal) repeatModal.style.display = 'none';
 
-      const form = document.getElementById('WildAromaOrderForm');
-      if (form) form.reset();
-
-      // Open Shopify Checkout
-      await redirectToShopifyCheckout(name, phone, address, landmark, pincode, city, state, variantId);
+      // Submit directly through custom modal checkout API -> Direct order creation -> Thank You page
+      window.submitWildAromaOrder();
     };
 
     window.cancelRepeatOrder = function(e) {
@@ -1272,12 +1275,23 @@
       window.closeWildAromaOrderModal();
     };
 
-    // Developer / testing helper to clear testing limits from console
+    // Developer / testing helper to clear testing limits
     window.clearWildAromaTestLimits = function() {
       try {
-        localStorage.removeItem('wa_user_orders_v2');
+        isWhitelistedTestingIP = true;
+        localStorage.setItem('wa_tester_mode', 'true');
+        localStorage.removeItem(WA_ORDERS_KEY);
         fetch('https://crm.ratnakarmishra.in/wildaroma_order.php?action=clear_rate_limits');
-        alert('Testing limits cleared! You can now place orders again.');
+        const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
+        if (waBlockCard) waBlockCard.style.display = 'none';
+        const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.display = 'flex';
+        }
+        const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
+        if (repeatModal) repeatModal.style.display = 'none';
+        alert('✅ Testing limits & 2nd order prompts completely cleared!');
       } catch(e) {}
     };
 
@@ -1385,17 +1399,17 @@
         return;
       }
 
-      // Check 2nd Order: Confirmation prompt required -> Redirects to Shopify native checkout
+      // Check 2nd Order: Confirmation prompt required -> Direct placement via Custom Modal Checkout
       if (pastOrders.length === 1 && !repeatConfirmed) {
         const confirmDesc = document.getElementById('smd-confirm-desc');
         if (confirmDesc) {
           const prevOrderText = pastOrders[0].orderName ? ` (Order #${pastOrders[0].orderName})` : '';
-          confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Dusre order ko verify karke complete karne ke liye Shopify Secure Checkout open kiya ja raha hai.`;
+          confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Kya aap confirm ek aur order place karna chahte hain?`;
         }
         const yesBtn = document.getElementById('smd-btn-repeat-yes');
         if (yesBtn) {
           yesBtn.disabled = false;
-          yesBtn.textContent = 'Proceed to Checkout (2nd Order)';
+          yesBtn.textContent = 'Yes, Confirm 2nd Order';
         }
         if (repeatModal) {
           if (repeatModal.parentElement !== document.body) {
@@ -1427,6 +1441,7 @@
       // ========================================================
       if (currentMode === 'cod' && THEME_ORDER_API) {
         try {
+          const isTesterMode = isWhitelistedTestingIP || (typeof IS_ADMIN_VIEWER !== 'undefined' && IS_ADMIN_VIEWER) || localStorage.getItem('wa_tester_mode') === 'true';
           const res = await fetch(THEME_ORDER_API + (THEME_ORDER_API.includes('?') ? '&' : '?') + 'action=create_cod_order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1439,7 +1454,8 @@
               city,
               state,
               variant_id: variantId,
-              quantity: 1
+              quantity: 1,
+              is_tester: isTesterMode
             })
           });
 
@@ -1619,7 +1635,7 @@
       const yesBtn = document.getElementById('smd-btn-repeat-yes');
       if (yesBtn) {
         yesBtn.disabled = false;
-        yesBtn.textContent = 'Proceed to Checkout (2nd Order)';
+        yesBtn.textContent = 'Yes, Confirm 2nd Order';
       }
 
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
