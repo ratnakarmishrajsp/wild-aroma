@@ -129,13 +129,13 @@
   <div id="WildAromaConfirmRepeatModal" class="smd-repeat-dialog" style="display:none;" role="dialog" aria-modal="true">
     <div class="smd-repeat-content">
       <div class="smd-repeat-icon">⚠️</div>
-      <h4 class="smd-repeat-title">Second Order Confirmation</h4>
+      <h4 class="smd-repeat-title">Second Order Verification</h4>
       <p class="smd-repeat-desc" id="smd-confirm-desc">
-        Aapne aaj iss number se pehle bhi ek order place kiya hai. Kya aap confirm ek aur order place karna chahte hain?
+        Aapne aaj iss number se pehle bhi ek order place kiya hai. Dusre order ko verify karke complete karne ke liye Shopify Secure Checkout open kiya ja raha hai.
       </p>
       <div class="smd-repeat-actions">
         <button type="button" id="smd-btn-repeat-yes" class="smd-btn-repeat-yes" onclick="executeVerifiedOrder(event)">
-          Yes, Confirm 2nd Order
+          Proceed to Checkout (2nd Order)
         </button>
         <button type="button" id="smd-btn-repeat-no" class="smd-btn-repeat-no" onclick="cancelRepeatOrder(event)">
           No, Keep My First Order
@@ -1170,8 +1170,53 @@
       });
     }
 
-    // Repeat confirmation callbacks
-    window.executeVerifiedOrder = function(e) {
+    // Helper to redirect 2nd orders directly to prefilled Shopify Checkout
+    async function redirectToShopifyCheckout(name, phone, address, landmark, pincode, city, state, variantId) {
+      try {
+        await fetch('/cart/clear.js', { method: 'POST' });
+        const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
+
+        const addRes = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1,
+            properties: {
+              'Customer Name': name,
+              'Mobile': phone,
+              'Delivery Address': fullAddress,
+              'City': city,
+              'State': state,
+              'Pincode': pincode,
+              'Order Type': '2nd Order (Verified)'
+            }
+          })
+        });
+
+        if (!addRes.ok) {
+          throw new Error('Cart update failed');
+        }
+
+        const checkoutParams = new URLSearchParams();
+        checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
+        checkoutParams.append('checkout[shipping_address][first_name]', name);
+        checkoutParams.append('checkout[shipping_address][phone]', phone);
+        checkoutParams.append('checkout[shipping_address][address1]', fullAddress);
+        checkoutParams.append('checkout[shipping_address][city]', city);
+        checkoutParams.append('checkout[shipping_address][province]', state);
+        checkoutParams.append('checkout[shipping_address][zip]', pincode);
+        checkoutParams.append('checkout[shipping_address][country]', 'India');
+
+        window.location.href = '/checkout?' + checkoutParams.toString();
+      } catch (err) {
+        console.warn('Checkout redirect error:', err);
+        window.location.href = '/checkout';
+      }
+    }
+
+    // Repeat confirmation callbacks: 2nd order opens directly in Shopify Checkout
+    window.executeVerifiedOrder = async function(e) {
       if (e) {
         if (typeof e.preventDefault === 'function') e.preventDefault();
         if (typeof e.stopPropagation === 'function') e.stopPropagation();
@@ -1180,16 +1225,40 @@
       const yesBtn = document.getElementById('smd-btn-repeat-yes');
       if (yesBtn) {
         yesBtn.disabled = true;
-        yesBtn.textContent = '⏳ Confirming 2nd Order...';
+        yesBtn.textContent = '🚀 Opening Secure Checkout...';
       }
 
-      repeatConfirmed = true;
+      const nameInput = document.getElementById('smd_input_name');
+      const phoneInput = document.getElementById('smd_input_phone');
+      const addressInput = document.getElementById('smd_input_address');
+      const landmarkInput = document.getElementById('smd_input_landmark');
+      const pincodeInput = document.getElementById('smd_input_pincode');
+      const cityInput = document.getElementById('smd_input_city');
+      const stateInput = document.getElementById('smd_input_state');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      let phone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+      if (phone.length === 12 && phone.startsWith('91')) phone = phone.slice(2);
+      const address = addressInput ? addressInput.value.trim() : '';
+      const landmark = landmarkInput ? landmarkInput.value.trim() : '';
+      const pincode = pincodeInput ? pincodeInput.value.trim() : '';
+      const city = cityInput ? cityInput.value.trim() : '';
+      const state = stateInput ? stateInput.value.trim() : '';
+
+      const activeVar = getActiveVariant();
+      const variantId = activeVar ? activeVar.id : '{{ product.selected_or_first_available_variant.id }}';
+
+      // Record 2nd order intent in client cache
+      recordOrder(phone, 'Checkout-Verified-2');
 
       const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
       if (repeatModal) repeatModal.style.display = 'none';
 
-      // Submit immediately
-      window.submitWildAromaOrder();
+      const form = document.getElementById('WildAromaOrderForm');
+      if (form) form.reset();
+
+      // Open Shopify Checkout
+      await redirectToShopifyCheckout(name, phone, address, landmark, pincode, city, state, variantId);
     };
 
     window.cancelRepeatOrder = function(e) {
@@ -1201,6 +1270,15 @@
       const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
       if (repeatModal) repeatModal.style.display = 'none';
       window.closeWildAromaOrderModal();
+    };
+
+    // Developer / testing helper to clear testing limits from console
+    window.clearWildAromaTestLimits = function() {
+      try {
+        localStorage.removeItem('wa_user_orders_v2');
+        fetch('https://crm.ratnakarmishra.in/wildaroma_order.php?action=clear_rate_limits');
+        alert('Testing limits cleared! You can now place orders again.');
+      } catch(e) {}
     };
 
     // Handle variant changes on product page
@@ -1307,17 +1385,17 @@
         return;
       }
 
-      // Check 2nd Order: Confirmation prompt required
+      // Check 2nd Order: Confirmation prompt required -> Redirects to Shopify native checkout
       if (pastOrders.length === 1 && !repeatConfirmed) {
         const confirmDesc = document.getElementById('smd-confirm-desc');
         if (confirmDesc) {
           const prevOrderText = pastOrders[0].orderName ? ` (Order #${pastOrders[0].orderName})` : '';
-          confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Kya aap confirm ek aur order place karna chahte hain?`;
+          confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Dusre order ko verify karke complete karne ke liye Shopify Secure Checkout open kiya ja raha hai.`;
         }
         const yesBtn = document.getElementById('smd-btn-repeat-yes');
         if (yesBtn) {
           yesBtn.disabled = false;
-          yesBtn.textContent = 'Yes, Confirm 2nd Order';
+          yesBtn.textContent = 'Proceed to Checkout (2nd Order)';
         }
         if (repeatModal) {
           if (repeatModal.parentElement !== document.body) {
@@ -1541,7 +1619,7 @@
       const yesBtn = document.getElementById('smd-btn-repeat-yes');
       if (yesBtn) {
         yesBtn.disabled = false;
-        yesBtn.textContent = 'Yes, Confirm 2nd Order';
+        yesBtn.textContent = 'Proceed to Checkout (2nd Order)';
       }
 
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
