@@ -113,20 +113,20 @@
               class="wa-btn-cod"
               onclick="openWildAromaOrderModal('cod')"
             >
-              <span class="wa-btn-label">📦 ORDER NOW - CASH ON DELIVERY</span>
+              <span class="wa-btn-label">📦 ORDER NOW CASH ON DELIVERY</span>
               <span class="wa-btn-price" id="wa-custom-cod-pill">
                 {{ current_var_price | money }}
               </span>
             </button>
 
-            <!-- 3. Pay Online - Extra ₹100 Off Button (Third) -->
+            <!-- 3. Pay Online - 100₹ Off Button (Third) -->
             <button
               type="button"
               id="wa-main-online-btn"
               class="wa-btn-online"
               onclick="openWildAromaOrderModal('online')"
             >
-              <span class="wa-btn-label">⚡ PAY ONLINE • EXTRA ₹100 OFF</span>
+              <span class="wa-btn-label">⚡ PAY ONLINE 100₹ OFF</span>
               <span class="wa-btn-price" id="wa-custom-online-pill">
                 {%- if online_discounted_price > 0 -%}
                   {{ online_discounted_price | money }}
