@@ -47,6 +47,34 @@
     },
     "footer": {
       "type": "footer",
+      "blocks": {
+        "footer_brand_story": {
+          "type": "text",
+          "settings": {
+            "heading": "Wild Aroma Perfumes",
+            "subtext": "<p>100% Pure & Alcohol-Free Concentrated Attars. Distilled in copper Deg-Bhapka vessels with authentic natural essences for enduring 14+ hour longevity.</p>"
+          }
+        },
+        "footer_quick_links": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Explore Attars",
+            "menu": "footer"
+          }
+        },
+        "footer_customer_service": {
+          "type": "text",
+          "settings": {
+            "heading": "Customer Assistance",
+            "subtext": "<p>🚚 Free Express Shipping across India<br>💵 100% Cash on Delivery (COD) Available<br>💬 WhatsApp Support: Fast order updates & live tracking portal.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "footer_brand_story",
+        "footer_quick_links",
+        "footer_customer_service"
+      ],
       "settings": {
         "color_scheme": "scheme-5",
         "newsletter_enable": false,

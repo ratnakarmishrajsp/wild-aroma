@@ -373,10 +373,34 @@
                   loading="lazy"
                 >
               {%- else -%}
-                <div class="luxury-card__placeholder-art">
-                  <div class="luxury-card__bottle-icon">✨</div>
-                  <span class="luxury-card__ml-tag">{{ size }}</span>
-                </div>
+                {%- liquid
+                  assign fallback_asset = ''
+                  if title contains 'Turkish' or prod.handle contains 'turkish'
+                    assign fallback_asset = 'product-turkish-oud.jpg'
+                  elsif title contains 'Salma' or prod.handle contains 'salma'
+                    assign fallback_asset = 'product-salma.jpg'
+                  elsif title contains 'Bakhoor' or prod.handle contains 'bakhoor'
+                    assign fallback_asset = 'product-bakhoor.jpg'
+                  elsif title contains 'Musk' or prod.handle contains 'musk'
+                    assign fallback_asset = 'product-musk-al-oudh.jpg'
+                  elsif title contains 'Rasasi' or title contains 'Mubarakh' or prod.handle contains 'rasasi'
+                    assign fallback_asset = 'product-rasasi-oud.jpg'
+                  endif
+                -%}
+                {%- if fallback_asset != blank -%}
+                  <img
+                    src="{{ fallback_asset | asset_url }}"
+                    alt="{{ title | escape }}"
+                    width="600"
+                    height="600"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <div class="luxury-card__placeholder-art">
+                    <div class="luxury-card__bottle-icon">✨</div>
+                    <span class="luxury-card__ml-tag">{{ size }}</span>
+                  </div>
+                {%- endif -%}
               {%- endif -%}
             </div>
 
@@ -469,22 +493,46 @@
                   loading="lazy"
                 >
               {%- else -%}
-                <div class="luxury-card__placeholder-art">
-                  <div class="luxury-card__bottle-icon">
-                    {%- if title contains 'Rose' or title contains 'Sanaya' -%}
-                      🌸
-                    {%- elsif title contains 'Kasturi' -%}
-                      🦌
-                    {%- elsif title contains 'Black' -%}
-                      🪵
-                    {%- elsif title contains 'Silk' -%}
-                      🕊️
-                    {%- else -%}
-                      ✨
-                    {%- endif -%}
+                {%- liquid
+                  assign fallback_asset = ''
+                  if title contains 'Turkish' or block.settings.product contains 'turkish'
+                    assign fallback_asset = 'product-turkish-oud.jpg'
+                  elsif title contains 'Salma' or block.settings.product contains 'salma'
+                    assign fallback_asset = 'product-salma.jpg'
+                  elsif title contains 'Bakhoor' or block.settings.product contains 'bakhoor'
+                    assign fallback_asset = 'product-bakhoor.jpg'
+                  elsif title contains 'Musk Al Oudh' or title contains 'Musk' or block.settings.product contains 'musk'
+                    assign fallback_asset = 'product-musk-al-oudh.jpg'
+                  elsif title contains 'Rasasi' or title contains 'Mubarakh' or block.settings.product contains 'rasasi'
+                    assign fallback_asset = 'product-rasasi-oud.jpg'
+                  endif
+                -%}
+                {%- if fallback_asset != blank -%}
+                  <img
+                    src="{{ fallback_asset | asset_url }}"
+                    alt="{{ title | escape }}"
+                    width="600"
+                    height="600"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <div class="luxury-card__placeholder-art">
+                    <div class="luxury-card__bottle-icon">
+                      {%- if title contains 'Rose' or title contains 'Sanaya' -%}
+                        🌸
+                      {%- elsif title contains 'Kasturi' -%}
+                        🦌
+                      {%- elsif title contains 'Black' -%}
+                        🪵
+                      {%- elsif title contains 'Silk' -%}
+                        🕊️
+                      {%- else -%}
+                        ✨
+                      {%- endif -%}
+                    </div>
+                    <span class="luxury-card__ml-tag">{{ size }}</span>
                   </div>
-                  <span class="luxury-card__ml-tag">{{ size }}</span>
-                </div>
+                {%- endif -%}
               {%- endif -%}
             </div>
 

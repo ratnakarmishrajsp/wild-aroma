@@ -83,7 +83,7 @@
           "settings": {
             "title": "Royal Oudh",
             "subtitle": "Warm & Intense",
-            "link": "/collections/royel-attars"
+            "link": "/collections/all"
           }
         },
         "cat_2": {
@@ -177,7 +177,7 @@
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
-        "product": "silk-musk-luxury-attar-100-pure-alcohol-free",
+        "product": "turkish-oud-luxury-attar",
         "color_scheme": "scheme-2",
         "secondary_background": false,
         "media_size": "medium",
@@ -303,9 +303,9 @@
       "settings": {
         "title": "Find Your Signature Scent",
         "subtitle": "Fragrance Matchmaker",
-        "product_floral": "sanaya-attar-luxury",
-        "product_woody": "black-oud-luxury-attar",
-        "product_combo": "kasturi-attar-6-6-ml-buy-1-get-1-free",
+        "product_floral": "salma-luxury-attar",
+        "product_woody": "turkish-oud-luxury-attar",
+        "product_combo": "rasasi-oud-al-mubarakh-luxury-attar",
         "padding_top": 48,
         "padding_bottom": 48
       }
@@ -354,88 +354,88 @@
     "custom_luxury_products_showcase": {
       "type": "custom-luxury-products",
       "blocks": {
-        "prod_white_oud": {
+        "prod_turkish_oud": {
           "type": "product_card",
           "settings": {
-            "product": "white-oud-luxury-attar",
-            "custom_title": "White Oud Luxury Attar",
-            "custom_size": "6.6 ml Concentrated Oil",
-            "custom_notes": "Italian Bergamot • White Amber • Cambodian White Oud",
+            "product": "turkish-oud-luxury-attar",
+            "custom_title": "Turkish Oud Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "A Richer Ritual • Turkish Rose • Amber • Cambodian Oud",
             "custom_price": "₹599",
             "custom_compare_price": "₹1,199",
-            "custom_badge": "ROYAL BESTSELLER",
+            "custom_badge": "A RICHER RITUAL",
             "badge_style": "gold",
             "button_label": "Order Now",
-            "button_link": "/products/white-oud-luxury-attar"
+            "button_link": "/products/turkish-oud-luxury-attar"
           }
         },
-        "prod_kasturi_bogo": {
+        "prod_salma": {
           "type": "product_card",
           "settings": {
-            "product": "kasturi-attar-6-6-ml-buy-1-get-1-free",
-            "custom_title": "Kasturi Attar 6.6 Ml (Buy 1 Get 1 Free)",
-            "custom_size": "Pack of 2 (2 x 6.6 ml = 13.2 ml)",
-            "custom_notes": "Warm Cardamom • Ancient Kasturi Accord • Aged Sandalwood",
-            "custom_price": "₹699",
-            "custom_compare_price": "₹1,499",
-            "custom_badge": "🔥 BUY 1 GET 1 FREE",
-            "badge_style": "bogo",
-            "button_label": "Claim BOGO Offer",
-            "button_link": "/products/kasturi-attar-6-6-ml-buy-1-get-1-free"
-          }
-        },
-        "prod_black_oud": {
-          "type": "product_card",
-          "settings": {
-            "product": "black-oud-luxury-attar",
-            "custom_title": "Black Oud Luxury Attar",
-            "custom_size": "6.6 ml Concentrated Oil",
-            "custom_notes": "Crushed Peppercorn • Aged Assam Oud • Smoky Frankincense",
-            "custom_price": "₹649",
-            "custom_compare_price": "₹1,299",
-            "custom_badge": "BEAST MODE LONGEVITY",
-            "badge_style": "dark",
-            "button_label": "Order Now",
-            "button_link": "/products/black-oud-luxury-attar"
-          }
-        },
-        "prod_sanaya": {
-          "type": "product_card",
-          "settings": {
-            "product": "sanaya-attar-luxury",
-            "custom_title": "Sanaya Royal Floral Attar",
-            "custom_size": "6.6 ml Concentrated Oil",
-            "custom_notes": "Citrus Blossom • Kannauj Rose • Royal Mogra • White Musk",
+            "product": "salma-luxury-attar",
+            "custom_title": "Salma Royal Floral Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Quietly Captivating • Dewy White Florals • Velvet Musk",
             "custom_price": "₹499",
             "custom_compare_price": "₹999",
-            "custom_badge": "PURE FLORAL",
+            "custom_badge": "QUIETLY CAPTIVATING",
             "badge_style": "gold",
             "button_label": "Order Now",
-            "button_link": "/products/sanaya-attar-luxury"
+            "button_link": "/products/salma-luxury-attar"
           }
         },
-        "prod_silk_musk": {
+        "prod_bakhoor": {
           "type": "product_card",
           "settings": {
-            "product": "silk-musk-luxury-attar-100-pure-alcohol-free",
-            "custom_title": "Silk Musk Luxury Attar",
-            "custom_size": "6.6 ml Concentrated Oil",
-            "custom_notes": "Powdery Clean Lily • White Orchid • Cashmere Wood • Pure Musk",
-            "custom_price": "₹549",
-            "custom_compare_price": "₹1,099",
-            "custom_badge": "SENSUAL & CLEAN",
+            "product": "bakhoor-luxury-attar",
+            "custom_title": "Bakhoor Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "An Evening Ritual • Smoky Incense • Frankincense • Resinous Oud",
+            "custom_price": "₹649",
+            "custom_compare_price": "₹1,299",
+            "custom_badge": "AN EVENING RITUAL",
+            "badge_style": "dark",
+            "button_label": "Order Now",
+            "button_link": "/products/bakhoor-luxury-attar"
+          }
+        },
+        "prod_musk_al_oudh": {
+          "type": "product_card",
+          "settings": {
+            "product": "musk-al-oudh-luxury-attar",
+            "custom_title": "Musk Al Oudh Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Depth. Character. Presence • Pure White Musk • Aged Assam Oud",
+            "custom_price": "₹599",
+            "custom_compare_price": "₹1,199",
+            "custom_badge": "DEPTH & PRESENCE",
             "badge_style": "gold",
             "button_label": "Order Now",
-            "button_link": "/products/silk-musk-luxury-attar-100-pure-alcohol-free"
+            "button_link": "/products/musk-al-oudh-luxury-attar"
+          }
+        },
+        "prod_rasasi_oud": {
+          "type": "product_card",
+          "settings": {
+            "product": "rasasi-oud-al-mubarakh-luxury-attar",
+            "custom_title": "Rasasi Oud Al Mubarakh Luxury Attar",
+            "custom_size": "6 ml Concentrated Attar",
+            "custom_notes": "Make An Impression • Rare Saffron • Smoky Agarwood • Sandalwood",
+            "custom_price": "₹699",
+            "custom_compare_price": "₹1,499",
+            "custom_badge": "MAKE AN IMPRESSION",
+            "badge_style": "gold",
+            "button_label": "Order Now",
+            "button_link": "/products/rasasi-oud-al-mubarakh-luxury-attar"
           }
         }
       },
       "block_order": [
-        "prod_white_oud",
-        "prod_kasturi_bogo",
-        "prod_black_oud",
-        "prod_sanaya",
-        "prod_silk_musk"
+        "prod_turkish_oud",
+        "prod_salma",
+        "prod_bakhoor",
+        "prod_musk_al_oudh",
+        "prod_rasasi_oud"
       ],
       "settings": {
         "subtitle": "100% PURE CONCENTRATED ATTARS • ALCOHOL-FREE",
