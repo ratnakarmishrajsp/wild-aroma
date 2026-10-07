@@ -53,12 +53,12 @@
 
         <div class="smd-form-group">
           <label class="smd-label" for="smd_input_address">Delivery Address (House / Flat No., Street, Colony) *</label>
-          <input type="text" id="smd_input_address" class="smd-input" placeholder="House No., Building, Street Name, Area" required autocomplete="street-address" />
+          <input type="text" id="smd_input_address" class="smd-input" placeholder="House No., Building, Street Name, Area (Min. 20 Chars)" required minlength="20" autocomplete="street-address" />
         </div>
 
         <div class="smd-form-group">
-          <label class="smd-label" for="smd_input_landmark">Landmark (Optional)</label>
-          <input type="text" id="smd_input_landmark" class="smd-input" placeholder="Nearby School, Hospital, Temple, or Shop" />
+          <label class="smd-label" for="smd_input_landmark">Nearby Landmark *</label>
+          <input type="text" id="smd_input_landmark" class="smd-input" placeholder="Nearby School, Hospital, Temple, or Famous Shop (Min. 20 Chars)" required minlength="20" />
         </div>
 
         <div class="smd-row-2">
@@ -110,21 +110,6 @@
         <div class="smd-mode-switch">
           <a href="javascript:void(0)" id="smd-switch-link" onclick="togglePaymentMode()">
             Prefer Cash on Delivery? Click here to switch
-          </a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="smd-trust-row">
-          <span>🔒 100% Safe &amp; Verified</span>
-          <span>•</span>
-          <span>🚚 Free Express Delivery</span>
-          <span>•</span>
-          <span>💬 WhatsApp Support</span>
-        </div>
-
-        <div style="text-align: center; margin-top: 6px;">
-          <a href="javascript:void(0)" onclick="clearWildAromaTestLimits()" style="font-size: 11px; color: #94a3b8; text-decoration: underline;">
-            🛠️ Reset Test Limits (Developer IP Mode)
           </a>
         </div>
       </form>
@@ -1156,9 +1141,14 @@
         phoneInput?.focus();
         return;
       }
-      if (!address || address.length < 5) {
-        showError('⚠️ Please enter complete delivery address (House / Flat No., Street, Colony).');
+      if (!address || address.length < 20) {
+        showError('⚠️ Delivery Address must be at least 20 characters (House / Flat No., Street, Colony).');
         addressInput?.focus();
+        return;
+      }
+      if (!landmark || landmark.length < 20) {
+        showError('⚠️ Nearby Landmark is mandatory (minimum 20 characters, e.g. nearby school, hospital, temple, or shop).');
+        landmarkInput?.focus();
         return;
       }
       if (!pincode || pincode.length !== 6) {
