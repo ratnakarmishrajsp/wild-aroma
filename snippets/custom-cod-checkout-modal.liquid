@@ -130,25 +130,6 @@
       </form>
     </div>
   </div>
-
-  <!-- Repeat Order Confirmation Dialog (Shown on 2nd Order) - Independent Fixed Overlay -->
-  <div id="WildAromaConfirmRepeatModal" class="smd-repeat-dialog" style="display:none;" role="dialog" aria-modal="true">
-    <div class="smd-repeat-content">
-      <div class="smd-repeat-icon">⚠️</div>
-      <h4 class="smd-repeat-title">Second Order Confirmation</h4>
-      <p class="smd-repeat-desc" id="smd-confirm-desc">
-        Aapne aaj iss number se pehle bhi ek order place kiya hai. Kya aap confirm ek aur order place karna chahte hain?
-      </p>
-      <div class="smd-repeat-actions">
-        <button type="button" id="smd-btn-repeat-yes" class="smd-btn-repeat-yes" onclick="executeVerifiedOrder(event)">
-          Yes, Confirm 2nd Order
-        </button>
-        <button type="button" id="smd-btn-repeat-no" class="smd-btn-repeat-no" onclick="cancelRepeatOrder(event)">
-          No, Keep My First Order
-        </button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style>
@@ -595,123 +576,6 @@
     color: #15803d !important;
   }
 
-  /* Repeat Order Confirmation Dialog - Fixed Global Topmost Overlay */
-  .smd-repeat-dialog {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    background: rgba(10, 15, 12, 0.90) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    z-index: 2147483647 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 20px !important;
-    box-sizing: border-box !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent !important;
-    pointer-events: auto !important;
-    animation: smdFadeIn 0.2s ease !important;
-  }
-  @keyframes smdFadeIn {
-    from { opacity: 0; transform: scale(0.96); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  .smd-repeat-content {
-    background: #ffffff !important;
-    border: 2px solid #b8974f !important;
-    border-radius: 18px !important;
-    padding: 24px 20px !important;
-    text-align: center !important;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6) !important;
-    max-width: 360px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-    z-index: 2147483647 !important;
-    pointer-events: auto !important;
-  }
-  .smd-repeat-icon {
-    font-size: 36px !important;
-    margin-bottom: 8px !important;
-    line-height: 1 !important;
-  }
-  .smd-repeat-title {
-    font-size: 17px !important;
-    font-weight: 800 !important;
-    color: #0f172a !important;
-    margin: 0 0 8px !important;
-  }
-  .smd-repeat-desc {
-    font-size: 13px !important;
-    color: #475569 !important;
-    line-height: 1.5 !important;
-    margin: 0 0 18px !important;
-  }
-  .smd-repeat-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    width: 100% !important;
-    position: relative !important;
-    z-index: 2147483647 !important;
-  }
-  .smd-btn-repeat-yes {
-    background: #0b3b24 !important;
-    color: #ffffff !important;
-    border: 1.5px solid #22c55e !important;
-    border-radius: 12px !important;
-    padding: 15px 18px !important;
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 14px rgba(11, 59, 36, 0.35) !important;
-    transition: all 0.15s ease !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent !important;
-    user-select: none !important;
-    -webkit-user-select: none !important;
-    pointer-events: auto !important;
-  }
-  .smd-btn-repeat-yes:active {
-    transform: scale(0.97) !important;
-    background: #14532d !important;
-  }
-  .smd-btn-repeat-no {
-    background: #f1f5f9 !important;
-    color: #475569 !important;
-    border: 1.5px solid #cbd5e1 !important;
-    border-radius: 12px !important;
-    padding: 12px 18px !important;
-    font-size: 13.5px !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.15s ease !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent !important;
-    pointer-events: auto !important;
-  }
-
   /* Daily Limit Reached (3rd Order) WhatsApp Card */
   .smd-wa-block-card {
     background: #f0fdf4 !important;
@@ -908,38 +772,11 @@
     let currentMode = 'online'; // 'online' or 'cod'
     const DISCOUNT_AMOUNT = 100; // Extra Rs 100 Off on Prepaid
 
-    function bindRepeatButtons() {
-      const yesBtn = document.getElementById('smd-btn-repeat-yes');
-      if (yesBtn && !yesBtn._waBound) {
-        yesBtn._waBound = true;
-        yesBtn.addEventListener('click', window.executeVerifiedOrder);
-        yesBtn.addEventListener('touchend', function(ev) {
-          ev.preventDefault();
-          window.executeVerifiedOrder(ev);
-        }, { passive: false });
-      }
-
-      const noBtn = document.getElementById('smd-btn-repeat-no');
-      if (noBtn && !noBtn._waBound) {
-        noBtn._waBound = true;
-        noBtn.addEventListener('click', window.cancelRepeatOrder);
-        noBtn.addEventListener('touchend', function(ev) {
-          ev.preventDefault();
-          window.cancelRepeatOrder(ev);
-        }, { passive: false });
-      }
-    }
-
     function ensureModalInBody() {
       const modal = document.getElementById('WildAromaOrderModal');
       if (modal && modal.parentElement !== document.body) {
         document.body.appendChild(modal);
       }
-      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
-      if (repeatModal && repeatModal.parentElement !== document.body) {
-        document.body.appendChild(repeatModal);
-      }
-      bindRepeatButtons();
     }
 
     function getActiveVariant() {
@@ -1114,13 +951,11 @@
     }
 
     // ========================================================
-    // DUPLICATE / MULTI-ORDER GUARD (24 Hours per Phone Number)
-    // 1st Order: Normal & Instant
-    // 2nd Order: Confirmation Prompt -> Places order via Custom Modal Checkout
-    // 3rd Order: Blocked with Direct WhatsApp Support Button
+    // DUPLICATE / 3RD-ORDER LIMIT GUARD (24 Hours per Phone Number)
+    // 1st & 2nd Orders: Smooth Instant Custom Modal Placement
+    // 3rd Order: Blocked with WhatsApp Concierge Support Card
     // ========================================================
     const WA_ORDERS_KEY = 'wa_user_orders_v2';
-    let repeatConfirmed = false;
     let isWhitelistedTestingIP = false;
 
     // Detect if client is testing from IP 152.58.155.233 / 152.58.* or admin/tester
@@ -1173,7 +1008,7 @@
         phoneClean === '9153334960' ||
         phoneClean === '9999999999'
       ) {
-        return []; // NEVER block or prompt developer testing IP or admin!
+        return []; // NEVER block developer testing IP or admin!
       }
       try {
         const raw = localStorage.getItem(WA_ORDERS_KEY);
@@ -1217,7 +1052,6 @@
 
         const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
         const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
-        const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
 
         if (phone.length === 10) {
           const pastOrders = getTodayOrders(phone);
@@ -1225,7 +1059,6 @@
             // Block 3rd order immediately
             if (waBlockCard) waBlockCard.style.display = 'block';
             if (submitBtn) submitBtn.style.display = 'none';
-            if (repeatModal) repeatModal.style.display = 'none';
 
             const waBtn = document.getElementById('smd-wa-block-btn');
             if (waBtn) {
@@ -1243,38 +1076,6 @@
       });
     }
 
-    // Repeat confirmation callbacks: 2nd order places directly via Custom Order Modal (NOT Shopify default checkout)
-    window.executeVerifiedOrder = function(e) {
-      if (e) {
-        if (typeof e.preventDefault === 'function') e.preventDefault();
-        if (typeof e.stopPropagation === 'function') e.stopPropagation();
-      }
-
-      const yesBtn = document.getElementById('smd-btn-repeat-yes');
-      if (yesBtn) {
-        yesBtn.disabled = true;
-        yesBtn.textContent = '⏳ Confirming 2nd Order...';
-      }
-
-      repeatConfirmed = true;
-      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
-      if (repeatModal) repeatModal.style.display = 'none';
-
-      // Submit directly through custom modal checkout API -> Direct order creation -> Thank You page
-      window.submitWildAromaOrder();
-    };
-
-    window.cancelRepeatOrder = function(e) {
-      if (e) {
-        if (typeof e.preventDefault === 'function') e.preventDefault();
-        if (typeof e.stopPropagation === 'function') e.stopPropagation();
-      }
-      repeatConfirmed = false;
-      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
-      if (repeatModal) repeatModal.style.display = 'none';
-      window.closeWildAromaOrderModal();
-    };
-
     // Developer / testing helper to clear testing limits
     window.clearWildAromaTestLimits = function() {
       try {
@@ -1289,9 +1090,7 @@
           submitBtn.disabled = false;
           submitBtn.style.display = 'flex';
         }
-        const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
-        if (repeatModal) repeatModal.style.display = 'none';
-        alert('✅ Testing limits & 2nd order prompts completely cleared!');
+        alert('✅ Testing limits completely cleared!');
       } catch(e) {}
     };
 
@@ -1320,7 +1119,6 @@
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
       const btnText = document.getElementById('smd-btn-text');
       const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
-      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
 
       function showError(msg) {
         if (!statusBox) return;
@@ -1388,7 +1186,6 @@
       if (pastOrders.length >= 2) {
         if (waBlockCard) waBlockCard.style.display = 'block';
         if (submitBtn) submitBtn.style.display = 'none';
-        if (repeatModal) repeatModal.style.display = 'none';
         if (statusBox) statusBox.style.display = 'none';
 
         const waBtn = document.getElementById('smd-wa-block-btn');
@@ -1397,28 +1194,6 @@
           waBtn.href = `https://api.whatsapp.com/send?phone=919153334960&text=Hi%20Wild%20Aroma%2C%20I%20want%20to%20place%20an%20additional%20order%20for%20${prodTitle}.%20My%20Phone%3A%20${phone}`;
         }
         return;
-      }
-
-      // Check 2nd Order: Confirmation prompt required -> Direct placement via Custom Modal Checkout
-      if (pastOrders.length === 1 && !repeatConfirmed) {
-        const confirmDesc = document.getElementById('smd-confirm-desc');
-        if (confirmDesc) {
-          const prevOrderText = pastOrders[0].orderName ? ` (Order #${pastOrders[0].orderName})` : '';
-          confirmDesc.textContent = `Aapne aaj iss number se pehle bhi ek order${prevOrderText} place kiya hai. Kya aap confirm ek aur order place karna chahte hain?`;
-        }
-        const yesBtn = document.getElementById('smd-btn-repeat-yes');
-        if (yesBtn) {
-          yesBtn.disabled = false;
-          yesBtn.textContent = 'Yes, Confirm 2nd Order';
-        }
-        if (repeatModal) {
-          if (repeatModal.parentElement !== document.body) {
-            document.body.appendChild(repeatModal);
-          }
-          bindRepeatButtons();
-          repeatModal.style.display = 'flex';
-        }
-        return; // Pause until customer confirms
       }
 
       // Order API endpoint
@@ -1474,7 +1249,6 @@
           if (data && data.success && data.order_status_url) {
             // Record order in local cache
             recordOrder(phone, data.order_name);
-            repeatConfirmed = false;
 
             statusBox.className = 'smd-status-box success';
             statusBox.textContent = '🎉 Order #' + (data.order_name || '') + ' Confirmed! Redirecting to confirmation page...';
@@ -1609,7 +1383,6 @@
     // navigates back from the Thank You page.
     // ========================================================
     window.addEventListener('pageshow', function() {
-      repeatConfirmed = false;
       const form = document.getElementById('WildAromaOrderForm');
       if (form) form.reset();
 
@@ -1626,17 +1399,8 @@
         statusBox.textContent = '';
       }
 
-      const repeatModal = document.getElementById('WildAromaConfirmRepeatModal');
-      if (repeatModal) repeatModal.style.display = 'none';
-
       const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
       if (waBlockCard) waBlockCard.style.display = 'none';
-
-      const yesBtn = document.getElementById('smd-btn-repeat-yes');
-      if (yesBtn) {
-        yesBtn.disabled = false;
-        yesBtn.textContent = 'Yes, Confirm 2nd Order';
-      }
 
       const submitBtn = document.getElementById('WildAromaSubmitOrderBtn');
       if (submitBtn) {
