@@ -254,7 +254,7 @@
     color: #121212 !important;
     font-size: 14.5px !important;
     font-weight: 800 !important;
-    padding: 5px 12px !important;
+    padding: 4px 10px !important;
     border-radius: 7px !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
     white-space: nowrap !important;
@@ -267,8 +267,12 @@
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
     background: rgba(10, 15, 12, 0.82) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
@@ -277,6 +281,7 @@
     align-items: center !important;
     justify-content: center !important;
     padding: 16px !important;
+    margin: 0 !important;
     box-sizing: border-box !important;
     opacity: 0;
     pointer-events: none;
@@ -301,12 +306,7 @@
     overflow: hidden !important;
     position: relative !important;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-    transform: translateY(20px) scale(0.98);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .smd-modal-overlay.is-open .smd-modal-card {
-    transform: translateY(0) scale(1) !important;
+    box-sizing: border-box !important;
   }
 
   /* Header */
@@ -616,14 +616,25 @@
   }
 
   /* -------------------------------------------------------------
-     FULL-SCREEN ON MOBILE PHONES (NO GAP, NO BACKGROUND PEEK)
+     FULL-SCREEN ON MOBILE PHONES (100% SCREEN TAKEOVER)
      ------------------------------------------------------------- */
   @media (max-width: 768px) {
     .smd-modal-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 100vh !important;
+      min-height: 100dvh !important;
       padding: 0 !important;
+      margin: 0 !important;
       align-items: stretch !important;
       justify-content: stretch !important;
-      background: #0b3b24 !important;
+      background: #ffffff !important;
       z-index: 2147483647 !important;
     }
 
@@ -637,12 +648,10 @@
       border-radius: 0 !important;
       border: none !important;
       box-shadow: none !important;
-      transform: translateY(100%);
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-
-    .smd-modal-overlay.is-open .smd-modal-card {
-      transform: translateY(0) !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      background: #ffffff !important;
     }
 
     .smd-modal-header {
@@ -655,7 +664,7 @@
       flex: 1 !important;
       overflow-y: auto !important;
       -webkit-overflow-scrolling: touch !important;
-      padding: 16px 16px 36px !important;
+      padding: 16px 16px 40px !important;
     }
 
     .wa-btn-cod .wa-btn-label,
@@ -671,6 +680,13 @@
     const rawVariants = {{ product.variants | json }};
     let currentMode = 'online'; // 'online' or 'cod'
     const DISCOUNT_AMOUNT = 100; // Extra Rs 100 Off on Prepaid
+
+    function ensureModalInBody() {
+      const modal = document.getElementById('WildAromaOrderModal');
+      if (modal && modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+      }
+    }
 
     function getActiveVariant() {
       const varInput = document.querySelector('input[name="id"], select[name="id"]');
@@ -743,6 +759,7 @@
     }
 
     window.openWildAromaOrderModal = function(preferredMode) {
+      ensureModalInBody();
       currentMode = preferredMode === 'cod' ? 'cod' : 'online';
       updateModalPricing();
 
@@ -955,8 +972,14 @@
       }
     };
 
-    // Initial pricing sync
-    document.addEventListener('DOMContentLoaded', updateModalPricing);
-    setTimeout(updateModalPricing, 200);
+    // Initial pricing sync and DOM relocation
+    document.addEventListener('DOMContentLoaded', function() {
+      ensureModalInBody();
+      updateModalPricing();
+    });
+    setTimeout(function() {
+      ensureModalInBody();
+      updateModalPricing();
+    }, 200);
   })();
 </script>
