@@ -25,6 +25,24 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Footer Menus, Headings & Links - Crisp White */
+  .footer .footer-block--menu .list-menu__item--link,
+  .footer .footer-block__details-content .list-menu__item--link,
+  .footer .footer-block--menu .footer-block__heading,
+  .footer .footer-block__heading,
+  .footer .copyright__content a,
+  .footer .policies li a {
+    color: #ffffff !important;
+  }
+
+  .footer .footer-block--menu .list-menu__item--link:hover,
+  .footer .footer-block__details-content .list-menu__item--link:hover,
+  .footer .copyright__content a:hover,
+  .footer .policies li a:hover {
+    color: #ffffff !important;
+    opacity: 0.85;
+  }
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">

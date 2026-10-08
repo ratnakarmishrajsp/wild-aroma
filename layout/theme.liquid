@@ -572,8 +572,10 @@ main,
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {% comment %} Sticky Left Call Button Widget with Team Support Mockup {% endcomment %}
-    {% section 'floating-call-widget' %}
+    {% comment %}
+      Sticky Call / WhatsApp button widget disabled per request:
+      {% section 'floating-call-widget' %}
+    {% endcomment %}
   <script src="{{ 'meta-pixel-v4.js' | asset_url }}" defer></script>
 </body>
 </html>
