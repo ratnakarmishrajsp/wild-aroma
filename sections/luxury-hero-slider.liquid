@@ -32,7 +32,8 @@
   /* Desktop heights */
   {%- if section.settings.desktop_height == 'adapt' -%}
     .wa-slide {
-      min-height: 520px;
+      height: clamp(380px, 33.33vw, 680px);
+      min-height: 380px;
     }
   {%- else -%}
     .wa-slide {
@@ -44,14 +45,27 @@
   @media screen and (max-width: 749px) {
     {%- if section.settings.mobile_height == 'adapt' -%}
       .wa-slide {
-        min-height: 460px;
-        height: auto;
+        height: clamp(440px, 128vw, 580px);
+        min-height: 440px;
+        max-height: 600px;
       }
     {%- else -%}
       .wa-slide {
-        height: {{ section.settings.mobile_height | default: '500px' }};
+        height: {{ section.settings.mobile_height | default: '520px' }};
       }
     {%- endif -%}
+  }
+
+  .wa-slide__full-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
   }
 
   /* Background Media */
@@ -377,37 +391,69 @@
     
     <div class="wa-slider" id="SliderTrack-{{ section.id }}">
       {%- for block in section.blocks -%}
+        {%- liquid
+          assign current_slide_link = block.settings.slide_link | default: block.settings.button_link_1
+
+          assign desktop_img_url = ''
+          if block.settings.image_desktop != blank
+            assign desktop_img_url = block.settings.image_desktop | image_url: width: 2200
+          elsif block.settings.asset_image_desktop != blank
+            assign desktop_img_url = block.settings.asset_image_desktop | asset_url
+          else
+            assign default_desk_asset = 'hero-banner-' | append: forloop.index | append: '-desktop.webp'
+            assign desktop_img_url = default_desk_asset | asset_url
+          endif
+
+          assign mobile_img_url = ''
+          if block.settings.image_mobile != blank
+            assign mobile_img_url = block.settings.image_mobile | image_url: width: 1100
+          elsif block.settings.asset_image_mobile != blank
+            assign mobile_img_url = block.settings.asset_image_mobile | asset_url
+          else
+            assign default_mob_asset = 'hero-banner-' | append: forloop.index | append: '-mobile.webp'
+            assign mobile_img_url = default_mob_asset | asset_url
+          endif
+
+          assign has_text_content = false
+          if block.settings.badge_text != blank or block.settings.heading != blank or block.settings.subheading != blank or block.settings.button_label_1 != blank or block.settings.button_label_2 != blank
+            assign has_text_content = true
+          endif
+        -%}
         <div class="wa-slide {% if forloop.first %}is-active{% endif %}" data-slide-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
           
+          {%- if current_slide_link != blank -%}
+            <a href="{{ current_slide_link }}" class="wa-slide__full-link" aria-label="{{ block.settings.heading | default: 'Explore Wild Aroma Luxury Attars' }}"></a>
+          {%- endif -%}
+
           <!-- Slide Media Background -->
           <div class="wa-slide__media">
-            {%- if block.settings.image_desktop != blank -%}
+            {%- if desktop_img_url != blank -%}
               <img
-                src="{{ block.settings.image_desktop | image_url: width: 2200 }}"
-                alt="{{ block.settings.heading | escape }}"
+                src="{{ desktop_img_url }}"
+                alt="{{ block.settings.heading | default: 'Wild Aroma Luxury Attar' | escape }}"
                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                 class="wa-slide__img wa-slide__img--desktop"
                 width="2200"
-                height="1000"
+                height="733"
               >
             {%- else -%}
               <div class="wa-slide__fallback-bg"></div>
               <div class="wa-slide__fallback-glow"></div>
             {%- endif -%}
 
-            {%- if block.settings.image_mobile != blank -%}
+            {%- if mobile_img_url != blank -%}
               <img
-                src="{{ block.settings.image_mobile | image_url: width: 1100 }}"
-                alt="{{ block.settings.heading | escape }}"
+                src="{{ mobile_img_url }}"
+                alt="{{ block.settings.heading | default: 'Wild Aroma Luxury Attar' | escape }}"
                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                 class="wa-slide__img wa-slide__img--mobile"
-                width="1100"
-                height="1200"
+                width="750"
+                height="1000"
               >
-            {%- elsif block.settings.image_desktop != blank -%}
+            {%- elsif desktop_img_url != blank -%}
               <img
-                src="{{ block.settings.image_desktop | image_url: width: 1100 }}"
-                alt="{{ block.settings.heading | escape }}"
+                src="{{ desktop_img_url }}"
+                alt="{{ block.settings.heading | default: 'Wild Aroma Luxury Attar' | escape }}"
                 loading="lazy"
                 class="wa-slide__img wa-slide__img--mobile"
                 width="1100"
@@ -416,47 +462,51 @@
             {%- endif -%}
           </div>
 
-          <!-- Ambient Gradient Overlay -->
-          <div class="wa-slide__overlay" style="opacity: {{ block.settings.overlay_opacity | default: 75 | divided_by: 100.0 }};"></div>
+          <!-- Ambient Gradient Overlay (Only if slide has text overlay) -->
+          {%- if has_text_content and block.settings.overlay_opacity > 0 -%}
+            <div class="wa-slide__overlay" style="opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+          {%- endif -%}
 
-          <!-- Slide Text Content -->
-          <div class="wa-slide__content-container">
-            <div class="wa-slide__content wa-slide__content--{{ block.settings.text_alignment | default: 'left' }}">
-              
-              {%- if block.settings.badge_text != blank -%}
-                <div class="wa-slide__badge">
-                  <span>✦</span> {{ block.settings.badge_text }}
+          {%- if has_text_content -%}
+            <!-- Slide Text Content -->
+            <div class="wa-slide__content-container">
+              <div class="wa-slide__content wa-slide__content--{{ block.settings.text_alignment | default: 'left' }}">
+                
+                {%- if block.settings.badge_text != blank -%}
+                  <div class="wa-slide__badge">
+                    <span>✦</span> {{ block.settings.badge_text }}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="wa-slide__heading">
+                    {{ block.settings.heading }}
+                  </h2>
+                {%- endif -%}
+
+                {%- if block.settings.subheading != blank -%}
+                  <p class="wa-slide__subheading">
+                    {{ block.settings.subheading }}
+                  </p>
+                {%- endif -%}
+
+                <div class="wa-slide__buttons">
+                  {%- if block.settings.button_label_1 != blank -%}
+                    <a href="{{ block.settings.button_link_1 | default: '/collections/best-selling-attars' }}" class="wa-slide__btn wa-slide__btn--primary">
+                      {{ block.settings.button_label_1 }} <span>→</span>
+                    </a>
+                  {%- endif -%}
+
+                  {%- if block.settings.button_label_2 != blank -%}
+                    <a href="{{ block.settings.button_link_2 | default: '/collections/all' }}" class="wa-slide__btn wa-slide__btn--secondary">
+                      {{ block.settings.button_label_2 }}
+                    </a>
+                  {%- endif -%}
                 </div>
-              {%- endif -%}
 
-              {%- if block.settings.heading != blank -%}
-                <h2 class="wa-slide__heading">
-                  {{ block.settings.heading }}
-                </h2>
-              {%- endif -%}
-
-              {%- if block.settings.subheading != blank -%}
-                <p class="wa-slide__subheading">
-                  {{ block.settings.subheading }}
-                </p>
-              {%- endif -%}
-
-              <div class="wa-slide__buttons">
-                {%- if block.settings.button_label_1 != blank -%}
-                  <a href="{{ block.settings.button_link_1 | default: '/collections/best-selling-attars' }}" class="wa-slide__btn wa-slide__btn--primary">
-                    {{ block.settings.button_label_1 }} <span>→</span>
-                  </a>
-                {%- endif -%}
-
-                {%- if block.settings.button_label_2 != blank -%}
-                  <a href="{{ block.settings.button_link_2 | default: '/collections/all' }}" class="wa-slide__btn wa-slide__btn--secondary">
-                    {{ block.settings.button_label_2 }}
-                  </a>
-                {%- endif -%}
               </div>
-
             </div>
-          </div>
+          {%- endif -%}
 
         </div>
       {%- endfor -%}
@@ -695,22 +745,24 @@
           "label": "Mobile Image (1080x1350 recommended)"
         },
         {
+          "type": "url",
+          "id": "slide_link",
+          "label": "Entire Slide Click URL"
+        },
+        {
           "type": "text",
           "id": "badge_text",
-          "label": "Luxury Pill Badge",
-          "default": "✦ THE ROYAL KANNAUJ HERITAGE"
+          "label": "Luxury Pill Badge (Optional)"
         },
         {
           "type": "text",
           "id": "heading",
-          "label": "Slide Heading",
-          "default": "Pure Concentrated Attar Oils"
+          "label": "Slide Heading (Optional)"
         },
         {
           "type": "textarea",
           "id": "subheading",
-          "label": "Slide Subheading",
-          "default": "Traditional Deg-Bhapka copper pot distillation. 0% alcohol, 0% synthetic gas. Intimate 16-hour royal sillage."
+          "label": "Slide Subheading (Optional)"
         },
         {
           "type": "select",
@@ -726,18 +778,17 @@
         {
           "type": "range",
           "id": "overlay_opacity",
-          "min": 10,
+          "min": 0,
           "max": 90,
           "step": 5,
           "unit": "%",
           "label": "Background Dark Dimmer",
-          "default": 65
+          "default": 0
         },
         {
           "type": "text",
           "id": "button_label_1",
-          "label": "Primary Button Label",
-          "default": "Shop Best Sellers"
+          "label": "Primary Button Label (Optional)"
         },
         {
           "type": "url",
@@ -747,8 +798,7 @@
         {
           "type": "text",
           "id": "button_label_2",
-          "label": "Secondary Button Label",
-          "default": "Explore All Fragrances"
+          "label": "Secondary Button Label (Optional)"
         },
         {
           "type": "url",

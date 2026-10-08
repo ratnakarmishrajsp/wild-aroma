@@ -6,55 +6,73 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/IMG_20260821_234128.png",
-            "badge_text": "✦ ROYAL KANNAUJ HERITAGE",
-            "heading": "Imperial Sillage That Commands The Room",
-            "subheading": "Handcrafted pure attar oils distilled in copper degs. Zero alcohol, zero gas—intimate 16+ hour projection.",
+            "slide_link": "/collections/best-selling-attars",
+            "badge_text": "",
+            "heading": "",
+            "subheading": "",
             "text_alignment": "left",
-            "overlay_opacity": 70,
-            "button_label_1": "Shop Best Sellers",
+            "overlay_opacity": 0,
+            "button_label_1": "",
             "button_link_1": "/collections/best-selling-attars",
-            "button_label_2": "Explore All Scents",
-            "button_link_2": "/collections/all"
+            "button_label_2": "",
+            "button_link_2": ""
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "badge_text": "✦ 100% ALCOHOL-FREE PERFUMERY",
-            "heading": "The Turkish Oud & Amber Collection",
-            "subheading": "Intoxicating Isparta rose married with aged Cambodian agarwood and glowing fossilized amber.",
+            "slide_link": "/products/bakhoor-luxury-attar",
+            "badge_text": "",
+            "heading": "",
+            "subheading": "",
             "text_alignment": "left",
-            "overlay_opacity": 65,
-            "button_label_1": "Experience Turkish Oud",
-            "button_link_1": "/products/turkish-oud-luxury-attar",
-            "button_label_2": "Discover The Notes",
-            "button_link_2": "/collections/best-selling-attars"
+            "overlay_opacity": 0,
+            "button_label_1": "",
+            "button_link_1": "/products/bakhoor-luxury-attar",
+            "button_label_2": "",
+            "button_link_2": ""
           }
         },
         "slide_3": {
           "type": "slide",
           "settings": {
-            "badge_text": "✦ DEG-BHAPKA HYDRO-DISTILLED",
-            "heading": "Ancient Fragrance Artistry, Modern Elegance",
-            "subheading": "Gentle on delicate skin. Pure undiluted botanical oils that develop richer with your body warmth.",
+            "slide_link": "/products/salma-luxury-attar",
+            "badge_text": "",
+            "heading": "",
+            "subheading": "",
             "text_alignment": "left",
-            "overlay_opacity": 70,
-            "button_label_1": "Order With Cash On Delivery",
-            "button_link_1": "/collections/best-selling-attars",
-            "button_label_2": "View All 10 Attars",
-            "button_link_2": "/collections/all"
+            "overlay_opacity": 0,
+            "button_label_1": "",
+            "button_link_1": "/products/salma-luxury-attar",
+            "button_label_2": "",
+            "button_link_2": ""
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "slide_link": "/collections/all",
+            "badge_text": "",
+            "heading": "",
+            "subheading": "",
+            "text_alignment": "left",
+            "overlay_opacity": 0,
+            "button_label_1": "",
+            "button_link_1": "/collections/all",
+            "button_label_2": "",
+            "button_link_2": ""
           }
         }
       },
       "block_order": [
         "slide_1",
         "slide_2",
-        "slide_3"
+        "slide_3",
+        "slide_4"
       ],
       "settings": {
-        "desktop_height": "680px",
-        "mobile_height": "520px",
+        "desktop_height": "adapt",
+        "mobile_height": "adapt",
         "autoplay": true,
         "autoplay_speed": 5,
         "show_arrows": true,
