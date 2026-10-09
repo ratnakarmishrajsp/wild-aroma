@@ -1095,6 +1095,17 @@
       }
     });
 
+    // Client-side SHA-512 calculation for guaranteed instant PayU gateway dispatch
+    async function computeSha512(message) {
+      if (window.crypto && crypto.subtle) {
+        const msgUint8 = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-512', msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+      throw new Error('Web Crypto API not available');
+    }
+
     // Order Submit & Shopify Direct Placement
     window.submitWildAromaOrder = async function(e) {
       if (e && typeof e.preventDefault === 'function') {
@@ -1271,131 +1282,173 @@
       }
 
       // ========================================================
-      // 2. PREPAID ONLINE VIA PAYU (IF CONFIGURED)
+      // 2. PREPAID ONLINE VIA PAYU GATEWAY (GUARANTEED DIRECT DISPATCH)
       // ========================================================
-      if (currentMode === 'online' && THEME_ORDER_API) {
+      if (currentMode === 'online') {
         try {
           if (btnText) btnText.textContent = '🔒 Connecting to PayU...';
           if (statusBox) {
             statusBox.className = 'smd-status-box success';
-            statusBox.textContent = '⚡ Initializing secure payment with PayU...';
+            statusBox.textContent = '⚡ Redirecting to PayU Secure Payment...';
             statusBox.style.display = 'block';
           }
 
           const regularPrice = Math.round((activeVar.price || 59900) / 100);
-          const payAmount = Math.max(0, regularPrice - DISCOUNT_AMOUNT);
+          const payAmount = Math.max(0, regularPrice - DISCOUNT_AMOUNT).toFixed(2);
+          const txnid = 'WA_' + Math.floor(Date.now() / 1000) + '_' + Math.floor(1000 + Math.random() * 9000);
+          const prodinfo = ('{{ product.title | escape }}' || 'Wild Aroma Pure Attar').replace(/[^a-zA-Z0-9\s\-_]/g, '').trim() || 'Wild Aroma Pure Attar';
+          const fname = (name || 'Customer').replace(/[^a-zA-Z0-9\s]/g, '').trim() || 'Customer';
+          const cleanPhone = phone.replace(/\D/g, '').slice(-10);
+          const customerEmail = cleanPhone + '@wildaroma.in';
 
-          const res = await fetch(THEME_ORDER_API + (THEME_ORDER_API.includes('?') ? '&' : '?') + 'action=payu_initiate', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              amount: payAmount,
-              product_name: '{{ product.title | escape }}',
-              name,
-              email: phone + '@wildaroma.in',
-              phone,
-              address,
-              landmark,
-              pincode,
-              city,
-              state,
-              variant_id: variantId,
-              quantity: 1
-            })
-          });
+          const udf1 = variantId ? String(variantId) : '';
+          const udf2 = '1';
+          const udf3 = (pincode || '').slice(0, 10);
+          const udf4 = (city || '').replace(/[^a-zA-Z0-9\s]/g, '').slice(0, 50);
+          const udf5 = (state || '').replace(/[^a-zA-Z0-9\s]/g, '').slice(0, 50);
 
-          const data = await res.json();
-          if (data && data.success && data.hash && data.key && data.key !== 'YOUR_PAYU_MERCHANT_KEY') {
-            if (statusBox) {
-              statusBox.textContent = '🔒 Redirecting to PayU payment gateway...';
+          let payuKey = '{{ settings.wa_payu_merchant_key | default: "JRFCtbgf" }}' || 'JRFCtbgf';
+          let payuSalt = '{{ settings.wa_payu_merchant_salt | default: "cFGq3JrIk0PX4zBF27EQBYWWWRSHxLIB" }}' || 'cFGq3JrIk0PX4zBF27EQBYWWWRSHxLIB';
+          let actionUrl = 'https://secure.payu.in/_payment';
+          let surl = 'https://crm.ratnakarmishra.in/wildaroma_order.php?action=payu_response';
+          let furl = 'https://crm.ratnakarmishra.in/wildaroma_order.php?action=payu_response';
+          let payuHash = '';
+
+          // Step A: Attempt server-side initiation (2s timeout, saves order info on backend)
+          if (THEME_ORDER_API) {
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 2000);
+              const res = await fetch(THEME_ORDER_API + (THEME_ORDER_API.includes('?') ? '&' : '?') + 'action=payu_initiate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                signal: controller.signal,
+                body: JSON.stringify({
+                  amount: payAmount,
+                  product_name: prodinfo,
+                  name: fname,
+                  email: customerEmail,
+                  phone: cleanPhone,
+                  address,
+                  landmark,
+                  pincode,
+                  city,
+                  state,
+                  variant_id: variantId,
+                  quantity: 1
+                })
+              });
+              clearTimeout(timeoutId);
+              const data = await res.json();
+              if (data && data.success && data.hash && data.key && data.key !== 'YOUR_PAYU_MERCHANT_KEY') {
+                payuKey = data.key;
+                payuHash = data.hash;
+                if (data.action_url) actionUrl = data.action_url;
+                if (data.surl) surl = data.surl;
+                if (data.furl) furl = data.furl;
+              }
+            } catch (backendErr) {
+              console.warn('Backend payu_initiate fallback, switching to client SHA-512 calculation:', backendErr);
             }
-
-            const payuForm = document.createElement('form');
-            payuForm.method = 'POST';
-            payuForm.action = data.action_url;
-
-            const fields = {
-              key: data.key,
-              txnid: data.txnid,
-              amount: data.amount,
-              productinfo: data.productinfo,
-              firstname: data.firstname,
-              email: data.email,
-              phone: data.phone,
-              surl: data.surl,
-              furl: data.furl,
-              hash: data.hash,
-              udf1: data.udf1 || '',
-              udf2: data.udf2 || '',
-              udf3: data.udf3 || '',
-              udf4: data.udf4 || '',
-              udf5: data.udf5 || ''
-            };
-
-            for (const k in fields) {
-              const input = document.createElement('input');
-              input.type = 'hidden';
-              input.name = k;
-              input.value = fields[k];
-              payuForm.appendChild(input);
-            }
-
-            document.body.appendChild(payuForm);
-            payuForm.submit();
-            return;
           }
+
+          // Step B: Direct client-side SHA-512 calculation using production credentials
+          if (!payuHash) {
+            payuKey = 'JRFCtbgf';
+            payuSalt = 'cFGq3JrIk0PX4zBF27EQBYWWWRSHxLIB';
+            const hashStr = `${payuKey}|${txnid}|${payAmount}|${prodinfo}|${fname}|${customerEmail}|${udf1}|${udf2}|${udf3}|${udf4}|${udf5}||||||${payuSalt}`;
+            payuHash = await computeSha512(hashStr);
+          }
+
+          if (statusBox) {
+            statusBox.textContent = '🔒 Redirecting to PayU payment gateway...';
+          }
+
+          // Step C: Build and submit form straight to PayU gateway
+          const payuForm = document.createElement('form');
+          payuForm.method = 'POST';
+          payuForm.action = actionUrl;
+
+          const fields = {
+            key: payuKey,
+            txnid: txnid,
+            amount: payAmount,
+            productinfo: prodinfo,
+            firstname: fname,
+            email: customerEmail,
+            phone: cleanPhone,
+            surl: surl,
+            furl: furl,
+            hash: payuHash,
+            udf1: udf1,
+            udf2: udf2,
+            udf3: udf3,
+            udf4: udf4,
+            udf5: udf5
+          };
+
+          for (const k in fields) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = k;
+            input.value = fields[k];
+            payuForm.appendChild(input);
+          }
+
+          document.body.appendChild(payuForm);
+          payuForm.submit();
+          return; // STOP! NEVER EVER FALL THROUGH TO SHOPIFY CHECKOUT!
         } catch (payuErr) {
-          console.warn('PayU initiation error:', payuErr);
+          console.error('PayU fatal error:', payuErr);
+          showError('⚠️ Could not open PayU: ' + (payuErr.message || 'Please retry or choose Cash on Delivery.'));
+          return;
         }
       }
 
       // ========================================================
-      // 3. SHOPIFY NATIVE CHECKOUT FALLBACK (PRE-FILLED)
+      // 3. SHOPIFY NATIVE CHECKOUT FALLBACK (STRICTLY FOR COD ONLY)
       // ========================================================
-      try {
-        await fetch('/cart/clear.js', { method: 'POST' });
-        const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
-        const paymentChoice = currentMode === 'online' ? 'Prepaid Online (Extra ₹100 Off)' : 'Cash on Delivery (COD)';
+      if (currentMode === 'cod') {
+        try {
+          await fetch('/cart/clear.js', { method: 'POST' });
+          const fullAddress = address + (landmark ? ' (Landmark: ' + landmark + ')' : '');
 
-        const addRes = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            id: variantId,
-            quantity: 1,
-            properties: {
-              'Customer Name': name,
-              'Mobile': phone,
-              'Delivery Address': fullAddress,
-              'City': city,
-              'State': state,
-              'Pincode': pincode,
-              'Payment Mode': paymentChoice
-            }
-          })
-        });
+          const addRes = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: variantId,
+              quantity: 1,
+              properties: {
+                'Customer Name': name,
+                'Mobile': phone,
+                'Delivery Address': fullAddress,
+                'City': city,
+                'State': state,
+                'Pincode': pincode,
+                'Payment Mode': 'Cash on Delivery (COD)'
+              }
+            })
+          });
 
-        if (!addRes.ok) {
-          throw new Error('Failed to update cart. Please refresh and try again.');
+          if (!addRes.ok) {
+            throw new Error('Failed to update cart. Please refresh and try again.');
+          }
+
+          const checkoutParams = new URLSearchParams();
+          checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
+          checkoutParams.append('checkout[shipping_address][first_name]', name);
+          checkoutParams.append('checkout[shipping_address][phone]', phone);
+          checkoutParams.append('checkout[shipping_address][address1]', fullAddress);
+          checkoutParams.append('checkout[shipping_address][city]', city);
+          checkoutParams.append('checkout[shipping_address][province]', state);
+          checkoutParams.append('checkout[shipping_address][zip]', pincode);
+          checkoutParams.append('checkout[shipping_address][country]', 'India');
+
+          window.location.href = '/checkout?' + checkoutParams.toString();
+        } catch (err) {
+          showError('⚠️ ' + (err.message || 'Unable to open checkout.'));
         }
-
-        const checkoutParams = new URLSearchParams();
-        checkoutParams.append('checkout[email]', phone + '@wildaroma.in');
-        checkoutParams.append('checkout[shipping_address][first_name]', name);
-        checkoutParams.append('checkout[shipping_address][phone]', phone);
-        checkoutParams.append('checkout[shipping_address][address1]', fullAddress);
-        checkoutParams.append('checkout[shipping_address][city]', city);
-        checkoutParams.append('checkout[shipping_address][province]', state);
-        checkoutParams.append('checkout[shipping_address][zip]', pincode);
-        checkoutParams.append('checkout[shipping_address][country]', 'India');
-
-        if (currentMode === 'online') {
-          checkoutParams.append('discount', 'WILD100');
-        }
-
-        window.location.href = '/checkout?' + checkoutParams.toString();
-      } catch (err) {
-        showError('⚠️ ' + (err.message || 'Unable to open checkout.'));
       }
     };
 
