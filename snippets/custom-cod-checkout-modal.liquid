@@ -1275,6 +1275,13 @@
       // ========================================================
       if (currentMode === 'online' && THEME_ORDER_API) {
         try {
+          if (btnText) btnText.textContent = '🔒 Connecting to PayU...';
+          if (statusBox) {
+            statusBox.className = 'smd-status-box success';
+            statusBox.textContent = '⚡ Initializing secure payment with PayU...';
+            statusBox.style.display = 'block';
+          }
+
           const regularPrice = Math.round((activeVar.price || 59900) / 100);
           const payAmount = Math.max(0, regularPrice - DISCOUNT_AMOUNT);
 
@@ -1286,12 +1293,23 @@
               product_name: '{{ product.title | escape }}',
               name,
               email: phone + '@wildaroma.in',
-              phone
+              phone,
+              address,
+              landmark,
+              pincode,
+              city,
+              state,
+              variant_id: variantId,
+              quantity: 1
             })
           });
 
           const data = await res.json();
           if (data && data.success && data.hash && data.key && data.key !== 'YOUR_PAYU_MERCHANT_KEY') {
+            if (statusBox) {
+              statusBox.textContent = '🔒 Redirecting to PayU payment gateway...';
+            }
+
             const payuForm = document.createElement('form');
             payuForm.method = 'POST';
             payuForm.action = data.action_url;
@@ -1306,7 +1324,12 @@
               phone: data.phone,
               surl: data.surl,
               furl: data.furl,
-              hash: data.hash
+              hash: data.hash,
+              udf1: data.udf1 || '',
+              udf2: data.udf2 || '',
+              udf3: data.udf3 || '',
+              udf4: data.udf4 || '',
+              udf5: data.udf5 || ''
             };
 
             for (const k in fields) {

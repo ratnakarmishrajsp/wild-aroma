@@ -374,6 +374,9 @@
       "show_cart_note": false,
       "cart_drawer_collection": "",
       "cart_color_scheme": "scheme-1",
+      "wa_order_api_url": "https://crm.ratnakarmishra.in/wildaroma_order.php",
+      "wa_payu_merchant_key": "JRFCtbgf",
+      "wa_payu_merchant_salt": "cFGq3JrIk0PX4zBF27EQBYWWWRSHxLIB",
       "sections": {
         "main-password-header": {
           "type": "main-password-header",
