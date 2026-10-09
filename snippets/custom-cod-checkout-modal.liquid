@@ -54,11 +54,13 @@
         <div class="smd-form-group">
           <label class="smd-label" for="smd_input_address">Delivery Address (House / Flat No., Street, Colony) *</label>
           <input type="text" id="smd_input_address" class="smd-input" placeholder="House No., Building, Street Name, Area (Min. 20 Chars)" required minlength="20" autocomplete="street-address" />
+          <span id="smd-address-counter" class="smd-hint" style="display:none;"></span>
         </div>
 
         <div class="smd-form-group">
           <label class="smd-label" for="smd_input_landmark">Nearby Landmark *</label>
           <input type="text" id="smd_input_landmark" class="smd-input" placeholder="Nearby School, Hospital, Temple, or Famous Shop (Min. 20 Chars)" required minlength="20" />
+          <span id="smd-landmark-counter" class="smd-hint" style="display:none;"></span>
         </div>
 
         <div class="smd-row-2">
@@ -513,6 +515,26 @@
   .smd-input:focus {
     border-color: #16a34a !important;
     box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15) !important;
+  }
+
+  /* Red error highlight requested by merchant */
+  .smd-input.is-invalid,
+  .smd-input.smd-input-error {
+    background-color: #fef2f2 !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3.5px rgba(239, 68, 68, 0.22) !important;
+    animation: smd-shake 0.35s ease-in-out !important;
+  }
+  .smd-input.is-invalid:focus,
+  .smd-input.smd-input-error:focus {
+    background-color: #fff1f2 !important;
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.28) !important;
+  }
+  @keyframes smd-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-4px); }
+    40%, 80% { transform: translateX(4px); }
   }
 
   .smd-hint {
@@ -1021,6 +1043,75 @@
       });
     }
 
+    // Realtime field validation & error clearing
+    const nameInputEl = document.getElementById('smd_input_name');
+    const addressInputEl = document.getElementById('smd_input_address');
+    const landmarkInputEl = document.getElementById('smd_input_landmark');
+    const addressCounter = document.getElementById('smd-address-counter');
+    const landmarkCounter = document.getElementById('smd-landmark-counter');
+
+    if (landmarkInputEl) {
+      landmarkInputEl.addEventListener('input', function() {
+        this.classList.remove('is-invalid', 'smd-input-error');
+        const stBox = document.getElementById('WildAromaStatusBox');
+        if (stBox && stBox.textContent.includes('Landmark')) {
+          stBox.style.display = 'none';
+        }
+        const val = this.value.trim();
+        if (landmarkCounter) {
+          if (val.length === 0) {
+            landmarkCounter.style.display = 'none';
+          } else if (val.length < 20) {
+            landmarkCounter.style.display = 'block';
+            landmarkCounter.style.color = '#dc2626';
+            landmarkCounter.style.fontWeight = '600';
+            landmarkCounter.textContent = `⚠️ Landmark: ${val.length} / 20 characters (minimum 20 characters required)`;
+          } else {
+            landmarkCounter.style.display = 'block';
+            landmarkCounter.style.color = '#15803d';
+            landmarkCounter.style.fontWeight = '600';
+            landmarkCounter.textContent = `✓ Landmark verified (${val.length} characters)`;
+          }
+        }
+      });
+    }
+
+    if (addressInputEl) {
+      addressInputEl.addEventListener('input', function() {
+        this.classList.remove('is-invalid', 'smd-input-error');
+        const stBox = document.getElementById('WildAromaStatusBox');
+        if (stBox && stBox.textContent.includes('Address')) {
+          stBox.style.display = 'none';
+        }
+        const val = this.value.trim();
+        if (addressCounter) {
+          if (val.length === 0) {
+            addressCounter.style.display = 'none';
+          } else if (val.length < 20) {
+            addressCounter.style.display = 'block';
+            addressCounter.style.color = '#dc2626';
+            addressCounter.style.fontWeight = '600';
+            addressCounter.textContent = `⚠️ Address: ${val.length} / 20 characters (minimum 20 characters required)`;
+          } else {
+            addressCounter.style.display = 'block';
+            addressCounter.style.color = '#15803d';
+            addressCounter.style.fontWeight = '600';
+            addressCounter.textContent = `✓ Address verified (${val.length} characters)`;
+          }
+        }
+      });
+    }
+
+    // Generic auto-clear for other inputs
+    ['smd_input_name', 'smd_input_phone', 'smd_input_pincode', 'smd_input_city', 'smd_input_state'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', function() {
+          this.classList.remove('is-invalid', 'smd-input-error');
+        });
+      }
+    });
+
     // ========================================================
     // DUPLICATE / 3RD-ORDER LIMIT GUARD (24 Hours per Phone Number)
     // 1st & 2nd Orders: Smooth Instant Custom Modal Placement
@@ -1202,11 +1293,25 @@
       const btnText = document.getElementById('smd-btn-text');
       const waBlockCard = document.getElementById('WildAromaWhatsAppBlockCard');
 
-      function showError(msg) {
+      function clearAllErrors() {
+        document.querySelectorAll('.smd-input').forEach(input => {
+          input.classList.remove('is-invalid', 'smd-input-error');
+        });
+      }
+
+      function showError(msg, targetInput) {
+        clearAllErrors();
         if (!statusBox) return;
         statusBox.textContent = msg;
         statusBox.className = 'smd-status-box error';
         statusBox.style.display = 'block';
+        if (targetInput) {
+          targetInput.classList.add('is-invalid', 'smd-input-error');
+          targetInput.focus();
+          try {
+            targetInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch(e) {}
+        }
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.style.display = 'flex';
@@ -1227,40 +1332,33 @@
       const city = cityInput ? cityInput.value.trim() : '';
       const state = stateInput ? stateInput.value.trim() : '';
 
-      // Strict validation
+      // Strict validation with visual red highlight
       if (!name || name.length < 2) {
-        showError('⚠️ Please enter your full name.');
-        nameInput?.focus();
+        showError('⚠️ Please enter your full name.', nameInput);
         return;
       }
       if (!phone || phone.length !== 10) {
-        showError('⚠️ Please enter a valid 10-digit mobile number.');
-        phoneInput?.focus();
+        showError('⚠️ Please enter a valid 10-digit mobile number.', phoneInput);
         return;
       }
       if (!address || address.length < 20) {
-        showError('⚠️ Delivery Address must be at least 20 characters (House / Flat No., Street, Colony).');
-        addressInput?.focus();
+        showError('⚠️ Delivery Address must be at least 20 characters (House / Flat No., Street, Colony).', addressInput);
         return;
       }
       if (!landmark || landmark.length < 20) {
-        showError('⚠️ Nearby Landmark is mandatory (minimum 20 characters, e.g. nearby school, hospital, temple, or shop).');
-        landmarkInput?.focus();
+        showError('⚠️ Nearby Landmark is mandatory (minimum 20 characters, e.g. nearby school, hospital, temple, or shop).', landmarkInput);
         return;
       }
       if (!pincode || pincode.length !== 6) {
-        showError('⚠️ Please enter a valid 6-digit Pincode.');
-        pincodeInput?.focus();
+        showError('⚠️ Please enter a valid 6-digit Pincode.', pincodeInput);
         return;
       }
       if (!city) {
-        showError('⚠️ Please enter your City.');
-        cityInput?.focus();
+        showError('⚠️ Please enter your City.', cityInput);
         return;
       }
       if (!state) {
-        showError('⚠️ Please enter your State.');
-        stateInput?.focus();
+        showError('⚠️ Please enter your State.', stateInput);
         return;
       }
 
