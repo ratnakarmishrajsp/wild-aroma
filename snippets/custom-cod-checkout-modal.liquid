@@ -1345,13 +1345,21 @@
             statusBox.className = 'smd-status-box success';
             statusBox.textContent = '🎉 Order #' + (data.order_name || '') + ' Confirmed! Redirecting to confirmation page...';
 
-            // Clean form inputs so back button shows pristine state
-            const form = document.getElementById('WildAromaOrderForm');
-            if (form) form.reset();
+            // Fire Meta Browser Pixel Purchase event
+            try {
+              if (typeof fbq === 'function') {
+                fbq('track', 'Purchase', {
+                  value: data.order_price || 649.00,
+                  currency: 'INR',
+                  content_name: cartCheckoutData ? cartCheckoutData.title : 'Wild Aroma Pure Attar',
+                  content_type: 'product'
+                }, { eventID: data.pixel_event_id || ('wildaroma_order_' + (data.order_name || '')) });
+              }
+            } catch(e) {}
 
             setTimeout(() => {
               window.location.href = data.order_status_url;
-            }, 500);
+            }, 600);
             return;
           } else {
             throw new Error(data ? (data.error || 'Server returned failure') : 'Order API response missing');
