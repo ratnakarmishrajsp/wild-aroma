@@ -488,8 +488,6 @@ main,
 }
 </style>
 
-  
-    {% render 'sr-checkout' %}
     <script src="https://unpkg.com/spf-analytics@1.0.0/index.js" defer></script>
 </head>
 
@@ -577,5 +575,8 @@ main,
       {% section 'floating-call-widget' %}
     {% endcomment %}
   <script src="{{ 'meta-pixel-v4.js' | asset_url }}" defer></script>
+  {%- unless template.name == 'product' -%}
+    {%- render 'custom-cod-checkout-modal' -%}
+  {%- endunless -%}
 </body>
 </html>

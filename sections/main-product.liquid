@@ -963,7 +963,8 @@
       </div>
       
       <div class="exit-intent-actions">
-        <button id="ExitIntentClaimBtn" class="exit-intent-btn-primary">Claim Discount & Buy Now</button>
+        <button id="ExitIntentClaimBtn" class="exit-intent-btn-primary">⚡ Claim ₹100 OFF &amp; Pay Online</button>
+        <button id="ExitIntentCodBtn" class="exit-intent-btn-cod">📦 Order Cash on Delivery</button>
         <button id="ExitIntentCancelBtn" class="exit-intent-btn-secondary">No thanks, I will pay full price</button>
       </div>
     </div>
@@ -3162,6 +3163,28 @@
     box-shadow: 0 6px 18px rgba(204, 164, 59, 0.35);
   }
 
+  .exit-intent-btn-cod {
+    background: #141416;
+    color: #f5f5f5;
+    border: 1.5px solid #cca43b;
+    border-radius: 6px;
+    padding: 1.3rem 2.4rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .exit-intent-btn-cod:hover {
+    background: #1f1f23;
+    border-color: #e5b84c;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(204, 164, 59, 0.2);
+  }
+
   .exit-intent-btn-secondary {
     background: transparent;
     border: none;
@@ -3429,47 +3452,23 @@
       if (exitClose) exitClose.addEventListener('click', closeExitPopup);
       if (exitCancel) exitCancel.addEventListener('click', closeExitPopup);
 
-      // Claim discount & checkout button handler
+      // Claim discount & checkout button handlers (Wild Aroma Custom 1-Click Modal)
       if (exitClaim) {
         exitClaim.addEventListener('click', () => {
-          // Disable button and show loader text
-          exitClaim.disabled = true;
-          exitClaim.textContent = "Applying Discount...";
-          
-          // Apply discount in background via silent Shopify fetch call
-          fetch(`/discount/${discountCode}`)
-            .then(() => {
-              setTimeout(() => {
-                closeExitPopup();
-                
-                // Reset button text
-                exitClaim.disabled = false;
-                exitClaim.textContent = "Claim Discount & Buy Now";
-                
-                // Find Shiprocket checkout button (.sr-headless-checkout) or standard checkout
-                const srBtn = document.querySelector('form[action*="/cart/add"] .sr-headless-checkout') || document.querySelector('.sr-headless-checkout');
-                const standardBtn = document.querySelector('form[action="/cart/add"] [name="add"]') || document.querySelector('.shopify-payment-button__button');
-                
-                if (srBtn) {
-                  srBtn.click();
-                } else if (standardBtn) {
-                  standardBtn.click();
-                } else {
-                  // Fallback scroll to purchase form
-                  const purchaseForm = document.querySelector('form[action*="/cart/add"]') || document.querySelector('.product-form');
-                  if (purchaseForm) {
-                    purchaseForm.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }
-              }, 400);
-            })
-            .catch(err => {
-              console.error('Error applying discount:', err);
-              // Fallback: trigger checkout anyway
-              closeExitPopup();
-              const standardBtn = document.querySelector('form[action="/cart/add"] [name="add"]') || document.querySelector('.sr-headless-checkout');
-              if (standardBtn) standardBtn.click();
-            });
+          closeExitPopup();
+          if (typeof window.openWildAromaOrderModal === 'function') {
+            window.openWildAromaOrderModal('online');
+          }
+        });
+      }
+
+      const exitCod = document.getElementById('ExitIntentCodBtn');
+      if (exitCod) {
+        exitCod.addEventListener('click', () => {
+          closeExitPopup();
+          if (typeof window.openWildAromaOrderModal === 'function') {
+            window.openWildAromaOrderModal('cod');
+          }
         });
       }
     }

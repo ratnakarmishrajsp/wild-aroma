@@ -761,9 +761,10 @@
 <script>
   (function() {
     const IS_ADMIN_VIEWER = {{ is_theme_preview_or_admin | json }};
-    // Exact variant data from Shopify Liquid
-    const rawVariants = {{ product.variants | json }};
+    // Exact variant data from Shopify Liquid (safe fallback if non-product page)
+    const rawVariants = {{ product.variants | json }} || [];
     let currentMode = 'online'; // 'online' or 'cod'
+    let cartCheckoutData = null;
     const DISCOUNT_AMOUNT = 100; // Extra Rs 100 Off on Prepaid
 
     function ensureModalInBody() {
@@ -774,6 +775,17 @@
     }
 
     function getActiveVariant() {
+      if (cartCheckoutData) {
+        return {
+          id: cartCheckoutData.variantId,
+          price: cartCheckoutData.price,
+          compare_at_price: cartCheckoutData.compare_at_price,
+          title: cartCheckoutData.variantTitle
+        };
+      }
+      if (!rawVariants || !rawVariants.length) {
+        return null;
+      }
       const varInput = document.querySelector('.product-form input[name="id"], input[name="id"]:not([disabled]), select[name="id"]');
       const curId = varInput ? varInput.value : '';
       if (curId) {
@@ -809,9 +821,15 @@
       const switchLinkEl = document.getElementById('smd-switch-link');
 
       // Update titles
-      if (titleEl) titleEl.textContent = '{{ product.title | escape }}';
+      if (titleEl) {
+        titleEl.textContent = cartCheckoutData ? cartCheckoutData.title : ('{{ product.title | escape }}' || 'Wild Aroma Pure Attar');
+      }
       if (variantEl) {
-        variantEl.textContent = v.title && v.title !== 'Default Title' ? 'Size / Option: ' + v.title : 'Pure Attar Flacon (6 ML)';
+        if (cartCheckoutData) {
+          variantEl.textContent = cartCheckoutData.variantTitle;
+        } else {
+          variantEl.textContent = v.title && v.title !== 'Default Title' ? 'Size / Option: ' + v.title : 'Pure Attar Flacon (6 ML)';
+        }
       }
 
       if (currentMode === 'online') {
@@ -840,15 +858,18 @@
         if (switchLinkEl) switchLinkEl.textContent = '⚡ Want Extra ₹100 OFF? Switch to Prepaid Payment';
       }
 
-      // Also sync product page buttons pills
+      // Also sync product page buttons pills if on product page
       const codPill = document.getElementById('wa-custom-cod-pill');
       const onlinePill = document.getElementById('wa-custom-online-pill');
       if (codPill) codPill.textContent = formatRupees(regularRupees);
       if (onlinePill) onlinePill.textContent = formatRupees(prepaidRupees);
     }
 
-    window.openWildAromaOrderModal = function(preferredMode) {
+    window.openWildAromaOrderModal = function(preferredMode, isCart) {
       ensureModalInBody();
+      if (!isCart) {
+        cartCheckoutData = null;
+      }
       currentMode = preferredMode === 'cod' ? 'cod' : 'online';
       updateModalPricing();
 
@@ -861,6 +882,62 @@
       setTimeout(() => {
         modal.classList.add('is-open');
       }, 10);
+    };
+
+    window.openWildAromaOrderModalFromCart = async function(preferredMode) {
+      try {
+        const res = await fetch('/cart.js');
+        const cart = await res.json();
+
+        if (!cart || !cart.items || cart.items.length === 0) {
+          alert('Your cart is currently empty. Please add a fragrance flacon first.');
+          return;
+        }
+
+        // Close cart drawer if present
+        const drawer = document.querySelector('cart-drawer');
+        if (drawer && typeof drawer.close === 'function') {
+          drawer.close();
+        } else if (drawer && drawer.classList.contains('active')) {
+          drawer.classList.remove('active');
+        }
+
+        const firstItem = cart.items[0];
+        const itemCount = cart.item_count;
+        const totalCents = cart.total_price;
+        const originalCents = cart.original_total_price || totalCents;
+
+        let summaryTitle = '';
+        if (cart.items.length === 1) {
+          summaryTitle = firstItem.product_title || firstItem.title;
+        } else {
+          summaryTitle = `${itemCount} Luxury Items in Cart`;
+        }
+
+        let summaryVariant = '';
+        if (cart.items.length === 1) {
+          const vTitle = (firstItem.variant_title && firstItem.variant_title !== 'Default Title') ? firstItem.variant_title : 'Pure Attar Flacon';
+          summaryVariant = `${vTitle} (Qty: ${firstItem.quantity})`;
+        } else {
+          summaryVariant = cart.items.map(it => `${it.product_title || it.title} (${it.quantity})`).join(', ');
+        }
+
+        cartCheckoutData = {
+          isCart: true,
+          title: summaryTitle,
+          variantTitle: summaryVariant,
+          price: totalCents,
+          compare_at_price: Math.round(originalCents * 1.8),
+          variantId: firstItem.id,
+          quantity: firstItem.quantity,
+          items: cart.items.map(it => ({ variant_id: it.id, quantity: it.quantity, title: it.title, price: it.price }))
+        };
+
+        openWildAromaOrderModal(preferredMode || 'cod', true);
+      } catch(err) {
+        console.error('Error opening cart modal:', err);
+        openWildAromaOrderModal(preferredMode || 'cod');
+      }
     };
 
     window.closeWildAromaOrderModal = function() {
@@ -1056,7 +1133,7 @@
 
             const waBtn = document.getElementById('smd-wa-block-btn');
             if (waBtn) {
-              const prodTitle = encodeURIComponent('{{ product.title | escape }}');
+              const prodTitle = encodeURIComponent(cartCheckoutData ? cartCheckoutData.title : ('{{ product.title | escape }}' || 'Wild Aroma'));
               waBtn.href = `https://api.whatsapp.com/send?phone=919153334960&text=Hi%20Wild%20Aroma%2C%20I%20want%20to%20place%20an%20additional%20order%20for%20${prodTitle}.%20My%20Phone%3A%20${phone}`;
             }
           } else {
@@ -1136,7 +1213,7 @@
         }
         if (btnText) {
           const v = getActiveVariant();
-          const regularRupees = Math.round(v.price / 100);
+          const regularRupees = v ? Math.round(v.price / 100) : 549;
           btnText.textContent = currentMode === 'online' ? `PAY ₹${Math.max(0, regularRupees - DISCOUNT_AMOUNT)} WITH INSTANT UPI` : `CONFIRM CASH ON DELIVERY (₹${regularRupees})`;
         }
       }
@@ -1200,7 +1277,7 @@
 
         const waBtn = document.getElementById('smd-wa-block-btn');
         if (waBtn) {
-          const prodTitle = encodeURIComponent('{{ product.title | escape }}');
+          const prodTitle = encodeURIComponent(cartCheckoutData ? cartCheckoutData.title : ('{{ product.title | escape }}' || 'Wild Aroma'));
           waBtn.href = `https://api.whatsapp.com/send?phone=919153334960&text=Hi%20Wild%20Aroma%2C%20I%20want%20to%20place%20an%20additional%20order%20for%20${prodTitle}.%20My%20Phone%3A%20${phone}`;
         }
         return;
@@ -1239,7 +1316,7 @@
               city,
               state,
               variant_id: variantId,
-              quantity: 1,
+              quantity: cartCheckoutData ? cartCheckoutData.quantity : 1,
               is_tester: isTesterMode
             })
           });
@@ -1259,6 +1336,11 @@
           if (data && data.success && data.order_status_url) {
             // Record order in local cache
             recordOrder(phone, data.order_name);
+
+            // Clean cart if cart checkout
+            if (cartCheckoutData) {
+              try { fetch('/cart/clear.js', { method: 'POST' }); } catch(e) {}
+            }
 
             statusBox.className = 'smd-status-box success';
             statusBox.textContent = '🎉 Order #' + (data.order_name || '') + ' Confirmed! Redirecting to confirmation page...';
@@ -1296,13 +1378,15 @@
           const regularPrice = Math.round((activeVar.price || 59900) / 100);
           const payAmount = Math.max(0, regularPrice - DISCOUNT_AMOUNT).toFixed(2);
           const txnid = 'WA_' + Math.floor(Date.now() / 1000) + '_' + Math.floor(1000 + Math.random() * 9000);
-          const prodinfo = ('{{ product.title | escape }}' || 'Wild Aroma Pure Attar').replace(/[^a-zA-Z0-9\s\-_]/g, '').trim() || 'Wild Aroma Pure Attar';
+          const defaultProdTitle = ('{{ product.title | escape }}' || 'Wild Aroma Pure Attar');
+          const chosenTitle = cartCheckoutData ? cartCheckoutData.title : defaultProdTitle;
+          const prodinfo = (chosenTitle || 'Wild Aroma Pure Attar').replace(/[^a-zA-Z0-9\s\-_]/g, '').trim() || 'Wild Aroma Pure Attar';
           const fname = (name || 'Customer').replace(/[^a-zA-Z0-9\s]/g, '').trim() || 'Customer';
           const cleanPhone = phone.replace(/\D/g, '').slice(-10);
           const customerEmail = cleanPhone + '@wildaroma.in';
 
           const udf1 = variantId ? String(variantId) : '';
-          const udf2 = '1';
+          const udf2 = cartCheckoutData ? String(cartCheckoutData.quantity) : '1';
           const udf3 = (pincode || '').slice(0, 10);
           const udf4 = (city || '').replace(/[^a-zA-Z0-9\s]/g, '').slice(0, 50);
           const udf5 = (state || '').replace(/[^a-zA-Z0-9\s]/g, '').slice(0, 50);
@@ -1335,7 +1419,7 @@
                   city,
                   state,
                   variant_id: variantId,
-                  quantity: 1
+                  quantity: cartCheckoutData ? cartCheckoutData.quantity : 1
                 })
               });
               clearTimeout(timeoutId);
