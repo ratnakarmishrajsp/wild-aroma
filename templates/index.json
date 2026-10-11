@@ -138,8 +138,8 @@
             "custom_title": "Turkish Oud Luxury Attar",
             "custom_size": "6 ml Concentrated Attar",
             "custom_notes": "A Richer Ritual • Turkish Rose • Amber • Cambodian Oud",
-            "custom_price": "₹599",
-            "custom_compare_price": "₹1,199",
+            "custom_price": "₹899",
+            "custom_compare_price": "₹1,499",
             "custom_badge": "A RICHER RITUAL",
             "badge_style": "gold",
             "button_label": "Order Now",
@@ -174,21 +174,6 @@
             "badge_style": "dark",
             "button_label": "Order Now",
             "button_link": "/products/bakhoor-luxury-attar"
-          }
-        },
-        "prod_musk_al_oudh": {
-          "type": "product_card",
-          "settings": {
-            "product": "musk-al-oudh-luxury-attar",
-            "custom_title": "Musk Al Oudh Luxury Attar",
-            "custom_size": "6 ml Concentrated Attar",
-            "custom_notes": "Depth. Character. Presence • Pure White Musk • Aged Assam Oud",
-            "custom_price": "₹599",
-            "custom_compare_price": "₹1,199",
-            "custom_badge": "DEPTH & PRESENCE",
-            "badge_style": "gold",
-            "button_label": "Order Now",
-            "button_link": "/products/musk-al-oudh-luxury-attar"
           }
         },
         "prod_rasasi_oud": {
@@ -286,7 +271,6 @@
         "prod_turkish_oud",
         "prod_salma",
         "prod_bakhoor",
-        "prod_musk_al_oudh",
         "prod_rasasi_oud",
         "prod_park_avenue",
         "prod_musk_amber",
