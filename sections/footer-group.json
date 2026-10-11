@@ -62,6 +62,13 @@
             "menu": "footer"
           }
         },
+        "footer_policies": {
+          "type": "text",
+          "settings": {
+            "heading": "Policies & Legal",
+            "subtext": "<p><a href=\"/pages/privacy-policy\">Privacy Policy</a><br><a href=\"/pages/terms-and-conditions\">Terms &amp; Conditions</a><br><a href=\"/pages/shipping-policy\">Shipping &amp; Delivery Policy</a><br><a href=\"/pages/refund-policy\">Refund &amp; Replacement Policy</a><br><a href=\"/pages/contact-us\">Contact Us</a></p>"
+          }
+        },
         "footer_customer_service": {
           "type": "text",
           "settings": {
@@ -73,6 +80,7 @@
       "block_order": [
         "footer_brand_story",
         "footer_quick_links",
+        "footer_policies",
         "footer_customer_service"
       ],
       "settings": {

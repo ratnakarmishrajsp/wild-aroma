@@ -105,7 +105,7 @@
                       {{ block.settings.subtext }}
                     </div>
                   {%- when 'link_list' -%}
-                    {%- if block.settings.menu != blank -%}
+                    {%- if block.settings.menu != blank and block.settings.menu.links.size > 0 -%}
                       <ul class="footer-block__details-content list-unstyled">
                         {%- for link in block.settings.menu.links -%}
                           <li>
@@ -117,6 +117,14 @@
                             </a>
                           </li>
                         {%- endfor -%}
+                      </ul>
+                    {%- else -%}
+                      <ul class="footer-block__details-content list-unstyled">
+                        <li><a href="/products/turkish-oud-luxury-attar" class="link link--text list-menu__item list-menu__item--link">Turkish Oud Attar</a></li>
+                        <li><a href="/products/bakhoor-luxury-attar" class="link link--text list-menu__item list-menu__item--link">Bakhoor Luxury Attar</a></li>
+                        <li><a href="/products/salma-luxury-attar" class="link link--text list-menu__item list-menu__item--link">Salma Royal Floral</a></li>
+                        <li><a href="/products/rasasi-oud-al-mubarakh-luxury-attar" class="link link--text list-menu__item list-menu__item--link">Rasasi Oud Al Mubarakh</a></li>
+                        <li><a href="/pages/track-order" class="link link--text list-menu__item list-menu__item--link">Live Order Tracking</a></li>
                       </ul>
                     {%- endif -%}
                   {%- when 'brand_information' -%}
@@ -325,8 +333,9 @@
             <li><small class="copyright__content"><a href="/pages/privacy-policy">Privacy Policy</a></small></li>
             <li><small class="copyright__content"><a href="/pages/terms-and-conditions">Terms & Conditions</a></small></li>
             <li><small class="copyright__content"><a href="/pages/shipping-policy">Shipping Policy</a></small></li>
-            <li><small class="copyright__content"><a href="/pages/refund-policy">Refund Policy</a></small></li>
+            <li><small class="copyright__content"><a href="/pages/refund-policy">Refund & Replacement</a></small></li>
             <li><small class="copyright__content"><a href="/pages/contact-us">Contact Us</a></small></li>
+            <li><small class="copyright__content"><a href="/pages/track-order">Track Order</a></small></li>
           </ul>
         {%- endif -%}
       </div>
