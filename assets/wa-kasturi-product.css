@@ -73,4 +73,11 @@
  #MainContent:has(.wa-kasturi-story) .wa-kasturi-buy-summary{padding:16px}
 }
 @media(prefers-reduced-motion:reduce){.wa-kasturi-cta{transition:none}}
+@media(max-width:749px){
+ #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__content{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px}
+ #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__info,#MainContent:has(.wa-kasturi-story) .sticky-buy-bar__title-price{min-width:0}
+ #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__img{display:none}
+ #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__title{max-width:100%}
+ #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__btn{width:100%;min-width:0;padding:10px 8px!important;font-size:11px!important;line-height:1.4;letter-spacing:.02em!important;animation:none!important}
+}
 
