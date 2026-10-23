@@ -47,7 +47,7 @@
         "kasturi_offer": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"wa-kasturi-buy-summary\" id=\"KasturiPurchase\"><strong>Buy 1. Get 1 free.</strong><p>Two individual 6 ml roll-on bottles. Both bottles are included when you add one pack.</p></div>"
+            "custom_liquid": "<div class=\"wa-kasturi-buy-summary\" id=\"KasturiPurchase\"><strong class=\"wa-kasturi-offer-title\"><span>Buy 1.</span><span>Get 1 free.</span></strong><p>Two individual 6 ml roll-on bottles. Both bottles are included when you add one pack.</p></div>"
           }
         },
         "kasturi_summary": {
