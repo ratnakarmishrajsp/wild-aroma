@@ -1,0 +1,76 @@
+/* Kasturi's dedicated product template: scoped, native Shopify controls. */
+.wa-kasturi-story{--wa-ink:#163c30;--wa-muted:#465d52;--wa-gold:#9c7737;--wa-line:#d9d3c5;--wa-paper:#f6f3eb;background:var(--wa-paper);color:var(--wa-ink);padding:clamp(48px,7vw,88px) 20px}
+.wa-kasturi-description{max-width:1200px;margin:auto;font-family:var(--font-body-family,Arial,sans-serif);font-size:16px;line-height:1.75}
+.wa-kasturi-description *{box-sizing:border-box}
+.wa-kasturi-description h2{font-family:var(--font-heading-family,Georgia,serif);font-size:clamp(32px,3.8vw,50px);font-weight:500;line-height:1.12;letter-spacing:-.025em;color:var(--wa-ink);margin:0 0 24px;text-wrap:balance}
+.wa-kasturi-description h2 em{font-weight:400;color:#5c6d51}
+.wa-kasturi-description p{color:var(--wa-muted);margin:0 0 20px;max-width:65ch}
+.wa-kasturi-description strong{color:var(--wa-ink)}
+.wa-kasturi-description figure{margin:0;min-width:0}
+.wa-kasturi-description figure img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.wa-kasturi-description figcaption{font-size:12px;line-height:1.5;color:var(--wa-muted);margin-top:12px}
+.wa-kasturi-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,90px);align-items:start}
+.wa-kasturi-description .wa-kasturi-lead{font-size:20px;line-height:1.6;color:var(--wa-ink)}
+.wa-kasturi-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:36px 0 72px;padding:26px 0;border-top:1px solid var(--wa-line);border-bottom:1px solid var(--wa-line)}
+.wa-kasturi-facts dt{font-size:13px;color:var(--wa-muted);margin-bottom:6px}
+.wa-kasturi-facts dd{font-size:17px;font-weight:600;margin:0}
+.wa-kasturi-feature,.wa-kasturi-ritual{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,6vw,80px);margin:0 0 88px}
+.wa-kasturi-feature-copy{padding:12px 0}
+.wa-kasturi-offer-line{padding:20px 0;border-top:1px solid var(--wa-line);border-bottom:1px solid var(--wa-line)}
+.wa-kasturi-offer-line strong{font-size:20px}
+.wa-kasturi-plain-list{list-style:none;padding:0;margin:28px 0 0}
+.wa-kasturi-plain-list li{padding:14px 0}
+.wa-kasturi-plain-list strong,.wa-kasturi-steps strong{display:block;margin-bottom:4px;font-size:17px}
+.wa-kasturi-plain-list span,.wa-kasturi-steps span{display:block;color:var(--wa-muted);font-size:15px;line-height:1.65}
+.wa-kasturi-steps{padding:0 0 0 24px;margin:30px 0}
+.wa-kasturi-steps li{padding:0 0 20px 10px}
+.wa-kasturi-steps li::marker{font-size:15px;color:var(--wa-gold);font-weight:600}
+.wa-kasturi-description .wa-kasturi-care{font-size:12px;line-height:1.7;border-top:1px solid var(--wa-line);padding-top:16px}
+.wa-kasturi-faq{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,7vw,100px);margin:0 0 80px}
+.wa-kasturi-questions{border-top:1px solid var(--wa-line)}
+.wa-kasturi-questions details{border-bottom:1px solid var(--wa-line)}
+.wa-kasturi-questions summary{display:flex;justify-content:space-between;align-items:center;gap:20px;list-style:none;cursor:pointer;font-size:17px;font-weight:600;line-height:1.5;padding:22px 0;color:var(--wa-ink)}
+.wa-kasturi-questions summary::-webkit-details-marker{display:none}
+.wa-kasturi-questions summary::after{content:"+";font:400 24px/1 Arial,sans-serif;color:var(--wa-gold)}
+.wa-kasturi-questions details[open] summary::after{content:"−"}
+.wa-kasturi-questions details p{font-size:15px;line-height:1.75;margin:0 22px 22px 0}
+.wa-kasturi-closing{background:var(--wa-ink);color:#fffaf0;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:clamp(28px,5vw,56px);border-radius:4px}
+.wa-kasturi-closing h2{font-size:clamp(28px,3.2vw,42px);color:#fffaf0;margin-bottom:16px}
+.wa-kasturi-closing p{color:#d8e0d4;margin:0}
+.wa-kasturi-closing>div:last-child{text-align:center}
+.wa-kasturi-cta{display:inline-flex;gap:20px;align-items:center;justify-content:center;min-height:54px;padding:15px 23px;background:#f0dfb4;color:#163c30;text-decoration:none;font-size:15px;font-weight:600;line-height:1.5;border:1px solid transparent;transition:background-color .18s ease}
+.wa-kasturi-cta:hover{background:#fff0ca}
+.wa-kasturi-closing .wa-kasturi-delivery{font-size:12px;color:#e0e7dc;margin:14px 0 0}
+.wa-kasturi-description a:focus-visible,.wa-kasturi-description summary:focus-visible{outline:3px solid #ac8238;outline-offset:5px}
+.wa-kasturi-description ::selection{background:#dec58a;color:#123b2d}
+#KasturiPurchase{scroll-margin-top:120px}
+#MainContent:has(.wa-kasturi-story) .product__title h1{font-size:clamp(28px,3.2vw,42px);line-height:1.15;letter-spacing:-.025em;text-wrap:balance}
+#MainContent:has(.wa-kasturi-story) .price__container{font-variant-numeric:tabular-nums}
+#MainContent:has(.wa-kasturi-story) .price.price--on-sale .price-item--sale{color:#163c30!important}
+#MainContent:has(.wa-kasturi-story) .price .price__sale s{font-size:18px}
+#MainContent:has(.wa-kasturi-story) .product__text{font-size:15px;line-height:1.65}
+#MainContent:has(.wa-kasturi-story) .wa-kasturi-buy-summary{background:#f5f1e7;padding:18px 20px;margin:18px 0 22px;border:1px solid #ddd2b8;border-radius:4px}
+.wa-kasturi-buy-summary strong{font-size:19px;color:#173e31}
+.wa-kasturi-buy-summary p{font-size:14px;line-height:1.6;margin:6px 0 0;color:#46584d}
+.wa-kasturi-buy-trust{display:flex;gap:8px 18px;flex-wrap:wrap;font-size:13px;color:#264e3b;margin:0 0 14px;padding:8px 0}
+#MainContent:has(.wa-kasturi-story) .product__info-container .product-form__buttons{max-width:none}
+@media(min-width:990px){#MainContent:has(.wa-kasturi-story) .product{gap:6rem}#MainContent:has(.wa-kasturi-story) .product__media-wrapper{max-width:50%;width:calc(50% - 3rem)}#MainContent:has(.wa-kasturi-story) .product__info-wrapper{max-width:50%;width:calc(50% - 3rem);padding-left:0}}
+@media(max-width:749px){
+ .wa-kasturi-story{padding:44px 20px}
+ .wa-kasturi-intro,.wa-kasturi-feature,.wa-kasturi-ritual,.wa-kasturi-faq,.wa-kasturi-closing{grid-template-columns:minmax(0,1fr)}
+ .wa-kasturi-intro{gap:8px}
+ .wa-kasturi-description h2{font-size:34px}
+ .wa-kasturi-description .wa-kasturi-lead{font-size:18px}
+ .wa-kasturi-facts{grid-template-columns:1fr 1fr;gap:22px 16px;margin:24px 0 44px;padding:22px 0}
+ .wa-kasturi-facts dd{font-size:16px}
+ .wa-kasturi-feature,.wa-kasturi-ritual{gap:30px;margin-bottom:48px}
+ .wa-kasturi-ritual figure{grid-row:1}
+ .wa-kasturi-faq{gap:8px;margin-bottom:48px}
+ .wa-kasturi-closing{padding:28px 22px;gap:24px}
+ .wa-kasturi-closing>div:last-child{text-align:left}
+ .wa-kasturi-cta{width:100%;font-size:14px;padding:15px 12px;gap:12px}
+ #MainContent:has(.wa-kasturi-story) .product__info-wrapper{padding-top:22px}
+ #MainContent:has(.wa-kasturi-story) .wa-kasturi-buy-summary{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){.wa-kasturi-cta{transition:none}}
+

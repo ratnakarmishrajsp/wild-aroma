@@ -1,0 +1,27 @@
+{{ 'wa-kasturi-product.css' | asset_url | stylesheet_tag }}
+<div class="wa-kasturi-story" id="KasturiStory-{{ section.id }}" style="--wa-paper: {{ section.settings.background_color }};">
+  {{ product.description }}
+</div>
+{% style %}
+  {% if section.settings.hide_urgency %}
+    #MainContent:has(#KasturiStory-{{ section.id }}) .product__conversion-urgency { display: none !important; }
+  {% endif %}
+  {% if section.settings.hide_sales_notifications %}
+    #MainContent:has(#KasturiStory-{{ section.id }}) #SalesNotificationPopup { display: none !important; }
+  {% endif %}
+{% endstyle %}
+{% schema %}
+{
+  "name": "Kasturi product story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {"type":"paragraph","content":"Edit the story, photographs and FAQs in this product's description in Shopify Products. This section displays that editable HTML at full width."},
+    {"type":"color","id":"background_color","label":"Story background","default":"#f6f3eb"},
+    {"type":"checkbox","id":"hide_urgency","label":"Hide generic stock and dispatch tickers","default":true},
+    {"type":"checkbox","id":"hide_sales_notifications","label":"Hide generic purchase notifications","default":true}
+  ],
+  "presets": [{"name":"Kasturi product story"}]
+}
+{% endschema %}
+
