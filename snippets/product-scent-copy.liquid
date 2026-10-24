@@ -1,0 +1,151 @@
+{% comment %}
+  Editorial copy for the standard Wild Aroma product template.
+  Scent directions are descriptive accords, not an ingredient declaration.
+  Unknown products keep their Shopify description so catalog updates do not
+  silently receive invented notes.
+{% endcomment %}
+{%- liquid
+  assign scent_family = blank
+  assign scent_line = blank
+  assign story_heading = blank
+  assign story = blank
+  assign accord_one = blank
+  assign accord_two = blank
+  assign accord_three = blank
+  assign wear_moment = blank
+
+  case product.handle
+    when 'turkish-oud-luxury-attar'
+      assign scent_family = 'Floral · Woody · Warm'
+      assign scent_line = 'Rose · Amber · Oud'
+      assign story_heading = 'An entrance with warmth.'
+      assign story = 'Turkish Oud opens with a rose-led richness, then turns deeper and warmer as oud comes forward. It is a fragrance for evenings when you want your presence to feel considered and memorable.'
+      assign accord_one = 'Velvety rose'
+      assign accord_two = 'Golden amber'
+      assign accord_three = 'Deep oud'
+      assign wear_moment = 'Evenings, celebrations and unhurried occasions.'
+    when 'salma-luxury-attar'
+      assign scent_family = 'Floral · Soft · Intimate'
+      assign scent_line = 'White florals · Soft musk · Woods'
+      assign story_heading = 'A softer kind of statement.'
+      assign story = 'Salma has a gentle floral character with a soft, musky finish. It stays close in spirit: easy to reach for when you want fragrance to feel like a personal detail.'
+      assign accord_one = 'White florals'
+      assign accord_two = 'Soft musk'
+      assign accord_three = 'Gentle woods'
+      assign wear_moment = 'Everyday wear, close conversations and quiet evenings.'
+    when 'bakhoor-luxury-attar'
+      assign scent_family = 'Smoky · Woody · Resinous'
+      assign scent_line = 'Incense · Agarwood · Resin'
+      assign story_heading = 'The mood of an evening ritual.'
+      assign story = 'Bakhoor takes its cue from the warmth of incense. Smoky woods and resinous depth give it a contemplative character that feels especially at home after dusk.'
+      assign accord_one = 'Smoky incense'
+      assign accord_two = 'Agarwood'
+      assign accord_three = 'Warm resins'
+      assign wear_moment = 'Evenings, festive dressing and moments to slow down.'
+    when 'musk-al-oudh-luxury-attar'
+      assign scent_family = 'Musky · Woody · Deep'
+      assign scent_line = 'Musk · Oud · Dry woods'
+      assign story_heading = 'A balance of softness and depth.'
+      assign story = 'Musk Al Oudh brings a clean musk impression together with the darker character of oud. The result feels composed and quietly confident, with enough depth for a special occasion.'
+      assign accord_one = 'Clean musk'
+      assign accord_two = 'Oud'
+      assign accord_three = 'Dry woods'
+      assign wear_moment = 'Workdays that become evenings, and occasions that call for depth.'
+    when 'rasasi-oud-al-mubarakh-luxury-attar'
+      assign scent_family = 'Spiced · Woody · Warm'
+      assign scent_line = 'Saffron · Oud · Sandalwood'
+      assign story_heading = 'Made for the grand moment.'
+      assign story = 'Rasasi Oud Al Mubarakh leans into warm spice and rich woods. Its saffron-tinged character gives the first impression a sense of occasion; oud and sandalwood shape the finish.'
+      assign accord_one = 'Warm saffron'
+      assign accord_two = 'Rich oud'
+      assign accord_three = 'Sandalwood'
+      assign wear_moment = 'Celebrations, formal wear and gifting.'
+    when 'park-avenue-luxury-attar'
+      assign scent_family = 'Fresh · Woody · Clean'
+      assign scent_line = 'Bergamot · Cedar · Musk'
+      assign story_heading = 'A fresh start, with polish.'
+      assign story = 'Park Avenue begins bright and crisp before settling into a clean woody character. It feels modern and easy to wear, from the first meeting of the day to plans after work.'
+      assign accord_one = 'Bright citrus'
+      assign accord_two = 'Cedarwood'
+      assign accord_three = 'Clean musk'
+      assign wear_moment = 'Daily wear, work and daytime plans.'
+    when 'musk-amber-luxury-attar'
+      assign scent_family = 'Warm · Musky · Amber'
+      assign scent_line = 'Amber · Musk · Tonka'
+      assign story_heading = 'Warmth that stays close.'
+      assign story = 'Musk Amber feels like the last light of the day: golden, soft and inviting. Amber warmth meets a smooth musk character for a scent that suits slower, more personal moments.'
+      assign accord_one = 'Golden amber'
+      assign accord_two = 'Soft musk'
+      assign accord_three = 'Tonka warmth'
+      assign wear_moment = 'Cooler evenings, dinner plans and close company.'
+    when 'fantasia-luxury-attar'
+      assign scent_family = 'Fruity · Floral · Sweet'
+      assign scent_line = 'Fruit · Florals · Vanilla'
+      assign story_heading = 'A little room for wonder.'
+      assign story = 'Fantasia is playful from the first impression, with a fruit-led brightness that gives way to soft florals and a warm, sweet finish. Reach for it when the day calls for colour.'
+      assign accord_one = 'Lush fruit'
+      assign accord_two = 'Soft florals'
+      assign accord_three = 'Vanilla warmth'
+      assign wear_moment = 'Brunch, celebrations and cheerful everyday wear.'
+    when 'white-musk-luxury-attar'
+      assign scent_family = 'Clean · Powdery · Soft'
+      assign scent_line = 'Linen · Iris · White musk'
+      assign story_heading = 'The pleasure of keeping it simple.'
+      assign story = 'White Musk has an airy, freshly dressed feeling. A powdery floral softness and a clean musk character make it an understated scent to wear on repeat.'
+      assign accord_one = 'Fresh linen'
+      assign accord_two = 'Powdery iris'
+      assign accord_three = 'White musk'
+      assign wear_moment = 'Everyday wear, warm days and easy layering.'
+    when 'jannatul-firdaus-luxury-attar'
+      assign scent_family = 'Green · Floral · Woody'
+      assign scent_line = 'Green herbs · Florals · Sandalwood'
+      assign story_heading = 'A garden with a deeper soul.'
+      assign story = 'Jannatul Firdaus moves from leafy freshness into a floral and woody warmth. Its green character feels rooted in the familiar tradition of Indian attar while remaining easy to make your own.'
+      assign accord_one = 'Leafy greens'
+      assign accord_two = 'Soft florals'
+      assign accord_three = 'Sandalwood'
+      assign wear_moment = 'Daytime rituals, reflective moments and traditional occasions.'
+  endcase
+-%}
+
+{%- if placement == 'subtitle' -%}
+  {%- if scent_line != blank -%}
+    <p class="wa-product-scent-line" aria-label="Scent direction">{{ scent_family | escape }} <span aria-hidden="true">/</span> {{ scent_line | escape }}</p>
+  {%- endif -%}
+{%- elsif scent_line != blank -%}
+  <div class="wa-scent-profile">
+    <div class="wa-scent-profile__intro">
+      <p class="wa-scent-profile__eyebrow">THE SCENT STORY</p>
+      <h2>{{ story_heading | escape }}</h2>
+      <p>{{ story | escape }}</p>
+    </div>
+
+    <div class="wa-scent-profile__accords" aria-label="Fragrance character">
+      <div class="wa-scent-profile__section-head">
+        <h3>Fragrance character</h3>
+        <span>{{ scent_family | escape }}</span>
+      </div>
+      <div class="wa-scent-profile__accord-grid">
+        <div><span>01 / First impression</span><strong>{{ accord_one | escape }}</strong></div>
+        <div><span>02 / At the heart</span><strong>{{ accord_two | escape }}</strong></div>
+        <div><span>03 / The finish</span><strong>{{ accord_three | escape }}</strong></div>
+      </div>
+      <p class="wa-scent-profile__note">These accords describe the scent character; they are not an ingredients list.</p>
+    </div>
+
+    <div class="wa-scent-profile__details">
+      <details open>
+        <summary>When to wear it <span aria-hidden="true">+</span></summary>
+        <p>{{ wear_moment | escape }}</p>
+      </details>
+      <details>
+        <summary>How to wear your attar <span aria-hidden="true">+</span></summary>
+        <p>Apply a small amount to a pulse point, such as your wrist or neck. Let it settle on your skin, then add more if you prefer a stronger impression. Patch test before first use.</p>
+      </details>
+    </div>
+  </div>
+{%- elsif product.description != blank -%}
+  {{ product.description }}
+{%- else -%}
+  <p>{{ product.title | escape }} by Wild Aroma. Explore its fragrance character and choose the size that suits you.</p>
+{%- endif -%}

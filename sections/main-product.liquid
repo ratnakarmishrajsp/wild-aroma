@@ -15,6 +15,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {{ 'product-scent-profile.css' | asset_url | stylesheet_tag }}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -55,7 +56,7 @@
     }
 
     #ProductInfo-{{ section.id }} .price--on-sale .price-item--sale {
-      color: #D90429 !important;
+      color: #8a4b2d !important;
       font-weight: 800 !important;
     }
 
@@ -91,27 +92,27 @@
 
     /* Premium variant buttons styling (Bella Vita Style) */
     #ProductInfo-{{ section.id }} .product-form__input input[type='radio'] + label {
-      border: 1px solid #D5CEBF;
-      border-radius: 4px;
+      border: 1px solid #d8a77e;
+      border-radius: 24px;
       padding: 0.85rem 1.8rem;
       font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       transition: all 0.25s ease;
-      background: #FFFFFF;
-      color: #1A1A1A;
+      background: #fffaf5;
+      color: #5b3c29;
       cursor: pointer;
     }
 
     #ProductInfo-{{ section.id }} .product-form__input input[type='radio'] + label:hover {
-      border-color: #121212;
+      border-color: #a86942;
     }
 
     #ProductInfo-{{ section.id }} .product-form__input input[type='radio']:checked + label {
-      border-color: #121212;
-      background-color: #121212;
+      border-color: #a86942;
+      background-color: #d89059;
       color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(153, 91, 52, 0.18);
     }
 
     /* Elegant thumbnail gallery styling */
@@ -181,14 +182,10 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-          {%- assign has_conversion_urgency = false -%}
           {%- assign has_social_proof = false -%}
           {%- assign has_trust_badges = false -%}
           {%- assign has_whatsapp_button = false -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'conversion_urgency' -%}
-              {%- assign has_conversion_urgency = true -%}
-            {%- endif -%}
             {%- if block.type == 'social_proof' -%}
               {%- assign has_social_proof = true -%}
             {%- endif -%}
@@ -220,6 +217,7 @@
                     </h2>
                   </a>
                 </div>
+                {% render 'product-scent-copy', product: product, placement: 'subtitle' %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -255,17 +253,6 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
-                {%- if has_conversion_urgency == false -%}
-                  <div class="product__conversion-urgency">
-                    <div class="urgency-stock-ticker">
-                      <span class="pulse-red-dot"></span>
-                      <span class="ticker-text">Only <strong class="highlight-urgency" id="UrgencyStockCount">9</strong> sets left in this handcrafted batch!</span>
-                    </div>
-                    <div class="urgency-shipping-countdown">
-                      📦 Order within <strong class="highlight-urgency" id="UrgencyCountdown">00h 00m 00s</strong> to dispatch tomorrow morning!
-                    </div>
-                  </div>
-                {%- endif -%}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -341,11 +328,7 @@
                   </div>
                 {%- endif -%}
                 <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                  {%- if product.description != blank -%}
-                    {{ product.description }}
-                  {%- else -%}
-                    {% render 'luxury-product-description', product: product %}
-                  {%- endif -%}
+                  {% render 'product-scent-copy', product: product, placement: 'full' %}
                 </div>
               {%- when 'sku' -%}
                 <p
@@ -2826,12 +2809,12 @@
     font-weight: 800 !important;
     letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
-    background: linear-gradient(135deg, #a6172d 0%, #881020 100%) !important;
-    border: 1px solid #dc2626 !important;
+    background: linear-gradient(135deg, #df9a64 0%, #cc8150 100%) !important;
+    border: 1px solid #a86942 !important;
     color: #ffffff !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 15px rgba(185, 28, 28, 0.45) !important;
-    animation: waCodPulse 2.2s infinite ease-in-out !important;
+    border-radius: 24px !important;
+    box-shadow: 0 5px 14px rgba(153, 91, 52, 0.2) !important;
+    animation: none !important;
   }
 
   /* Sales Notification Popup styling */

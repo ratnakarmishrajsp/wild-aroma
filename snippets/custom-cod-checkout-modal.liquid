@@ -147,18 +147,16 @@
     z-index: -999 !important;
   }
 
-  /* -------------------------------------------------------------
-     3 BUTTON STYLES ON PRODUCT PAGE (01 ROYAL RED EDITION)
-     ------------------------------------------------------------- */
-  /* Button 1: Add to Cart (Compact & Unobtrusive) */
+  /* Warm sandal and terracotta purchase palette */
+  /* Add to cart stays quiet beside the direct purchase actions. */
   .wa-atc-btn {
     width: 100% !important;
     height: 42px !important;
     min-height: 42px !important;
-    background: #141416 !important;
-    color: #a1a1aa !important;
-    border: 1px solid #3f3f46 !important;
-    border-radius: 8px !important;
+    background: #fffaf5 !important;
+    color: #5b3c29 !important;
+    border: 1px solid #d8a77e !important;
+    border-radius: 24px !important;
     font-size: 13px !important;
     font-weight: 600 !important;
     letter-spacing: 0.06em !important;
@@ -169,37 +167,23 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: none !important;
+    animation: none !important;
   }
   .wa-atc-btn:hover {
-    background: #27272a !important;
-    color: #ffffff !important;
-    border-color: #71717a !important;
+    background: #f9eee3 !important;
+    color: #422b1d !important;
+    border-color: #b9784b !important;
   }
 
-  /* Button 2: Order Now Cash on Delivery (ROYAL RED with Pulse Animation) */
-  @keyframes waCodPulse {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 4px 14px rgba(166, 23, 45, 0.4), 0 0 0 0 rgba(166, 23, 45, 0.5);
-    }
-    50% {
-      transform: scale(1.02);
-      box-shadow: 0 8px 24px rgba(166, 23, 45, 0.75), 0 0 0 6px rgba(166, 23, 45, 0.12);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: 0 4px 14px rgba(166, 23, 45, 0.4), 0 0 0 0 rgba(166, 23, 45, 0.5);
-    }
-  }
-
+  /* Main buy action takes its warm clay tone from the reference. */
   .wa-btn-cod {
     width: 100% !important;
     height: 52px !important;
     min-height: 52px !important;
-    background: linear-gradient(135deg, #a6172d 0%, #881020 100%) !important;
-    border: 1px solid #dc2626 !important;
-    border-radius: 9px !important;
+    background: linear-gradient(135deg, #df9a64 0%, #cc8150 100%) !important;
+    border: 1px solid #a86942 !important;
+    border-radius: 26px !important;
     color: #ffffff !important;
     margin-bottom: 10px !important;
     cursor: pointer !important;
@@ -209,16 +193,16 @@
     text-align: center !important;
     padding: 0 16px !important;
     box-sizing: border-box !important;
-    transition: all 0.2s ease !important;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
     text-decoration: none !important;
-    animation: waCodPulse 2.2s infinite ease-in-out !important;
+    animation: none !important;
+    box-shadow: 0 5px 14px rgba(153, 91, 52, 0.2) !important;
     position: relative !important;
   }
   .wa-btn-cod:hover {
-    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%) !important;
-    animation-play-state: paused !important;
-    transform: translateY(-1px) scale(1.02) !important;
-    box-shadow: 0 10px 28px rgba(185, 28, 28, 0.8) !important;
+    background: linear-gradient(135deg, #d48a54 0%, #bd7043 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 9px 20px rgba(153, 91, 52, 0.26) !important;
   }
   .wa-btn-cod .wa-btn-label {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif !important;
@@ -236,15 +220,15 @@
     display: none !important;
   }
 
-  /* Button 3: Pay Online 100₹ Off (OPTION 01: DEEP BURGUNDY WITH LUXURY GOLD BORDER) */
+  /* Online payment is the deeper shade of the same palette. */
   .wa-btn-online {
     width: 100% !important;
     height: 52px !important;
     min-height: 52px !important;
-    background: linear-gradient(135deg, #6b0e1b 0%, #4a0812 100%) !important;
-    border: 2px solid #b8974f !important;
-    border-radius: 9px !important;
-    color: #fef08a !important;
+    background: linear-gradient(135deg, #6b4631 0%, #493022 100%) !important;
+    border: 1px solid #7b5239 !important;
+    border-radius: 26px !important;
+    color: #fff8ed !important;
     margin-bottom: 12px !important;
     cursor: pointer !important;
     display: flex !important;
@@ -254,21 +238,22 @@
     padding: 0 16px !important;
     box-sizing: border-box !important;
     transition: all 0.2s ease !important;
-    box-shadow: 0 6px 18px rgba(107, 14, 27, 0.35) !important;
+    box-shadow: 0 5px 14px rgba(76, 48, 32, 0.18) !important;
+    animation: none !important;
     text-decoration: none !important;
   }
   .wa-btn-online:hover {
-    background: linear-gradient(135deg, #7a1020 0%, #580a16 100%) !important;
-    border-color: #d4af37 !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 8px 24px rgba(184, 151, 79, 0.4) !important;
+    background: linear-gradient(135deg, #795139 0%, #563827 100%) !important;
+    border-color: #8e6244 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 9px 20px rgba(76, 48, 32, 0.24) !important;
   }
   .wa-btn-online .wa-btn-label {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif !important;
     font-size: 16px !important;
     font-weight: 800 !important;
     letter-spacing: 0.03em !important;
-    color: #fef08a !important;
+    color: #fff8ed !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -277,6 +262,32 @@
   }
   .wa-btn-online .wa-btn-price {
     display: none !important;
+  }
+  .wa-atc-btn::before,
+  .wa-btn-cod::before,
+  .wa-btn-online::before,
+  .sticky-buy-bar__btn::before {
+    display: none !important;
+  }
+  .sticky-buy-bar__btn {
+    background: linear-gradient(135deg, #df9a64 0%, #cc8150 100%) !important;
+    border-color: #a86942 !important;
+    border-radius: 24px !important;
+    color: #fff !important;
+    box-shadow: 0 5px 14px rgba(153, 91, 52, 0.2) !important;
+    animation: none !important;
+  }
+  .sticky-buy-bar__btn:hover {
+    background: linear-gradient(135deg, #d48a54 0%, #bd7043 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 9px 20px rgba(153, 91, 52, 0.26) !important;
+  }
+  .wa-atc-btn:focus-visible,
+  .wa-btn-cod:focus-visible,
+  .wa-btn-online:focus-visible,
+  .sticky-buy-bar__btn:focus-visible {
+    outline: 3px solid #503322 !important;
+    outline-offset: 3px !important;
   }
 
   /* -------------------------------------------------------------

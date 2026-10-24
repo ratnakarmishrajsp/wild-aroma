@@ -16,16 +16,16 @@
           "type": "title",
           "settings": {}
         },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
         "variant_picker_VXpTRR": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
           }
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
         },
         "buy_buttons_YKNBFb": {
           "type": "buy_buttons",
@@ -60,8 +60,8 @@
       },
       "block_order": [
         "title",
-        "variant_picker_VXpTRR",
         "price",
+        "variant_picker_VXpTRR",
         "buy_buttons_YKNBFb",
         "description",
         "collapsible_tab_shipping",
@@ -85,56 +85,6 @@
         "enable_exit_popup": true,
         "exit_popup_discount_code": "WILD100",
         "exit_popup_discount_amount": "â‚¹100"
-      }
-    },
-    "product_reviews_xCrieU": {
-      "type": "product-reviews",
-      "blocks": {
-        "review_JkHCbg": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "This Kasturi Attar has a soul. Its sillage is warm and projection is balanced. The packaging looks premium and fits a royal collection.",
-            "author": "Rohan Gupta",
-            "location": "Lucknow",
-            "verified_buyer": true
-          }
-        },
-        "review_tGc9Jk": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "Pure concentrated oil without any sticky feeling. It lasts all day on clothes. Incredible craft from Kannauj.",
-            "author": "Anjali Sen",
-            "location": "Bangalore",
-            "verified_buyer": true
-          }
-        },
-        "review_PtCeLR": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "Very close to traditional sandalwood base. Free from alcohol, so it does not irritate my skin. 5 stars on quality.",
-            "author": "Vikram Singh",
-            "location": "Jaipur",
-            "verified_buyer": true
-          }
-        }
-      },
-      "block_order": [
-        "review_JkHCbg",
-        "review_tGc9Jk",
-        "review_PtCeLR"
-      ],
-      "name": "Bespoke Product Reviews",
-      "settings": {
-        "title": "Patron Testimonials",
-        "heading_size": "h1",
-        "subtitle": "TRUST & APPRECIATION",
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 40
       }
     },
     "product_application_guide_section": {
@@ -197,10 +147,6 @@
         "usp_4"
       ],
       "settings": {
-        "title": "Pure & Authentic Fragrances",
-        "heading_size": "h1",
-        "subtitle": "The Wild Aroma Standard",
-        "columns_desktop": 4,
         "padding_top": 40,
         "padding_bottom": 40
       }
@@ -235,10 +181,8 @@
   "order": [
     "main",
     "frequently_bought_together",
-    "product_reviews_xCrieU",
     "product_application_guide_section",
     "custom_usp_grid_section",
     "related-products"
   ]
 }
-
