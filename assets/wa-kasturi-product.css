@@ -1,98 +1,233 @@
-/* Kasturi's dedicated product template: scoped, native Shopify controls. */
-.wa-kasturi-story{--wa-ink:#163c30;--wa-muted:#465d52;--wa-gold:#9c7737;--wa-line:#d9d3c5;--wa-paper:#f6f3eb;background:linear-gradient(150deg,#e8eee6 0%,var(--wa-paper) 34%,#f8f5ee 67%,#e8eee5 100%);color:var(--wa-ink);padding:clamp(48px,7vw,88px) 20px}
-.wa-kasturi-description{max-width:1200px;margin:auto;font-family:var(--font-body-family,Arial,sans-serif);font-size:16px;line-height:1.75}
-.wa-kasturi-description *{box-sizing:border-box}
-.wa-kasturi-description h2{font-family:var(--font-heading-family,Georgia,serif);font-size:clamp(32px,3.8vw,50px);font-weight:500;line-height:1.12;letter-spacing:-.025em;color:var(--wa-ink);margin:0 0 24px;text-wrap:balance}
-.wa-kasturi-description h2 em{font-weight:400;color:#5c6d51}
-.wa-kasturi-description p{color:var(--wa-muted);margin:0 0 20px;max-width:65ch}
-.wa-kasturi-description strong{color:var(--wa-ink)}
-.wa-kasturi-description figure{margin:0;min-width:0}
-.wa-kasturi-description figure img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
-.wa-kasturi-description figcaption{font-size:12px;line-height:1.5;color:var(--wa-muted);margin-top:12px}
-.wa-kasturi-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,90px);align-items:start}
-.wa-kasturi-description .wa-kasturi-lead{font-size:20px;line-height:1.6;color:var(--wa-ink)}
-.wa-kasturi-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:36px 0 72px;padding:26px 0;border-top:1px solid var(--wa-line);border-bottom:1px solid var(--wa-line)}
-.wa-kasturi-facts dt{font-size:13px;color:var(--wa-muted);margin-bottom:6px}
-.wa-kasturi-facts dd{font-size:17px;font-weight:600;margin:0}
-.wa-kasturi-feature,.wa-kasturi-ritual{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(32px,6vw,80px);margin:0 0 88px}
-.wa-kasturi-feature-copy{padding:12px 0}
-.wa-kasturi-offer-line{padding:20px 0;border-top:1px solid var(--wa-line);border-bottom:1px solid var(--wa-line)}
-.wa-kasturi-offer-line strong{font-size:20px}
-.wa-kasturi-plain-list{list-style:none;padding:0;margin:28px 0 0}
-.wa-kasturi-plain-list li{padding:14px 0}
-.wa-kasturi-plain-list strong,.wa-kasturi-steps strong{display:block;margin-bottom:4px;font-size:17px}
-.wa-kasturi-plain-list span,.wa-kasturi-steps span{display:block;color:var(--wa-muted);font-size:15px;line-height:1.65}
-.wa-kasturi-steps{padding:0 0 0 24px;margin:30px 0}
-.wa-kasturi-steps li{padding:0 0 20px 10px}
-.wa-kasturi-steps li::marker{font-size:15px;color:var(--wa-gold);font-weight:600}
-.wa-kasturi-description .wa-kasturi-care{font-size:12px;line-height:1.7;border-top:1px solid var(--wa-line);padding-top:16px}
-.wa-kasturi-faq{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,7vw,100px);margin:0 0 80px}
-.wa-kasturi-questions{border-top:1px solid var(--wa-line)}
-.wa-kasturi-questions details{border-bottom:1px solid var(--wa-line)}
-.wa-kasturi-questions summary{display:flex;justify-content:space-between;align-items:center;gap:20px;list-style:none;cursor:pointer;font-size:17px;font-weight:600;line-height:1.5;padding:22px 0;color:var(--wa-ink)}
-.wa-kasturi-questions summary::-webkit-details-marker{display:none}
-.wa-kasturi-questions summary::after{content:"+";font:400 24px/1 Arial,sans-serif;color:var(--wa-gold)}
-.wa-kasturi-questions details[open] summary::after{content:"−"}
-.wa-kasturi-questions details p{font-size:15px;line-height:1.75;margin:0 22px 22px 0}
-.wa-kasturi-closing{background:var(--wa-ink);color:#fffaf0;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:clamp(28px,5vw,56px);border-radius:4px}
-.wa-kasturi-closing h2{font-size:clamp(28px,3.2vw,42px);color:#fffaf0;margin-bottom:16px}
-.wa-kasturi-closing p{color:#d8e0d4;margin:0}
-.wa-kasturi-closing>div:last-child{text-align:center}
-.wa-kasturi-cta{display:inline-flex;gap:20px;align-items:center;justify-content:center;min-height:54px;padding:15px 23px;background:#f0dfb4;color:#163c30;text-decoration:none;font-size:15px;font-weight:600;line-height:1.5;border:1px solid transparent;transition:background-color .18s ease}
-.wa-kasturi-cta:hover{background:#fff0ca}
-.wa-kasturi-closing .wa-kasturi-delivery{font-size:12px;color:#e0e7dc;margin:14px 0 0}
-.wa-kasturi-description a:focus-visible,.wa-kasturi-description summary:focus-visible{outline:3px solid #ac8238;outline-offset:5px}
-.wa-kasturi-description ::selection{background:#dec58a;color:#123b2d}
-#KasturiPurchase{scroll-margin-top:120px}
-#MainContent:has(.wa-kasturi-story) .product__title h1{font-size:clamp(28px,3.2vw,42px);line-height:1.15;letter-spacing:-.025em;text-wrap:balance}
-#MainContent:has(.wa-kasturi-story) .price__container{font-variant-numeric:tabular-nums}
-#MainContent:has(.wa-kasturi-story) .price.price--on-sale .price-item--sale{color:#163c30!important}
-#MainContent:has(.wa-kasturi-story) .price .price__sale s{font-size:18px}
-#MainContent:has(.wa-kasturi-story) .product__text{font-size:15px;line-height:1.65}
-#MainContent:has(.wa-kasturi-story) .wa-kasturi-buy-summary{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(118deg,#102f28 0%,#225344 62%,#173c33 100%);padding:24px 26px;margin:20px 0 24px;border:0;border-radius:14px;color:#fffaf0}
-.wa-kasturi-buy-summary::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 30%,rgb(244 221 165 / .18) 48%,transparent 66%);transform:translateX(-110%);animation:wa-kasturi-gold-light 1400ms cubic-bezier(.16,1,.3,1) 180ms 1 both}
-.wa-kasturi-buy-summary .wa-kasturi-offer-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;font-family:var(--font-body-family,Arial,sans-serif);font-size:clamp(23px,2.3vw,30px);line-height:1.2;letter-spacing:-.025em;font-weight:600;color:#fffaf0}
-.wa-kasturi-offer-title span:last-child{color:#f4dda5}
-.wa-kasturi-buy-summary p{position:relative;font-size:14px;line-height:1.65;margin:12px 0 0;color:#e3ede4;max-width:49ch}
-@keyframes wa-kasturi-gold-light{to{transform:translateX(110%)}}
-.wa-kasturi-facts{background:#173e32;color:#fffaf0;border:0;border-radius:14px;padding:26px 30px;gap:24px}
-.wa-kasturi-facts dt{color:#d6e3d7}
-.wa-kasturi-facts dd{color:#fffaf0}
-.wa-kasturi-description figure img{border-radius:14px}
-.wa-kasturi-offer-line{background:#e2e9df;border:0;border-radius:12px;padding:22px 24px}
-.wa-kasturi-closing{border-radius:16px;background:linear-gradient(120deg,#112f27,#285541)}
-.wa-kasturi-cta{border-radius:8px;transition:background-color .18s ease,color .18s ease}
-.wa-kasturi-questions summary{transition:color .18s ease}
-.wa-kasturi-questions summary:hover{color:#75531e}
-.wa-kasturi-questions details[open] summary{color:#75531e}
-.wa-kasturi-buy-trust{display:flex;gap:8px 18px;flex-wrap:wrap;font-size:13px;color:#264e3b;margin:0 0 14px;padding:8px 0}
-#MainContent:has(.wa-kasturi-story) .product__info-container .product-form__buttons{max-width:none}
-@media(min-width:990px){#MainContent:has(.wa-kasturi-story) .product{gap:6rem}#MainContent:has(.wa-kasturi-story) .product__media-wrapper{max-width:50%;width:calc(50% - 3rem)}#MainContent:has(.wa-kasturi-story) .product__info-wrapper{max-width:50%;width:calc(50% - 3rem);padding-left:0}}
-@media(max-width:749px){
- .wa-kasturi-story{padding:44px 20px}
- .wa-kasturi-intro,.wa-kasturi-feature,.wa-kasturi-ritual,.wa-kasturi-faq,.wa-kasturi-closing{grid-template-columns:minmax(0,1fr)}
- .wa-kasturi-intro{gap:8px}
- .wa-kasturi-description h2{font-size:34px}
- .wa-kasturi-description .wa-kasturi-lead{font-size:18px}
- .wa-kasturi-facts{grid-template-columns:1fr 1fr;gap:22px 16px;margin:24px 0 44px;padding:22px 0}
- .wa-kasturi-facts dd{font-size:16px}
- .wa-kasturi-feature,.wa-kasturi-ritual{gap:30px;margin-bottom:48px}
- .wa-kasturi-ritual figure{grid-row:1}
- .wa-kasturi-faq{gap:8px;margin-bottom:48px}
- .wa-kasturi-closing{padding:28px 22px;gap:24px}
- .wa-kasturi-closing>div:last-child{text-align:left}
- .wa-kasturi-cta{width:100%;font-size:14px;padding:15px 12px;gap:12px}
- #MainContent:has(.wa-kasturi-story) .product__info-wrapper{padding-top:22px}
- #MainContent:has(.wa-kasturi-story) .wa-kasturi-buy-summary{padding:22px}
- .wa-kasturi-facts{padding:24px 20px}
- .wa-kasturi-offer-line{padding:20px}
-}
-@media(prefers-reduced-motion:reduce){.wa-kasturi-cta,.wa-kasturi-questions summary{transition:none}.wa-kasturi-buy-summary::after{animation:none;display:none}}
-@media(max-width:749px){
- #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__content{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px}
- #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__info,#MainContent:has(.wa-kasturi-story) .sticky-buy-bar__title-price{min-width:0}
- #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__img{display:none}
- #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__title{max-width:100%}
- #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__btn{width:100%;min-width:0;padding:10px 8px!important;font-size:11px!important;line-height:1.4;letter-spacing:.02em!important;animation:none!important}
+/* Dedicated Kasturi page. The product description remains editable in Shopify. */
+.wa-kasturi-story {
+  --wa-ink: #18372d;
+  --wa-muted: #52645a;
+  --wa-line: #d9dfd6;
+  --wa-paper: #f6f3eb;
+  --wa-red: #b8202c;
+  background: linear-gradient(160deg, #f2f5ef 0%, var(--wa-paper) 58%, #f7f8f3 100%);
+  color: var(--wa-ink);
+  padding: clamp(48px, 7vw, 88px) 20px;
 }
 
+.wa-kasturi-description {
+  max-width: 1120px;
+  margin: auto;
+  font-family: var(--font-body-family, Arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.wa-kasturi-description * { box-sizing: border-box; }
+.wa-kasturi-description h2,
+.wa-kasturi-description h3 {
+  color: var(--wa-ink);
+  font-family: var(--font-heading-family, Georgia, serif);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -.025em;
+  margin: 0;
+}
+.wa-kasturi-description h2 { font-size: clamp(31px, 3.8vw, 48px); }
+.wa-kasturi-description h2 em { color: #60775f; font-weight: 400; }
+.wa-kasturi-description p { margin: 0; color: var(--wa-muted); }
+.wa-kasturi-eyebrow,
+.wa-kasturi-description .wa-kasturi-eyebrow {
+  margin-bottom: 13px;
+  color: #7c6e4a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+
+.wa-kasturi-intro { max-width: 760px; margin: 0 0 38px; }
+.wa-kasturi-intro h2 { margin-bottom: 20px; }
+.wa-kasturi-intro .wa-kasturi-lead {
+  color: var(--wa-ink);
+  font-size: clamp(18px, 2vw, 21px);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.wa-kasturi-offer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: clamp(25px, 4vw, 40px);
+  border-radius: 14px;
+  background: var(--wa-ink);
+  color: #fff;
+}
+.wa-kasturi-offer-kicker,
+.wa-kasturi-closing > div > span {
+  color: #d6c796;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+.wa-kasturi-offer h3 { color: #fff; font-size: clamp(27px, 3vw, 38px); margin: 8px 0; }
+.wa-kasturi-offer p { max-width: 53ch; color: #e5ebe5; font-size: 15px; }
+.wa-kasturi-offer > strong {
+  flex: 0 0 auto;
+  min-width: 145px;
+  padding-left: 26px;
+  border-left: 1px solid #5b7565;
+  font-size: 24px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.wa-kasturi-offer > strong span { display: block; color: #d6e0d5; font-size: 12px; font-weight: 500; }
+
+.wa-kasturi-profile,
+.wa-kasturi-essentials { padding: clamp(46px, 7vw, 78px) 0; border-bottom: 1px solid var(--wa-line); }
+.wa-kasturi-section-heading { max-width: 670px; margin-bottom: 27px; }
+.wa-kasturi-section-heading h2 { margin-bottom: 12px; }
+.wa-kasturi-notes,
+.wa-kasturi-essential-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.wa-kasturi-notes { margin: 0; }
+.wa-kasturi-notes > div,
+.wa-kasturi-essential-grid > div {
+  padding: 24px;
+  border: 1px solid var(--wa-line);
+  border-radius: 10px;
+  background: #fffdf8;
+}
+.wa-kasturi-notes dt,
+.wa-kasturi-essential-grid span {
+  margin-bottom: 10px;
+  color: #847454;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.wa-kasturi-notes dd { margin: 0; color: var(--wa-ink); font-size: 20px; font-weight: 600; }
+.wa-kasturi-description .wa-kasturi-note-disclaimer { margin-top: 13px; font-size: 12px; }
+.wa-kasturi-essential-grid h3 { font-family: var(--font-body-family, Arial, sans-serif); font-size: 18px; font-weight: 700; margin: 7px 0; }
+.wa-kasturi-essential-grid p { font-size: 14px; }
+
+.wa-kasturi-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(25px, 6vw, 80px); padding: clamp(46px, 7vw, 78px) 0; }
+.wa-kasturi-questions { border-top: 1px solid var(--wa-line); }
+.wa-kasturi-questions details { border-bottom: 1px solid var(--wa-line); }
+.wa-kasturi-questions summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 19px 0;
+  color: var(--wa-ink);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  list-style: none;
+}
+.wa-kasturi-questions summary::-webkit-details-marker { display: none; }
+.wa-kasturi-questions summary::after { content: '+'; color: #9b7648; font-size: 24px; font-weight: 400; }
+.wa-kasturi-questions details[open] summary::after { content: '−'; }
+.wa-kasturi-questions details p { padding: 0 25px 20px 0; font-size: 14px; }
+
+.wa-kasturi-closing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: clamp(25px, 4vw, 40px);
+  border-radius: 14px;
+  background: #17362b;
+}
+.wa-kasturi-closing h2 { color: #fff; font-size: clamp(27px, 3vw, 38px); margin: 8px 0; }
+.wa-kasturi-closing p { color: #dfe7df; font-size: 14px; }
+.wa-kasturi-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex: 0 0 auto;
+  min-height: 52px;
+  padding: 12px 22px;
+  border-radius: 26px;
+  background: var(--wa-red);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .18s ease;
+}
+.wa-kasturi-cta:hover { background: #951923; color: #fff; }
+.wa-kasturi-description a:focus-visible,
+.wa-kasturi-description summary:focus-visible { outline: 3px solid #b48a4c; outline-offset: 4px; }
+
+/* Purchase controls are scoped to this product template only. */
+#KasturiPurchase { scroll-margin-top: 120px; }
+#MainContent:has(.wa-kasturi-story) .product__title h1 { font-size: clamp(28px, 3.2vw, 42px); line-height: 1.15; text-wrap: balance; }
+#MainContent:has(.wa-kasturi-story) .price.price--on-sale .price-item--sale { color: #17362b !important; }
+#MainContent:has(.wa-kasturi-story) .product__info-container .product-form__buttons { max-width: none; }
+#MainContent:has(.wa-kasturi-story) .wa-kasturi-buy-summary {
+  padding: 23px 26px;
+  margin: 20px 0 24px;
+  border-radius: 12px;
+  background: #17362b;
+  color: #fff;
+}
+.wa-kasturi-buy-summary .wa-kasturi-offer-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  color: #fff;
+  font-size: clamp(23px, 2.3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.wa-kasturi-offer-title span:last-child { color: #e7d59f; }
+.wa-kasturi-buy-summary p { margin: 10px 0 0; color: #e5ebe5; font-size: 14px; line-height: 1.6; }
+.wa-kasturi-buy-trust { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 14px; color: #264e3b; font-size: 13px; }
+
+#MainContent:has(.wa-kasturi-story) .wa-btn-cod,
+#MainContent:has(.wa-kasturi-story) .sticky-buy-bar__btn {
+  background: #b8202c !important;
+  border-color: #b8202c !important;
+  color: #fff !important;
+  box-shadow: 0 5px 14px rgb(184 32 44 / .18) !important;
+}
+#MainContent:has(.wa-kasturi-story) .wa-btn-cod:hover,
+#MainContent:has(.wa-kasturi-story) .sticky-buy-bar__btn:hover {
+  background: #951923 !important;
+  border-color: #951923 !important;
+}
+#MainContent:has(.wa-kasturi-story) .wa-btn-cod .wa-btn-label { color: #fff !important; }
+#MainContent:has(.wa-kasturi-story) .wa-btn-online {
+  background: #171717 !important;
+  border-color: #171717 !important;
+  color: #fff !important;
+  box-shadow: 0 5px 14px rgb(0 0 0 / .16) !important;
+}
+#MainContent:has(.wa-kasturi-story) .wa-btn-online:hover { background: #303030 !important; border-color: #303030 !important; }
+#MainContent:has(.wa-kasturi-story) .wa-btn-online .wa-btn-label { color: #fff !important; }
+
+@media (min-width: 990px) {
+  #MainContent:has(.wa-kasturi-story) .product { gap: 6rem; }
+  #MainContent:has(.wa-kasturi-story) .product__media-wrapper { max-width: 50%; width: calc(50% - 3rem); }
+  #MainContent:has(.wa-kasturi-story) .product__info-wrapper { max-width: 50%; width: calc(50% - 3rem); padding-left: 0; }
+}
+
+@media (max-width: 749px) {
+  .wa-kasturi-story { padding: 44px 20px; }
+  .wa-kasturi-offer,
+  .wa-kasturi-closing { align-items: stretch; flex-direction: column; }
+  .wa-kasturi-offer > strong { border-left: 0; border-top: 1px solid #5b7565; padding: 14px 0 0; }
+  .wa-kasturi-notes,
+  .wa-kasturi-essential-grid,
+  .wa-kasturi-faq { grid-template-columns: minmax(0, 1fr); }
+  .wa-kasturi-faq { gap: 0; }
+  .wa-kasturi-cta { width: 100%; }
+  #MainContent:has(.wa-kasturi-story) .product__info-wrapper { padding-top: 22px; }
+  #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__content { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 12px; }
+  #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__info,
+  #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__title-price { min-width: 0; }
+  #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__img { display: none; }
+  #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__title { max-width: 100%; }
+  #MainContent:has(.wa-kasturi-story) .sticky-buy-bar__btn { width: 100%; min-width: 0; padding: 10px 8px !important; font-size: 11px !important; line-height: 1.4; }
+}
+
+@media (prefers-reduced-motion: reduce) { .wa-kasturi-cta { transition: none; } }
