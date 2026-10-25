@@ -1,0 +1,188 @@
+{% comment %}Private operations view. Contact data is fetched only after server-side key verification.{% endcomment %}
+<meta name="robots" content="noindex, nofollow">
+<style>
+  .wa-recovery { min-height: 80vh; padding: 48px 20px 80px; background: #101319; color: #f6f3eb; font-family: system-ui, sans-serif; }
+  .wa-recovery__inner { max-width: 1180px; margin: 0 auto; }
+  .wa-recovery__eyebrow { color: #cba96b; font-size: 12px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+  .wa-recovery h1 { margin: 8px 0 12px; font-size: clamp(30px, 4vw, 48px); line-height: 1.1; }
+  .wa-recovery p { color: #aeb5bf; line-height: 1.6; }
+  .wa-recovery__login, .wa-recovery__panel { margin-top: 28px; padding: 24px; border: 1px solid #3b3f43; border-radius: 18px; background: #191d25; }
+  .wa-recovery__login { max-width: 540px; }
+  .wa-recovery__login label { display: block; margin-bottom: 10px; font-weight: 650; }
+  .wa-recovery__login-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .wa-recovery input[type=password] { flex: 1 1 230px; min-height: 44px; padding: 10px 12px; border: 1px solid #5f6368; border-radius: 9px; background: #0c0f13; color: #fff; }
+  .wa-recovery button, .wa-recovery__link { display: inline-flex; align-items: center; justify-content: center; min-height: 43px; padding: 10px 16px; border: 1px solid #cba96b; border-radius: 9px; background: #cba96b; color: #19130a; font: inherit; font-weight: 750; text-decoration: none; cursor: pointer; }
+  .wa-recovery button.secondary, .wa-recovery__link.secondary { background: transparent; color: #e4c589; }
+  .wa-recovery button:hover, .wa-recovery__link:hover { filter: brightness(1.1); }
+  .wa-recovery__error { min-height: 20px; color: #ff8b8b !important; }
+  .wa-recovery__toolbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .wa-recovery__toolbar h2 { margin: 0 0 6px; font-size: 22px; }
+  .wa-recovery__toolbar p { margin: 0; font-size: 13px; }
+  .wa-recovery__buttons { display: flex; flex-wrap: wrap; gap: 9px; }
+  .wa-recovery__stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 12px; margin: 22px 0; }
+  .wa-recovery__stat { padding: 17px; border: 1px solid #3b3f43; border-radius: 12px; background: #101319; }
+  .wa-recovery__stat span { display: block; color: #aeb5bf; font-size: 12px; }
+  .wa-recovery__stat strong { display: block; margin-top: 8px; color: #e4c589; font-size: 29px; }
+  .wa-recovery__table-wrap { overflow-x: auto; }
+  .wa-recovery table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .wa-recovery th, .wa-recovery td { padding: 13px 10px; border-bottom: 1px solid #343941; text-align: left; vertical-align: middle; }
+  .wa-recovery th { color: #d6bb8a; white-space: nowrap; }
+  .wa-recovery td { color: #e6e8ec; }
+  .wa-recovery td .wa-recovery__row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .wa-recovery td button, .wa-recovery td a { min-height: 34px; padding: 6px 9px; font-size: 11px; }
+  .wa-recovery__help { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 18px; }
+  .wa-recovery__help > div { padding: 18px; border: 1px solid #3b3f43; border-radius: 12px; background: #191d25; }
+  .wa-recovery__help h3 { margin: 0 0 7px; font-size: 16px; }
+  .wa-recovery__help p { margin: 0; font-size: 12px; }
+  .wa-recovery__small { margin-top: 18px; font-size: 12px; }
+  @media (max-width: 640px) { .wa-recovery { padding-top: 32px; } .wa-recovery__login, .wa-recovery__panel { padding: 17px; } }
+</style>
+
+<section class="wa-recovery" id="WaRecoveryRoot">
+  <div class="wa-recovery__inner">
+    <span class="wa-recovery__eyebrow">Wild Aroma · Private operations</span>
+    <h1>Manual Checkout Recovery</h1>
+    <p>Consent-based follow-up for customers who leave the COD or PayU form unfinished. This is separate from Shopify's native abandoned checkout report.</p>
+
+    <form class="wa-recovery__login" id="WaRecoveryLogin">
+      <label for="WaRecoveryKey">Recovery dashboard key</label>
+      <div class="wa-recovery__login-row">
+        <input id="WaRecoveryKey" type="password" autocomplete="off" required>
+        <button type="submit">Unlock dashboard</button>
+      </div>
+      <p class="wa-recovery__error" id="WaRecoveryError" role="alert"></p>
+    </form>
+
+    <div class="wa-recovery__panel" id="WaRecoveryPanel" hidden>
+      <div class="wa-recovery__toolbar">
+        <div><h2>Consented checkout leads</h2><p id="WaRecoveryChecked">Loading...</p></div>
+        <div class="wa-recovery__buttons">
+          <button type="button" class="secondary" id="WaRecoveryRefresh">Refresh</button>
+          <button type="button" class="secondary" id="WaRecoveryLock">Lock</button>
+          <a class="wa-recovery__link secondary" href="https://admin.shopify.com/checkouts" target="_blank" rel="noopener noreferrer">Shopify native checkouts ↗</a>
+        </div>
+      </div>
+      <div class="wa-recovery__stats" id="WaRecoveryStats"></div>
+      <div class="wa-recovery__table-wrap">
+        <table>
+          <thead><tr><th>Started (IST)</th><th>Phone</th><th>Product</th><th>Mode</th><th>Status</th><th>Follow-up</th></tr></thead>
+          <tbody id="WaRecoveryRows"></tbody>
+        </table>
+      </div>
+      <p class="wa-recovery__small">A lead becomes “Abandoned” 20 minutes after its last activity. Before contacting anyone, check whether an order was placed, especially for PayU payments. Only numbers with the optional contact consent appear here. Records are removed after 30 days.</p>
+    </div>
+
+    <div class="wa-recovery__help">
+      <div><h3>1. Check the order first</h3><p>Search the phone number in Shopify Orders. Do not follow up if the customer has already purchased.</p></div>
+      <div><h3>2. Contact with context</h3><p>Call or send a short WhatsApp message only when the customer opted in. Offer help with COD or a failed payment; do not assume the reason.</p></div>
+      <div><h3>3. Update the lead</h3><p>Mark the lead contacted or recovered after your follow-up. Shopify native checkouts have their own recovery status and email automation.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const api = 'https://crm.ratnakarmishra.in/wildaroma_checkout_recovery.php';
+    const root = document.getElementById('WaRecoveryRoot');
+    if (!root) return;
+    const login = document.getElementById('WaRecoveryLogin');
+    const panel = document.getElementById('WaRecoveryPanel');
+    const error = document.getElementById('WaRecoveryError');
+    const rows = document.getElementById('WaRecoveryRows');
+    const stats = document.getElementById('WaRecoveryStats');
+    let key = '';
+
+    async function request(action, body) {
+      const response = await fetch(api + '?action=' + action, {
+        method: body ? 'POST' : 'GET',
+        headers: { 'X-WA-Recovery-Key': key, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+        ...(body ? { body: JSON.stringify(body) } : {}),
+        cache: 'no-store'
+      });
+      if (!response.ok) throw new Error(response.status === 401 ? 'Invalid dashboard key.' : 'Recovery service is unavailable.');
+      return response.json();
+    }
+
+    function textCell(row, value) {
+      const cell = document.createElement('td');
+      cell.textContent = value;
+      row.appendChild(cell);
+      return cell;
+    }
+
+    function formatIST(value) {
+      return new Intl.DateTimeFormat('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' }).format(new Date(value));
+    }
+
+    function render(data) {
+      document.getElementById('WaRecoveryChecked').textContent = 'Updated ' + formatIST(data.checked_at) + ' · India time';
+      stats.replaceChildren();
+      const cards = [
+        ['Started, 24h', data.summary.started_24h],
+        ['Abandoned now', data.summary.abandoned_open],
+        ['Contacted', data.summary.contacted],
+        ['Completed, 7d', data.summary.completed_7d],
+        ['Recovered, 7d', data.summary.recovered_7d]
+      ];
+      cards.forEach(([label, value]) => {
+        const card = document.createElement('div'); card.className = 'wa-recovery__stat';
+        const title = document.createElement('span'); title.textContent = label;
+        const count = document.createElement('strong'); count.textContent = String(value);
+        card.append(title, count); stats.appendChild(card);
+      });
+      rows.replaceChildren();
+      if (!data.leads.length) {
+        const row = document.createElement('tr');
+        const cell = textCell(row, 'No consented leads yet.'); cell.colSpan = 6;
+        rows.appendChild(row);
+      }
+      data.leads.forEach(lead => {
+        const row = document.createElement('tr');
+        textCell(row, formatIST(lead.created_at));
+        textCell(row, lead.phone);
+        textCell(row, lead.product);
+        textCell(row, lead.mode === 'cod' ? 'COD' : 'PayU');
+        textCell(row, lead.status);
+        const cell = document.createElement('td');
+        const actions = document.createElement('div'); actions.className = 'wa-recovery__row-actions';
+        const call = document.createElement('a'); call.className = 'wa-recovery__link secondary';
+        call.href = 'tel:+91' + lead.phone.replace(/\D/g, ''); call.textContent = 'Call';
+        actions.appendChild(call);
+        [['contacted', 'Mark contacted'], ['recovered', 'Mark recovered'], ['dismissed', 'Dismiss']].forEach(([status, label]) => {
+          const button = document.createElement('button'); button.type = 'button'; button.className = 'secondary'; button.textContent = label;
+          button.addEventListener('click', async () => {
+            button.disabled = true;
+            try { await request('mark', { id: lead.id, status }); await load(); }
+            catch (e) { error.textContent = e.message; button.disabled = false; }
+          });
+          actions.appendChild(button);
+        });
+        cell.appendChild(actions); row.appendChild(cell); rows.appendChild(row);
+      });
+    }
+
+    async function load() {
+      error.textContent = '';
+      const data = await request('admin');
+      render(data);
+      login.hidden = true;
+      panel.hidden = false;
+    }
+
+    login.addEventListener('submit', async event => {
+      event.preventDefault();
+      key = document.getElementById('WaRecoveryKey').value;
+      try { await load(); }
+      catch (e) { key = ''; error.textContent = e.message; }
+    });
+    document.getElementById('WaRecoveryRefresh').addEventListener('click', () => load().catch(e => { error.textContent = e.message; }));
+    document.getElementById('WaRecoveryLock').addEventListener('click', () => {
+      key = ''; rows.replaceChildren(); stats.replaceChildren(); panel.hidden = true; login.hidden = false;
+      document.getElementById('WaRecoveryKey').value = '';
+    });
+  })();
+</script>
+
+{% schema %}
+{"name":"Checkout Recovery","tag":"section","class":"section-checkout-recovery","settings":[]}
+{% endschema %}
