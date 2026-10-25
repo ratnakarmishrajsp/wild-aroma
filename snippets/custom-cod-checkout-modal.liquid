@@ -48,11 +48,6 @@
         <div class="smd-form-group">
           <label class="smd-label" for="smd_input_phone">Mobile Number (10 Digits) *</label>
           <input type="tel" id="smd_input_phone" class="smd-input" placeholder="e.g. 9876543210" maxlength="10" required autocomplete="tel" />
-          <span class="smd-hint">We will send live tracking updates to this number on WhatsApp</span>
-        </div>
-        <div class="smd-recovery-consent">
-          <input type="checkbox" id="smd_recovery_consent" />
-          <label for="smd_recovery_consent">If I leave checkout unfinished, Wild Aroma may call or WhatsApp me on this number to help complete my order. Optional.</label>
         </div>
 
         <div class="smd-form-group">
@@ -124,17 +119,6 @@
 </div>
 
 <style>
-  .smd-recovery-consent {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 0 0 18px;
-    color: #475569;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-  .smd-recovery-consent input { flex: 0 0 auto; margin-top: 3px; }
-  .smd-recovery-consent label { cursor: pointer; }
   /* =====================================================================
      SMD REPLICA MODAL & PRODUCT BUTTONS - WILD AROMA LUXURY EDITION
      ===================================================================== */
@@ -814,75 +798,6 @@
     let currentMode = 'online'; // 'online' or 'cod'
     let cartCheckoutData = null;
     const DISCOUNT_AMOUNT = 100; // Extra Rs 100 Off on Prepaid
-    const RECOVERY_API = 'https://crm.ratnakarmishra.in/wildaroma_checkout_recovery.php';
-    const PRODUCT_TITLE = {{ product.title | default: 'Wild Aroma fragrance' | json }};
-    let recoveryId = null;
-    let recoveryPhone = null;
-    let recoveryTimer = null;
-    let recoveryQueue = Promise.resolve();
-
-    function getRecoveryId() {
-      if (!recoveryId) {
-        const bytes = new Uint8Array(16);
-        crypto.getRandomValues(bytes);
-        recoveryId = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
-      }
-      return recoveryId;
-    }
-
-    function recoveryRequest(action, payload) {
-      return fetch(RECOVERY_API + '?action=' + action, {
-        method: 'POST',
-        mode: 'cors',
-        keepalive: true,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).then(response => { if (!response.ok) throw new Error('Recovery request failed'); }).catch(() => {});
-    }
-
-    function queueRecovery(action, payload) {
-      recoveryQueue = recoveryQueue.then(() => recoveryRequest(action, payload));
-      return recoveryQueue;
-    }
-
-    function recordRecoveryConsent() {
-      const consent = document.getElementById('smd_recovery_consent');
-      const phoneInput = document.getElementById('smd_input_phone');
-      const phone = (phoneInput?.value || '').replace(/\D/g, '');
-      if (!consent?.checked || !/^[6-9][0-9]{9}$/.test(phone)) return;
-      if (recoveryPhone === phone) return;
-      recoveryPhone = phone;
-      queueRecovery('start', {
-        id: getRecoveryId(),
-        phone,
-        consent: true,
-        mode: currentMode,
-        product: cartCheckoutData?.title || PRODUCT_TITLE
-      });
-    }
-
-    function scheduleRecoveryConsent() {
-      clearTimeout(recoveryTimer);
-      recoveryTimer = setTimeout(recordRecoveryConsent, 450);
-    }
-
-    function withdrawRecoveryConsent() {
-      clearTimeout(recoveryTimer);
-      if (recoveryId && recoveryPhone) queueRecovery('withdraw', { id: recoveryId });
-      recoveryPhone = null;
-    }
-
-    function completeRecoveryLead() {
-      if (!recoveryId || !recoveryPhone) return;
-      queueRecovery('complete', { id: recoveryId });
-      recoveryPhone = null;
-    }
-
-    document.getElementById('smd_input_phone')?.addEventListener('input', scheduleRecoveryConsent);
-    document.getElementById('smd_recovery_consent')?.addEventListener('change', function() {
-      if (this.checked) scheduleRecoveryConsent();
-      else withdrawRecoveryConsent();
-    });
 
     function ensureModalInBody() {
       const modal = document.getElementById('WildAromaOrderModal');
@@ -1527,7 +1442,6 @@
           }
 
           if (data && data.success && data.order_status_url) {
-            completeRecoveryLead();
             // Record order in local cache
             recordOrder(phone, data.order_name);
 
