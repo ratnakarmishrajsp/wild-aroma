@@ -105,7 +105,7 @@
             {%- render 'loading-spinner' -%}
           </button>
 
-          {%- if product.selected_or_first_available_variant.available and quantity_rule_soldout != true -%}
+          {%- if show_cod_button and product.selected_or_first_available_variant.available and quantity_rule_soldout != true -%}
             <!-- 2. Order Now Cash On Delivery Button (Option 01 Royal Red) -->
             <button
               type="button"
@@ -129,36 +129,9 @@
           {%- if show_dynamic_checkout -%}
             <input type="hidden" value="true" id="fastrrCollectionPage" />
             <input type="hidden" value={{ product.url }} name="productUrl" />
-            <div style="display:none !important;">{{ form | payment_button }}</div>
+            {{ form | payment_button }}
           {%- endif -%}
 
-          <style>
-            /* Disable and hide all external Releasit buttons, popups, sticky bars & embeds */
-            iframe[src*="releasit"],
-            iframe[src*="releas.it"],
-            div[class*="releasit"],
-            div[id*="releasit"],
-            div[class*="releas.it"],
-            div[id*="releas.it"],
-            [class*="rsi-"],
-            [id*="rsi-"],
-            .releasit-button,
-            .releasit-cod-button,
-            .custom-cod-button-releasit,
-            .custom-prepaid-promo-releasit,
-            .custom-prepaid-fallback-releasit,
-            .releasit-sticky-button,
-            .releasit-sticky-cart,
-            .rl-sticky-atc {
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-              pointer-events: none !important;
-              height: 0 !important;
-              width: 0 !important;
-              overflow: hidden !important;
-            }
-          </style>
         </div>
       {%- endform -%}
     </product-form>
