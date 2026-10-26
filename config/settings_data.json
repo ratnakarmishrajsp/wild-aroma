@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "logo": "",
@@ -136,19 +145,19 @@
     "blocks": {
       "13669795325273674392": {
         "type": "shopify://apps/releasit-cod-form/blocks/app-embed/72faf214-4174-4fec-886b-0d0e8d3af9a2",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#FFFFFF",
+          "background": "#ffffff",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
           "button_label": "#ffffff",
-          "secondary_button_label": "#B8974F",
+          "secondary_button_label": "#b8974f",
           "shadow": "#121212"
         }
       },
@@ -159,8 +168,8 @@
           "text": "#121212",
           "button": "#121212",
           "button_label": "#ffffff",
-          "secondary_button_label": "#B8974F",
-          "shadow": "#D4AF37"
+          "secondary_button_label": "#b8974f",
+          "shadow": "#d4af37"
         }
       },
       "scheme-3": {
@@ -168,7 +177,7 @@
           "background": "#121212",
           "background_gradient": "",
           "text": "#ffffff",
-          "button": "#B8974F",
+          "button": "#b8974f",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
           "shadow": "#000000"
@@ -176,24 +185,24 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#FCFBF9",
+          "background": "#fcfbf9",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
           "button_label": "#ffffff",
-          "secondary_button_label": "#B8974F",
+          "secondary_button_label": "#b8974f",
           "shadow": "#121212"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#1A1A1A",
+          "background": "#1a1a1a",
           "background_gradient": "",
-          "text": "#F4E7BE",
-          "button": "#D4AF37",
+          "text": "#f4e7be",
+          "button": "#d4af37",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
-          "shadow": "#D4AF37"
+          "shadow": "#d4af37"
         }
       }
     }
@@ -395,4 +404,3 @@
     }
   }
 }
-
