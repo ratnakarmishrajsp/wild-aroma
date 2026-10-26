@@ -32,7 +32,14 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true,
-            "show_cod_button": false
+            "show_cod_button": false,
+            "cod_button_text": "Order Now - Cash on Delivery"
+          }
+        },
+        "releasit_cod_form_button_app_block_BVgTQA": {
+          "type": "shopify://apps/releasit-cod-form/blocks/button-app-block/72faf214-4174-4fec-886b-0d0e8d3af9a2",
+          "settings": {
+            "product": "{{product}}"
           }
         },
         "description": {
@@ -63,6 +70,7 @@
         "price",
         "variant_picker_VXpTRR",
         "buy_buttons_YKNBFb",
+        "releasit_cod_form_button_app_block_BVgTQA",
         "description",
         "collapsible_tab_shipping",
         "collapsible_tab_kannauj"
@@ -85,6 +93,15 @@
         "enable_exit_popup": true,
         "exit_popup_discount_code": "WILD100",
         "exit_popup_discount_amount": "â‚¹100"
+      }
+    },
+    "frequently_bought_together": {
+      "type": "frequently-bought-together",
+      "settings": {
+        "heading": "Frequently Bought Together",
+        "subheading": "Pair with a complementary scent for layered luxury and instant savings.",
+        "bundle_product_1": "",
+        "discount_percent": 15
       }
     },
     "product_application_guide_section": {
@@ -167,14 +184,6 @@
         "show_rating": false,
         "padding_top": 36,
         "padding_bottom": 44
-      }
-    },
-    "frequently_bought_together": {
-      "type": "frequently-bought-together",
-      "settings": {
-        "heading": "Frequently Bought Together",
-        "subheading": "Pair with a complementary scent for layered luxury and instant savings.",
-        "discount_percent": 15
       }
     }
   },
