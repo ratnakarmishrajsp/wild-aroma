@@ -40,7 +40,7 @@
           "settings": {
             "heading": "Shipping & Delivery",
             "icon": "truck",
-            "content": "<p>Cash on Delivery and free shipping are available. Enter your delivery details at checkout to confirm service for your address. Delivery timing is shown during checkout.</p>",
+            "content": "<p>Cash on Delivery and free shipping are available. Enter your delivery details at checkout to confirm service for your address. Delivery timing is shown during checkout.<\/p>",
             "page": ""
           }
         },
@@ -54,7 +54,7 @@
         "kasturi_delivery": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"wa-kasturi-buy-trust\" id=\"KasturiPurchase\"><span>Cash on Delivery</span><span>Free shipping</span><span>2 × 6 ml included</span></div>"
+            "custom_liquid": "<div class=\"wa-kasturi-buy-trust\" id=\"KasturiPurchase\"><span>Cash on Delivery<\/span><span>Free shipping<\/span><span>2 × 6 ml included<\/span><\/div>"
           }
         }
       },
@@ -68,7 +68,7 @@
         "collapsible_tab_shipping"
       ],
       "settings": {
-        "enable_mobile_sticky_buy": true,
+        "enable_mobile_sticky_buy": false,
         "enable_sticky_info": true,
         "color_scheme": "scheme-2",
         "media_size": "medium",
